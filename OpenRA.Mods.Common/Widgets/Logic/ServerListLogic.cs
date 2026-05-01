@@ -26,71 +26,66 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ServerListLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string SearchStatusFailed = "label-search-status-failed";
+		
+		const string SearchStatusFailed = "Game-ServerListLogic-RrogressLabel-Failed";
 
-		[FluentReference]
-		const string SearchStatusNoGames = "label-search-status-no-games";
+		
+		const string SearchStatusNoGames = "Game-ServerListLogic-RrogressLabel-NoGames";
 
-		[FluentReference("players")]
-		const string PlayersOnline = "label-players-online-count";
+		const string PlayersOnline = "Game-ServerListLogic-PlayerCountLabel2";
 
-		[FluentReference]
-		const string NoServerSelected = "label-no-server-selected";
+		
+		const string NoServerSelected = "Game-ServerListLogic-NoServerSelected";
 
-		[FluentReference]
-		const string MapStatusSearching = "label-map-status-searching";
+		
+		const string MapStatusSearching = "Game-ServerListLogic-Searching";
 
-		[FluentReference]
-		const string MapClassificationUnknown = "label-map-classification-unknown";
+		
+		const string MapClassificationUnknown = "Game-ServerListLogic-UnknownMap";
 
-		[FluentReference("players")]
-		const string PlayersLabel = "label-players-count";
+		const string PlayersLabel = "Game-ServerListLogic-PlayerLabel-Player2";
 
-		[FluentReference("bots")]
-		const string BotsLabel = "label-bots-count";
+		const string BotsLabel = "Game-ServerListLogic-PlayerLabel-Bot2";
 
-		[FluentReference]
-		const string BotPlayer = "label-bot-player";
+		
+		const string BotPlayer = "Game-ServerListLogic-BotPlayerDisplayName";
 
-		[FluentReference("spectators")]
-		const string SpectatorsLabel = "label-spectators-count";
+		const string SpectatorsLabel = "Game-ServerListLogic-PlayerLabel-Spectator2";
 
-		[FluentReference]
-		const string Players = "label-players";
+		
+		const string Players = "Game-ServerListLogic-TeamBox-Players";
 
-		[FluentReference("team")]
-		const string TeamNumber = "label-team-name";
+		const string TeamNumber = "Game-ServerListLogic-TeamBox-Team";
 
-		[FluentReference]
-		const string NoTeam = "label-no-team";
+		
+		const string NoTeam = "Game-ServerListLogic-TeamBox-NoTeam";
 
-		[FluentReference]
-		const string Spectators = "label-spectators";
+		
+		const string Spectators = "Game-ServerListLogic-TeamBox-Spectators";
 
-		[FluentReference("players")]
-		const string OtherPlayers = "label-other-players-count";
+		const string OtherPlayers = "Game-ServerListLogic-OtherPlayers";
 
-		[FluentReference]
-		const string Playing = "label-playing";
+		
+		const string Playing = "Game-ServerListLogic-Playing";
 
-		[FluentReference]
-		const string Waiting = "label-waiting";
+		
+		const string Waiting = "Game-ServerListLogic-Waiting";
 
-		[FluentReference("minutes")]
-		const string InProgress = "label-in-progress-for";
+		const string InProgressOneMinute = "Game-ServerListLogic-GameStatus-Started2";
 
-		[FluentReference]
-		const string PasswordProtected = "label-password-protected";
+		const string InProgressMinutes = "Game-ServerListLogic-GameStatus-Started3";
 
-		[FluentReference]
-		const string WaitingForPlayers = "label-waiting-for-players";
+		
+		const string PasswordProtected = "Game-ServerListLogic-GameStatus-Waiting-PasswdReq";
 
-		[FluentReference]
-		const string ServerShuttingDown = "label-server-shutting-down";
+		
+		const string WaitingForPlayers = "Game-ServerListLogic-GameStatus-Waiting";
 
-		[FluentReference]
-		const string UnknownServerState = "label-unknown-server-state";
+		
+		const string ServerShuttingDown = "Game-ServerListLogic-GameStatus-ShuttingDown";
+
+		
+		const string UnknownServerState = "Game-ServerListLogic-GameStatus-Unknown";
 
 		readonly string noServerSelected;
 		readonly string mapStatusSearching;
@@ -149,8 +144,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			switch (searchStatus)
 			{
-				case SearchStatus.Failed: return FluentProvider.GetMessage(SearchStatusFailed);
-				case SearchStatus.NoGames: return FluentProvider.GetMessage(SearchStatusNoGames);
+				case SearchStatus.Failed: return Game.Translate(SearchStatusFailed);
+				case SearchStatus.NoGames: return Game.Translate(SearchStatusNoGames);
 				default: return "";
 			}
 		}
@@ -161,22 +156,25 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			this.modData = modData;
 			this.onJoin = onJoin;
 
-			playing = FluentProvider.GetMessage(Playing);
-			waiting = FluentProvider.GetMessage(Waiting);
+			playing = Game.Translate(Playing);
+			waiting = Game.Translate(Waiting);
 
-			noServerSelected = FluentProvider.GetMessage(NoServerSelected);
-			mapStatusSearching = FluentProvider.GetMessage(MapStatusSearching);
-			mapClassificationUnknown = FluentProvider.GetMessage(MapClassificationUnknown);
+			noServerSelected = Game.Translate(NoServerSelected);
+			mapStatusSearching = Game.Translate(MapStatusSearching);
+			mapClassificationUnknown = Game.Translate(MapClassificationUnknown);
 
-			players = new CachedTransform<int, string>(i => FluentProvider.GetMessage(PlayersLabel, "players", i));
-			bots = new CachedTransform<int, string>(i => FluentProvider.GetMessage(BotsLabel, "bots", i));
-			spectators = new CachedTransform<int, string>(i => FluentProvider.GetMessage(SpectatorsLabel, "spectators", i));
+			players = new CachedTransform<int, string>(i => Game.Translate(PlayersLabel, "0", i));
+			bots = new CachedTransform<int, string>(i => Game.Translate(BotsLabel, "0", i));
+			spectators = new CachedTransform<int, string>(i => Game.Translate(SpectatorsLabel, "0", i));
 
-			minutes = new CachedTransform<double, string>(i => FluentProvider.GetMessage(InProgress, "minutes", i));
-			passwordProtected = FluentProvider.GetMessage(PasswordProtected);
-			waitingForPlayers = FluentProvider.GetMessage(WaitingForPlayers);
-			serverShuttingDown = FluentProvider.GetMessage(ServerShuttingDown);
-			unknownServerState = FluentProvider.GetMessage(UnknownServerState);
+			minutes = new CachedTransform<double, string>(i =>
+				Math.Abs(i - 1) < 0.001
+					? Game.Translate(InProgressOneMinute, "0", i)
+					: Game.Translate(InProgressMinutes, "0", i));
+			passwordProtected = Game.Translate(PasswordProtected);
+			waitingForPlayers = Game.Translate(WaitingForPlayers);
+			serverShuttingDown = Game.Translate(ServerShuttingDown);
+			unknownServerState = Game.Translate(UnknownServerState);
 
 			services = modData.Manifest.Get<WebServices>();
 
@@ -322,7 +320,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var playersLabel = widget.GetOrNull<LabelWidget>("PLAYER_COUNT");
 			if (playersLabel != null)
 			{
-				var playersText = new CachedTransform<int, string>(p => FluentProvider.GetMessage(PlayersOnline, "players", p));
+				var playersText = new CachedTransform<int, string>(p => Game.Translate(PlayersOnline, "0", p));
 				playersLabel.IsVisible = () => playerCount != 0;
 				playersLabel.GetText = () => playersText.Update(playerCount);
 			}
@@ -337,10 +335,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var font = Game.Renderer.Fonts[mapTitle.Font];
 				var title = new CachedTransform<MapPreview, string>(m =>
 				{
-					var truncated = WidgetUtils.TruncateText(m.Title, mapTitle.Bounds.Width, font);
+					var full = m.Translate(m.Title);
+					var truncated = WidgetUtils.TruncateText(full, mapTitle.Bounds.Width, font);
 
-					if (m.Title != truncated)
-						mapTitle.GetTooltipText = () => m.Title;
+					if (full != truncated)
+						mapTitle.GetTooltipText = () => full;
 					else
 						mapTitle.GetTooltipText = null;
 
@@ -585,14 +584,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var noTeams = players.Count == 1;
 			foreach (var p in players)
 			{
-				var label = noTeams ? FluentProvider.GetMessage(Players) : p.Key > 0
-					? FluentProvider.GetMessage(TeamNumber, "team", p.Key)
-					: FluentProvider.GetMessage(NoTeam);
+				var label = noTeams ? Game.Translate(Players) : p.Key > 0
+					? Game.Translate(TeamNumber, "0", p.Key)
+					: Game.Translate(NoTeam);
 				teams.Add(label, p);
 			}
 
 			if (server.Clients.Any(c => c.IsSpectator))
-				teams.Add(FluentProvider.GetMessage(Spectators), server.Clients.Where(c => c.IsSpectator));
+				teams.Add(Game.Translate(Spectators), server.Clients.Where(c => c.IsSpectator));
 
 			var factionInfo = modData.DefaultRules.Actors[SystemActors.World].TraitInfos<FactionInfo>();
 			foreach (var kv in teams)
@@ -611,7 +610,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					var playerName = new CachedTransform<(MapStatus, int, SpriteFont), string>(s =>
 					{
 						var name = o.IsBot
-							? currentMap.TryGetMessage(o.Name, out var msg) ? msg : FluentProvider.GetMessage(BotPlayer)
+							? currentMap.TryGetMessage(o.Name, out var msg) ? msg : Game.Translate(BotPlayer)
 							: o.Name;
 
 						return WidgetUtils.TruncateText(name, s.Item2, s.Item3);
@@ -775,13 +774,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 								var tooltip = new CachedTransform<MapStatus, string>(s =>
 								{
 									var displayClients = game.Clients.Select(c => c.IsBot
-										? preview.TryGetMessage(c.Name, out var msg) ? msg : FluentProvider.GetMessage(BotPlayer)
+										? preview.TryGetMessage(c.Name, out var msg) ? msg : Game.Translate(BotPlayer)
 										: c.Name);
 
 									if (game.Clients.Length > 10)
 										displayClients = displayClients
 											.Take(9)
-											.Append(FluentProvider.GetMessage(OtherPlayers, "players", game.Clients.Length - 9));
+											.Append(Game.Translate(OtherPlayers, "0", game.Clients.Length - 9));
 
 									return displayClients.JoinWith("\n");
 								});

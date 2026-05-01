@@ -47,18 +47,18 @@ namespace OpenRA
 	{
 		// FieldLoader used here, must matching naming in YAML.
 #pragma warning disable IDE1006 // Naming Styles
-		[FluentReference]
+		
 		readonly string Title;
 		public readonly string Version;
 		public readonly string Website;
 		public readonly string WebIcon32;
-		[FluentReference]
+		
 		readonly string WindowTitle;
 		public readonly bool Hidden;
 #pragma warning restore IDE1006 // Naming Styles
 
-		public string TitleTranslated => FluentProvider.GetMessage(Title);
-		public string WindowTitleTranslated => WindowTitle != null ? FluentProvider.GetMessage(WindowTitle) : null;
+		public string TitleTranslated => Game.Translate(Title);
+		public string WindowTitleTranslated => WindowTitle != null ? Game.Translate(WindowTitle) : null;
 	}
 
 	/// <summary>Describes what is to be loaded in order to run a mod.</summary>
@@ -86,9 +86,30 @@ namespace OpenRA
 		public readonly int FontSheetSize = 512;
 		public readonly int CursorSheetSize = 512;
 
-		// TODO: This should be controlled by a user-selected translation bundle!
+		// Default Fluent plural/locale rules when <see cref="Game.Settings"/> is not yet available.
 		public readonly string FluentCulture = "en";
 		public readonly bool AllowUnusedFluentMessagesInExternalPackages = true;
+
+		/// <summary>Comma-separated BCP-47 tags offered in the settings language dropdown (e.g. <c>en, zh-CN</c>).</summary>
+		public readonly string[] SupportLanguages = Array.Empty<string>();
+
+		/// <summary>Paths to <c>.json5</c> / <c>.to</c> translation tables (see <see cref="Translation"/>).</summary>
+		public readonly string[] Translations = Array.Empty<string>();
+
+		/// <summary>Optional per-language text to rasterize into UI fonts at load / language change (CJK warm-up).</summary>
+		public readonly IReadOnlyDictionary<string, string> GlyphPrecache;
+
+		/// <summary>
+		/// Per-language package mounts (YAML keys are package paths, values optional explicit mount names).
+		/// Mounted after the main <c>FileSystem</c> block so localized assets override defaults; remounted when the player changes language.
+		/// </summary>
+		public readonly IReadOnlyDictionary<string, MiniYaml> LocalizationPackageSections;
+
+		/// <summary>
+		/// Optional: language code → path to a YAML file whose root contains a <c>Fonts:</c> section (same shape as manifest Fonts).
+		/// When set, <see cref="Renderer"/> builds UI fonts per language from these files instead of the single manifest <c>Fonts</c> block.
+		/// </summary>
+		public readonly IReadOnlyDictionary<string, string> LanguageFontPaths;
 
 		readonly string[] reservedModuleNames =
 		{
@@ -96,7 +117,8 @@ namespace OpenRA
 			"Sequences", "ModelSequences", "Cursors", "Chrome", "Assemblies", "ChromeLayout", "Weapons",
 			"Voices", "Notifications", "Music", "FluentMessages", "TileSets", "ChromeMetrics", "Missions", "Hotkeys",
 			"ServerTraits", "LoadScreen", "DefaultOrderGenerator", "SupportsMapsFrom", "SoundFormats", "SpriteFormats", "VideoFormats",
-			"RequiresMods", "PackageFormats", "AllowUnusedFluentMessagesInExternalPackages", "FontSheetSize", "CursorSheetSize"
+			"RequiresMods", "PackageFormats", "AllowUnusedFluentMessagesInExternalPackages", "FontSheetSize", "CursorSheetSize", "SupportLanguages",
+			"Translations", "GlyphPrecache", "LocalizationPackage", "LanguageFonts"
 		};
 
 		readonly TypeDictionary modules = new();
@@ -126,6 +148,13 @@ namespace OpenRA
 				nodes.InsertRange(i, MiniYaml.FromStream(contents, $"{package.Name}:{filename}", stringPool: stringPool));
 			}
 
+			var localizationStream = package.GetStream("localization.yaml");
+			if (localizationStream != null)
+			{
+				using (localizationStream)
+					nodes.AddRange(MiniYaml.FromStream(localizationStream, $"{package.Name}:localization.yaml", stringPool: stringPool));
+			}
+
 			// Merge inherited overrides
 			yaml = new MiniYaml(null, MiniYaml.Merge(new[] { nodes })).ToDictionary();
 
@@ -148,6 +177,7 @@ namespace OpenRA
 			Notifications = YamlList(yaml, "Notifications");
 			Music = YamlList(yaml, "Music");
 			FluentMessages = YamlList(yaml, "FluentMessages");
+			Translations = YamlList(yaml, "Translations");
 			TileSets = YamlList(yaml, "TileSets");
 			ChromeMetrics = YamlList(yaml, "ChromeMetrics");
 			Missions = YamlList(yaml, "Missions");
@@ -193,6 +223,105 @@ namespace OpenRA
 
 			if (yaml.TryGetValue("CursorSheetSize", out entry))
 				CursorSheetSize = FieldLoader.GetValue<int>("CursorSheetSize", entry.Value);
+
+			if (yaml.TryGetValue("SupportLanguages", out entry))
+				SupportLanguages = FieldLoader.GetValue<string[]>("SupportLanguages", entry.Value);
+
+			if (yaml.TryGetValue("Translations", out var transYaml) && !string.IsNullOrEmpty(transYaml.Value))
+				SupportLanguages = FieldLoader.GetValue<string[]>("Translations", transYaml.Value);
+
+			if (yaml.TryGetValue("GlyphPrecache", out var glyphPrecacheYaml))
+			{
+				var gp = new Dictionary<string, string>();
+				foreach (var n in glyphPrecacheYaml.Nodes)
+					gp[n.Key] = n.Value.Value ?? "";
+				GlyphPrecache = new ReadOnlyDictionary<string, string>(gp);
+			}
+			else
+				GlyphPrecache = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>());
+
+			if (yaml.TryGetValue("LocalizationPackage", out var localizationPackageYaml))
+			{
+				var sections = new Dictionary<string, MiniYaml>(StringComparer.OrdinalIgnoreCase);
+				foreach (var n in localizationPackageYaml.Nodes)
+					sections[n.Key] = n.Value;
+				LocalizationPackageSections = new ReadOnlyDictionary<string, MiniYaml>(sections);
+			}
+			else
+				LocalizationPackageSections = new ReadOnlyDictionary<string, MiniYaml>(new Dictionary<string, MiniYaml>());
+
+			if (yaml.TryGetValue("LanguageFonts", out var languageFontsYaml))
+			{
+				var lf = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+				foreach (var n in languageFontsYaml.Nodes)
+					lf[n.Key] = (n.Value.Value ?? "").Trim();
+				LanguageFontPaths = new ReadOnlyDictionary<string, string>(lf);
+			}
+			else
+				LanguageFontPaths = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>());
+		}
+
+		/// <summary>Resolve a font definition file path for a language (fallback: en, then primary BCP-47 segment).</summary>
+		public bool TryResolveLanguageFontPath(string language, out string path)
+		{
+			path = null;
+			if (LanguageFontPaths == null || LanguageFontPaths.Count == 0)
+				return false;
+
+			if (!string.IsNullOrEmpty(language) && LanguageFontPaths.TryGetValue(language, out path) && !string.IsNullOrEmpty(path))
+				return true;
+
+			if (LanguageFontPaths.TryGetValue("en", out path) && !string.IsNullOrEmpty(path))
+				return true;
+
+			var dash = language?.IndexOf('-') ?? -1;
+			if (dash > 0)
+			{
+				var primary = language.Substring(0, dash);
+				if (LanguageFontPaths.TryGetValue(primary, out path) && !string.IsNullOrEmpty(path))
+					return true;
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// When <see cref="LanguageFontPaths"/> is set but the merged manifest has no top-level <c>Fonts:</c> block,
+		/// register trait-validation <see cref="Fonts"/> from the English font file (or the first available entry).
+		/// </summary>
+		internal bool LanguageFontsTraitRegistered { get; private set; }
+
+		internal void RegisterFontsFromLanguageFileIfMissing(IReadOnlyFileSystem fs, ObjectCreator oc)
+		{
+			if (yaml.ContainsKey("Fonts") || LanguageFontPaths == null || LanguageFontPaths.Count == 0)
+				return;
+
+			if (!TryResolveLanguageFontPath("en", out var path))
+			{
+				foreach (var kv in LanguageFontPaths)
+				{
+					if (!string.IsNullOrEmpty(kv.Value))
+					{
+						path = kv.Value;
+						break;
+					}
+				}
+			}
+
+			if (string.IsNullOrEmpty(path) || !fs.TryOpen(path, out var stream))
+				throw new InvalidDataException(
+					"`LanguageFonts` is set but no font definition file could be opened (check paths and `en` entry).");
+
+			using (stream)
+			{
+				var dict = new MiniYaml(null, MiniYaml.FromStream(stream, path)).ToDictionary();
+				if (!dict.TryGetValue("Fonts", out var fontsRoot))
+					throw new InvalidDataException($"`Fonts` section missing in language font file `{path}`.");
+
+				var fonts = Fonts.FromFontsSection(oc, fontsRoot);
+				modules.Add(fonts);
+				LanguageFontsTraitRegistered = true;
+			}
 		}
 
 		public void LoadCustomData(ObjectCreator oc)

@@ -24,7 +24,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification to play when a unit is delivered.")]
 		public readonly string ReadyAudio = "Reinforce";
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display when a unit is delivered.")]
 		public readonly string ReadyTextNotification = null;
 

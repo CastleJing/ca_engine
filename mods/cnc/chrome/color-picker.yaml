@@ -98,7 +98,7 @@ Background@COLOR_CHOOSER:
 									Width: PARENT_WIDTH
 									Height: 13
 									Align: Center
-									Text: label-preset-header
+									Text: Chrome-ColorPicker-PresetColor
 						Container@PRESET_AREA:
 							Width: PARENT_WIDTH - 4
 							Height: 58
@@ -124,7 +124,7 @@ Background@COLOR_CHOOSER:
 									Width: PARENT_WIDTH
 									Height: 13
 									Align: Center
-									Text: label-custom-header
+									Text: Chrome-ColorPicker-CustomColor
 						Container@CUSTOM_AREA:
 							Width: PARENT_WIDTH - 4
 							Height: 31

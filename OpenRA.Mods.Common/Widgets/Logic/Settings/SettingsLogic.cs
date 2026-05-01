@@ -19,37 +19,36 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class SettingsLogic : ChromeLogic
 	{
-		[FluentReference]
+		
 		const string SettingsSaveTitle = "dialog-settings-save.title";
 
-		[FluentReference]
+		
 		const string SettingsSavePrompt = "dialog-settings-save.prompt";
 
-		[FluentReference]
+		
 		const string SettingsSaveCancel = "dialog-settings-save.cancel";
 
-		[FluentReference]
+		
 		const string RestartTitle = "dialog-settings-restart.title";
 
-		[FluentReference]
+		
 		const string RestartPrompt = "dialog-settings-restart.prompt";
 
-		[FluentReference]
+		
 		const string RestartAccept = "dialog-settings-restart.confirm";
 
-		[FluentReference]
+		
 		const string RestartCancel = "dialog-settings-restart.cancel";
 
-		[FluentReference("panel")]
 		const string ResetTitle = "dialog-settings-reset.title";
 
-		[FluentReference]
+		
 		const string ResetPrompt = "dialog-settings-reset.prompt";
 
-		[FluentReference]
+		
 		const string ResetAccept = "dialog-settings-reset.confirm";
 
-		[FluentReference]
+		
 		const string ResetCancel = "dialog-settings-reset.cancel";
 
 		readonly Dictionary<string, Func<bool>> leavePanelActions = new();

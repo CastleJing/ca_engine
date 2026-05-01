@@ -44,38 +44,38 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 		}
 
-		[FluentReference]
+		
 		const string SaveMapFailedTitle = "dialog-save-map-failed.title";
 
-		[FluentReference]
+		
 		const string SaveMapFailedPrompt = "dialog-save-map-failed.prompt";
 
-		[FluentReference]
+		
 		const string SaveMapFailedConfirm = "dialog-save-map-failed.confirm";
 
-		[FluentReference]
-		const string Unpacked = "label-unpacked-map";
+		
+		const string Unpacked = "Game-SaveMapLogic-UnpackedMap";
 
-		[FluentReference]
+		
 		const string OverwriteMapFailedTitle = "dialog-overwrite-map-failed.title";
 
-		[FluentReference]
+		
 		const string OverwriteMapFailedPrompt = "dialog-overwrite-map-failed.prompt";
 
-		[FluentReference]
+		
 		const string OverwriteMapFailedConfirm = "dialog-overwrite-map-failed.confirm";
 
-		[FluentReference]
+		
 		const string OverwriteMapOutsideEditTitle = "dialog-overwrite-map-outside-edit.title";
 
-		[FluentReference]
+		
 		const string OverwriteMapOutsideEditPrompt = "dialog-overwrite-map-outside-edit.prompt";
 
-		[FluentReference]
+		
 		const string SaveMapMapOutsideConfirm = "dialog-overwrite-map-outside-edit.confirm";
 
-		[FluentReference]
-		const string SaveCurrentMap = "notification-save-current-map";
+		
+		const string SaveCurrentMap = "Game-SaveMapLogic-SaveCurrentMap";
 
 		[ObjectCreator.UseCtor]
 		public SaveMapLogic(Widget widget, ModData modData, Map map, Action<string> onSave, Action onExit,
@@ -171,7 +171,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var fileTypes = new Dictionary<MapFileType, MapFileTypeInfo>()
 			{
 				{ MapFileType.OraMap, new MapFileTypeInfo { Extension = ".oramap", UiLabel = ".oramap" } },
-				{ MapFileType.Unpacked, new MapFileTypeInfo { Extension = "", UiLabel = $"({FluentProvider.GetMessage(Unpacked)})" } }
+				{ MapFileType.Unpacked, new MapFileTypeInfo { Extension = "", UiLabel = $"({Game.Translate(Unpacked)})" } }
 			};
 
 			var typeDropdown = widget.Get<DropDownButtonWidget>("TYPE_DROPDOWN");

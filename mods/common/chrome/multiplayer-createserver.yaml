@@ -9,7 +9,7 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 			Y: 16
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-multiplayer-createserver-panel-title
+			Text: Chrome-MPCreateServer-Title
 			Align: Center
 			Font: Bold
 		Label@SERVER_NAME_LABEL:
@@ -17,20 +17,20 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 			Width: 105
 			Height: 25
 			Align: Right
-			Text: label-multiplayer-createserver-panel-server-name
+			Text: Chrome-MPCreateServer-ServerName
 		TextField@SERVER_NAME:
 			X: 110
 			Y: 45
 			Width: 215
 			MaxLength: 50
 			Height: 25
-			Text: My OpenRA Server
+			Text: Chrome-MPCreateServer-ServerNamePlaceHolder
 		Label@PASSWORD_LABEL:
 			Y: 80
 			Width: 105
 			Height: 25
 			Align: Right
-			Text: label-multiplayer-createserver-panel-password
+			Text: Chrome-MPCreateServer-Passwd
 		PasswordField@PASSWORD:
 			X: 110
 			Y: 80
@@ -43,20 +43,20 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 			Width: 95
 			Height: 25
 			Align: Left
-			Text: label-multiplayer-createserver-panel-after-password
+			Text: Chrome-MPCreateServer-PasswdPlaceHolder
 		Label@LISTEN_PORT_LABEL:
 			Y: 115
 			Width: 105
 			Height: 25
 			Align: Right
-			Text: label-multiplayer-createserver-panel-listen-port
+			Text: Chrome-MPCreateServer-Port
 		TextField@LISTEN_PORT:
 			X: 110
 			Y: 115
 			Width: 50
 			Height: 25
 			MaxLength: 5
-			Text: 1234
+			Text: Chrome-MPCreateServer-PortPlaceHolder
 			Type: Integer
 		Checkbox@ADVERTISE_CHECKBOX:
 			X: 180
@@ -64,7 +64,7 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 			Width: 150
 			Height: 20
 			Font: Regular
-			Text: checkbox-multiplayer-createserver-panel-advertise
+			Text: Chrome-MPCreateServer-AdvertiseOnline
 		Label@NOTICES_HEADER_A:
 			X: 20
 			Y: 156
@@ -94,21 +94,21 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-lan-advertising
+					Text: Chrome-MPCreateServer-Notice-LanAdvertising
 				Label@FIREWALL:
 					Y: 12
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-lan-firewall
+					Text: Chrome-MPCreateServer-Notice-LanFirewall
 				Label@PORTFORWARD_A:
 					Y: 24
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-lan-portforward-a
+					Text: Chrome-MPCreateServer-Notice-LanPortForwardA
 				Label@PORTFORWARD_B:
 					X: 7
 					Y: 36
@@ -116,7 +116,7 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-lan-portforward-b
+					Text: Chrome-MPCreateServer-Notice-LanPortForwardB
 		Container@NOTICES_NO_UPNP:
 			X: 25
 			Y: 176
@@ -128,21 +128,21 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-no-upnp-advertising
+					Text: Chrome-MPCreateServer-Notice-NoUpnpAdvertising
 				Label@FIREWALL:
 					Y: 12
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-no-upnp-firewall
+					Text: Chrome-MPCreateServer-Notice-NoUpnpFirewall
 				Label@PORTFORWARD_A:
 					Y: 24
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-no-upnp-portforward-a
+					Text: Chrome-MPCreateServer-Notice-NoUpnpPortForwardA
 				Label@PORTFORWARD_B:
 					X: 7
 					Y: 36
@@ -150,14 +150,14 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-no-upnp-portforward-b
+					Text: Chrome-MPCreateServer-Notice-NoUpnpPortForwardB
 				Label@SETTINGS_A:
 					Y: 48
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-no-upnp-settings-a
+					Text: Chrome-MPCreateServer-Notice-NoUpnpSettingsA
 				Label@SETTINGS_B:
 					X: 7
 					Y: 60
@@ -165,7 +165,7 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-no-upnp-settings-b
+					Text: Chrome-MPCreateServer-Notice-NoUpnpSettingsB
 		Container@NOTICES_UPNP:
 			X: 25
 			Y: 176
@@ -177,28 +177,28 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-upnp-advertising
+					Text: Chrome-MPCreateServer-Notice-UpnpAdvertising
 				Label@FIREWALL:
 					Y: 12
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-upnp-firewall
+					Text: Chrome-MPCreateServer-Notice-UpnpFirewall
 				Label@PORTFORWARD_A:
 					Y: 24
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-upnp-portforward-a
+					Text: Chrome-MPCreateServer-Notice-UpnpPortForward
 				Label@SETTINGS_A:
 					Y: 36
 					Width: 305
 					Height: 25
 					Font: Tiny
 					Align: Left
-					Text: label-notices-upnp-settings-a
+					Text: Chrome-MPCreateServer-Notice-UpnpSettingsA
 		Container@MAP_PREVIEW_ROOT:
 			X: PARENT_WIDTH - 194
 			Y: 45
@@ -209,14 +209,14 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-multiplayer-createserver-panel-change-map
+			Text: Chrome-MPCreateServer-ChangeMap
 			Font: Bold
 		Button@BACK_BUTTON:
 			X: PARENT_WIDTH - WIDTH - 20
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-back
+			Text: Chrome-MPCreateServer-BackButton
 			Font: Bold
 			Key: escape
 		Button@CREATE_BUTTON:
@@ -225,6 +225,6 @@ Background@MULTIPLAYER_CREATESERVER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-multiplayer-createserver-panel-create
+			Text: Chrome-MPCreateServer-OkButton
 			Font: Bold
 		TooltipContainer@TOOLTIP_CONTAINER:

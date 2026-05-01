@@ -20,23 +20,36 @@ namespace OpenRA.Network
 	{
 		public const int ChatMessageMaxLength = 2500;
 
-		[FluentReference("player")]
-		const string Joined = "notification-joined";
+		const string Joined = "Game-Server-JoninGame";
 
-		[FluentReference("player")]
-		const string Left = "notification-lobby-disconnected";
+		const string Left = "Game-Server-LeftLobby";
 
-		[FluentReference]
-		const string GameStarted = "notification-game-has-started";
+		
+		const string GameStarted = "Game-UnitOrders-GameStart";
 
-		[FluentReference]
-		const string GameSaved = "notification-game-saved";
+		
+		const string GameSaved = "Game-UnitOrders-GameSave";
 
-		[FluentReference("player")]
-		const string GamePaused = "notification-game-paused";
+		const string GamePaused = "Game-UnitOrders-Pause";
 
-		[FluentReference("player")]
-		const string GameUnpaused = "notification-game-unpaused";
+		const string GameUnpaused = "Game-UnitOrders-Unpause";
+
+		
+		const string ChatSuffixDead = "Game-UnitOrders-ChatSuffix-Dead";
+
+		
+		const string ChatSuffixSpectator = "Game-UnitOrders-ChatSuffix-Spectator";
+
+		
+		const string ChatSuffixAlly = "Game-UnitOrders-ChatSuffix-Ally";
+
+		
+		const string ChatPrefixSpectators = "Game-UnitOrders-ChatPrefix-Spectators";
+
+		
+		const string ChatPrefixTeam = "Game-UnitOrders-ChatPrefix-Team";
+
+		const string ChatPrefixTeamReplay = "Game-UnitOrders-ChatPrefix-TeamWithArg";
 
 		public static int? KickVoteTarget { get; internal set; }
 
@@ -126,11 +139,11 @@ namespace OpenRA.Network
 					if (order.ExtraData == 0)
 					{
 						var p = world?.FindPlayerByClient(client);
-						var suffix = (p != null && p.WinState == WinState.Lost) ? " (Dead)" : "";
-						suffix = client.IsObserver ? " (Spectator)" : suffix;
+						var suffix = (p != null && p.WinState == WinState.Lost) ? " " + Game.Translate(ChatSuffixDead) : "";
+						suffix = client.IsObserver ? " " + Game.Translate(ChatSuffixSpectator) : suffix;
 
 						if (orderManager.LocalClient != null && client != orderManager.LocalClient && client.Team > 0 && client.Team == orderManager.LocalClient.Team)
-							suffix += " (Ally)";
+							suffix += " " + Game.Translate(ChatSuffixAlly);
 
 						TextNotificationsManager.AddChatLine(clientId, client.Name + suffix, message, client.Color);
 						break;
@@ -139,7 +152,9 @@ namespace OpenRA.Network
 					// We are still in the lobby
 					if (world == null)
 					{
-						var prefix = order.ExtraData == uint.MaxValue ? "[Spectators] " : "[Team] ";
+						var prefix = order.ExtraData == uint.MaxValue
+							? Game.Translate(ChatPrefixSpectators) + " "
+							: Game.Translate(ChatPrefixTeam) + " ";
 						if (orderManager.LocalClient != null && client.Team == orderManager.LocalClient.Team)
 							TextNotificationsManager.AddChatLine(clientId, prefix + client.Name, message, client.Color);
 
@@ -155,7 +170,7 @@ namespace OpenRA.Network
 					{
 						// Validate before adding the line
 						if (client.IsObserver || (player != null && player.WinState != WinState.Undefined))
-							TextNotificationsManager.AddChatLine(clientId, "[Spectators] " + client.Name, message, client.Color);
+							TextNotificationsManager.AddChatLine(clientId, Game.Translate(ChatPrefixSpectators) + " " + client.Name, message, client.Color);
 
 						break;
 					}
@@ -165,7 +180,12 @@ namespace OpenRA.Network
 						&& world.LocalPlayer != null && world.LocalPlayer.WinState == WinState.Undefined;
 
 					if (valid && (isSameTeam || world.IsReplay))
-						TextNotificationsManager.AddChatLine(clientId, "[Team" + (world.IsReplay ? " " + order.ExtraData : "") + "] " + client.Name, message, client.Color);
+					{
+						var teamPrefix = world.IsReplay
+							? Game.Translate(ChatPrefixTeamReplay, "0", order.ExtraData.ToString())
+							: Game.Translate(ChatPrefixTeam);
+						TextNotificationsManager.AddChatLine(clientId, teamPrefix + " " + client.Name, message, client.Color);
+					}
 
 					break;
 				}
@@ -231,7 +251,7 @@ namespace OpenRA.Network
 							break;
 
 						if (orderManager.World.Paused != pause && world != null && world.LobbyInfo.NonBotClients.Count() > 1)
-							TextNotificationsManager.AddSystemLine(pause ? GamePaused : GameUnpaused, "player", client.Name);
+							TextNotificationsManager.AddSystemLine(pause ? GamePaused : GameUnpaused, "0", client.Name);
 
 						orderManager.World.Paused = pause;
 						orderManager.World.PredictedPaused = pause;

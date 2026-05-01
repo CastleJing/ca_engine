@@ -11,6 +11,8 @@
 
 using System;
 
+using OpenRA;
+
 namespace OpenRA.Primitives
 {
 	public class CachedTransform<T, U>
@@ -20,6 +22,7 @@ namespace OpenRA.Primitives
 		bool initialized;
 		T lastInput;
 		U lastOutput;
+		int lastTranslationGeneration = -2;
 
 		public CachedTransform(Func<T, U> transform)
 		{
@@ -28,12 +31,16 @@ namespace OpenRA.Primitives
 
 		public U Update(T input)
 		{
-			if (initialized && ((input == null && lastInput == null) || (input != null && input.Equals(lastInput))))
+			var gen = TranslationCache.UiGeneration?.Invoke() ?? -1;
+			if (initialized &&
+				gen == lastTranslationGeneration &&
+				((input == null && lastInput == null) || (input != null && input.Equals(lastInput))))
 				return lastOutput;
 
 			lastInput = input;
 			lastOutput = transform(input);
 			initialized = true;
+			lastTranslationGeneration = gen;
 
 			return lastOutput;
 		}

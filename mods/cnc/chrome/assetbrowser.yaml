@@ -13,7 +13,7 @@ Container@ASSETBROWSER_PANEL:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-assetbrowser-panel-title
+			Text: Chrome-AssetBrowser-Title
 		Background@bg:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -26,21 +26,21 @@ Container@ASSETBROWSER_PANEL:
 					Height: 25
 					Font: TinyBold
 					Align: Center
-					Text: label-bg-source-selector-desc
+					Text: Chrome-AssetBrowser-SourceSelectorDesc
 				DropDownButton@SOURCE_SELECTOR:
 					X: 15
 					Y: 30
 					Width: 195
 					Height: 25
 					Font: Bold
-					Text: dropdownbutton-bg-source-selector
+					Text: Chrome-AssetBrowser-SourceSelector
 				DropDownButton@ASSET_TYPES_DROPDOWN:
 					X: 15
 					Y: 65
 					Width: 195
 					Height: 25
 					Font: Bold
-					Text: dropdownbutton-bg-asset-types-dropdown
+					Text: Chrome-AssetBrowser-AssetTypesDropdown
 				Label@FILENAME_DESC:
 					X: 15
 					Y: 95
@@ -48,7 +48,7 @@ Container@ASSETBROWSER_PANEL:
 					Height: 25
 					Font: TinyBold
 					Align: Center
-					Text: label-bg-filename-desc
+					Text: Chrome-AssetBrowser-FileNameDesc
 				TextField@FILENAME_INPUT:
 					X: 15
 					Y: 120
@@ -82,7 +82,7 @@ Container@ASSETBROWSER_PANEL:
 					Height: 25
 					Font: Bold
 					Align: Left
-					Text: label-bg-sprite-scale
+					Text: Chrome-AssetBrowser-SpriteScale
 				Slider@SPRITE_SCALE_SLIDER:
 					X: PARENT_WIDTH - WIDTH - 330
 					Y: 35
@@ -97,7 +97,7 @@ Container@ASSETBROWSER_PANEL:
 					Height: 25
 					Font: Bold
 					Align: Right
-					Text: label-bg-palette-desc
+					Text: Chrome-AssetBrowser-PaletteDesc
 				DropDownButton@PALETTE_SELECTOR:
 					X: PARENT_WIDTH - WIDTH - 110
 					Y: 30
@@ -134,7 +134,7 @@ Container@ASSETBROWSER_PANEL:
 							Height: PARENT_HEIGHT
 							Align: Center
 							Visible: false
-							Text: label-sprite-bg-error
+							Text: Chrome-AssetBrowser-Error
 				Container@FRAME_SELECTOR:
 					X: 225
 					Y: PARENT_HEIGHT - 40
@@ -223,7 +223,7 @@ Container@ASSETBROWSER_PANEL:
 			Y: PARENT_HEIGHT - 1
 			Width: 140
 			Height: 35
-			Text: button-back
+			Text: Chrome-AssetBrowser-CloseButton
 		TooltipContainer@TOOLTIP_CONTAINER:
 
 ScrollPanel@ASSET_TYPES_PANEL:

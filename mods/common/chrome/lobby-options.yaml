@@ -8,7 +8,7 @@ Container@LOBBY_OPTIONS_BIN:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-lobby-options-bin-title
+			Text: Chrome-LobbyOptions-Title
 		ScrollPanel:
 			Logic: LobbyOptionsLogic
 			Width: PARENT_WIDTH

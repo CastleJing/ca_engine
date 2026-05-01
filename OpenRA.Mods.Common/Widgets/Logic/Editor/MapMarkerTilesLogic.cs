@@ -22,13 +22,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class MapMarkerTilesLogic : ChromeLogic
 	{
-		[FluentReference]
+		
 		const string MarkerMirrorModeNone = "mirror-mode.none";
 
-		[FluentReference]
+		
 		const string MarkerMirrorModeFlip = "mirror-mode.flip";
 
-		[FluentReference]
+		
 		const string MarkerMirrorModeRotate = "mirror-mode.rotate";
 
 		readonly EditorActionManager editorActionManager;
@@ -130,11 +130,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				switch (markerLayerTrait.MirrorMode)
 				{
 					case MarkerTileMirrorMode.None:
-						return FluentProvider.GetMessage(MarkerMirrorModeNone);
+						return Game.Translate(MarkerMirrorModeNone);
 					case MarkerTileMirrorMode.Flip:
-						return FluentProvider.GetMessage(MarkerMirrorModeFlip);
+						return Game.Translate(MarkerMirrorModeFlip);
 					case MarkerTileMirrorMode.Rotate:
-						return FluentProvider.GetMessage(MarkerMirrorModeRotate);
+						return Game.Translate(MarkerMirrorModeRotate);
 					default:
 						throw new ArgumentException($"Couldn't find fluent string for marker tile mirror mode '{markerLayerTrait.MirrorMode}'");
 				}
@@ -221,11 +221,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					switch (mode)
 					{
 						case MarkerTileMirrorMode.None:
-							return FluentProvider.GetMessage(MarkerMirrorModeNone);
+							return Game.Translate(MarkerMirrorModeNone);
 						case MarkerTileMirrorMode.Flip:
-							return FluentProvider.GetMessage(MarkerMirrorModeFlip);
+							return Game.Translate(MarkerMirrorModeFlip);
 						case MarkerTileMirrorMode.Rotate:
-							return FluentProvider.GetMessage(MarkerMirrorModeRotate);
+							return Game.Translate(MarkerMirrorModeRotate);
 						default:
 							throw new ArgumentException($"Couldn't find fluent string for marker tile mirror mode '{mode}'");
 					}

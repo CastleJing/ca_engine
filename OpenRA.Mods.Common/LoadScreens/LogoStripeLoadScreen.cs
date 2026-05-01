@@ -20,7 +20,7 @@ namespace OpenRA.Mods.Common.LoadScreens
 {
 	public sealed class LogoStripeLoadScreen : SheetLoadScreen
 	{
-		[FluentReference]
+		
 		const string Loading = "loadscreen-loading";
 
 		Rectangle stripeRect;
@@ -37,7 +37,7 @@ namespace OpenRA.Mods.Common.LoadScreens
 		{
 			base.Init(modData, info);
 
-			messages = FluentProvider.GetMessage(Loading).Split(',').Select(x => x.Trim()).ToArray();
+			messages = Game.Translate(Loading).Split(',').Select(x => x.Trim()).ToArray();
 		}
 
 		public override void DisplayInner(Renderer r, Sheet s, int density)

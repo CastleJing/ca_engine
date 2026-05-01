@@ -44,10 +44,10 @@ namespace OpenRA.Mods.Common.Installer
 
 					Action<long> onProgress = null;
 					if (length < InstallFromSourceLogic.ShowPercentageThreshold)
-						updateMessage(FluentProvider.GetMessage(InstallFromSourceLogic.CopyingFilename,
+						updateMessage(Game.Translate(InstallFromSourceLogic.CopyingFilename,
 							"filename", displayFilename));
 					else
-						onProgress = b => updateMessage(FluentProvider.GetMessage(InstallFromSourceLogic.CopyingFilenameProgress,
+						onProgress = b => updateMessage(Game.Translate(InstallFromSourceLogic.CopyingFilenameProgress,
 							"filename", displayFilename,
 							"progress", 100 * b / length));
 

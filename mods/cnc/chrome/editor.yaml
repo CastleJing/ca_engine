@@ -6,7 +6,7 @@ Container@NEW_MAP_BG:
 	Height: 95
 	Children:
 		Label@TITLE:
-			Text: label-new-map-bg-title
+			Text: Chrome-Editor-NewMap-Title
 			Width: PARENT_WIDTH
 			Height: 25
 			Y: 0 - 34
@@ -24,7 +24,7 @@ Container@NEW_MAP_BG:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-bg-tileset
+					Text: Chrome-Editor-NewMap-Tileset
 				DropDownButton@TILESET:
 					X: 125
 					Y: 15
@@ -36,7 +36,7 @@ Container@NEW_MAP_BG:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-bg-width
+					Text: Chrome-Editor-NewMap-Width
 				TextField@WIDTH:
 					X: 125
 					Y: 50
@@ -51,7 +51,7 @@ Container@NEW_MAP_BG:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-bg-height
+					Text: Chrome-Editor-NewMap-Height
 				TextField@HEIGHT:
 					X: 235
 					Y: 50
@@ -84,7 +84,7 @@ Container@SAVE_MAP_PANEL:
 	Height: 195
 	Children:
 		Label@LABEL_TITLE:
-			Text: label-save-map-panel-title
+			Text: Chrome-Editor-SaveMap-Title
 			Width: PARENT_WIDTH
 			Height: 25
 			Y: 0 - 34
@@ -102,7 +102,7 @@ Container@SAVE_MAP_PANEL:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-save-map-background-title
+					Text: Chrome-Editor-SaveMap-Name
 				TextField@TITLE:
 					X: 110
 					Y: 15
@@ -115,7 +115,7 @@ Container@SAVE_MAP_PANEL:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-save-map-background-author
+					Text: Chrome-Editor-SaveMap-Author
 				TextField@AUTHOR:
 					X: 110
 					Y: 50
@@ -128,7 +128,7 @@ Container@SAVE_MAP_PANEL:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-save-map-background-visibility
+					Text: Chrome-Editor-SaveMap-Visibility
 				DropDownButton@VISIBILITY_DROPDOWN:
 					X: 110
 					Y: 85
@@ -142,7 +142,7 @@ Container@SAVE_MAP_PANEL:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-save-map-background-directory
+					Text: Chrome-Editor-SaveMap-Directory
 				DropDownButton@DIRECTORY_DROPDOWN:
 					X: 110
 					Y: 120
@@ -155,7 +155,7 @@ Container@SAVE_MAP_PANEL:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-save-map-background-filename
+					Text: Chrome-Editor-SaveMap-Filename
 				TextField@FILENAME:
 					X: 110
 					Y: 155
@@ -263,7 +263,7 @@ Container@EDITOR_WORLD_ROOT:
 			Y: 5
 			Width: 30
 			Height: 25
-			TooltipText: button-editor-world-root-options-tooltip
+			TooltipText: Chrome-Editor-MenuButton-Tooltip
 			TooltipContainer: TOOLTIP_CONTAINER
 			Children:
 				Image:
@@ -296,14 +296,14 @@ Container@EDITOR_WORLD_ROOT:
 									Y: 1
 									Width: PARENT_WIDTH - 5
 									Height: 25
-									Text: label-tiles-bg-search
+									Text: Chrome-Editor-Search
 									Align: Right
 									Font: TinyBold
 								Label@CATEGORIES_LABEL:
 									Y: 25
 									Width: PARENT_WIDTH - 5
 									Height: 25
-									Text: label-bg-filter
+									Text: Chrome-Editor-Filter
 									Align: Right
 									Font: TinyBold
 						TextField@SEARCH_TEXTFIELD:
@@ -371,7 +371,7 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 1
 							Width: 55
 							Height: 25
-							Text: label-actors-bg-search
+							Text: Chrome-Editor-Search
 							Align: Right
 							Font: TinyBold
 						TextField@SEARCH_TEXTFIELD:
@@ -382,7 +382,7 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 25
 							Width: 55
 							Height: 25
-							Text: label-bg-filter
+							Text: Chrome-Editor-Filter
 							Align: Right
 							Font: TinyBold
 						DropDownButton@CATEGORIES_DROPDOWN:
@@ -395,7 +395,7 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 49
 							Width: 55
 							Height: 25
-							Text: label-actor-bg-owner
+							Text: Chrome-Editor-Owner
 							Align: Right
 							Font: TinyBold
 						DropDownButton@OWNERS_DROPDOWN:
@@ -439,7 +439,7 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 1
 							Width: 55
 							Height: 25
-							Text: label-tool-bg-category
+							Text: Chrome-Editor-ToolCategory
 							Align: Right
 							Font: TinyBold
 						DropDownButton@TOOLS_DROPDOWN:
@@ -509,7 +509,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 265
 							Height: 25
 							Align: Left
-							Text: label-marker-alpha
+							Text: Chrome-Editor-MarkerTileAlpha
 						Slider@ALPHA_SLIDER:
 							X: 130
 							Y: 72
@@ -527,7 +527,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 260
 							Height: 25
 							Align: Left
-							Text: label-marker-mirror-mode
+							Text: Chrome-Editor-MarkerMirrorMode
 						DropDownButton@MODE_DROPDOWN:
 							X: 129
 							Y: 102
@@ -539,7 +539,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 256
 							Height: 25
 							Align: Left
-							Text: label-marker-layer-num-sides
+							Text: Chrome-Editor-MarkerNumSides
 						Slider@ROTATE_NUM_SIDES_SLIDER:
 							X: 130
 							Y: 132
@@ -564,7 +564,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 256
 							Height: 25
 							Align: Left
-							Text: label-marker-axis-angle
+							Text: Chrome-Editor-MarkerAxisAngle
 							Visible: false
 						Slider@AXIS_ANGLE_SLIDER:
 							X: 130
@@ -626,7 +626,7 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 24
 							Align: Center
 							Font: Bold
-							Text: label-area-selection
+							Text: Game-MapEditorSelectionLogic-AreaSelection
 						Label@AREA_FILTERS_LABEL:
 							X: 7
 							Y: 45
@@ -634,32 +634,32 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 25
 							Font: Bold
 							Align: Left
-							Text: label-selection-filters
+							Text: Chrome-Editor-SelectionFilters
 						Checkbox@COPY_FILTER_TERRAIN_CHECKBOX:
 							X: 7
 							Y: 70
 							Width: PARENT_WIDTH - 29
 							Height: 20
-							Text: label-filter-terrain
+							Text: Chrome-Editor-FilterTerrain
 						Checkbox@COPY_FILTER_RESOURCES_CHECKBOX:
 							X: 7
 							Y: 95
 							Width: PARENT_WIDTH - 29
 							Height: 20
-							Text: label-filter-resources
+							Text: Chrome-Editor-FilterResources
 						Checkbox@COPY_FILTER_ACTORS_CHECKBOX:
 							X: 7
 							Y: 120
 							Width: PARENT_WIDTH - 29
 							Height: 20
-							Text: label-filter-actors
+							Text: Chrome-Editor-ActorsTab
 						Label@AREA_INFO_TITLE:
 							Y: 139
 							Width: PARENT_WIDTH
 							Height: 24
 							Align: Center
 							Font: Bold
-							Text: label-area-info
+							Text: Chrome-Editor-AreaInfo
 						Label@DIAGONAL_LABEL:
 							X: 7
 							Y: 171
@@ -667,7 +667,7 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 20
 							Font: Bold
 							Align: Left
-							Text: label-selected-area-diagonal
+							Text: Chrome-Editor-SelectedAreaDiagonal
 						Label@RESOURCE_LABEL:
 							X: 7
 							Y: 193
@@ -675,7 +675,7 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 25
 							Font: Bold
 							Align: Left
-							Text: label-selected-area-resources
+							Text: Chrome-Editor-SelectedAreaResources
 						Label@DIAGONAL_COUNTER_LABEL:
 							X: 140
 							Y: 170
@@ -721,7 +721,7 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 35
 							Width: 55
 							Height: 25
-							Text: label-actor-edit-panel-id
+							Text: Chrome-Editor-ActorId
 							Align: Right
 						TextField@ACTOR_ID:
 							X: 69

@@ -20,23 +20,20 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class MapPreviewLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string Connecting = "label-connecting";
+		
+		const string Connecting = "Game-MapPreviewLogic-Connecting";
 
-		[FluentReference("size")]
-		const string Downloading = "label-downloading-map";
+		const string Downloading = "Game-MapPreviewLogic-Downloading";
 
-		[FluentReference("size", "progress")]
-		const string DownloadingPercentage = "label-downloading-map-progress";
+		const string DownloadingPercentage = "Game-MapPreviewLogic-Downloading2";
 
-		[FluentReference]
-		const string RetryInstall = "button-retry-install";
+		
+		const string RetryInstall = "Game-MapPreviewLogic-RetryInstall";
 
-		[FluentReference]
-		const string RetrySearch = "button-retry-search";
+		
+		const string RetrySearch = "Game-MapPreviewLogic-RetrySearch";
 
-		[FluentReference("author")]
-		const string CreatedBy = "label-created-by";
+		const string CreatedBy = "Game-MapChooserLogic-AuthorInfo";
 
 		readonly int blinkTickLength = 10;
 		readonly Dictionary<PreviewStatus, Widget[]> previewWidgets = new();
@@ -88,38 +85,30 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var titleLabel = parent.Get<LabelWithTooltipWidget>("MAP_TITLE");
 				titleLabel.IsVisible = () => getMap().Map != MapCache.UnknownMap;
 				var font = Game.Renderer.Fonts[titleLabel.Font];
-				var titleCache = new CachedTransform<string, string>(str =>
-				{
-					var truncatedText = WidgetUtils.TruncateText(str, titleLabel.Bounds.Width, font);
-
-					if (str != truncatedText)
-						titleLabel.GetTooltipText = () => str;
-					else
-						titleLabel.GetTooltipText = null;
-
-					return truncatedText;
-				});
-
-				titleLabel.GetText = () => titleCache.Update(getMap().Map.Title);
+				var titleTransform = new CachedTransform<MapPreview, string>(m =>
+					WidgetUtils.TruncateText(m.Translate(m.Title), titleLabel.Bounds.Width, font));
+				var titleFull = new CachedTransform<MapPreview, string>(m => m.Translate(m.Title));
+				titleLabel.GetText = () => titleTransform.Update(getMap().Map);
+				titleLabel.GetTooltipText = () => titleFull.Update(getMap().Map);
 
 				return parent;
 			}
 
 			var authorCache = new CachedTransform<string, string>(
-				text => FluentProvider.GetMessage(CreatedBy, "author", text));
+				text => Game.Translate(CreatedBy, "0", text));
 
 			Widget SetupAuthorAndMapType(Widget parent)
 			{
 				var typeLabel = parent.Get<LabelWidget>("MAP_TYPE");
 				var typeCache = new CachedTransform<MapPreview, string>(
-					m => m.Categories.FirstOrDefault() ?? "");
+					m => m.Translate(m.Categories.FirstOrDefault() ?? ""));
 
 				typeLabel.GetText = () => typeCache.Update(getMap().Map);
 
 				var authorLabel = parent.Get<LabelWidget>("MAP_AUTHOR");
 				var font = Game.Renderer.Fonts[authorLabel.Font];
 				var truncateCache = new CachedTransform<MapPreview, string>(
-					m => WidgetUtils.TruncateText(authorCache.Update(m.Author), authorLabel.Bounds.Width, font));
+					m => WidgetUtils.TruncateText(authorCache.Update(m.Translate(m.Author)), authorLabel.Bounds.Width, font));
 
 				authorLabel.GetText = () => truncateCache.Update(getMap().Map);
 
@@ -165,13 +154,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				{
 					var (map, _) = getMap();
 					if (map.DownloadBytes == 0)
-						return FluentProvider.GetMessage(Connecting);
+						return Game.Translate(Connecting);
 
 					// Server does not provide the total file length.
 					if (map.DownloadPercentage == 0)
-						return FluentProvider.GetMessage(Downloading, "size", map.DownloadBytes / 1024);
+						return Game.Translate(Downloading, "0", map.DownloadBytes / 1024);
 
-					return FluentProvider.GetMessage(DownloadingPercentage, "size", map.DownloadBytes / 1024, "progress", map.DownloadPercentage);
+					return Game.Translate(DownloadingPercentage, "0", map.DownloadBytes / 1024, "1", map.DownloadPercentage);
 				};
 
 				return parent;
@@ -198,8 +187,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					modData.MapCache.QueryRemoteMapDetails(mapRepository, new[] { map.Uid });
 			};
 
-			var retryInstall = FluentProvider.GetMessage(RetryInstall);
-			var retrySearch = FluentProvider.GetMessage(RetrySearch);
+			var retryInstall = Game.Translate(RetryInstall);
+			var retrySearch = Game.Translate(RetrySearch);
 			retryButton.GetText = () => getMap().Map.Status == MapStatus.DownloadError ? retryInstall : retrySearch;
 
 			var previewLarge = SetupMapPreview(widget.Get("MAP_LARGE"));

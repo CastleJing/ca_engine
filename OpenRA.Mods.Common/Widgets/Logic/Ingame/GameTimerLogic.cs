@@ -19,17 +19,15 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class GameTimerLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string Paused = "label-paused";
+		
+		const string Paused = "Game-GameTimerLogic-Pause";
 
-		[FluentReference]
-		const string MaxSpeed = "label-max-speed";
+		
+		const string MaxSpeed = "Game-GameTimerLogic-MaxSpeed";
 
-		[FluentReference("percentage")]
-		const string Speed = "label-replay-speed";
+		const string Speed = "Game-GameTimerLogic-Speed";
 
-		[FluentReference("percentage")]
-		const string Complete = "label-replay-complete";
+		const string Complete = "Game-GameTimerLogic-Progress";
 
 		[ObjectCreator.UseCtor]
 		public GameTimerLogic(Widget widget, ModData modData, OrderManager orderManager, World world)
@@ -44,10 +42,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			bool Paused() => world.Paused || world.ReplayTimestep == 0;
 
-			var pausedText = FluentProvider.GetMessage(GameTimerLogic.Paused);
-			var maxSpeedText = FluentProvider.GetMessage(MaxSpeed);
+			var pausedText = Game.Translate(GameTimerLogic.Paused);
+			var maxSpeedText = Game.Translate(MaxSpeed);
 			var speedText = new CachedTransform<int, string>(p =>
-					FluentProvider.GetMessage(Speed, "percentage", p));
+					Game.Translate(Speed, "percentage", p));
 
 			if (timer != null)
 			{
@@ -79,7 +77,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 
 			var timerText = new CachedTransform<int, string>(p =>
-				FluentProvider.GetMessage(Complete, "percentage", p));
+				Game.Translate(Complete, "percentage", p));
 			if (timer is LabelWithTooltipWidget timerTooltip)
 			{
 				var connection = orderManager.Connection as ReplayConnection;

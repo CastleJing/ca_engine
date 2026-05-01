@@ -10,7 +10,7 @@ Background@DIRECTCONNECT_PANEL:
 			Y: 21
 			Width: 450
 			Height: 25
-			Text: label-directconnect-panel-title
+			Text: Chrome-MPDriectConnect-Title
 			Align: Center
 			Font: Bold
 		Label@ADDRESS_LABEL:
@@ -19,7 +19,7 @@ Background@DIRECTCONNECT_PANEL:
 			Width: 125
 			Height: 25
 			Align: Right
-			Text: label-directconnect-panel-address
+			Text: Chrome-MPDriectConnect-Address
 		TextField@IP:
 			X: 150
 			Y: 60
@@ -32,7 +32,7 @@ Background@DIRECTCONNECT_PANEL:
 			Width: 10
 			Height: 25
 			Align: Center
-			Text: label-directconnect-panel-port
+			Text: Chrome-MPDriectConnect-Port
 		TextField@PORT:
 			X: 370
 			Y: 60
@@ -45,7 +45,7 @@ Background@DIRECTCONNECT_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-directconnect-panel-join
+			Text: Chrome-MPDriectConnect-OkButton
 			Font: Bold
 			Key: return
 		Button@BACK_BUTTON:
@@ -53,6 +53,6 @@ Background@DIRECTCONNECT_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-MPDriectConnect-BackButton
 			Font: Bold
 			Key: escape

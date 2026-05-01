@@ -9,7 +9,7 @@ Background@MULTIPLAYER_PANEL:
 			Y: 16
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-multiplayer-title
+			Text: Chrome-MPBrowser-Title
 			Align: Center
 			Font: Bold
 		Container@LABEL_CONTAINER:
@@ -22,26 +22,26 @@ Background@MULTIPLAYER_PANEL:
 					X: 5
 					Width: 347
 					Height: 25
-					Text: label-container-server
+					Text: Chrome-MPBrowser-Server
 					Align: Center
 					Font: Bold
 				Label@PLAYERS:
 					X: 382
 					Width: 85
 					Height: 25
-					Text: label-container-players
+					Text: Chrome-MPBrowser-Players
 					Font: Bold
 				Label@LOCATION:
 					X: 472
 					Width: 110
 					Height: 25
-					Text: label-container-location
+					Text: Chrome-MPBrowser-Location
 					Font: Bold
 				Label@STATUS:
 					X: 587
 					Width: 50
 					Height: 25
-					Text: label-container-status
+					Text: Chrome-MPBrowser-Status
 					Font: Bold
 		LogicTicker@NOTICE_WATCHER:
 		Background@NOTICE_CONTAINER:
@@ -56,21 +56,21 @@ Background@MULTIPLAYER_PANEL:
 					Width: PARENT_WIDTH - 10
 					Height: 20
 					Align: Center
-					Text: label-notice-container-outdated-version
+					Text: Chrome-MPBrowser-Outdate
 					Font: TinyBold
 				Label@UNKNOWN_VERSION_LABEL:
 					X: 5
 					Width: PARENT_WIDTH - 10
 					Height: 20
 					Align: Center
-					Text: label-notice-container-unknown-version
+					Text: Chrome-MPBrowser-Unknown
 					Font: TinyBold
 				Label@PLAYTEST_AVAILABLE_LABEL:
 					X: 5
 					Width: PARENT_WIDTH - 10
 					Height: 20
 					Align: Center
-					Text: label-notice-container-playtest-available
+					Text: Chrome-MPBrowser-NewVersion
 					Font: TinyBold
 		ScrollPanel@SERVER_LIST:
 			X: 20
@@ -201,14 +201,14 @@ Background@MULTIPLAYER_PANEL:
 					Y: 255
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: button-selected-server-join
+					Text: Chrome-MPBrowser-JoinButton
 					Font: Bold
 		DropDownButton@FILTERS_DROPDOWNBUTTON:
 			X: 20
 			Y: PARENT_HEIGHT - HEIGHT - 20
 			Width: 158
 			Height: 25
-			Text: dropdownbutton-multiplayer-panel-filters
+			Text: Chrome-MPBrowser-Filter
 			Font: Bold
 		Button@RELOAD_BUTTON:
 			X: 182
@@ -238,14 +238,14 @@ Background@MULTIPLAYER_PANEL:
 			Y: PARENT_HEIGHT - HEIGHT - 20
 			Width: 100
 			Height: 25
-			Text: button-multiplayer-panel-directconnect
+			Text: Chrome-MPBrowser-DirectIP
 			Font: Bold
 		Button@CREATE_BUTTON:
 			X: 595
 			Y: PARENT_HEIGHT - HEIGHT - 20
 			Width: 100
 			Height: 25
-			Text: button-multiplayer-panel-create
+			Text: Chrome-MPBrowser-CreateHost
 			Font: Bold
 		Button@BACK_BUTTON:
 			Key: escape
@@ -253,6 +253,6 @@ Background@MULTIPLAYER_PANEL:
 			Y: PARENT_HEIGHT - HEIGHT - 20
 			Width: 174
 			Height: 25
-			Text: button-back
+			Text: Chrome-MPBrowser-BackButton
 			Font: Bold
 		TooltipContainer@TOOLTIP_CONTAINER:

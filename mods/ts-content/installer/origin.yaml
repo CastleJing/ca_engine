@@ -1,4 +1,4 @@
-origin: C&C The Ultimate Collection (Origin version, English)
+origin: Sys-ModContent-Source-origin
 	Type: RegistryDirectory
 	RegistryPrefixes: HKEY_LOCAL_MACHINE\Software\, HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\
 	RegistryKey: EA Games\Command and Conquer Tiberian Sun

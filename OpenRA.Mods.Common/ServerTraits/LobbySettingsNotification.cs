@@ -18,8 +18,7 @@ namespace OpenRA.Mods.Common.Server
 {
 	public class LobbySettingsNotification : ServerTrait, IClientJoined
 	{
-		[FluentReference("name", "value")]
-		const string NotificationLobbyOption = "notification-lobby-option";
+		const string NotificationLobbyOption = "Game-Common-Server-LobbySettingNotification";
 
 		public void ClientJoined(OpenRA.Server.Server server, Connection conn)
 		{

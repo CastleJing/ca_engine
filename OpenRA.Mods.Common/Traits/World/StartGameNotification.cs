@@ -20,19 +20,16 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string Notification = "StartGame";
 
-		[FluentReference(optional: true)]
 		public readonly string TextNotification = null;
 
 		[NotificationReference("Speech")]
 		public readonly string LoadedNotification = "GameLoaded";
 
-		[FluentReference(optional: true)]
 		public readonly string LoadedTextNotification = null;
 
 		[NotificationReference("Speech")]
 		public readonly string SavedNotification = "GameSaved";
 
-		[FluentReference(optional: true)]
 		public readonly string SavedTextNotification = null;
 
 		public override object Create(ActorInitializer init) { return new StartGameNotification(this); }

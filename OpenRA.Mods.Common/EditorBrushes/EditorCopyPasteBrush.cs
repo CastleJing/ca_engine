@@ -107,8 +107,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class CopyPasteEditorAction : IEditorAction
 	{
-		[FluentReference("amount")]
-		const string CopiedTiles = "notification-copied-tiles";
+		const string CopiedTiles = "Game-EditorCopyPasteBrush-CopiedTiles";
 
 		public string Text { get; }
 
@@ -118,7 +117,7 @@ namespace OpenRA.Mods.Common.Widgets
 		{
 			this.editorBlit = editorBlit;
 
-			Text = FluentProvider.GetMessage(CopiedTiles, "amount", editorBlit.TileCount());
+			Text = Game.Translate(CopiedTiles, "amount", editorBlit.TileCount());
 		}
 
 		public void Execute()

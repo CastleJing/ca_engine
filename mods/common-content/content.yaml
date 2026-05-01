@@ -105,7 +105,7 @@ Background@CONTENT_PANEL:
 			Background: button-highlighted
 			Width: 110
 			Height: 32
-			Text: button-back
+			Text: Chrome-MainMenu-Back
 			Font: Bold
 			Key: escape
 		TooltipContainer@TOOLTIP_CONTAINER:

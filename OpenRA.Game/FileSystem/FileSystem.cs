@@ -114,6 +114,43 @@ namespace OpenRA.FileSystem
 			}
 		}
 
+		/// <summary>
+		/// Mounts a package that may later be unmounted when switching UI language (see localization mounts).
+		/// Returns <c>false</c> when the mount is delegated to <see cref="Mount(string, string)"/> without a distinct
+		/// opened package (e.g. <c>$modId</c> references), or when an optional (<c>~</c>) mount fails.
+		/// </summary>
+		public bool TryMountLocalizationPackage(string name, string explicitName, out IReadOnlyPackage package)
+		{
+			package = null;
+			var optional = name.StartsWith('~');
+			var path = optional ? name[1..] : name;
+
+			try
+			{
+				if (path.StartsWith('$'))
+				{
+					Mount(name, explicitName);
+					return false;
+				}
+
+				var pkg = OpenPackage(path);
+				if (pkg == null)
+				{
+					if (optional)
+						return false;
+					throw new InvalidOperationException($"Could not open package '{path}', file not found or its format is not supported.");
+				}
+
+				Mount(pkg, explicitName);
+				package = pkg;
+				return true;
+			}
+			catch when (optional)
+			{
+				return false;
+			}
+		}
+
 		public void Mount(IReadOnlyPackage package, string explicitName = null)
 		{
 			if (mountedPackages.TryGetValue(package, out var mountCount))

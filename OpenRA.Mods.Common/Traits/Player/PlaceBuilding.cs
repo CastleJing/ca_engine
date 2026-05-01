@@ -29,7 +29,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification to play after building placement if new construction options are available.")]
 		public readonly string NewOptionsNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display after building placement if new construction options are available.")]
 		public readonly string NewOptionsTextNotification = null;
 
@@ -37,7 +36,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification to play if building placement is not possible.")]
 		public readonly string CannotPlaceNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display if building placement is not possible.")]
 		public readonly string CannotPlaceTextNotification = null;
 

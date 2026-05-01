@@ -406,7 +406,7 @@ Background@LATENCY_TOOLTIP:
 			Width: 200
 			Height: 23
 			Font: Bold
-			Text: label-latency-tooltip-prefix
+			Text: Chrome-Tooltip-Latency
 		Label@LATENCY:
 			Y: 1
 			Height: 23
@@ -421,7 +421,7 @@ Background@BOT_TOOLTIP:
 		Label@NAME:
 			X: 5
 			Y: 2
-			Text: label-bot-player-tooltip-name
+			Text: Game-ServerListLogic-BotPlayerDisplayName-tooltip-name
 			Width: 290
 			Height: 24
 			Font: Bold
@@ -435,7 +435,7 @@ Background@ANONYMOUS_PLAYER_TOOLTIP:
 		Label@NAME:
 			X: 5
 			Y: 2
-			Text: label-anonymous-player-tooltip-name
+			Text: Chrome-Tooltip-AnonymousPlayer
 			Width: 290
 			Height: 23
 			Font: MediumBold
@@ -468,7 +468,7 @@ Background@ANONYMOUS_PLAYER_TOOLTIP:
 					X: 10
 					Width: 200
 					Height: 12
-					Text: label-game-admin
+					Text: Chrome-Tooltip-GameAdmin
 					Font: TinyBold
 
 Container@REGISTERED_PLAYER_TOOLTIP:
@@ -515,7 +515,7 @@ Container@REGISTERED_PLAYER_TOOLTIP:
 									Y: 1
 									Width: 200
 									Height: 12
-									Text: label-game-admin
+									Text: Chrome-Tooltip-GameAdmin
 									Font: TinyBold
 				Container@MESSAGE_HEADER:
 					Height: 26

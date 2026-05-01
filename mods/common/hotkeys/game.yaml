@@ -1,134 +1,134 @@
 CycleBase: H
-	Description: hotkey-description-cyclebase
+	Description: Hotkey-CycleBase
 	Types: World
 	Contexts: player, spectator
 
 ToLastEvent: SPACE
-	Description: hotkey-description-tolastevent
+	Description: Hotkey-ToLastEvent
 	Types: World
 	Contexts: player, spectator
 
 ToSelection: HOME
-	Description: hotkey-description-toselection
+	Description: Hotkey-ToSelection
 	Types: World
 	Contexts: player, spectator
 
 SelectAllUnits: Q
-	Description: hotkey-description-selectallunits
+	Description: Hotkey-SelectAllUnits
 	Types: World
 	Contexts: player, spectator
 
 SelectUnitsByType: W
-	Description: hotkey-description-selectunitsbytype
+	Description: Hotkey-SelectUnitsByType
 	Types: World
 	Contexts: player, spectator
 
 CycleHarvesters: N
-	Description: hotkey-description-cycleharvesters
+	Description: Hotkey-CycleHarvesters
 	Types: World
 	Contexts: player, spectator
 
 Pause: PAUSE
-	Description: hotkey-description-pause
+	Description: Hotkey-Pause
 	Types: World
 	Contexts: player, spectator
 
 Sell: Z
-	Description: hotkey-description-sell
+	Description: Hotkey-Sell
 	Types: OrderGenerator
 	Contexts: player
 
 Repair: C
-	Description: hotkey-description-repair
+	Description: Hotkey-Repair
 	Types: OrderGenerator
 	Contexts: player
 
 PlaceBeacon: B
-	Description: hotkey-description-placebeacon
+	Description: Hotkey-PlaceBeacon
 	Types: OrderGenerator
 	Contexts: player
 
 CycleStatusBars: COMMA
-	Description: hotkey-description-cyclestatusbars
+	Description: Hotkey-CycleStatusBars
 	Types: World
 	Contexts: player, spectator
 
 ToggleMute: M
-	Description: hotkey-description-togglemute
+	Description: Hotkey-ToggleMute
 	Types: World
 	Contexts: menu, player, spectator
 
 TogglePlayerStanceColor: COMMA Ctrl
-	Description: hotkey-description-toggleplayerstancecolor
+	Description: Hotkey-TogglePlayerStanceColor
 	Types: World
 	Contexts: player, spectator
 
 TakeScreenshot: P Ctrl
-	Description: hotkey-description-takescreenshot
+	Description: Hotkey-TakeScreenshot
 	Types: World
 	Contexts: menu, player, spectator
 
 AttackMove: A
-	Description: hotkey-description-attackmove
+	Description: Hotkey-AttackMove
 	Types: Unit
 	Contexts: player
 
 Stop: S
-	Description: hotkey-description-stop
+	Description: Hotkey-Stop
 	Types: Unit
 	Contexts: player
 
 Scatter: X Ctrl
-	Description: hotkey-description-scatter
+	Description: Hotkey-Scatter
 	Types: Unit
 	Contexts: player
 
 Deploy: F
-	Description: hotkey-description-deploy
+	Description: Hotkey-Deploy
 	Types: Unit
 	Contexts: player
 
 Guard: D
-	Description: hotkey-description-guard
+	Description: Hotkey-Guard
 	Types: Unit
 	Contexts: player
 
 StanceAttackAnything: A Alt
-	Description: hotkey-description-stanceattackanything
+	Description: Hotkey-StanceAttackAnything
 	Types: Stance
 	Contexts: player
 
 StanceDefend: S Alt
-	Description: hotkey-description-stancedefend
+	Description: Hotkey-StanceDefend
 	Types: Stance
 	Contexts: player
 
 StanceReturnFire: D Alt
-	Description: hotkey-description-stancereturnfire
+	Description: Hotkey-StanceReturnFire
 	Types: Stance
 	Contexts: player
 
 StanceHoldFire: F Alt
-	Description: hotkey-description-stanceholdfire
+	Description: Hotkey-StanceHoldFire
 	Types: Stance
 	Contexts: player
 
 StopMusic: AUDIOSTOP
-	Description: hotkey-description-stopmusic
+	Description: Hotkey-StopMusic
 	Types: Music
 	Contexts: menu, player, spectator
 
 PauseMusic: AUDIOPLAY
-	Description: hotkey-description-pausemusic
+	Description: Hotkey-PauseMusic
 	Types: Music
 	Contexts: menu, player, spectator
 
 PrevMusic: AUDIOPREV
-	Description: hotkey-description-prevmusic
+	Description: Hotkey-PrevMusic
 	Types: Music
 	Contexts: menu, player, spectator
 
 NextMusic: AUDIONEXT
-	Description: hotkey-description-nextmusic
+	Description: Hotkey-NextMusic
 	Types: Music
 	Contexts: menu, player, spectator

@@ -18,23 +18,25 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ModContentPromptLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string Continue = "button-continue";
+		
+		const string Continue = "Game-ModContentPrompt-ContinueButton";
 
-		[FluentReference]
-		const string Quit = "button-quit";
+		
+		const string Quit = "Chrome-MainMenu-Quit";
 
 		readonly ModContent content;
+		readonly Func<string, string> translation;
 		bool requiredContentInstalled;
 
 		[ObjectCreator.UseCtor]
-		public ModContentPromptLogic(ModData modData, Widget widget, ModContent content, Action continueLoading)
+		public ModContentPromptLogic(ModData modData, Widget widget, ModContent content, Action continueLoading, Func<string, string> translation = null)
 		{
 			this.content = content;
+			this.translation = translation;
 			CheckRequiredContentInstalled();
 
-			var continueMessage = FluentProvider.GetMessage(Continue);
-			var quitMessage = FluentProvider.GetMessage(Quit);
+			var continueMessage = Game.Translate(Continue);
+			var quitMessage = Game.Translate(Quit);
 
 			var panel = widget.Get("CONTENT_PROMPT_PANEL");
 			var headerLabel = panel.Get<LabelWidget>("HEADER_LABEL");
@@ -48,11 +50,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			advancedButton.Bounds.Y += headerHeight;
 			advancedButton.OnClick = () =>
 			{
-				Ui.OpenWindow("CONTENT_PANEL", new WidgetArgs
+				var panelArgs = new WidgetArgs
 				{
 					{ "onCancel", CheckRequiredContentInstalled },
 					{ "content", content },
-				});
+				};
+
+				if (translation != null)
+					panelArgs.Add("translation", translation);
+
+				Ui.OpenWindow("CONTENT_PANEL", panelArgs);
 			};
 
 			var quickButton = panel.Get<ButtonWidget>("QUICK_BUTTON");
@@ -65,11 +72,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				if (download == null)
 					throw new InvalidOperationException($"Mod QuickDownload `{content.QuickDownload}` definition not found.");
 
-				Ui.OpenWindow("PACKAGE_DOWNLOAD_PANEL", new WidgetArgs
+				var dlArgs = new WidgetArgs
 				{
 					{ "download", new ModContent.ModDownload(download.Value) },
 					{ "onSuccess", continueLoading }
-				});
+				};
+
+				if (translation != null)
+					dlArgs.Add("translation", translation);
+
+				Ui.OpenWindow("PACKAGE_DOWNLOAD_PANEL", dlArgs);
 			};
 
 			var quitButton = panel.Get<ButtonWidget>("QUIT_BUTTON");

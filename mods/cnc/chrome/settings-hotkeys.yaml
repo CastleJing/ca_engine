@@ -1,27 +1,27 @@
 Container@HOTKEYS_PANEL:
 	Logic: HotkeysSettingsLogic
 		HotkeyGroups:
-			hotkey-group-game-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-GameCommands:
 				Types: OrderGenerator, World, Menu
-			hotkey-group-viewport-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-ViewportCommands:
 				Types: Viewport
-			hotkey-group-observer-replay-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-ObserverReplayCommands:
 				Types: Observer, Replay
-			hotkey-group-unit-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-UnitCommands:
 				Types: Unit
-			hotkey-group-unit-stance-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-UnitStanceCommands:
 				Types: Stance
-			hotkey-group-production-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-ProductionCommands:
 				Types: Production, ProductionSlot
-			hotkey-group-support-power-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-SupportPowerCommands:
 				Types: SupportPower
-			hotkey-group-music-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-MusicCommands:
 				Types: Music
-			hotkey-group-chat-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-ChatCommands:
 				Types: Chat
-			hotkey-group-control-groups:
+			Chrome-Setting-Hotkey-HotkeyGroups-ControlGroups:
 				Types: ControlGroups
-			hotkey-group-editor-commands:
+			Chrome-Setting-Hotkey-HotkeyGroups-EditorCommands:
 				Types: Editor
 	Width: PARENT_WIDTH
 	Height: PARENT_HEIGHT
@@ -30,7 +30,7 @@ Container@HOTKEYS_PANEL:
 			Width: 103
 			Height: 25
 			Font: Bold
-			Text: label-hotkeys-panel-filter-input
+			Text: Chrome-Setting-Hotkey-FilterPlaceholder
 		TextField@FILTER_INPUT:
 			X: 108
 			Width: 180
@@ -40,7 +40,7 @@ Container@HOTKEYS_PANEL:
 			Width: 100
 			Height: 25
 			Font: Bold
-			Text: label-hotkeys-panel-context-dropdown
+			Text: Chrome-Setting-Hotkey-ContextLabel
 			Align: Right
 		DropDownButton@CONTEXT_DROPDOWN:
 			X: PARENT_WIDTH - WIDTH
@@ -92,7 +92,7 @@ Container@HOTKEYS_PANEL:
 					Width: PARENT_WIDTH
 					Height: PARENT_HEIGHT
 					Align: Center
-					Text: label-hotkey-empty-list-message
+					Text: Chrome-Setting-Hotkey-EmptyList
 		Background@HOTKEY_REMAP_BGND:
 			Y: PARENT_HEIGHT - HEIGHT - 1
 			Width: PARENT_WIDTH
@@ -133,20 +133,20 @@ Container@HOTKEYS_PANEL:
 									Width: PARENT_WIDTH
 									Height: PARENT_HEIGHT
 									Font: Tiny
-									Text: label-notices-readonly-notice
+									Text: Chrome-Setting-Hotkey-ReadOnlyNotice
 						Button@OVERRIDE_HOTKEY_BUTTON:
 							X: PARENT_WIDTH - 3 * WIDTH - 30
 							Y: 20
 							Width: 70
 							Height: 25
-							Text: button-hotkey-remap-dialog-override
+							Text: Chrome-Setting-Hotkey-OverrideButton
 							Font: Bold
 						Button@CLEAR_HOTKEY_BUTTON:
 							X: PARENT_WIDTH - 2 * WIDTH - 30
 							Y: 20
 							Width: 65
 							Height: 25
-							Text: button-hotkey-remap-dialog-clear.label
+							Text: Chrome-Setting-Hotkey-Clear
 							Font: Bold
 							TooltipText: button-hotkey-remap-dialog-clear.tooltip
 							TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
@@ -156,7 +156,7 @@ Container@HOTKEYS_PANEL:
 							Y: 20
 							Width: 65
 							Height: 25
-							Text: button-hotkey-remap-dialog-reset.label
+							Text: Chrome-Setting-Hotkey-Reset
 							Font: Bold
 							TooltipText: button-hotkey-remap-dialog-reset.tooltip
 							TooltipContainer: SETTINGS_TOOLTIP_CONTAINER

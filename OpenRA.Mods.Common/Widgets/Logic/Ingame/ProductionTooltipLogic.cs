@@ -20,8 +20,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ProductionTooltipLogic : ChromeLogic
 	{
-		[FluentReference("prerequisites")]
-		const string Requires = "label-requires";
+		const string Requires = "Game-ProductionTooltipLogic-Requires";
 
 		[ObjectCreator.UseCtor]
 		public ProductionTooltipLogic(Widget widget, TooltipContainerWidget tooltipContainer, Player player, Func<ProductionIcon> getTooltipIcon)
@@ -69,7 +68,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					return;
 
 				var tooltip = actor.TraitInfos<TooltipInfo>().FirstOrDefault(info => info.EnabledByDefault);
-				var name = tooltip != null ? FluentProvider.GetMessage(tooltip.Name) : actor.Name;
+				var name = tooltip != null ? Game.Translate(tooltip.Name) : actor.Name;
 				var buildable = actor.TraitInfo<BuildableInfo>();
 
 				var cost = 0;
@@ -105,7 +104,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var requiresSize = int2.Zero;
 				if (prereqs.Count > 0)
 				{
-					var requiresText = FluentProvider.GetMessage(Requires, "prerequisites", prereqs.JoinWith(", "));
+					var requiresText = Game.Translate(Requires, "prerequisites", prereqs.JoinWith(", "));
 					requiresLabel.GetText = () => requiresText;
 					requiresSize = requiresFont.Measure(requiresText);
 					requiresLabel.Visible = true;
@@ -146,7 +145,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				costLabel.GetColor = () => pr.GetCashAndResources() >= cost ? Color.White : Color.Red;
 				var costSize = font.Measure(costText);
 
-				var desc = string.IsNullOrEmpty(buildable.Description) ? "" : FluentProvider.GetMessage(buildable.Description);
+				var desc = string.IsNullOrEmpty(buildable.Description) ? "" : Game.Translate(buildable.Description);
 				descLabel.GetText = () => desc;
 				var descSize = descFont.Measure(desc);
 				descLabel.Bounds.Width = descSize.X;
@@ -180,7 +179,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				var actorTooltip = ai.TraitInfos<TooltipInfo>().FirstOrDefault(info => info.EnabledByDefault);
 				if (actorTooltip != null)
-					return FluentProvider.GetMessage(actorTooltip.Name);
+					return Game.Translate(actorTooltip.Name);
 			}
 
 			return a;

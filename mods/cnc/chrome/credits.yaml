@@ -12,7 +12,7 @@ Container@CREDITS_PANEL:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-credits-title
+			Text: Chrome-MainMenu-Back
 		Background@bg:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -32,7 +32,7 @@ Container@CREDITS_PANEL:
 							X: 150
 							Width: 140
 							Height: 35
-							Text: label-openra
+							Text: Chrome-MainMenu-Title
 				ScrollPanel@CREDITS_DISPLAY:
 					X: 15
 					Y: 15
@@ -50,5 +50,5 @@ Container@CREDITS_PANEL:
 			Y: PARENT_HEIGHT - 1
 			Width: 140
 			Height: 35
-			Text: button-back
+			Text: Chrome-Credits-BackButton
 			Key: escape

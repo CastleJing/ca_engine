@@ -11,7 +11,7 @@ Background@CREDITS_PANEL:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-credits-title
+			Text: Chrome-Credits-Title
 		Container@TAB_CONTAINER:
 			Visible: False
 			X: 20
@@ -27,7 +27,7 @@ Background@CREDITS_PANEL:
 					X: 140
 					Width: 140
 					Height: 31
-					Text: label-openra
+					Text: Chrome-Credits-EngineTab
 					Font: Bold
 		ScrollPanel@CREDITS_DISPLAY:
 			X: 20
@@ -47,6 +47,6 @@ Background@CREDITS_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-back
+			Text: Chrome-Credits-BackButton
 			Font: Bold
 			Key: escape

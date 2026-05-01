@@ -30,23 +30,23 @@ namespace OpenRA.Mods.Common.Server
 		// 1 second (in milliseconds) minimum delay between pings
 		const int RateLimitInterval = 1000;
 
-		[FluentReference]
-		const string NoPortForward = "notification-no-port-forward";
+		
+		const string NoPortForward = "Game-Common-Server-Warning-Port";
 
-		[FluentReference]
-		const string BlacklistedTitle = "notification-blacklisted-server-name";
+		
+		const string BlacklistedTitle = "Game-Common-Server-Warning-Name";
 
-		[FluentReference]
-		const string InvalidErrorCode = "notification-invalid-error-code";
+		
+		const string InvalidErrorCode = "Game-Common-Server-Warning-Error";
 
-		[FluentReference]
-		const string Connected = "notification-master-server-connected";
+		
+		const string Connected = "Game-Common-Server-MasterServerConnected";
 
-		[FluentReference]
-		const string Error = "notification-master-server-error";
+		
+		const string Error = "Game-Common-Server-MasterServerDisconnected";
 
-		[FluentReference]
-		const string GameOffline = "notification-game-offline";
+		
+		const string GameOffline = "Game-Common-Server-GameOffline";
 
 		static readonly Beacon LanGameBeacon;
 		static readonly Dictionary<int, string> MasterServerErrors = new()

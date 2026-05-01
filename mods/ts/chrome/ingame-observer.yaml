@@ -21,7 +21,7 @@ Container@OBSERVER_WIDGETS:
 					Width: PARENT_WIDTH - 30
 					Height: 25
 					Align: Right
-					Text: label-mute-indicator
+					Text: Game-MuteHotkeyLogic-Mute
 					Contrast: true
 		MenuButton@OPTIONS_BUTTON:
 			X: 5
@@ -235,7 +235,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 120
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-player-header
+									Text: Chrome-InGameObserver-Chart-Player
 									Align: Left
 									Shadow: True
 								Label@CASH_HEADER:
@@ -244,7 +244,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-cash-header
+									Text: Chrome-InGameObserver-Chart-Cash
 									Align: Right
 									Shadow: True
 								Label@POWER_HEADER:
@@ -253,7 +253,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-power-header
+									Text: Chrome-InGameObserver-Chart-Power
 									Align: Center
 									Shadow: True
 								Label@KILLS_HEADER:
@@ -262,7 +262,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 40
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-kills-header
+									Text: Chrome-InGameObserver-Chart-Kills
 									Align: Right
 									Shadow: True
 								Label@DEATHS_HEADER:
@@ -271,7 +271,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 60
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-deaths-header
+									Text: Chrome-InGameObserver-Chart-Deaths
 									Align: Right
 									Shadow: True
 								Label@ASSETS_DESTROYED_HEADER:
@@ -280,7 +280,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-assets-destroyed-header
+									Text: Chrome-InGameObserver-Chart-Destroyed
 									Align: Right
 									Shadow: True
 								Label@ASSETS_LOST_HEADER:
@@ -289,7 +289,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-assets-lost-header
+									Text: Chrome-InGameObserver-Chart-Lost
 									Align: Right
 									Shadow: True
 								Label@EXPERIENCE_HEADER:
@@ -298,7 +298,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 60
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-experience-header
+									Text: Chrome-InGameObserver-Chart-Score
 									Align: Right
 									Shadow: True
 								Label@ACTIONS_MIN_HEADER:
@@ -307,7 +307,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 60
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-basic-stats-actions-min-header
+									Text: Chrome-InGameObserver-Chart-APM
 									Align: Right
 									Shadow: True
 						Container@ECONOMY_STATS_HEADERS:
@@ -334,14 +334,14 @@ Container@OBSERVER_WIDGETS:
 									Width: 120
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-player-header
+									Text: Chrome-InGameObserver-Chart-Player
 									Shadow: True
 								Label@CASH_HEADER:
 									X: 160
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-cash-header
+									Text: Chrome-InGameObserver-Chart-Cash
 									Align: Right
 									Shadow: True
 								Label@INCOME_HEADER:
@@ -349,7 +349,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-income-header
+									Text: Chrome-InGameObserver-Chart-Income
 									Align: Right
 									Shadow: True
 								Label@ASSETS_HEADER:
@@ -357,7 +357,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-assets-header
+									Text: Chrome-InGameObserver-Chart-Assets
 									Align: Right
 									Shadow: True
 								Label@EARNED_HEADER:
@@ -365,7 +365,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-earned-header
+									Text: Chrome-InGameObserver-Chart-Earned
 									Align: Right
 									Shadow: True
 								Label@SPENT_HEADER:
@@ -373,7 +373,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-spent-header
+									Text: Chrome-InGameObserver-Chart-Spent
 									Align: Right
 									Shadow: True
 								Label@HARVESTERS_HEADER:
@@ -381,7 +381,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 80
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-economy-stats-harvesters-header
+									Text: Chrome-InGameObserver-Chart-Harvesters
 									Align: Right
 									Shadow: True
 						Container@PRODUCTION_STATS_HEADERS:
@@ -409,7 +409,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 120
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-production-stats-player-header
+									Text: Chrome-InGameObserver-Chart-Production
 									Align: Left
 									Shadow: True
 								Label@PRODUCTION_HEADER:
@@ -418,7 +418,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 100
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-production-stats-header
+									Text: Chrome-InGameObserver-Chart-Production
 									Shadow: True
 						Container@SUPPORT_POWERS_HEADERS:
 							X: 0
@@ -445,7 +445,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 120
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-support-powers-player-header
+									Text: Chrome-InGameObserver-Chart-SupportPowers
 									Align: Left
 									Shadow: True
 								Label@SUPPORT_POWERS_HEADER:
@@ -454,7 +454,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 200
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-support-powers-header
+									Text: Chrome-InGameObserver-Chart-SupportPowers
 									Shadow: True
 						Container@ARMY_HEADERS:
 							X: 0
@@ -481,7 +481,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 120
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-army-player-header
+									Text: Chrome-InGameObserver-Chart-Army
 									Align: Left
 									Shadow: True
 								Label@ARMY_HEADER:
@@ -490,7 +490,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 100
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-army-header
+									Text: Chrome-InGameObserver-Chart-Army
 									Shadow: True
 						Container@COMBAT_STATS_HEADERS:
 							X: 0
@@ -517,7 +517,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 120
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-player-header
+									Text: Chrome-InGameObserver-Chart-Destroyed
 									Align: Left
 									Shadow: True
 								Label@ASSETS_DESTROYED_HEADER:
@@ -526,7 +526,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 75
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-assets-destroyed-header
+									Text: Chrome-InGameObserver-Chart-Destroyed
 									Align: Right
 									Shadow: True
 								Label@ASSETS_LOST_HEADER:
@@ -535,7 +535,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 75
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-assets-lost-header
+									Text: Chrome-InGameObserver-Chart-UnitsKilled
 									Align: Right
 									Shadow: True
 								Label@UNITS_KILLED_HEADER:
@@ -544,7 +544,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 75
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-units-killed-header
+									Text: Chrome-InGameObserver-Chart-UnitsLost
 									Align: Right
 									Shadow: True
 								Label@UNITS_DEAD_HEADER:
@@ -553,7 +553,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 75
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-units-dead-header
+									Text: Chrome-InGameObserver-Chart-BldgKilled
 									Align: Right
 									Shadow: True
 								Label@BUILDINGS_KILLED_HEADER:
@@ -562,7 +562,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 75
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-buildings-killed-header
+									Text: Chrome-InGameObserver-Chart-BldgLost
 									Align: Right
 									Shadow: True
 								Label@BUILDINGS_DEAD_HEADER:
@@ -571,7 +571,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 75
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-buildings-dead-header
+									Text: Chrome-InGameObserver-Chart-ArmyValue
 									Align: Right
 									Shadow: True
 								Label@ARMY_VALUE_HEADER:
@@ -580,7 +580,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 90
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-army-value-header
+									Text: Chrome-InGameObserver-Chart-ArmyValue
 									Align: Right
 									Shadow: True
 								Label@VISION_HEADER:
@@ -589,7 +589,7 @@ Container@OBSERVER_WIDGETS:
 									Width: 60
 									Height: PARENT_HEIGHT
 									Font: Bold
-									Text: label-combat-stats-vision-header
+									Text: Chrome-InGameObserver-Chart-Vision
 									Align: Right
 									Shadow: True
 				ScrollPanel@PLAYER_STATS_PANEL:

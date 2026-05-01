@@ -1,294 +1,294 @@
 ControlGroupSelect01: NUMBER_1
-	Description: hotkey-description-controlgroupselect01
+	Description: Hotkey-ControlGroupSelect01
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect02: NUMBER_2
-	Description: hotkey-description-controlgroupselect02
+	Description: Hotkey-ControlGroupSelect02
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect03: NUMBER_3
-	Description: hotkey-description-controlgroupselect03
+	Description: Hotkey-ControlGroupSelect03
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect04: NUMBER_4
-	Description: hotkey-description-controlgroupselect04
+	Description: Hotkey-ControlGroupSelect04
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect05: NUMBER_5
-	Description: hotkey-description-controlgroupselect05
+	Description: Hotkey-ControlGroupSelect05
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect06: NUMBER_6
-	Description: hotkey-description-controlgroupselect06
+	Description: Hotkey-ControlGroupSelect06
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect07: NUMBER_7
-	Description: hotkey-description-controlgroupselect07
+	Description: Hotkey-ControlGroupSelect07
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect08: NUMBER_8
-	Description: hotkey-description-controlgroupselect08
+	Description: Hotkey-ControlGroupSelect08
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect09: NUMBER_9
-	Description: hotkey-description-controlgroupselect09
+	Description: Hotkey-ControlGroupSelect09
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupSelect10: NUMBER_0
-	Description: hotkey-description-controlgroupselect10
+	Description: Hotkey-ControlGroupSelect10
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCreate01: NUMBER_1 Ctrl
-	Description: hotkey-description-controlgroupcreate01
+	Description: Hotkey-ControlGroupCreate01
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_1 Meta
 
 ControlGroupCreate02: NUMBER_2 Ctrl
-	Description: hotkey-description-controlgroupcreate02
+	Description: Hotkey-ControlGroupCreate02
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_2 Meta
 
 ControlGroupCreate03: NUMBER_3 Ctrl
-	Description: hotkey-description-controlgroupcreate03
+	Description: Hotkey-ControlGroupCreate03
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_3 Meta
 
 ControlGroupCreate04: NUMBER_4 Ctrl
-	Description: hotkey-description-controlgroupcreate04
+	Description: Hotkey-ControlGroupCreate04
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_4 Meta
 
 ControlGroupCreate05: NUMBER_5 Ctrl
-	Description: hotkey-description-controlgroupcreate05
+	Description: Hotkey-ControlGroupCreate05
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_5 Meta
 
 ControlGroupCreate06: NUMBER_6 Ctrl
-	Description: hotkey-description-controlgroupcreate06
+	Description: Hotkey-ControlGroupCreate06
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_6 Meta
 
 ControlGroupCreate07: NUMBER_7 Ctrl
-	Description: hotkey-description-controlgroupcreate07
+	Description: Hotkey-ControlGroupCreate07
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_7 Meta
 
 ControlGroupCreate08: NUMBER_8 Ctrl
-	Description: hotkey-description-controlgroupcreate08
+	Description: Hotkey-ControlGroupCreate08
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_8 Meta
 
 ControlGroupCreate09: NUMBER_9 Ctrl
-	Description: hotkey-description-controlgroupcreate09
+	Description: Hotkey-ControlGroupCreate09
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_9 Meta
 
 ControlGroupCreate10: NUMBER_0 Ctrl
-	Description: hotkey-description-controlgroupcreate10
+	Description: Hotkey-ControlGroupCreate10
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_0 Meta
 
 ControlGroupAddTo01: NUMBER_1 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto01
+	Description: Hotkey-ControlGroupAddTo01
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_1 Meta, Shift
 
 ControlGroupAddTo02: NUMBER_2 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto02
+	Description: Hotkey-ControlGroupAddTo02
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_2 Meta, Shift
 
 ControlGroupAddTo03: NUMBER_3 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto03
+	Description: Hotkey-ControlGroupAddTo03
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_3 Meta, Shift
 
 ControlGroupAddTo04: NUMBER_4 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto04
+	Description: Hotkey-ControlGroupAddTo04
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_4 Meta, Shift
 
 ControlGroupAddTo05: NUMBER_5 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto05
+	Description: Hotkey-ControlGroupAddTo05
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_5 Meta, Shift
 
 ControlGroupAddTo06: NUMBER_6 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto06
+	Description: Hotkey-ControlGroupAddTo06
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_6 Meta, Shift
 
 ControlGroupAddTo07: NUMBER_7 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto07
+	Description: Hotkey-ControlGroupAddTo07
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_7 Meta, Shift
 
 ControlGroupAddTo08: NUMBER_8 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto08
+	Description: Hotkey-ControlGroupAddTo08
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_8 Meta, Shift
 
 ControlGroupAddTo09: NUMBER_9 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto09
+	Description: Hotkey-ControlGroupAddTo09
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_9 Meta, Shift
 
 ControlGroupAddTo10: NUMBER_0 Ctrl, Shift
-	Description: hotkey-description-controlgroupaddto10
+	Description: Hotkey-ControlGroupAddTo10
 	Types: ControlGroups
 	Contexts: player
 	Platform:
 		OSX: NUMBER_0 Meta, Shift
 
 ControlGroupCombineWith01: NUMBER_1 Shift
-	Description: hotkey-description-controlgroupcombinewith01
+	Description: Hotkey-ControlGroupCombineWith01
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith02: NUMBER_2 Shift
-	Description: hotkey-description-controlgroupcombinewith02
+	Description: Hotkey-ControlGroupCombineWith02
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith03: NUMBER_3 Shift
-	Description: hotkey-description-controlgroupcombinewith03
+	Description: Hotkey-ControlGroupCombineWith03
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith04: NUMBER_4 Shift
-	Description: hotkey-description-controlgroupcombinewith04
+	Description: Hotkey-ControlGroupCombineWith04
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith05: NUMBER_5 Shift
-	Description: hotkey-description-controlgroupcombinewith05
+	Description: Hotkey-ControlGroupCombineWith05
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith06: NUMBER_6 Shift
-	Description: hotkey-description-controlgroupcombinewith06
+	Description: Hotkey-ControlGroupCombineWith06
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith07: NUMBER_7 Shift
-	Description: hotkey-description-controlgroupcombinewith07
+	Description: Hotkey-ControlGroupCombineWith07
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith08: NUMBER_8 Shift
-	Description: hotkey-description-controlgroupcombinewith08
+	Description: Hotkey-ControlGroupCombineWith08
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith09: NUMBER_9 Shift
-	Description: hotkey-description-controlgroupcombinewith09
+	Description: Hotkey-ControlGroupCombineWith09
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupCombineWith10: NUMBER_0 Shift
-	Description: hotkey-description-controlgroupcombinewith10
+	Description: Hotkey-ControlGroupCombineWith10
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo01: NUMBER_1 Alt
-	Description: hotkey-description-controlgroupjumpto01
+	Description: Hotkey-ControlGroupJumpTo01
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo02: NUMBER_2 Alt
-	Description: hotkey-description-controlgroupjumpto02
+	Description: Hotkey-ControlGroupJumpTo02
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo03: NUMBER_3 Alt
-	Description: hotkey-description-controlgroupjumpto03
+	Description: Hotkey-ControlGroupJumpTo03
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo04: NUMBER_4 Alt
-	Description: hotkey-description-controlgroupjumpto04
+	Description: Hotkey-ControlGroupJumpTo04
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo05: NUMBER_5 Alt
-	Description: hotkey-description-controlgroupjumpto05
+	Description: Hotkey-ControlGroupJumpTo05
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo06: NUMBER_6 Alt
-	Description: hotkey-description-controlgroupjumpto06
+	Description: Hotkey-ControlGroupJumpTo06
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo07: NUMBER_7 Alt
-	Description: hotkey-description-controlgroupjumpto07
+	Description: Hotkey-ControlGroupJumpTo07
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo08: NUMBER_8 Alt
-	Description: hotkey-description-controlgroupjumpto08
+	Description: Hotkey-ControlGroupJumpTo08
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo09: NUMBER_9 Alt
-	Description: hotkey-description-controlgroupjumpto09
+	Description: Hotkey-ControlGroupJumpTo09
 	Types: ControlGroups
 	Contexts: player
 
 ControlGroupJumpTo10: NUMBER_0 Alt
-	Description: hotkey-description-controlgroupjumpto10
+	Description: Hotkey-ControlGroupJumpTo10
 	Types: ControlGroups
 	Contexts: player
 
 RemoveFromControlGroup:
-	Description: hotkey-description-removefromcontrolgroup
+	Description: Hotkey-RemoveFromControlGroup
 	Types: ControlGroups
 	Contexts: player

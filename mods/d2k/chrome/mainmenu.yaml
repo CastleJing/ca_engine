@@ -31,7 +31,7 @@ Container@MAINMENU:
 							Y: 21
 							Width: 200
 							Height: 30
-							Text: label-openra
+							Text: Chrome-MainMenu-Title
 							Align: Center
 							Font: Bold
 						Button@SINGLEPLAYER_BUTTON:
@@ -39,42 +39,42 @@ Container@MAINMENU:
 							Y: 60
 							Width: 140
 							Height: 30
-							Text: label-singleplayer-title
+							Text: Chrome-MainMenu-Singleplayer
 							Font: Bold
 						Button@MULTIPLAYER_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 100
 							Width: 140
 							Height: 30
-							Text: label-multiplayer-title
+							Text: Chrome-MainMenu-Multiplayer
 							Font: Bold
 						Button@SETTINGS_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 140
 							Width: 140
 							Height: 30
-							Text: button-settings-title
+							Text: Chrome-Setting-Title
 							Font: Bold
 						Button@EXTRAS_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 180
 							Width: 140
 							Height: 30
-							Text: button-extras-title
+							Text: Chrome-ExtraMenu-Title
 							Font: Bold
 						Button@CONTENT_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 220
 							Width: 140
 							Height: 30
-							Text: button-main-menu-content
+							Text: Chrome-MainMenu-ManageContent
 							Font: Bold
 						Button@QUIT_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 260
 							Width: 140
 							Height: 30
-							Text: button-quit
+							Text: Chrome-MainMenu-Quit
 							Font: Bold
 				Background@SINGLEPLAYER_MENU:
 					Width: PARENT_WIDTH
@@ -85,7 +85,7 @@ Container@MAINMENU:
 							Y: 21
 							Width: 200
 							Height: 30
-							Text: label-singleplayer-title
+							Text: Chrome-MainMenu-Singleplayer
 							Align: Center
 							Font: Bold
 						Button@SKIRMISH_BUTTON:
@@ -93,28 +93,28 @@ Container@MAINMENU:
 							Y: 60
 							Width: 140
 							Height: 30
-							Text: button-singleplayer-menu-skirmish
+							Text: Chrome-SingleplayerMenu-Skirmish
 							Font: Bold
 						Button@MISSIONS_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 100
 							Width: 140
 							Height: 30
-							Text: label-missions-title
+							Text: Chrome-MissionBrowser-Title
 							Font: Bold
 						Button@LOAD_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 140
 							Width: 140
 							Height: 30
-							Text: button-singleplayer-menu-load
+							Text: Chrome-SingleplayerMenu-Load
 							Font: Bold
 						Button@ENCYCLOPEDIA_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 180
 							Width: 140
 							Height: 30
-							Text: label-mentat-title
+							Text: Chrome-D2k-MentatTitle
 							Font: Bold
 						Button@BACK_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
@@ -122,7 +122,7 @@ Container@MAINMENU:
 							Y: 260
 							Width: 140
 							Height: 30
-							Text: button-back
+							Text: Chrome-MainMenu-Back
 							Font: Bold
 				Background@EXTRAS_MENU:
 					Width: PARENT_WIDTH
@@ -133,7 +133,7 @@ Container@MAINMENU:
 							Y: 21
 							Width: 200
 							Height: 30
-							Text: button-extras-title
+							Text: Chrome-ExtraMenu-Title
 							Align: Center
 							Font: Bold
 						Button@REPLAYS_BUTTON:
@@ -141,35 +141,35 @@ Container@MAINMENU:
 							Y: 60
 							Width: 140
 							Height: 30
-							Text: button-extras-menu-replays
+							Text: Chrome-ExtraMenu-Replay
 							Font: Bold
 						Button@MUSIC_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 100
 							Width: 140
 							Height: 30
-							Text: label-music-title
+							Text: Chrome-Lobby-Music
 							Font: Bold
 						Button@MAP_EDITOR_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 140
 							Width: 140
 							Height: 30
-							Text: label-map-editor-title
+							Text: Chrome-ExtraMenu-MapEditor
 							Font: Bold
 						Button@ASSETBROWSER_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 180
 							Width: 140
 							Height: 30
-							Text: button-extras-menu-assetbrowser
+							Text: Chrome-ExtraMenu-AssetBrowser
 							Font: Bold
 						Button@CREDITS_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 220
 							Width: 140
 							Height: 30
-							Text: label-credits-title
+							Text: Chrome-MainMenu-Back
 							Font: Bold
 						Button@BACK_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
@@ -177,7 +177,7 @@ Container@MAINMENU:
 							Y: 260
 							Width: 140
 							Height: 30
-							Text: button-back
+							Text: Chrome-MainMenu-Back
 							Font: Bold
 				Background@MAP_EDITOR_MENU:
 					Width: PARENT_WIDTH
@@ -188,7 +188,7 @@ Container@MAINMENU:
 							Y: 21
 							Width: 200
 							Height: 30
-							Text: label-map-editor-title
+							Text: Chrome-ExtraMenu-MapEditor
 							Align: Center
 							Font: Bold
 						Button@NEW_MAP_BUTTON:
@@ -196,14 +196,14 @@ Container@MAINMENU:
 							Y: 60
 							Width: 140
 							Height: 30
-							Text: button-map-editor-new-map
+							Text: Chrome-MapEditorMenu-NewMap
 							Font: Bold
 						Button@LOAD_MAP_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
 							Y: 100
 							Width: 140
 							Height: 30
-							Text: button-map-editor-load-map
+							Text: Chrome-MapEditorMenu-LoadMap
 							Font: Bold
 						Button@BACK_BUTTON:
 							X: PARENT_WIDTH / 2 - WIDTH / 2
@@ -211,7 +211,7 @@ Container@MAINMENU:
 							Y: 260
 							Width: 140
 							Height: 30
-							Text: button-back
+							Text: Chrome-MainMenu-Back
 							Font: Bold
 		Background@NEWS_BG:
 			X: (WINDOW_WIDTH - WIDTH) / 2
@@ -224,7 +224,7 @@ Container@MAINMENU:
 					Y: 15
 					Width: 400
 					Height: 25
-					Text: dropdownbutton-news-bg-button
+					Text: Chrome-MainMenu-NewButton
 					Font: Bold
 		Container@UPDATE_NOTICE:
 			X: (WINDOW_WIDTH - WIDTH) / 2
@@ -236,14 +236,14 @@ Container@MAINMENU:
 					Height: 25
 					Align: Center
 					Shadow: true
-					Text: label-update-notice-a
+					Text: Chrome-MainMenu-UpdateNoticeLine1
 				Label@B:
 					Y: 20
 					Width: PARENT_WIDTH
 					Height: 25
 					Align: Center
 					Shadow: true
-					Text: label-update-notice-b
+					Text: Chrome-MainMenu-UpdateNoticeLine2
 		Container@PERFORMANCE_INFO:
 			Logic: PerfDebugLogic
 			Children:

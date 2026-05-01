@@ -37,7 +37,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification to play when selecting a primary building.")]
 		public readonly string SelectionNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display when selecting a primary building.")]
 		public readonly string SelectionTextNotification = null;
 

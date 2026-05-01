@@ -25,13 +25,13 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		public readonly string StartingUnitsClass = "none";
 
-		[FluentReference]
+		
 		[Desc("Descriptive label for the starting units option in the lobby.")]
-		public readonly string DropdownLabel = "dropdown-starting-units.label";
+		public readonly string DropdownLabel = "Game-Trait-StartingUnitsDropdownLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the starting units option in the lobby.")]
-		public readonly string DropdownDescription = "dropdown-starting-units.description";
+		public readonly string DropdownDescription = "Game-Trait-StartingUnitsDropdownDesc";
 
 		[Desc("Prevent the starting units option from being changed in the lobby.")]
 		public readonly bool DropdownLocked = false;

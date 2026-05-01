@@ -11,81 +11,42 @@
 
 using System;
 using System.Collections.Generic;
-using Linguini.Shared.Types.Bundle;
 
 namespace OpenRA.Network
 {
-	public class FluentArgument
-	{
-		public enum FluentArgumentType
-		{
-			String = 0,
-			Number = 1,
-		}
-
-		public readonly string Key;
-		public readonly string Value;
-		public readonly FluentArgumentType Type;
-
-		public FluentArgument() { }
-
-		public FluentArgument(string key, object value)
-		{
-			Key = key;
-			Value = value.ToString();
-			Type = GetFluentArgumentType(value);
-		}
-
-		static FluentArgumentType GetFluentArgumentType(object value)
-		{
-			switch (value.ToFluentType())
-			{
-				case FluentNumber:
-					return FluentArgumentType.Number;
-				default:
-					return FluentArgumentType.String;
-			}
-		}
-	}
-
-	public class FluentMessage
+	// Kept as a lightweight network envelope for translated server notifications.
+	public sealed class FluentMessage
 	{
 		public const int ProtocolVersion = 1;
 
 		public readonly string Key = string.Empty;
-
-		[FieldLoader.LoadUsing(nameof(LoadArguments))]
-		public readonly object[] Arguments;
-
-		static object LoadArguments(MiniYaml yaml)
-		{
-			var arguments = new List<object>();
-			var argumentsNode = yaml.NodeWithKeyOrDefault("Arguments");
-			if (argumentsNode != null)
-			{
-				foreach (var argumentNode in argumentsNode.Value.Nodes)
-				{
-					var argument = FieldLoader.Load<FluentArgument>(argumentNode.Value);
-					arguments.Add(argument.Key);
-					if (argument.Type == FluentArgument.FluentArgumentType.Number)
-					{
-						if (!double.TryParse(argument.Value, out var number))
-							Log.Write("debug", $"Failed to parse {argument.Value}");
-
-						arguments.Add(number);
-					}
-					else
-						arguments.Add(argument.Value);
-				}
-			}
-
-			return arguments.ToArray();
-		}
+		public readonly object[] Arguments = Array.Empty<object>();
 
 		public FluentMessage(MiniYaml yaml)
 		{
-			// Let the FieldLoader do the dirty work of loading the public fields.
-			FieldLoader.Load(this, yaml);
+			if (yaml == null)
+				return;
+
+			var nodes = yaml.ToDictionary();
+			if (nodes.TryGetValue("Key", out var keyNode))
+				Key = keyNode.Value;
+
+			if (!nodes.TryGetValue("Arguments", out var argsNode))
+				return;
+
+			var args = new List<object>(argsNode.Nodes.Length * 2);
+			foreach (var node in argsNode.Nodes)
+			{
+				var values = node.Value.ToDictionary();
+				if (!values.TryGetValue("Key", out var argKeyNode) || string.IsNullOrEmpty(argKeyNode.Value))
+					continue;
+
+				values.TryGetValue("Value", out var argValueNode);
+				args.Add(argKeyNode.Value);
+				args.Add(argValueNode?.Value ?? "");
+			}
+
+			Arguments = args.ToArray();
 		}
 
 		public static string Serialize(string key, object[] args)
@@ -93,31 +54,31 @@ namespace OpenRA.Network
 			var root = new List<MiniYamlNode>
 			{
 				new("Protocol", ProtocolVersion.ToStringInvariant()),
-				new("Key", key),
+				new("Key", key)
 			};
 
-			if (args != null)
+			if (args != null && args.Length > 0)
 			{
-				var nodes = new List<MiniYamlNode>();
-				for (var i = 0; i < args.Length; i += 2)
+				var argNodes = new List<MiniYamlNode>(args.Length / 2);
+				for (var i = 0; i + 1 < args.Length; i += 2)
 				{
-					var argKey = args[i] as string;
-					if (string.IsNullOrEmpty(argKey))
-						throw new ArgumentException($"Expected the argument at index {i} to be a non-empty string", nameof(args));
+					if (args[i] is not string argKey || string.IsNullOrEmpty(argKey))
+						continue;
 
-					var argValue = args[i + 1];
-					if (argValue == null)
-						throw new ArgumentNullException(nameof(args), $"Expected the argument at index {i + 1} to be a non-null value");
-
-					nodes.Add(new MiniYamlNode($"Argument@{i / 2}", FieldSaver.Save(new FluentArgument(argKey, argValue))));
+					var argValue = args[i + 1]?.ToString() ?? "";
+					argNodes.Add(new MiniYamlNode(
+						$"Argument@{i / 2}",
+						new MiniYaml("", new[]
+						{
+							new MiniYamlNode("Key", argKey),
+							new MiniYamlNode("Value", argValue)
+						})));
 				}
 
-				root.Add(new MiniYamlNode("Arguments", new MiniYaml("", nodes)));
+				root.Add(new MiniYamlNode("Arguments", new MiniYaml("", argNodes)));
 			}
 
-			return new MiniYaml("", root)
-				.ToLines("FluentMessage")
-				.JoinWith("\n");
+			return new MiniYaml("", root).ToLines("FluentMessage").JoinWith("\n");
 		}
 	}
 }

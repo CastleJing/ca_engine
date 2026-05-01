@@ -38,12 +38,12 @@ namespace OpenRA
 				return;
 
 			if (player == null || player == player.World.LocalPlayer)
-				AddTextNotification(TextNotificationPool.Transients, SystemClientId, SystemMessageLabel, FluentProvider.GetMessage(text));
+				AddTextNotification(TextNotificationPool.Transients, SystemClientId, SystemMessageLabel, Game.Translate(text));
 		}
 
 		public static void AddFeedbackLine(string text, params object[] args)
 		{
-			AddTextNotification(TextNotificationPool.Feedback, SystemClientId, SystemMessageLabel, FluentProvider.GetMessage(text, args));
+			AddTextNotification(TextNotificationPool.Feedback, SystemClientId, SystemMessageLabel, Game.Translate(text, args));
 		}
 
 		public static void AddMissionLine(string prefix, string text, Color? prefixColor = null)
@@ -53,17 +53,17 @@ namespace OpenRA
 
 		public static void AddPlayerJoinedLine(string text, params object[] args)
 		{
-			AddTextNotification(TextNotificationPool.Join, SystemClientId, SystemMessageLabel, FluentProvider.GetMessage(text, args));
+			AddTextNotification(TextNotificationPool.Join, SystemClientId, SystemMessageLabel, Game.Translate(text, args));
 		}
 
 		public static void AddPlayerLeftLine(string text, params object[] args)
 		{
-			AddTextNotification(TextNotificationPool.Leave, SystemClientId, SystemMessageLabel, FluentProvider.GetMessage(text, args));
+			AddTextNotification(TextNotificationPool.Leave, SystemClientId, SystemMessageLabel, Game.Translate(text, args));
 		}
 
 		public static void AddSystemLine(string text, params object[] args)
 		{
-			AddSystemLine(SystemMessageLabel, FluentProvider.GetMessage(text, args));
+			AddSystemLine(SystemMessageLabel, Game.Translate(text, args));
 		}
 
 		public static void AddSystemLine(string prefix, string text)

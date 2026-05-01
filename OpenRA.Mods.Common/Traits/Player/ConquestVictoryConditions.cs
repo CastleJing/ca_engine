@@ -32,11 +32,9 @@ namespace OpenRA.Mods.Common.Traits
 
 	public class ConquestVictoryConditions : ITick, INotifyWinStateChanged, INotifyTimeLimit
 	{
-		[FluentReference("player")]
-		const string PlayerIsVictorious = "notification-player-is-victorious";
+		const string PlayerIsVictorious = "Game-Trait-ConquestVictoryConditions-Won";
 
-		[FluentReference("player")]
-		const string PlayerIsDefeated = "notification-player-is-defeated";
+		const string PlayerIsDefeated = "Game-Trait-ConquestVictoryConditions-Lost";
 
 		readonly ConquestVictoryConditionsInfo info;
 		readonly MissionObjectives mo;
@@ -105,7 +103,7 @@ namespace OpenRA.Mods.Common.Traits
 			if (info.SuppressNotifications)
 				return;
 
-			TextNotificationsManager.AddSystemLine(PlayerIsDefeated, "player", player.ResolvedPlayerName);
+			TextNotificationsManager.AddSystemLine(PlayerIsDefeated, "name", player.ResolvedPlayerName);
 			Game.RunAfterDelay(info.NotificationDelay, () =>
 			{
 				if (Game.IsCurrentWorld(player.World) && player == player.World.LocalPlayer)
@@ -121,7 +119,7 @@ namespace OpenRA.Mods.Common.Traits
 			if (info.SuppressNotifications)
 				return;
 
-			TextNotificationsManager.AddSystemLine(PlayerIsVictorious, "player", player.ResolvedPlayerName);
+			TextNotificationsManager.AddSystemLine(PlayerIsVictorious, "name", player.ResolvedPlayerName);
 			Game.RunAfterDelay(info.NotificationDelay, () =>
 			{
 				if (Game.IsCurrentWorld(player.World) && player == player.World.LocalPlayer)

@@ -16,33 +16,33 @@ Background@KICK_CLIENT_DIALOG:
 			Height: 25
 			Font: Regular
 			Align: Center
-			Text: label-kick-client-dialog-text-a
+			Text: Chrome-LobbyKickDialogs-Text
 		Label@TEXTB:
 			Y: 86
 			Width: PARENT_WIDTH
 			Height: 25
 			Font: Regular
 			Align: Center
-			Text: label-kick-client-dialog-text-b
+			Text: Chrome-LobbyKickDialogs-Checkbox
 		Checkbox@PREVENT_REJOINING_CHECKBOX:
 			X: (PARENT_WIDTH - WIDTH) / 2
 			Y: 120
 			Width: 150
 			Height: 20
-			Text: checkbox-kick-client-dialog-prevent-rejoining
+			Text: Chrome-LobbyKickDialogs-OkButton
 		Button@OK_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 + 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-kick-client-dialog
+			Text: Chrome-LobbyKickDialogs-OkButton
 			Font: Bold
 		Button@CANCEL_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 - 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-LobbyKickDialogs-CancelButton
 			Font: Bold
 
 Background@KICK_SPECTATORS_DIALOG:
@@ -57,7 +57,7 @@ Background@KICK_SPECTATORS_DIALOG:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-kick-spectators-dialog-title
+			Text: Chrome-LobbyKickDialogs-CancelButton
 		Label@TEXT:
 			Y: 86
 			Width: PARENT_WIDTH
@@ -69,14 +69,14 @@ Background@KICK_SPECTATORS_DIALOG:
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-kick-spectators-dialog-ok
+			Text: Chrome-LobbyKickSpectatorsDialogs-OkButton
 			Font: Bold
 		Button@CANCEL_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 - 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-LobbyKickSpectatorsDialogs-CancelButton
 			Font: Bold
 
 Background@FORCE_START_DIALOG:
@@ -90,21 +90,21 @@ Background@FORCE_START_DIALOG:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-force-start-dialog-title
+			Text: Chrome-LobbyKickSpectatorsDialogs-Title
 		Label@TEXTA:
 			Y: 68
 			Width: PARENT_WIDTH
 			Height: 25
 			Font: Regular
 			Align: Center
-			Text: label-force-start-dialog-text-a
+			Text: Chrome-LobbyKickSpectatorsDialogs-OkButton
 		Label@TEXTB:
 			Y: 86
 			Width: PARENT_WIDTH
 			Height: 25
 			Font: Regular
 			Align: Center
-			Text: label-force-start-dialog-text-b
+			Text: Chrome-LobbyKickSpectatorsDialogs-CancelButton
 		Container@KICK_WARNING:
 			Width: PARENT_WIDTH
 			Children:
@@ -115,7 +115,7 @@ Background@FORCE_START_DIALOG:
 					Height: 25
 					Font: Bold
 					Align: Center
-					Text: label-kick-warning-a
+					Text: Chrome-LobbyForceStartDialogs-Title
 				Label@KICK_WARNING_B:
 					X: 0
 					Y: 124
@@ -123,18 +123,18 @@ Background@FORCE_START_DIALOG:
 					Height: 25
 					Font: Bold
 					Align: Center
-					Text: label-kick-warning-b
+					Text: Chrome-LobbyForceStartDialogs-Text
 		Button@OK_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 + 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-force-start-dialog-start
+			Text: Chrome-LobbyForceStartDialogs-OkButton
 			Font: Bold
 		Button@CANCEL_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 - 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-LobbyForceStartDialogs-CancelButton
 			Font: Bold

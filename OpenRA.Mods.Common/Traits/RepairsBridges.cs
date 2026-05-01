@@ -42,7 +42,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification to play when a bridge is repaired.")]
 		public readonly string RepairNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display when a bridge is repaired.")]
 		public readonly string RepairTextNotification = null;
 

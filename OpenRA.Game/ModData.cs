@@ -48,10 +48,11 @@ namespace OpenRA
 		readonly Lazy<IReadOnlyDictionary<string, ITerrainInfo>> defaultTerrainInfo;
 		public IReadOnlyDictionary<string, ITerrainInfo> DefaultTerrainInfo => defaultTerrainInfo.Value;
 
+		readonly string[] languages;
+		readonly List<IReadOnlyPackage> localizationMountedPackages = new();
+
 		public ModData(Manifest mod, InstalledMods mods, bool useLoadScreen = false)
 		{
-			Languages = Array.Empty<string>();
-
 			// Take a local copy of the manifest
 			Manifest = new Manifest(mod.Id, mod.Package);
 			ObjectCreator = new ObjectCreator(Manifest, mods);
@@ -63,9 +64,13 @@ namespace OpenRA
 			FileSystemLoader.Mount(ModFiles, ObjectCreator);
 			ModFiles.TrimExcess();
 
-			Manifest.LoadCustomData(ObjectCreator);
+			RemountLocalizationPackages();
 
-			FluentProvider.Initialize(this, DefaultFileSystem);
+			Game.LoadTranslation(Manifest.Translations, ModFiles);
+			languages = Manifest.SupportLanguages;
+
+			Manifest.RegisterFontsFromLanguageFileIfMissing(ModFiles, ObjectCreator);
+			Manifest.LoadCustomData(ObjectCreator);
 
 			if (useLoadScreen)
 			{
@@ -126,20 +131,72 @@ namespace OpenRA
 
 		internal bool IsOnMainThread => Environment.CurrentManagedThreadId == initialThreadId;
 
+		/// <summary>
+		/// Unmounts packages from <see cref="Manifest.LocalizationPackageSections"/> for the previous language,
+		/// then mounts entries for the current player language (fallback: <c>en</c>, then primary BCP-47 tag before <c>-</c>).
+		/// </summary>
+		public void RemountLocalizationPackages()
+		{
+			foreach (var p in localizationMountedPackages)
+				ModFiles.Unmount(p);
+			localizationMountedPackages.Clear();
+
+			if (Manifest.LocalizationPackageSections == null || Manifest.LocalizationPackageSections.Count == 0)
+				return;
+
+			var lang = Game.Settings.Player.Language;
+			if (string.IsNullOrEmpty(lang))
+				lang = "en";
+
+			if (!TryResolveLocalizationSection(lang, out var section))
+				return;
+
+			foreach (var node in section.Nodes)
+			{
+				var path = node.Key;
+				var explicitName = string.IsNullOrEmpty(node.Value.Value) ? null : node.Value.Value;
+
+				if (ModFiles.TryMountLocalizationPackage(path, explicitName, out var pkg))
+					localizationMountedPackages.Add(pkg);
+			}
+		}
+
+		bool TryResolveLocalizationSection(string language, out MiniYaml section)
+		{
+			section = null;
+			var dict = Manifest.LocalizationPackageSections;
+			if (dict == null || dict.Count == 0)
+				return false;
+
+			if (!string.IsNullOrEmpty(language) && dict.TryGetValue(language, out section))
+				return true;
+
+			if (dict.TryGetValue("en", out section))
+				return true;
+
+			var dash = language?.IndexOf('-') ?? -1;
+			if (dash > 0)
+			{
+				var primary = language.Substring(0, dash);
+				if (dict.TryGetValue(primary, out section))
+					return true;
+			}
+
+			return false;
+		}
+
 		public void InitializeLoaders(IReadOnlyFileSystem fileSystem)
 		{
 			// all this manipulation of static crap here is nasty and breaks
 			// horribly when you use ModData in unexpected ways.
 			ChromeMetrics.Initialize(this);
 			ChromeProvider.Initialize(this);
-			FluentProvider.Initialize(this, fileSystem);
-
 			Game.Sound.Initialize(SoundLoaders, fileSystem);
 
 			CursorProvider = new CursorProvider(this);
 		}
 
-		public IEnumerable<string> Languages { get; }
+		public IEnumerable<string> Languages => languages;
 
 		public Map PrepareMap(string uid)
 		{
@@ -172,6 +229,7 @@ namespace OpenRA
 
 		public void Dispose()
 		{
+			localizationMountedPackages.Clear();
 			LoadScreen?.Dispose();
 			MapCache.Dispose();
 

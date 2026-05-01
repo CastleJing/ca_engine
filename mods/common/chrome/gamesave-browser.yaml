@@ -11,7 +11,7 @@ Background@GAMESAVE_BROWSER_PANEL:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-gamesave-browser-panel-load-title
+			Text: Chrome-GameSaveBrowser-LoadTitle
 			Visible: False
 		Label@SAVE_TITLE:
 			Width: PARENT_WIDTH
@@ -19,7 +19,7 @@ Background@GAMESAVE_BROWSER_PANEL:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-gamesave-browser-panel-save-title
+			Text: Chrome-GameSaveBrowser-SaveTitle
 			Visible: False
 		ScrollPanel@GAME_LIST:
 			X: 20
@@ -37,7 +37,7 @@ Background@GAMESAVE_BROWSER_PANEL:
 							Width: PARENT_WIDTH
 							Height: PARENT_HEIGHT
 							Align: Center
-							Text: label-gamesave-browser-panel-title
+							Text: Chrome-GameSaveBrowser-Create
 				ScrollItem@GAME_TEMPLATE:
 					Width: PARENT_WIDTH - 27
 					Height: 25
@@ -73,21 +73,21 @@ Background@GAMESAVE_BROWSER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 100
 			Height: 25
-			Text: button-back
+			Text: Chrome-GameSaveBrowser-Back
 			Font: Bold
 		Button@DELETE_ALL_BUTTON:
 			X: PARENT_WIDTH - 350 - WIDTH
 			Y: PARENT_HEIGHT - 45
 			Width: 100
 			Height: 25
-			Text: button-gamesave-browser-panel-delete-all
+			Text: Chrome-GameSaveBrowser-DeleteAll
 			Font: Bold
 		Button@DELETE_BUTTON:
 			X: PARENT_WIDTH - 240 - WIDTH
 			Y: PARENT_HEIGHT - 45
 			Width: 100
 			Height: 25
-			Text: button-gamesave-browser-panel-delete
+			Text: Chrome-GameSaveBrowser-Delete
 			Font: Bold
 			Key: Delete
 		Button@RENAME_BUTTON:
@@ -95,7 +95,7 @@ Background@GAMESAVE_BROWSER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 100
 			Height: 25
-			Text: button-gamesave-browser-panel-rename
+			Text: Chrome-GameSaveBrowser-Rename
 			Font: Bold
 			Key: F2
 		Button@LOAD_BUTTON:
@@ -104,7 +104,7 @@ Background@GAMESAVE_BROWSER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 100
 			Height: 25
-			Text: button-gamesave-browser-panel-load
+			Text: Chrome-GameSaveBrowser-Load
 			Font: Bold
 			Visible: False
 		Button@SAVE_BUTTON:
@@ -113,7 +113,7 @@ Background@GAMESAVE_BROWSER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 100
 			Height: 25
-			Text: button-gamesave-browser-panel-save
+			Text: Chrome-GameSaveBrowser-Save
 			Font: Bold
 			Visible: False
 		TooltipContainer@GAMESAVE_TOOLTIP_CONTAINER:

@@ -37,7 +37,7 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		const string CommandName = "hpf";
 
-		[FluentReference]
+		
 		const string CommandDescription = "description-hpf-debug-overlay";
 
 		readonly HierarchicalPathFinderOverlayInfo info;

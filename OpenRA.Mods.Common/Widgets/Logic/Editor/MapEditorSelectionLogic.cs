@@ -19,8 +19,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class MapEditorSelectionLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string AreaSelection = "label-area-selection";
+		
+		const string AreaSelection = "Game-MapEditorSelectionLogic-AreaSelection";
 
 		readonly EditorViewportControllerWidget editor;
 		readonly Map map;
@@ -136,7 +136,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var resourceValueInRegion = editorResourceLayer.CalculateRegionValue(selectedRegion);
 
 			var areaSelectionLabel =
-				$"{FluentProvider.GetMessage(AreaSelection)} ({DimensionsAsString(selectionSize)}) " +
+				$"{Game.Translate(AreaSelection)} ({DimensionsAsString(selectionSize)}) " +
 				$"{PositionAsString(selectedRegion.TopLeft)} : {PositionAsString(selectedRegion.BottomRight)}";
 
 			AreaEditTitle.GetText = () => areaSelectionLabel;

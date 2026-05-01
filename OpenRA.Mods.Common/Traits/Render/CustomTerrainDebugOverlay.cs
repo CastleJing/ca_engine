@@ -30,7 +30,7 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		const string CommandName = "custom-terrain";
 
-		[FluentReference]
+		
 		const string CommandDescription = "description-custom-terrain-debug-overlay";
 
 		public bool Enabled;

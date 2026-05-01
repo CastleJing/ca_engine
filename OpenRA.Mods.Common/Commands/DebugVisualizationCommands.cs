@@ -23,19 +23,19 @@ namespace OpenRA.Mods.Common.Commands
 
 	public class DebugVisualizationCommands : IChatCommand, IWorldLoaded
 	{
-		[FluentReference]
+		
 		const string CombatGeometryDescription = "description-combat-geometry";
 
-		[FluentReference]
+		
 		const string RenderGeometryDescription = "description-render-geometry";
 
-		[FluentReference]
+		
 		const string ScreenMapOverlayDescription = "description-screen-map-overlay";
 
-		[FluentReference]
+		
 		const string DepthBufferDescription = "description-depth-buffer";
 
-		[FluentReference]
+		
 		const string ActorTagsOverlayDescripition = "description-actor-tags-overlay";
 
 		readonly IDictionary<string, (string Description, Action<DebugVisualizations, DeveloperMode> Handler)> commandHandlers =

@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using OpenRA.FileSystem;
 using OpenRA.Mods.Common.Traits;
@@ -43,7 +44,7 @@ namespace OpenRA.Mods.Common.UtilityCommands
 				.Where(t => t.Name.EndsWith("Info", StringComparison.InvariantCulture) && t.IsSubclassOf(typeof(TraitInfo)))
 				.ToDictionary(
 					t => t.Name[..^4],
-					t => Utility.GetFields(t).Where(Utility.HasAttribute<FluentReferenceAttribute>).Select(f => f.Name).ToArray())
+					t => Utility.GetFields(t).Where(TraitFieldMightHoldFluentKey).Select(f => f.Name).ToArray())
 				.Where(t => t.Value.Length > 0)
 				.ToDictionary(t => t.Key, t => t.Value);
 
@@ -100,6 +101,12 @@ namespace OpenRA.Mods.Common.UtilityCommands
 					mapRules.Save();
 				}
 			}
+		}
+
+		static bool TraitFieldMightHoldFluentKey(FieldInfo f)
+		{
+			return f.FieldType == typeof(string) && !f.IsStatic
+				&& f.IsDefined(typeof(DescAttribute), false);
 		}
 
 		static void ExtractFromFile(string fluentPath, YamlFileSet yamlSet, Dictionary<string, string[]> traitInfos, Action addAction = null)

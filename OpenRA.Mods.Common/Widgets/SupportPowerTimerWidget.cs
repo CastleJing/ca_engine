@@ -21,8 +21,7 @@ namespace OpenRA.Mods.Common.Widgets
 {
 	public class SupportPowerTimerWidget : Widget
 	{
-		[FluentReference("player", "support-power", "time")]
-		const string Format = "support-power-timer";
+		const string Format = "Chrome-SupportPowerTimer-Format";
 
 		public readonly string Font = "Bold";
 		public readonly TextAlign Align = TextAlign.Left;
@@ -59,7 +58,7 @@ namespace OpenRA.Mods.Common.Widgets
 			{
 				var self = p.Instances[0].Self;
 				var time = WidgetUtils.FormatTime(p.RemainingTicks, false, self.World.Timestep);
-				var text = FluentProvider.GetMessage(Format,
+				var text = Game.Translate(Format,
 					"player", self.Owner.ResolvedPlayerName,
 					"support-power", p.Name,
 					"time", time);

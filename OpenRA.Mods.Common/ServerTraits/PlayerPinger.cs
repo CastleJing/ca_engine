@@ -17,17 +17,14 @@ namespace OpenRA.Mods.Common.Server
 {
 	public class PlayerPinger : ServerTrait, ITick
 	{
-		[FluentReference]
-		const string PlayerDropped = "notification-player-dropped";
+		
+		const string PlayerDropped = "Game-Common-Server-Timeout";
 
-		[FluentReference("player")]
-		const string ConnectionProblems = "notification-connection-problems";
+		const string ConnectionProblems = "Game-Common-Server-ConnectProblem";
 
-		[FluentReference("player")]
-		const string Timeout = "notification-timeout-dropped";
+		const string Timeout = "Game-Common-Server-Timeout2";
 
-		[FluentReference("player", "timeout")]
-		const string TimeoutIn = "notification-timeout-dropped-in";
+		const string TimeoutIn = "Game-Common-Server-Timeout3";
 
 		const int PingInterval = 5000; // Ping every 5 seconds
 		const int ConnReportInterval = 20000; // Report every 20 seconds

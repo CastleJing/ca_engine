@@ -17,8 +17,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ConnectionLogic : ChromeLogic
 	{
-		[FluentReference("endpoint")]
-		const string ConnectingToEndpoint = "label-connecting-to-endpoint";
+		const string ConnectingToEndpoint = "Game-ConnectionLogic-Desc-Connecting";
 
 		readonly Action onConnect;
 		readonly Action onAbort;
@@ -66,7 +65,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var panel = widget;
 			panel.Get<ButtonWidget>("ABORT_BUTTON").OnClick = () => { CloseWindow(); onAbort(); };
 
-			var connectingDesc = FluentProvider.GetMessage(ConnectingToEndpoint, "endpoint", endpoint);
+			var connectingDesc = Game.Translate(ConnectingToEndpoint, "0", endpoint);
 			widget.Get<LabelWidget>("CONNECTING_DESC").GetText = () => connectingDesc;
 		}
 
@@ -87,17 +86,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 	public class ConnectionFailedLogic : ChromeLogic
 	{
-		[FluentReference("target")]
-		const string CouldNotConnectToTarget = "label-could-not-connect-to-target";
+		const string CouldNotConnectToTarget = "Game-ConnectionLogic-Desc-ConnectionFailed";
 
-		[FluentReference]
-		const string UnknownError = "label-unknown-error";
+		
+		const string UnknownError = "Game-ConnectionLogic-UnknownError";
 
-		[FluentReference]
-		const string PasswordRequired = "label-password-required";
+		
+		const string PasswordRequired = "Game-ConnectionLogic-Title-PasswdRequired";
 
-		[FluentReference]
-		const string ConnectionFailed = "label-connection-failed";
+		
+		const string ConnectionFailed = "Game-ConnectionLogic-Title-ConnectionFailed";
 
 		readonly PasswordFieldWidget passwordField;
 		bool passwordOffsetAdjusted;
@@ -130,17 +128,17 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				onRetry(pass);
 			};
 
-			var connectingDescText = FluentProvider.GetMessage(CouldNotConnectToTarget, "target", connection.Target);
+			var connectingDescText = Game.Translate(CouldNotConnectToTarget, "0", connection.Target);
 			widget.Get<LabelWidget>("CONNECTING_DESC").GetText = () => connectingDescText;
 
 			var connectionError = widget.Get<LabelWidget>("CONNECTION_ERROR");
 			var connectionErrorText = orderManager.ServerError != null
-				? FluentProvider.GetMessage(orderManager.ServerError)
-				: connection.ErrorMessage ?? FluentProvider.GetMessage(UnknownError);
+				? Game.Translate(orderManager.ServerError)
+				: connection.ErrorMessage ?? Game.Translate(UnknownError);
 			connectionError.GetText = () => connectionErrorText;
 
 			var panelTitle = widget.Get<LabelWidget>("TITLE");
-			var panelTitleText = orderManager.AuthenticationFailed ? FluentProvider.GetMessage(PasswordRequired) : FluentProvider.GetMessage(ConnectionFailed);
+			var panelTitleText = orderManager.AuthenticationFailed ? Game.Translate(PasswordRequired) : Game.Translate(ConnectionFailed);
 			panelTitle.GetText = () => panelTitleText;
 
 			passwordField = panel.GetOrNull<PasswordFieldWidget>("PASSWORD");
@@ -182,8 +180,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 	public class ConnectionSwitchModLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string ModSwitchFailed = "notification-mod-switch-failed";
+		
+		const string ModSwitchFailed = "Game-ConnectionLogic-ModSwitchFailed";
 
 		[ObjectCreator.UseCtor]
 		public ConnectionSwitchModLogic(Widget widget, OrderManager orderManager, NetworkConnection connection, Action onAbort, Action<string> onRetry)

@@ -10,7 +10,7 @@ Container@GAME_INFO_PANEL:
 			Width: PARENT_WIDTH
 			Height: 25
 			Y: 0 - 34
-			Text: label-game-info-panel-title
+			Text: Chrome-InGameInfo-Title
 			Align: Center
 			Font: BigBold
 			Contrast: true

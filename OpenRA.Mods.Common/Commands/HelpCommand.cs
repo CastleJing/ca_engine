@@ -22,13 +22,13 @@ namespace OpenRA.Mods.Common.Commands
 
 	public class HelpCommand : IChatCommand, IWorldLoaded
 	{
-		[FluentReference]
-		const string AvailableCommands = "notification-available-commands";
+		
+		const string AvailableCommands = "Game-Commands-HelpCommand-AvailableCommands";
 
-		[FluentReference]
+		
 		const string NoDescription = "description-no-description";
 
-		[FluentReference]
+		
 		const string HelpDescription = "description-help-description";
 
 		readonly Dictionary<string, string> helpDescriptions;
@@ -52,12 +52,12 @@ namespace OpenRA.Mods.Common.Commands
 
 		public void InvokeCommand(string name, string arg)
 		{
-			TextNotificationsManager.Debug(FluentProvider.GetMessage(AvailableCommands));
+			TextNotificationsManager.Debug(Game.Translate(AvailableCommands));
 
 			foreach (var key in console.Commands.Keys.OrderBy(k => k))
 			{
 				if (!helpDescriptions.TryGetValue(key, out var description))
-					description = FluentProvider.GetMessage(NoDescription);
+					description = Game.Translate(NoDescription);
 
 				TextNotificationsManager.Debug($"{key}: {description}");
 			}
@@ -65,7 +65,7 @@ namespace OpenRA.Mods.Common.Commands
 
 		public void RegisterHelp(string name, string description)
 		{
-			helpDescriptions[name] = FluentProvider.GetMessage(description);
+			helpDescriptions[name] = Game.Translate(description);
 		}
 	}
 }

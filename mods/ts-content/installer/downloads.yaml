@@ -1,4 +1,4 @@
-basefiles: Base Freeware Content
+basefiles: Sys-ModContent-Source-basefiles
 	Type: ZipFile
 	SHA1: 824df30de0004ad13fac29cf16450caafee9fb1b
 	MirrorList: https://www.openra.net/packages/ts-mirrors.txt
@@ -18,7 +18,7 @@ basefiles: Base Freeware Content
 		^SupportDir|Content/ts/tem.mix: tem.mix
 		^SupportDir|Content/ts/temperat.mix: temperat.mix
 
-fstorm: Expansion Freeware Content
+fstorm: Sys-ModContent-Source-fstorm-zip
 	Type: ZipFile
 	SHA1: 8bff90870a9348b72cbe91314aec7d3a50311aa9
 	MirrorList: https://www.openra.net/packages/fs-mirrors.txt
@@ -202,7 +202,7 @@ fstorm: Expansion Freeware Content
 		^SupportDir|Content/ts/firestorm/fona15.tem: firestorm/fona15.tem
 		^SupportDir|Content/ts/firestorm/bigblue3.tem: firestorm/bigblue3.tem
 
-quickinstall: Quick Install Package
+quickinstall: Sys-ModContent-Source-quickinstall
 	Type: ZipFile
 	SHA1: d9339e7b6ecf624ac6ca91d25c58b88fb88a49d2
 	MirrorList: https://www.openra.net/packages/ts-quickinstall-mirrors.txt

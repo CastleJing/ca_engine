@@ -31,7 +31,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string EnabledSpeech = null;
 
-		[FluentReference(optional: true)]
 		public readonly string EnabledTextNotification = null;
 
 		[NotificationReference("Sounds")]
@@ -40,7 +39,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string DisabledSpeech = null;
 
-		[FluentReference(optional: true)]
 		public readonly string DisabledTextNotification = null;
 
 		public override object Create(ActorInitializer init) { return new ToggleConditionOnOrder(this); }

@@ -43,7 +43,6 @@ namespace OpenRA.Mods.Cnc.Traits
 		[Desc("Sound the victim will hear when they get robbed.")]
 		public readonly string InfiltratedNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification the victim will see when they get robbed.")]
 		public readonly string InfiltratedTextNotification = null;
 
@@ -51,7 +50,6 @@ namespace OpenRA.Mods.Cnc.Traits
 		[Desc("Sound the perpetrator will hear after successful infiltration.")]
 		public readonly string InfiltrationNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification the perpetrator will see after successful infiltration.")]
 		public readonly string InfiltrationTextNotification = null;
 

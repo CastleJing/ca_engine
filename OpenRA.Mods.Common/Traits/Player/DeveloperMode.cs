@@ -20,13 +20,13 @@ namespace OpenRA.Mods.Common.Traits
 	[Desc("Attach this to the player actor.")]
 	public class DeveloperModeInfo : TraitInfo, ILobbyOptions
 	{
-		[FluentReference]
+		
 		[Desc("Descriptive label for the developer mode checkbox in the lobby.")]
-		public readonly string CheckboxLabel = "checkbox-debug-menu.label";
+		public readonly string CheckboxLabel = "Game-Trait-DebugMenuCheckboxLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the developer mode checkbox in the lobby.")]
-		public readonly string CheckboxDescription = "checkbox-debug-menu.description";
+		public readonly string CheckboxDescription = "Game-Trait-DebugMenuCheckboxDesc";
 
 		[Desc("Default value of the developer mode checkbox in the lobby.")]
 		public readonly bool CheckboxEnabled = false;
@@ -75,8 +75,7 @@ namespace OpenRA.Mods.Common.Traits
 
 	public class DeveloperMode : IResolveOrder, ISync, INotifyCreated, IUnlocksRenderPlayer
 	{
-		[FluentReference("cheat", "player", "suffix")]
-		const string CheatUsed = "notification-cheat-used";
+		const string CheatUsed = "Game-Trait-DeveloperMode-CheatUsed";
 
 		readonly DeveloperModeInfo info;
 		public bool Enabled { get; private set; }
@@ -275,8 +274,8 @@ namespace OpenRA.Mods.Common.Traits
 					return;
 			}
 
-			TextNotificationsManager.Debug(FluentProvider.GetMessage(CheatUsed,
-				"cheat", order.OrderString,
+			TextNotificationsManager.Debug(Game.Translate(CheatUsed,
+				"command", order.OrderString,
 				"player", self.Owner.ResolvedPlayerName,
 				"suffix", debugSuffix));
 		}

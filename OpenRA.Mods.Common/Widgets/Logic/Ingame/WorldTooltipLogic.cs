@@ -18,8 +18,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class WorldTooltipLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string UnrevealedTerrain = "label-unrevealed-terrain";
+		
+		const string UnrevealedTerrain = "Game-WorldTooltipLogic-Unexplored";
 
 		[ObjectCreator.UseCtor]
 		public WorldTooltipLogic(Widget widget, ModData modData, World world, TooltipContainerWidget tooltipContainer, ViewportControllerWidget viewport)
@@ -44,7 +44,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var extraHeightOnDouble = extras.Bounds.Y;
 			var extraHeightOnSingle = extraHeightOnDouble - (doubleHeight - singleHeight);
 
-			var unrevealedTerrain = FluentProvider.GetMessage(UnrevealedTerrain);
+			var unrevealedTerrain = Game.Translate(UnrevealedTerrain);
 
 			tooltipContainer.BeforeRender = () =>
 			{

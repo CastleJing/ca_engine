@@ -18,13 +18,13 @@ namespace OpenRA.Traits
 	[Desc("Required for shroud and fog visibility checks. Add this to the player actor.")]
 	public class ShroudInfo : TraitInfo, ILobbyOptions
 	{
-		[FluentReference]
+		
 		[Desc("Descriptive label for the fog checkbox in the lobby.")]
-		public readonly string FogCheckboxLabel = "checkbox-fog-of-war.label";
+		public readonly string FogCheckboxLabel = "Game-Trait-FogCheckboxLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the fog checkbox in the lobby.")]
-		public readonly string FogCheckboxDescription = "checkbox-fog-of-war.description";
+		public readonly string FogCheckboxDescription = "Game-Trait-FogCheckboxDesc";
 
 		[Desc("Default value of the fog checkbox in the lobby.")]
 		public readonly bool FogCheckboxEnabled = true;
@@ -38,13 +38,13 @@ namespace OpenRA.Traits
 		[Desc("Display order for the fog checkbox in the lobby.")]
 		public readonly int FogCheckboxDisplayOrder = 0;
 
-		[FluentReference]
+		
 		[Desc("Descriptive label for the explored map checkbox in the lobby.")]
-		public readonly string ExploredMapCheckboxLabel = "checkbox-explored-map.label";
+		public readonly string ExploredMapCheckboxLabel = "Game-Trait-ExploredMapLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the explored map checkbox in the lobby.")]
-		public readonly string ExploredMapCheckboxDescription = "checkbox-explored-map.description";
+		public readonly string ExploredMapCheckboxDescription = "Game-Trait-ExploredMapDesc";
 
 		[Desc("Default value of the explore map checkbox in the lobby.")]
 		public readonly bool ExploredMapCheckboxEnabled = false;

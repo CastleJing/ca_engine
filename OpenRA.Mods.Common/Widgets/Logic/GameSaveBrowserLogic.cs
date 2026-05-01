@@ -21,43 +21,39 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class GameSaveBrowserLogic : ChromeLogic
 	{
-		[FluentReference]
+		
 		const string RenameSaveTitle = "dialog-rename-save.title";
 
-		[FluentReference]
+		
 		const string RenameSavePrompt = "dialog-rename-save.prompt";
 
-		[FluentReference]
+		
 		const string RenameSaveAccept = "dialog-rename-save.confirm";
 
-		[FluentReference]
+		
 		const string DeleteSaveTitle = "dialog-delete-save.title";
 
-		[FluentReference("save")]
 		const string DeleteSavePrompt = "dialog-delete-save.prompt";
 
-		[FluentReference]
+		
 		const string DeleteSaveAccept = "dialog-delete-save.confirm";
 
-		[FluentReference]
+		
 		const string DeleteAllSavesTitle = "dialog-delete-all-saves.title";
 
-		[FluentReference("count")]
 		const string DeleteAllSavesPrompt = "dialog-delete-all-saves.prompt";
 
-		[FluentReference]
+		
 		const string DeleteAllSavesAccept = "dialog-delete-all-saves.confirm";
 
-		[FluentReference("savePath")]
-		const string SaveDeletionFailed = "notification-save-deletion-failed";
+		const string SaveDeletionFailed = "Game-GameSaveBrowserLogic-SaveDeletionFailed";
 
-		[FluentReference]
+		
 		const string OverwriteSaveTitle = "dialog-overwrite-save.title";
 
-		[FluentReference("file")]
 		const string OverwriteSavePrompt = "dialog-overwrite-save.prompt";
 
-		[FluentReference]
+		
 		const string OverwriteSaveAccept = "dialog-overwrite-save.confirm";
 
 		readonly Widget panel;
@@ -293,7 +289,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 			catch (Exception ex)
 			{
-				TextNotificationsManager.Debug(FluentProvider.GetMessage(SaveDeletionFailed, "savePath", savePath));
+				TextNotificationsManager.Debug(Game.Translate(SaveDeletionFailed, "savePath", savePath));
 				Log.Write("debug", ex.ToString());
 				return;
 			}

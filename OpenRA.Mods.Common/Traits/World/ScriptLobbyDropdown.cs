@@ -23,11 +23,11 @@ namespace OpenRA.Mods.Common.Traits
 		public readonly string ID = null;
 
 		[FieldLoader.Require]
-		[FluentReference]
+		
 		[Desc("Descriptive label for this option.")]
 		public readonly string Label = null;
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for this option.")]
 		public readonly string Description = null;
 
@@ -36,7 +36,6 @@ namespace OpenRA.Mods.Common.Traits
 		public readonly string Default = null;
 
 		[FieldLoader.Require]
-		[FluentReference(dictionaryReference: LintDictionaryReference.Values)]
 		[Desc("Options to choose from.")]
 		public readonly Dictionary<string, string> Values = null;
 

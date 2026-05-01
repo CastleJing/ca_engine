@@ -12,7 +12,7 @@ Container@SKIRMISH_STATS:
 					Width: 80
 					Height: 20
 					Font: MediumBold
-					Text: label-mission-objective
+					Text: Chrome-InGameInfoStats-Mission
 				Label@STATS_STATUS:
 					X: 95
 					Y: 17
@@ -25,7 +25,7 @@ Container@SKIRMISH_STATS:
 					Width: 482
 					Height: 20
 					Font: Bold
-					Text: checkbox-stats-objective
+					Text: Chrome-InGameInfoStats-Stats
 					Disabled: true
 					TextColorDisabled: FFFFFF
 		Container@STATS_HEADERS:
@@ -38,27 +38,27 @@ Container@SKIRMISH_STATS:
 					Y: 1
 					Width: 210
 					Height: 25
-					Text: label-stats-player
+					Text: Chrome-InGameInfoStats-Name
 					Font: Bold
 				Label@FACTION:
 					X: 230
 					Y: 1
 					Width: 120
 					Height: 25
-					Text: label-stats-faction
+					Text: Chrome-InGameInfoStats-Faction
 					Font: Bold
 				Label@SCORE:
 					X: 392
 					Y: 1
 					Width: 60
 					Height: 25
-					Text: label-stats-score
+					Text: Chrome-InGameInfoStats-Score
 					Font: Bold
 				Label@ACTIONS:
 					X: 457
 					Width: 80
 					Height: 25
-					Text: label-stats-actions
+					Text: Chrome-InGameInfoStats-Actions
 					Font: Bold
 		ScrollPanel@PLAYER_LIST:
 			X: 15

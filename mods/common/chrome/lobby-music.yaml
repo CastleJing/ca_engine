@@ -11,20 +11,20 @@ Container@LOBBY_MUSIC_BIN:
 				Label@MUSIC:
 					Width: 268
 					Height: 25
-					Text: label-music-title
+					Text: Chrome-LobbyMusic-Music
 					Align: Center
 					Font: Bold
 				Label@TITLE:
 					X: 278
 					Width: 230
 					Height: 25
-					Text: label-container-title
+					Text: Chrome-LobbyMusic-Title
 					Font: Bold
 				Label@LENGTH:
 					X: PARENT_WIDTH - 80
 					Height: 25
 					Width: 50
-					Text: label-music-controls-length
+					Text: Chrome-LobbyMusic-Length
 					Font: Bold
 					Align: Right
 		Background@CONTROLS:
@@ -115,20 +115,20 @@ Container@LOBBY_MUSIC_BIN:
 					Width: 85
 					Height: 20
 					Font: Regular
-					Text: checkbox-music-controls-shuffle
+					Text: Chrome-LobbyMusic-Shuffle
 				Checkbox@REPEAT:
 					X: PARENT_WIDTH - 15 - WIDTH
 					Y: 150
 					Width: 70
 					Height: 20
 					Font: Regular
-					Text: checkbox-music-controls-loop
+					Text: Chrome-LobbyMusic-Loop
 				Label@VOLUME_LABEL:
 					Y: 181
 					Width: 65
 					Height: 25
 					Align: Right
-					Text: label-music-controls-volume
+					Text: Chrome-LobbyMusic-Volume
 				ExponentialSlider@MUSIC_SLIDER:
 					X: 70
 					Y: 186
@@ -169,16 +169,16 @@ Container@LOBBY_MUSIC_BIN:
 					Height: 25
 					Font: Bold
 					Align: Center
-					Text: label-no-music-title
+					Text: Chrome-LobbyMusic-Volume
 				Label@DESCA:
 					Y: 96
 					Width: PARENT_WIDTH - 24
 					Height: 25
 					Align: Center
-					Text: label-no-music-desc-a
+					Text: Chrome-LobbyMusic-MusicNotFound-Title
 				Label@DESCB:
 					Y: 116
 					Width: PARENT_WIDTH - 24
 					Height: 25
 					Align: Center
-					Text: label-no-music-desc-b
+					Text: Chrome-LobbyMusic-MusicNotFound-Desc

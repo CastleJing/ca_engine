@@ -20,7 +20,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 	public class ModContentLogic : ChromeLogic
 	{
 		[ObjectCreator.UseCtor]
-		public ModContentLogic(ModData modData)
+		public ModContentLogic(ModData modData, Func<string, string> translation = null)
 		{
 			var content = modData.Manifest.Get<ModContent>();
 			if (!IsModInstalled(content))
@@ -31,6 +31,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					{ "content", content },
 				};
 
+				if (translation != null)
+					widgetArgs.Add("translation", translation);
+
 				Ui.OpenWindow("CONTENT_PROMPT_PANEL", widgetArgs);
 			}
 			else
@@ -40,6 +43,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					{ "onCancel", () => Game.RunAfterTick(() => Game.InitializeMod(content.Mod, new Arguments())) },
 					{ "content", content },
 				};
+
+				if (translation != null)
+					widgetArgs.Add("translation", translation);
 
 				Ui.OpenWindow("CONTENT_PANEL", widgetArgs);
 			}
@@ -55,8 +61,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 	public class ModContentInstallerLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string ManualInstall = "button-manual-install";
+		
+		const string ManualInstall = "Game-ModContentInstaller-ManualInstallButton";
 
 		readonly ModContent content;
 		readonly ScrollPanelWidget scrollPanel;
@@ -67,10 +73,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 		bool sourceAvailable;
 
+		readonly Func<string, string> translation;
+
 		[ObjectCreator.UseCtor]
-		public ModContentInstallerLogic(ModData modData, Widget widget, ModContent content, Action onCancel)
+		public ModContentInstallerLogic(ModData modData, Widget widget, ModContent content, Action onCancel, Func<string, string> translation = null)
 		{
 			this.content = content;
+			this.translation = translation;
 
 			var panel = widget.Get("CONTENT_PANEL");
 
@@ -123,7 +132,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				var container = template.Clone();
 				var titleWidget = container.Get<LabelWidget>("TITLE");
-				var title = FluentProvider.GetMessage(p.Value.Title);
+				var title = LocalizedPackageTitle(p.Value.Title);
 				titleWidget.GetText = () => title;
 
 				var requiredWidget = container.Get<LabelWidget>("REQUIRED");
@@ -148,6 +157,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 						{ "onSuccess", () => { } }
 					};
 
+					if (translation != null)
+						widgetArgs.Add("translation", translation);
+
 					downloadButton.OnClick = () => Ui.OpenWindow("PACKAGE_DOWNLOAD_PANEL", widgetArgs);
 				}
 
@@ -158,7 +170,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				requiresSourceWidget.IsVisible = () => !installed && !downloadEnabled;
 				if (!isSourceAvailable)
 				{
-					var manualInstall = FluentProvider.GetMessage(ManualInstall);
+					var manualInstall = Game.Translate(ManualInstall);
 					requiresSourceWidget.GetText = () => manualInstall;
 				}
 
@@ -166,6 +178,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 
 			sourceAvailable = content.Packages.Values.Any(p => p.Sources.Length > 0 && !p.IsInstalled());
+		}
+
+		string LocalizedPackageTitle(string titleId)
+		{
+			if (translation == null)
+				return Game.Translate(titleId);
+			var t = translation(titleId);
+			return t != titleId ? t : Game.Translate(titleId);
 		}
 	}
 }

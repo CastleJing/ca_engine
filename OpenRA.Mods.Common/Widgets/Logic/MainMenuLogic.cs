@@ -24,17 +24,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class MainMenuLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string LoadingNews = "label-loading-news";
+		
+		const string LoadingNews = "Game-MainMenuLogic-NewsStatus-Loading";
 
-		[FluentReference("message")]
-		const string NewsRetrivalFailed = "label-news-retrieval-failed";
+		const string NewsRetrivalFailed = "Game-MainMenuLogic-NewsStatus-FailedToRetrieve";
 
-		[FluentReference("message")]
-		const string NewsParsingFailed = "label-news-parsing-failed";
+		const string NewsParsingFailed = "Game-MainMenuLogic-NewsStatus-FailedToParse";
 
-		[FluentReference("author", "datetime")]
-		const string AuthorDateTime = "label-author-datetime";
+		const string AuthorDateTime = "Game-MainMenuLogic-AuthorDateTime";
 
 		protected enum MenuType { Main, Singleplayer, Extras, MapEditor, StartupPrompts, None }
 
@@ -92,7 +89,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					Game.RunAfterTick(() =>
 					{
 						if (contentInstaller != null)
-							Game.InitializeMod(contentInstaller.ContentInstallerMod, new Arguments());
+							Game.InitializeMod(contentInstaller.ContentInstallerMod, new Arguments(new[] { "Content.Mod=" + modData.Manifest.Id }));
 					});
 				};
 			}
@@ -234,7 +231,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				maxNewsHeight = newsPanel.Bounds.Height;
 
 				newsStatus = newsPanel.Get<LabelWidget>("NEWS_STATUS");
-				SetNewsStatus(FluentProvider.GetMessage(LoadingNews));
+				SetNewsStatus(Game.Translate(LoadingNews));
 			}
 
 			Game.OnRemoteDirectConnect += OnRemoteDirectConnect;
@@ -336,7 +333,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 							catch (Exception e)
 							{
 								Game.RunAfterTick(() => // run on the main thread
-									SetNewsStatus(FluentProvider.GetMessage(NewsRetrivalFailed, "message", e.Message)));
+									SetNewsStatus(Game.Translate(NewsRetrivalFailed, "message", e.Message)));
 							}
 						});
 					}
@@ -407,7 +404,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 			catch (Exception ex)
 			{
-				SetNewsStatus(FluentProvider.GetMessage(NewsParsingFailed, "message", ex.Message));
+				SetNewsStatus(Game.Translate(NewsParsingFailed, "message", ex.Message));
 			}
 
 			return null;
@@ -426,7 +423,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				titleLabel.GetText = () => item.Title;
 
 				var authorDateTimeLabel = newsItem.Get<LabelWidget>("AUTHOR_DATETIME");
-				var authorDateTime = FluentProvider.GetMessage(AuthorDateTime,
+				var authorDateTime = Game.Translate(AuthorDateTime,
 					"author", item.Author,
 					"datetime", item.DateTime.ToLocalTime().ToString(CultureInfo.CurrentCulture));
 

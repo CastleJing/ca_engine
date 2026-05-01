@@ -18,13 +18,13 @@ namespace OpenRA.Mods.Common.Traits
 	[Desc("Controls the build radius checkboxes in the lobby options.")]
 	public class MapBuildRadiusInfo : TraitInfo, ILobbyOptions
 	{
-		[FluentReference]
+		
 		[Desc("Descriptive label for the ally build radius checkbox in the lobby.")]
-		public readonly string AllyBuildRadiusCheckboxLabel = "checkbox-ally-build-radius.label";
+		public readonly string AllyBuildRadiusCheckboxLabel = "Game-Trait-AllyBuildCheckboxLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the ally build radius checkbox in the lobby.")]
-		public readonly string AllyBuildRadiusCheckboxDescription = "checkbox-ally-build-radius.description";
+		public readonly string AllyBuildRadiusCheckboxDescription = "Game-Trait-AllyBuildCheckboxDesc";
 
 		[Desc("Default value of the ally build radius checkbox in the lobby.")]
 		public readonly bool AllyBuildRadiusCheckboxEnabled = true;
@@ -38,13 +38,13 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Display order for the ally build radius checkbox in the lobby.")]
 		public readonly int AllyBuildRadiusCheckboxDisplayOrder = 0;
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the build radius checkbox in the lobby.")]
-		public readonly string BuildRadiusCheckboxLabel = "checkbox-build-radius.label";
+		public readonly string BuildRadiusCheckboxLabel = "Game-Trait-BuildRadiusCheckboxLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the build radius checkbox in the lobby.")]
-		public readonly string BuildRadiusCheckboxDescription = "checkbox-build-radius.description";
+		public readonly string BuildRadiusCheckboxDescription = "Game-Trait-BuildRadiusCheckboxDesc";
 
 		[Desc("Default value of the build radius checkbox in the lobby.")]
 		public readonly bool BuildRadiusCheckboxEnabled = true;

@@ -276,7 +276,7 @@ Container@PLAYER_WIDGETS:
 					Width: PARENT_WIDTH - 30
 					Height: 25
 					Align: Right
-					Text: label-mute-indicator
+					Text: Game-MuteHotkeyLogic-Mute
 					Contrast: true
 		Image@SIDEBAR_BACKGROUND_TOP:
 			X: WINDOW_WIDTH - 226
@@ -359,7 +359,7 @@ Container@PLAYER_WIDGETS:
 							Width: 40
 							Height: 38
 							Background:
-							TooltipText: button-top-buttons-options-tooltip
+							TooltipText: Chrome-InGameMenu-Title
 							TooltipContainer: TOOLTIP_CONTAINER
 							DisableWorldSounds: true
 							VisualHeight: 0

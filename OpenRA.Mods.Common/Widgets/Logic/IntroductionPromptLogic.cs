@@ -22,11 +22,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		// Increment the version number when adding new stats
 		const int IntroductionVersion = 1;
 
-		[FluentReference]
-		const string Classic = "options-control-scheme.classic";
+		
+		const string Classic = "Game-SettingLogic-MouseControl-Classic";
 
-		[FluentReference]
-		const string Modern = "options-control-scheme.modern";
+		
+		const string Modern = "Game-SettingLogic-MouseControl-Modern";
 
 		readonly string classic;
 		readonly string modern;
@@ -43,8 +43,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var ds = Game.Settings.Graphics;
 			var gs = Game.Settings.Game;
 
-			classic = FluentProvider.GetMessage(Classic);
-			modern = FluentProvider.GetMessage(Modern);
+			classic = Game.Translate(Classic);
+			modern = Game.Translate(Modern);
 
 			var escPressed = false;
 			var nameTextfield = widget.Get<TextFieldWidget>("PLAYERNAME");

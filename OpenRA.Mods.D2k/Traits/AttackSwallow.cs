@@ -38,8 +38,8 @@ namespace OpenRA.Mods.D2k.Traits
 		[NotificationReference("Speech")]
 		public readonly string WormAttackNotification = "WormAttack";
 
-		[FluentReference]
-		public readonly string WormAttackTextNotification = "notification-worm-attack";
+		
+		public readonly string WormAttackTextNotification = "Game-D2k-AttackSwallow-WormAttack";
 
 		public override object Create(ActorInitializer init) { return new AttackSwallow(init.Self, this); }
 	}

@@ -18,6 +18,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime;
 using System.Threading;
+using OpenRA.FileSystem;
 using OpenRA.Graphics;
 using OpenRA.Network;
 using OpenRA.Primitives;
@@ -29,8 +30,7 @@ namespace OpenRA
 {
 	public static class Game
 	{
-		[FluentReference("filename")]
-		const string SavedScreenshot = "notification-saved-screenshot";
+		const string SavedScreenshot = "Game-Game-ScreenShot";
 
 		public const int TimestepJankThreshold = 250; // Don't catch up for delays larger than 250ms
 
@@ -39,6 +39,16 @@ namespace OpenRA
 
 		public static ModData ModData;
 		public static Settings Settings;
+
+		/// <summary>Incremented when Fluent bundles are reloaded after a language change (invalidates <see cref="Primitives.CachedTransform{T,U}"/> caches).</summary>
+		public static int UiTranslationGeneration;
+
+		internal static Translation Translation;
+
+		static Game()
+		{
+			TranslationCache.UiGeneration = () => UiTranslationGeneration;
+		}
 		public static CursorManager Cursor;
 		public static bool HideCursor;
 
@@ -487,7 +497,12 @@ namespace OpenRA
 				return;
 
 			ModData.InitializeLoaders(ModData.DefaultFileSystem);
+			ApplySystemLanguageOnFirstLaunch(ModData.Manifest);
 			Renderer.InitializeFonts(ModData);
+			if (ModData.Manifest.LanguageFontPaths != null && ModData.Manifest.LanguageFontPaths.Count > 0)
+				Renderer.PrecacheGlyphsForMergedLanguages(ModData, Settings.Player.Language, "en");
+			else
+				Renderer.PrecacheGlyphsForLanguage(ModData, Settings.Player.Language);
 
 			using (new PerfTimer("LoadMaps"))
 				ModData.MapCache.LoadMaps();
@@ -595,7 +610,7 @@ namespace OpenRA
 				Log.Write("debug", "Taking screenshot " + path);
 
 				Renderer.SaveScreenshot(path);
-				TextNotificationsManager.Debug(FluentProvider.GetMessage(SavedScreenshot, "filename", filename));
+				TextNotificationsManager.Debug(Game.Translate(SavedScreenshot, "path", path));
 			}
 		}
 
@@ -999,6 +1014,187 @@ namespace OpenRA
 				benchmark.Write();
 				Exit();
 			}
+		}
+
+		public static event Action OnLanguageChanged;
+
+		public static void LoadTranslation(string[] translations, IReadOnlyFileSystem fs)
+		{
+			Translation = new Translation(Settings.Player.Language, translations, fs);
+		}
+
+		public static string Translate(string key, IDictionary<string, object> args = null)
+		{
+			if (OrderManager?.World?.Map != null)
+			{
+				var str = OrderManager.World.Map.Translation.GetFormattedMessage(key, args);
+				if (str != key)
+					return str;
+			}
+
+			if (Translation == null)
+				return key;
+
+			return Translation.GetFormattedMessage(key, args);
+		}
+
+		public static string Translate(string key, params object[] args)
+		{
+			return Translate(key, ArgsToDictionary(args));
+		}
+
+		public static IDictionary<string, object> ArgsToDictionary(object[] args)
+		{
+			if (args == null || args.Length == 0)
+				return null;
+
+			var dict = new Dictionary<string, object>(args.Length / 2);
+			for (var i = 0; i + 1 < args.Length; i += 2)
+			{
+				if (args[i] is string argKey && !string.IsNullOrEmpty(argKey))
+					dict[argKey] = args[i + 1];
+			}
+
+			return dict;
+		}
+
+		public static bool TranslationContain(string key)
+		{
+			if (OrderManager?.World?.Map != null)
+			{
+				if (OrderManager.World.Map.Translation.Contain(key))
+					return true;
+			}
+
+			if (Translation == null)
+				return false;
+
+			return Translation.Contain(key);
+		}
+
+		/// <summary>Apply a UI language, reload Fluent bundles, and invalidate translated widget caches.</summary>
+		public static void SwitchLanguage(string language)
+		{
+			if (Settings?.Player == null || ModData == null)
+				return;
+
+			language = string.IsNullOrEmpty(language) ? "en" : language;
+			var supported = ModData.Manifest.SupportLanguages;
+			if (supported.Length > 0)
+			{
+				var match = supported.FirstOrDefault(s => s.Equals(language, StringComparison.OrdinalIgnoreCase));
+				language = match ?? "en";
+			}
+
+			if (ModData.Manifest.LanguageFontPaths != null && ModData.Manifest.LanguageFontPaths.Count > 0)
+			{
+				Renderer.PreloadLanguageFontSet(ModData, language);
+				Settings.Player.Language = language;
+				ModData.RemountLocalizationPackages();
+				Renderer.ActivateLanguageFontSet(language);
+			}
+			else
+			{
+				Settings.Player.Language = language;
+				ModData.RemountLocalizationPackages();
+			}
+
+			LoadTranslation(ModData.Manifest.Translations, ModData.ModFiles);
+
+			if (OrderManager?.World?.Map != null)
+			{
+				var map = OrderManager.World.Map;
+				map.Translation = new Translation(Settings.Player.Language, map.Translations ?? Array.Empty<string>(), map);
+			}
+
+			UiTranslationGeneration++;
+			Ui.OnLanguageChanged();
+			OnLanguageChanged?.Invoke();
+
+			if (Renderer != null)
+			{
+				if (ModData.Manifest.LanguageFontPaths != null && ModData.Manifest.LanguageFontPaths.Count > 0)
+					Renderer.PrecacheGlyphsForMergedLanguages(ModData, language, "en");
+				else
+					Renderer.PrecacheGlyphsForLanguage(ModData, language);
+			}
+
+			var metadata = ModData.Manifest.Metadata;
+			if (!string.IsNullOrEmpty(metadata.WindowTitleTranslated))
+				Renderer.Window.SetWindowTitle(metadata.WindowTitleTranslated);
+		}
+
+		internal static void ApplySystemLanguageOnFirstLaunch(Manifest manifest)
+		{
+			if (Settings == null || Settings.SettingsFileExisted || manifest == null)
+				return;
+
+			var supported = manifest.SupportLanguages;
+			if (supported == null || supported.Length == 0)
+				return;
+
+			var match = MatchInstalledUiCultureToSupportedLanguage(supported);
+			if (match == null || Settings.Player.Language == match)
+				return;
+
+			SwitchLanguage(match);
+			Settings.Save();
+		}
+
+		static string MatchInstalledUiCultureToSupportedLanguage(string[] supported)
+		{
+			var culture = CultureInfo.InstalledUICulture;
+			if (culture == null || supported == null || supported.Length == 0)
+				return null;
+
+			string TryMatch(string code)
+			{
+				if (string.IsNullOrEmpty(code))
+					return null;
+
+				foreach (var s in supported)
+					if (s.Equals(code, StringComparison.OrdinalIgnoreCase))
+						return s;
+
+				return null;
+			}
+
+			var full = TryMatch(culture.Name);
+			if (full != null)
+				return full;
+
+			var dash = culture.Name.IndexOf('-');
+			if (dash > 0)
+			{
+				var primary = TryMatch(culture.Name.Substring(0, dash));
+				if (primary != null)
+					return primary;
+			}
+
+			var two = TryMatch(culture.TwoLetterISOLanguageName);
+			if (two != null)
+				return two;
+
+			for (var p = culture.Parent; p != null && !CultureInfo.InvariantCulture.Equals(p); p = p.Parent)
+			{
+				full = TryMatch(p.Name);
+				if (full != null)
+					return full;
+
+				dash = p.Name.IndexOf('-');
+				if (dash > 0)
+				{
+					var primary = TryMatch(p.Name.Substring(0, dash));
+					if (primary != null)
+						return primary;
+				}
+
+				two = TryMatch(p.TwoLetterISOLanguageName);
+				if (two != null)
+					return two;
+			}
+
+			return null;
 		}
 	}
 

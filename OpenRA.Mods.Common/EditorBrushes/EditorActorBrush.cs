@@ -143,8 +143,7 @@ namespace OpenRA.Mods.Common.Widgets
 	{
 		public string Text { get; private set; }
 
-		[FluentReference("name", "id")]
-		const string AddedActor = "notification-added-actor";
+		const string AddedActor = "Game-EditorActorBrush-AddedActor";
 
 		readonly EditorActorLayer editorLayer;
 		readonly ActorReference actor;
@@ -167,7 +166,7 @@ namespace OpenRA.Mods.Common.Widgets
 		public void Do()
 		{
 			editorActorPreview = editorLayer.Add(actor);
-			Text = FluentProvider.GetMessage(AddedActor,
+			Text = Game.Translate(AddedActor,
 				"name", editorActorPreview.Info.Name,
 				"id", editorActorPreview.ID);
 		}

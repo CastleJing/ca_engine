@@ -6,7 +6,7 @@ Container@MULTIPLAYER_PANEL:
 	Height: 540
 	Children:
 		Label@TITLE:
-			Text: label-multiplayer-title
+			Text: Chrome-MainMenu-Multiplayer
 			Width: PARENT_WIDTH
 			Height: 25
 			Y: 0 - 34
@@ -28,26 +28,26 @@ Container@MULTIPLAYER_PANEL:
 							X: 5
 							Width: 355
 							Height: 25
-							Text: label-container-server
+							Text: Chrome-LobbyServers-Name
 							Align: Center
 							Font: Bold
 						Label@PLAYERS:
 							X: 390
 							Width: 85
 							Height: 25
-							Text: label-container-players
+							Text: Chrome-LobbyServers-Players
 							Font: Bold
 						Label@LOCATION:
 							X: 480
 							Width: 110
 							Height: 25
-							Text: label-container-location
+							Text: Chrome-LobbyServers-Location
 							Font: Bold
 						Label@STATUS:
 							X: 595
 							Width: 50
 							Height: 25
-							Text: label-container-status
+							Text: Chrome-LobbyServers-Status
 							Font: Bold
 				LogicTicker@NOTICE_WATCHER:
 				Container@NOTICE_CONTAINER:
@@ -66,21 +66,21 @@ Container@MULTIPLAYER_PANEL:
 									Width: PARENT_WIDTH - 10
 									Height: 20
 									Align: Center
-									Text: label-bg-outdated-version
+									Text: Chrome-LobbyServers-OutDateVersion
 									Font: TinyBold
 								Label@UNKNOWN_VERSION_LABEL:
 									X: 5
 									Width: PARENT_WIDTH - 10
 									Height: 20
 									Align: Center
-									Text: label-bg-unknown-version
+									Text: Chrome-LobbyServers-UnknownVersion
 									Font: TinyBold
 								Label@PLAYTEST_AVAILABLE_LABEL:
 									X: 5
 									Width: PARENT_WIDTH - 10
 									Height: 20
 									Align: Center
-									Text: label-bg-playtest-available
+									Text: Chrome-LobbyServers-PlaytestAvailable
 									Font: TinyBold
 				ScrollPanel@SERVER_LIST:
 					X: 15
@@ -211,13 +211,13 @@ Container@MULTIPLAYER_PANEL:
 							Y: 255
 							Width: PARENT_WIDTH
 							Height: 25
-							Text: button-selected-server-join
+							Text: Chrome-MPBrowser-JoinButton
 				DropDownButton@FILTERS_DROPDOWNBUTTON:
 					X: 15
 					Y: PARENT_HEIGHT - 40
 					Width: 152
 					Height: 25
-					Text: dropdownbutton-bg-filters
+					Text: Chrome-MPBrowser-Filter
 				Button@RELOAD_BUTTON:
 					X: 172
 					Y: PARENT_HEIGHT - 40
@@ -246,18 +246,18 @@ Container@MULTIPLAYER_PANEL:
 					Y: PARENT_HEIGHT - 40
 					Width: 100
 					Height: 25
-					Text: button-bg-directconnect
+					Text: Chrome-MPBrowser-DirectIP
 				Button@CREATE_BUTTON:
 					X: 592
 					Y: PARENT_HEIGHT - 40
 					Width: 105
 					Height: 25
-					Text: button-bg-create
+					Text: Chrome-MPBrowser-CreateHost
 		Button@BACK_BUTTON:
 			Key: escape
 			X: 0
 			Y: PARENT_HEIGHT - 1
 			Width: 140
 			Height: 35
-			Text: button-back
+			Text: Chrome-MPBrowser-BackButton
 		TooltipContainer@TOOLTIP_CONTAINER:

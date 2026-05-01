@@ -259,7 +259,6 @@ namespace OpenRA
 
 	public static class KeycodeExts
 	{
-		[FluentReference(Traits.LintDictionaryReference.Values)]
 		public static readonly IReadOnlyDictionary<Keycode, string> KeycodeFluentKeys = new Dictionary<Keycode, string>()
 		{
 			{ Keycode.UNKNOWN, "keycode.unknown" },
@@ -507,7 +506,7 @@ namespace OpenRA
 			if (!KeycodeFluentKeys.TryGetValue(k, out var fluentKey))
 				return k.ToString();
 
-			return FluentProvider.GetMessage(fluentKey);
+			return Game.Translate(fluentKey);
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace OpenRA.Traits
 	[TraitLocation(SystemActors.World | SystemActors.EditorWorld)]
 	public class FactionInfo : TraitInfo<Faction>
 	{
-		[FluentReference]
+		
 		[Desc("This is the name exposed to the players.")]
 		public readonly string Name = null;
 
@@ -30,7 +30,6 @@ namespace OpenRA.Traits
 		[Desc("The side that the faction belongs to. For example, England belongs to the 'Allies' side.")]
 		public readonly string Side = null;
 
-		[FluentReference(optional: true)]
 		[Desc("This is shown in the lobby as a tooltip.")]
 		public readonly string Description = null;
 

@@ -14,7 +14,7 @@ Background@ENCYCLOPEDIA_PANEL:
 				Label@ENCYCLOPEDIA_TITLE:
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: label-mentat-title
+					Text: Chrome-D2k-MentatTitle
 					Align: Center
 					Font: Bold
 				ScrollPanel@ACTOR_LIST:
@@ -79,7 +79,7 @@ Background@ENCYCLOPEDIA_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-back
+			Text: Chrome-MainMenu-Back
 			Font: Bold
 			Key: escape
 		TooltipContainer@TOOLTIP_CONTAINER:

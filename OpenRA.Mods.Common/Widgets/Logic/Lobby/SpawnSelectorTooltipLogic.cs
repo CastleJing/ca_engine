@@ -18,14 +18,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class SpawnSelectorTooltipLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string DisabledSpawn = "label-disabled-spawn";
+		
+		const string DisabledSpawn = "Game-SpawnSelectorTooltipLogic-Disabled";
 
-		[FluentReference]
-		const string AvailableSpawn = "label-available-spawn";
+		
+		const string AvailableSpawn = "Game-SpawnSelectorTooltipLogic-Available";
 
-		[FluentReference("team")]
-		const string TeamNumber = "label-team-name";
+		const string TeamNumber = "Game-SpawnSelectorTooltipLogic-Team";
 
 		readonly CachedTransform<int, string> teamMessage;
 
@@ -49,9 +48,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var labelText = "";
 			string playerFaction = null;
 			var playerTeam = -1;
-			teamMessage = new CachedTransform<int, string>(t => FluentProvider.GetMessage(TeamNumber, "team", t));
-			var disabledSpawn = FluentProvider.GetMessage(DisabledSpawn);
-			var availableSpawn = FluentProvider.GetMessage(AvailableSpawn);
+			teamMessage = new CachedTransform<int, string>(t => Game.Translate(TeamNumber, "0", t));
+			var disabledSpawn = Game.Translate(DisabledSpawn);
+			var availableSpawn = Game.Translate(AvailableSpawn);
 
 			tooltipContainer.BeforeRender = () =>
 			{

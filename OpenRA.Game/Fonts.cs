@@ -27,11 +27,28 @@ namespace OpenRA
 
 		static object LoadFonts(MiniYaml y)
 		{
+			return ParseFontDefinitions(y);
+		}
+
+		/// <summary>Parse a <c>Fonts</c> YAML section (child nodes are font slot names).</summary>
+		public static Dictionary<string, FontData> ParseFontDefinitions(MiniYaml fontsSection)
+		{
 			var ret = new Dictionary<string, FontData>();
-			foreach (var node in y.Nodes)
+			if (fontsSection?.Nodes == null)
+				return ret;
+
+			foreach (var node in fontsSection.Nodes)
 				ret.Add(node.Key, FieldLoader.Load<FontData>(node.Value));
 
 			return ret;
+		}
+
+		/// <summary>Build a <see cref="Fonts"/> module for trait validation when only per-language font files exist.</summary>
+		public static Fonts FromFontsSection(ObjectCreator oc, MiniYaml fontsSection)
+		{
+			var f = (Fonts)oc.CreateObject<IGlobalModData>("Fonts");
+			FieldLoader.Load(f, fontsSection);
+			return f;
 		}
 	}
 }

@@ -26,7 +26,7 @@ Container@LOCAL_PROFILE_PANEL:
 					Width: 60
 					Height: 20
 					Font: TinyBold
-					Text: button-profile-header-logout
+					Text: Chrome-PlayerProfile-Logout
 		Background@BADGES_CONTAINER:
 			Width: PARENT_WIDTH
 			Y: 48
@@ -43,28 +43,28 @@ Container@LOCAL_PROFILE_PANEL:
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-generate-keys-desc-a
+					Text: Chrome-PlayerProfile-GenKey
 				Label@DESC_B:
 					Y: 22
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-generate-keys-desc-b
+					Text: Chrome-PlayerProfile-GenKeyButton
 				Label@DESC_C:
 					Y: 38
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-generate-keys-desc-c
+					Text: Chrome-PlayerProfile-GenKey
 				Button@GENERATE_KEY:
 					X: (PARENT_WIDTH - WIDTH) / 2
 					Y: 70
 					Width: 240
 					Height: 20
 					Font: TinyBold
-					Text: button-generate-keys-key
+					Text: Chrome-PlayerProfile-GenKeyButton
 		Background@GENERATING_KEYS:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -76,14 +76,14 @@ Container@LOCAL_PROFILE_PANEL:
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-generating-keys-desc-a
+					Text: Chrome-PlayerProfile-Gening
 				Label@DESC_B:
 					Y: 30
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-generating-keys-desc-b
+					Text: Chrome-PlayerProfile-Gening
 				ProgressBar:
 					X: (PARENT_WIDTH - WIDTH) / 2
 					Y: 70
@@ -101,35 +101,35 @@ Container@LOCAL_PROFILE_PANEL:
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-register-fingerprint-desc-a
+					Text: Chrome-PlayerProfile-Register
 				Label@DESC_B:
 					Y: 19
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-register-fingerprint-desc-b
+					Text: Chrome-PlayerProfile-Register
 				Label@DESC_C:
 					Y: 35
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-register-fingerprint-desc-c
+					Text: Chrome-PlayerProfile-Register
 				Button@DELETE_KEY:
 					X: 15
 					Y: 70
 					Width: 70
 					Height: 20
 					Font: TinyBold
-					Text: button-cancel
+					Text: Chrome-PlayerProfile-Register-CancelButton
 				Button@CHECK_KEY:
 					X: 185
 					Y: 70
 					Width: 70
 					Height: 20
 					Font: TinyBold
-					Text: button-continue
+					Text: Chrome-PlayerProfile-Register-ContinueButton
 		Background@CHECKING_FINGERPRINT:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -141,14 +141,14 @@ Container@LOCAL_PROFILE_PANEL:
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-checking-fingerprint-desc-a
+					Text: Chrome-PlayerProfile-Checking
 				Label@DESC_B:
 					Y: 30
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-checking-fingerprint-desc-b
+					Text: Chrome-PlayerProfile-Checking
 				ProgressBar:
 					X: (PARENT_WIDTH - WIDTH) / 2
 					Y: 70
@@ -166,21 +166,21 @@ Container@LOCAL_PROFILE_PANEL:
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-fingerprint-not-found-desc-a
+					Text: Chrome-PlayerProfile-NotFound
 				Label@DESC_B:
 					Y: 30
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-fingerprint-not-found-desc-b
+					Text: Chrome-PlayerProfile-NotFound
 				Button@FINGERPRINT_NOT_FOUND_CONTINUE:
 					X: 185
 					Y: 70
 					Width: 70
 					Height: 20
 					Font: TinyBold
-					Text: button-back
+					Text: Chrome-PlayerProfile-NotFound-BackButton
 		Background@CONNECTION_ERROR:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -192,21 +192,21 @@ Container@LOCAL_PROFILE_PANEL:
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-connection-error-desc-a
+					Text: Chrome-PlayerProfile-ConnectError
 				Label@DESC_B:
 					Y: 30
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Small
 					Align: Center
-					Text: label-connection-error-desc-b
+					Text: Chrome-PlayerProfile-ConnectError
 				Button@CONNECTION_ERROR_RETRY:
 					X: 185
 					Y: 70
 					Width: 70
 					Height: 20
 					Font: TinyBold
-					Text: button-retry
+					Text: Chrome-Connection-RetryButton
 
 Container@PLAYER_PROFILE_BADGES_INSERT:
 	Logic: PlayerProfileBadgesLogic

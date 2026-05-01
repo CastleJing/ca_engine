@@ -10,6 +10,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using OpenRA.Primitives;
 using OpenRA.Support;
 
@@ -49,6 +50,27 @@ namespace OpenRA.Graphics
 							throw new InvalidOperationException();
 
 			TopOffset = size - ascender;
+		}
+
+		/// <summary>
+		/// Force rasterization of each distinct code unit into the glyph sheet (used for CJK warm-up).
+		/// Surrogate pairs are stepped as two chars, matching <see cref="DrawText"/> iteration.
+		/// </summary>
+		public void PrecacheChars(string text)
+		{
+			if (string.IsNullOrEmpty(text))
+				return;
+
+			var seen = new HashSet<char>();
+			foreach (var c in text)
+			{
+				if (c == '\r' || c == '\n')
+					continue;
+				if (!seen.Add(c))
+					continue;
+
+				glyphs[c].GetHashCode();
+			}
 		}
 
 		public void SetScale(float scale)

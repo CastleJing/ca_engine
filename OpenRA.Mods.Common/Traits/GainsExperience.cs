@@ -49,7 +49,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Sounds")]
 		public readonly string LevelUpNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string LevelUpTextNotification = null;
 
 		public override object Create(ActorInitializer init) { return new GainsExperience(init, this); }

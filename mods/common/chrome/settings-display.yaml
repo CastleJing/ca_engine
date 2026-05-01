@@ -22,7 +22,7 @@ Container@DISPLAY_PANEL:
 							Height: PARENT_HEIGHT
 							Font: TinyBold
 							Align: Center
-							Text: label-profile-section-header
+							Text: Chrome-MainMenu-Prompts-ProfileTitle
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -34,14 +34,14 @@ Container@DISPLAY_PANEL:
 								LabelForInput@PLAYER:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-player-container
+									Text: Chrome-Setting-Player-PlayerName
 									For: PLAYERNAME
 								TextField@PLAYERNAME:
 									Y: 25
 									Width: PARENT_WIDTH
 									Height: 25
 									MaxLength: 16
-									Text: Name
+									Text: Chrome-Setting-Player-PlayerName-PlaceHolder
 						Container@PLAYERCOLOR_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
 							Width: PARENT_WIDTH / 2 - 20
@@ -49,7 +49,7 @@ Container@DISPLAY_PANEL:
 								LabelForInput@COLOR:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-playercolor-container-color
+									Text: Chrome-Setting-Player-Color
 									For: PLAYERCOLOR
 								DropDownButton@PLAYERCOLOR:
 									Y: 25
@@ -76,7 +76,7 @@ Container@DISPLAY_PANEL:
 							Height: PARENT_HEIGHT
 							Font: TinyBold
 							Align: Center
-							Text: label-display-section-header
+							Text: Chrome-Setting-Display
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -88,7 +88,7 @@ Container@DISPLAY_PANEL:
 								Label@BATTLEFIELD_CAMERA:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-battlefield-camera-dropdown
+									Text: Chrome-Setting-Player-Camera
 								DropDownButton@BATTLEFIELD_CAMERA_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -101,7 +101,7 @@ Container@DISPLAY_PANEL:
 								Label@TARGET_LINES:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-target-lines-dropdown-container
+									Text: Chrome-Setting-Player-TargetLine
 								DropDownButton@TARGET_LINES_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -118,7 +118,7 @@ Container@DISPLAY_PANEL:
 								LabelForInput@UI_SCALE:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-ui-scale-dropdown
+									Text: Chrome-Setting-Player-UiScale
 									For: UI_SCALE_DROPDOWN
 								DropDownButton@UI_SCALE_DROPDOWN:
 									Y: 25
@@ -132,7 +132,7 @@ Container@DISPLAY_PANEL:
 								Label@STATUS_BARS:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-status-bar-dropdown-container-bars
+									Text: Chrome-Setting-Player-StatusBars
 								DropDownButton@STATUS_BAR_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -150,7 +150,7 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-cursordouble-container
+									Text: Chrome-Setting-Player-DoubleMouse
 						Container@PLAYER_STANCE_COLORS_CHECKBOX_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
 							Width: PARENT_WIDTH / 2 - 20
@@ -159,8 +159,8 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-player-stance-colors-container.label
-									TooltipText: checkbox-player-stance-colors-container.tooltip
+									Text: Chrome-Setting-Player-StanceColor
+									TooltipText: Chrome-Setting-Player-StanceColor-Tooltip
 									TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
@@ -174,8 +174,8 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-ui-feedback-container.label
-									TooltipText: checkbox-ui-feedback-container.tooltip
+									Text: Chrome-Setting-Player-UiFeedbackCheckbox
+									TooltipText: Chrome-Setting-Player-UiFeedbackCheckbox-Tooltip
 									TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 						Container@TRANSIENTS_CHECKBOX_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
@@ -185,8 +185,8 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-transients-container.label
-									TooltipText: checkbox-transients-container.tooltip
+									Text: Chrome-Setting-Player-GameEventNotifications
+									TooltipText: Chrome-Setting-Player-GameEventNotifications-Tooltip
 									TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
@@ -200,7 +200,7 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-pause-shellmap-container
+									Text: Chrome-Setting-Player-PauseShellmap
 						Container@HIDE_REPLAY_CHAT_CHECKBOX_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
 							Width: PARENT_WIDTH / 2 - 10
@@ -209,7 +209,7 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-hide-replay-chat-container
+									Text: Chrome-Setting-Display-HideReplayChat
 				Container@SPACER:
 				Background@VIDEO_SECTION_HEADER:
 					X: 5
@@ -223,7 +223,7 @@ Container@DISPLAY_PANEL:
 							Height: PARENT_HEIGHT
 							Font: TinyBold
 							Align: Center
-							Text: label-video-section-header
+							Text: Chrome-Setting-Display
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -235,13 +235,13 @@ Container@DISPLAY_PANEL:
 								Label@VIDEO_MODE:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-video-mode-dropdown-container
+									Text: Chrome-Setting-Display-VideoMode
 								DropDownButton@MODE_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
 									Height: 25
 									Font: Regular
-									Text: dropdownbutton-video-mode-dropdown-container
+									Text: Chrome-Setting-Display-VideoMode-Dropdown
 						Container@WINDOW_RESOLUTION_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
 							Width: PARENT_WIDTH / 2 - 20
@@ -249,7 +249,7 @@ Container@DISPLAY_PANEL:
 								Label@WINDOW_SIZE:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-window-resolution-container-size
+									Text: Chrome-Setting-Display-WindowSize
 								TextField@WINDOW_WIDTH:
 									Y: 25
 									Width: 55
@@ -259,7 +259,7 @@ Container@DISPLAY_PANEL:
 								Label@X:
 									X: 55
 									Y: 25
-									Text: label-window-resolution-container-x
+									Text: Chrome-Setting-Display-WindowSize-x
 									Font: Bold
 									Height: 25
 									Width: 15
@@ -278,13 +278,13 @@ Container@DISPLAY_PANEL:
 								Label@DISPLAY_SELECTION_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-display-selection-container
+									Text: Chrome-Setting-Display-Display
 								DropDownButton@DISPLAY_SELECTION_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
 									Height: 25
 									Font: Regular
-									Text: dropdownbutton-display-selection-container-dropdown
+									Text: Chrome-Setting-Display-Display-Dropdown
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -316,7 +316,7 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-vsync-container
+									Text: Chrome-Setting-Display-VSync
 						Container@FRAME_LIMIT_GAMESPEED_CHECKBOX_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
 							Y: 25
@@ -326,7 +326,7 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-frame-limit-gamespeed-container
+									Text: Chrome-Setting-Display-FrameLimit
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -338,7 +338,7 @@ Container@DISPLAY_PANEL:
 								Label@GL_PROFILE:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-gl-profile-dropdown-container
+									Text: Chrome-Setting-Display-GlProfile
 								DropDownButton@GL_PROFILE_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -356,5 +356,5 @@ Container@DISPLAY_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Tiny
-									Text: label-restart-required-container-video-desc
+									Text: Chrome-Setting-Display-Restart-Text
 									Align: Center

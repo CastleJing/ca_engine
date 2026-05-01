@@ -169,7 +169,7 @@ namespace OpenRA.Mods.Common.Scripting
 				if (tooltip == null)
 					return null;
 
-				return FluentProvider.GetMessage(tooltip.Info.Name);
+				return Game.Translate(tooltip.Info.Name);
 			}
 		}
 

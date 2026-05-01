@@ -18,23 +18,23 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class InputSettingsLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string Classic = "options-control-scheme.classic";
+		
+		const string Classic = "Game-SettingLogic-MouseControl-Classic";
 
-		[FluentReference]
-		const string Modern = "options-control-scheme.modern";
+		
+		const string Modern = "Game-SettingLogic-MouseControl-Modern";
 
-		[FluentReference]
-		const string Disabled = "options-mouse-scroll-type.disabled";
+		
+		const string Disabled = "Game-SettingLogic-MouseScroll-Disable";
 
-		[FluentReference]
-		const string Standard = "options-mouse-scroll-type.standard";
+		
+		const string Standard = "Game-SettingLogic-MouseScroll-Standard";
 
-		[FluentReference]
-		const string Inverted = "options-mouse-scroll-type.inverted";
+		
+		const string Inverted = "Game-SettingLogic-MouseScroll-Inverted";
 
-		[FluentReference]
-		const string Joystick = "options-mouse-scroll-type.joystick";
+		
+		const string Joystick = "Game-SettingLogic-MouseScroll-Joystick";
 
 		static InputSettingsLogic() { }
 
@@ -44,8 +44,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		[ObjectCreator.UseCtor]
 		public InputSettingsLogic(Action<string, string, Func<Widget, Func<bool>>, Func<Widget, Action>> registerPanel, string panelID, string label)
 		{
-			classic = FluentProvider.GetMessage(Classic);
-			modern = FluentProvider.GetMessage(Modern);
+			classic = Game.Translate(Classic);
+			modern = Game.Translate(Modern);
 
 			registerPanel(panelID, label, InitPanel, ResetPanel);
 		}
@@ -148,8 +148,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			var options = new Dictionary<string, bool>()
 			{
-				{ FluentProvider.GetMessage(Classic), true },
-				{ FluentProvider.GetMessage(Modern), false },
+				{ Game.Translate(Classic), true },
+				{ Game.Translate(Modern), false },
 			};
 
 			ScrollItemWidget SetupItem(string o, ScrollItemWidget itemTemplate)
@@ -168,10 +168,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			var options = new Dictionary<string, MouseScrollType>()
 			{
-				{ FluentProvider.GetMessage(Disabled), MouseScrollType.Disabled },
-				{ FluentProvider.GetMessage(Standard), MouseScrollType.Standard },
-				{ FluentProvider.GetMessage(Inverted), MouseScrollType.Inverted },
-				{ FluentProvider.GetMessage(Joystick), MouseScrollType.Joystick },
+				{ Game.Translate(Disabled), MouseScrollType.Disabled },
+				{ Game.Translate(Standard), MouseScrollType.Standard },
+				{ Game.Translate(Inverted), MouseScrollType.Inverted },
+				{ Game.Translate(Joystick), MouseScrollType.Joystick },
 			};
 
 			ScrollItemWidget SetupItem(string o, ScrollItemWidget itemTemplate)

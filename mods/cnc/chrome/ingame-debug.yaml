@@ -6,7 +6,7 @@ Container@DEBUG_PANEL:
 		Label@TITLE:
 			Y: 16
 			Font: Bold
-			Text: label-debug-panel-title
+			Text: Chrome-InGameDebug-Title
 			Align: Center
 			Width: PARENT_WIDTH
 			Height: 20
@@ -16,42 +16,42 @@ Container@DEBUG_PANEL:
 			Width: 200
 			Height: 20
 			Font: Regular
-			Text: checkbox-debug-panel-instant-build
+			Text: Chrome-InGameDebug-InstantBuild
 		Checkbox@ENABLE_TECH:
 			X: 45
 			Y: 75
 			Width: 200
 			Height: 20
 			Font: Regular
-			Text: checkbox-debug-panel-enable-tech
+			Text: Chrome-InGameDebug-EnableTech
 		Checkbox@BUILD_ANYWHERE:
 			X: 45
 			Y: 105
 			Width: 200
 			Height: 20
 			Font: Regular
-			Text: checkbox-debug-panel-build-anywhere
+			Text: Chrome-InGameDebug-BuildAnywhere
 		Checkbox@UNLIMITED_POWER:
 			X: 290
 			Y: 45
 			Width: 200
 			Height: 20
 			Font: Regular
-			Text: checkbox-debug-panel-unlimited-power
+			Text: Chrome-InGameDebug-UnlimitedPower
 		Checkbox@INSTANT_CHARGE:
 			X: 290
 			Y: 75
 			Width: 200
 			Height: 20
 			Font: Regular
-			Text: checkbox-debug-panel-instant-charge
+			Text: Chrome-InGameDebug-InstantCharge
 		Checkbox@DISABLE_VISIBILITY_CHECKS:
 			X: 290
 			Y: 105
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-disable-visibility-checks
+			Text: Chrome-InGameDebug-DisableVisibilityChecks
 		Button@GIVE_CASH:
 			X: 90
 			Y: 145
@@ -79,7 +79,7 @@ Container@DEBUG_PANEL:
 		Label@VISUALIZATIONS_TITLE:
 			Y: 246
 			Font: Bold
-			Text: label-debug-panel-visualizations-title
+			Text: Chrome-InGameDebug-Visualizations-Title
 			Align: Center
 			Width: PARENT_WIDTH
 			Height: 20
@@ -89,46 +89,46 @@ Container@DEBUG_PANEL:
 			Width: 200
 			Height: 20
 			Font: Regular
-			Text: checkbox-debug-panel-show-unit-paths
+			Text: Chrome-InGameDebug-ShowUnitPaths
 		Checkbox@SHOW_CUSTOMTERRAIN_OVERLAY:
 			X: 45
 			Y: 305
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-show-customterrain-overlay
+			Text: Chrome-InGameDebug-ShowCustomTerrainOverlay
 		Checkbox@SHOW_ACTOR_TAGS:
 			X: 45
 			Y: 335
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-show-actor-tags
+			Text: Chrome-InGameDebug-ShowActorTags
 		Checkbox@SHOW_COMBATOVERLAY:
 			X: 290
 			Y: 275
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-show-combatoverlay
+			Text: Chrome-InGameDebug-ShowCombatOverlay
 		Checkbox@SHOW_GEOMETRY:
 			X: 290
 			Y: 305
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-show-geometry
+			Text: Chrome-InGameDebug-ShowRenderGeometry
 		Checkbox@SHOW_TERRAIN_OVERLAY:
 			X: 290
 			Y: 335
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-show-terrain-overlay
+			Text: Chrome-InGameDebug-ShowTerrainOverlay
 		Checkbox@SHOW_SCREENMAP:
 			X: 290
 			Y: 365
 			Height: 20
 			Width: 200
 			Font: Regular
-			Text: checkbox-debug-panel-show-screenmap
+			Text: Chrome-InGameDebug-ShowScreenMap

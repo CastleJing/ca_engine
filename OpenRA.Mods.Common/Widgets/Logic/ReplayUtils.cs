@@ -16,28 +16,25 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public static class ReplayUtils
 	{
-		[FluentReference]
+		
 		const string IncompatibleReplayTitle = "dialog-incompatible-replay.title";
 
-		[FluentReference]
+		
 		const string IncompatibleReplayPrompt = "dialog-incompatible-replay.prompt";
 
-		[FluentReference]
+		
 		const string IncompatibleReplayAccept = "dialog-incompatible-replay.confirm";
 
-		[FluentReference]
+		
 		const string UnknownVersion = "dialog-incompatible-replay.prompt-unknown-version";
 
-		[FluentReference]
+		
 		const string UnknownMod = "dialog-incompatible-replay.prompt-unknown-mod";
 
-		[FluentReference("mod")]
 		const string UnvailableMod = "dialog-incompatible-replay.prompt-unavailable-mod";
 
-		[FluentReference("version")]
 		const string IncompatibleVersion = "dialog-incompatible-replay.prompt-incompatible-version";
 
-		[FluentReference("map")]
 		const string UnvailableMap = "dialog-incompatible-replay.prompt-unavailable-map";
 
 		static readonly Action DoNothing = () => { };

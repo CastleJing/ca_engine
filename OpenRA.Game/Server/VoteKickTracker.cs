@@ -17,23 +17,19 @@ namespace OpenRA.Server
 {
 	public sealed class VoteKickTracker
 	{
-		[FluentReference("kickee")]
-		const string InsufficientVotes = "notification-insufficient-votes-to-kick";
+		const string InsufficientVotes = "Game-VoteKickTracker-InsufficientVotes";
 
-		[FluentReference]
-		const string AlreadyVoted = "notification-kick-already-voted";
+		
+		const string AlreadyVoted = "Game-VoteKickTracker-AlreadyVoted";
 
-		[FluentReference("kicker", "kickee")]
-		const string VoteKickStarted = "notification-vote-kick-started";
+		const string VoteKickStarted = "Game-VoteKickTracker-Started";
 
-		[FluentReference]
-		const string UnableToStartAVote = "notification-unable-to-start-a-vote";
+		
+		const string UnableToStartAVote = "Game-VoteKickTracker-UnableToStartVote";
 
-		[FluentReference("kickee", "percentage")]
-		const string VoteKickProgress = "notification-vote-kick-in-progress";
+		const string VoteKickProgress = "Game-VoteKickTracker-InProgress";
 
-		[FluentReference("kickee")]
-		const string VoteKickEnded = "notification-vote-kick-ended";
+		const string VoteKickEnded = "Game-VoteKickTracker-Ended";
 
 		readonly Dictionary<int, bool> voteTracker = new();
 		readonly Dictionary<Session.Client, long> failedVoteKickers = new();

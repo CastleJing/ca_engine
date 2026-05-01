@@ -13,13 +13,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-
 namespace OpenRA
 {
 	using UtilityActions = Dictionary<string, KeyValuePair<Action<Utility, string[]>, Func<string[], bool>>>;
 
-	[Serializable]
 	public class NoSuchCommandException : Exception
 	{
 		public readonly string Command;
@@ -27,12 +24,6 @@ namespace OpenRA
 			: base($"No such command '{command}'")
 		{
 			Command = command;
-		}
-
-		public override void GetObjectData(SerializationInfo info, StreamingContext context)
-		{
-			base.GetObjectData(info, context);
-			info.AddValue("Command", Command);
 		}
 	}
 

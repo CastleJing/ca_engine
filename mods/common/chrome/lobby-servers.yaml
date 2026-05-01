@@ -11,26 +11,26 @@ Container@LOBBY_SERVERS_BIN:
 					X: 5
 					Width: 347
 					Height: 25
-					Text: label-container-server
+					Text: Chrome-LobbyServers-Name
 					Align: Center
 					Font: Bold
 				Label@PLAYERS:
 					X: 382
 					Width: 85
 					Height: 25
-					Text: label-container-players
+					Text: Chrome-LobbyServers-Players
 					Font: Bold
 				Label@LOCATION:
 					X: 472
 					Width: 110
 					Height: 25
-					Text: label-container-location
+					Text: Chrome-LobbyServers-Location
 					Font: Bold
 				Label@STATUS:
 					X: 587
 					Width: 50
 					Height: 25
-					Text: label-container-status
+					Text: Chrome-LobbyServers-Status
 					Font: Bold
 		LogicTicker@NOTICE_WATCHER:
 		Background@NOTICE_CONTAINER:
@@ -43,21 +43,21 @@ Container@LOBBY_SERVERS_BIN:
 					Width: PARENT_WIDTH - 10
 					Height: 20
 					Align: Center
-					Text: label-notice-container-outdated-version
+					Text: Chrome-LobbyServers-OutDateVersion
 					Font: TinyBold
 				Label@UNKNOWN_VERSION_LABEL:
 					X: 5
 					Width: PARENT_WIDTH - 10
 					Height: 20
 					Align: Center
-					Text: label-notice-container-unknown-version
+					Text: Chrome-LobbyServers-UnknownVersion
 					Font: TinyBold
 				Label@PLAYTEST_AVAILABLE_LABEL:
 					X: 5
 					Width: PARENT_WIDTH - 10
 					Height: 20
 					Align: Center
-					Text: label-notice-container-playtest-available
+					Text: Chrome-LobbyServers-PlaytestAvailable
 					Font: TinyBold
 		ScrollPanel@SERVER_LIST:
 			Width: PARENT_WIDTH
@@ -130,7 +130,7 @@ Container@LOBBY_SERVERS_BIN:
 			Y: PARENT_HEIGHT + 5
 			Width: 154
 			Height: 25
-			Text: dropdownbutton-lobby-servers-bin-filters
+			Text: Chrome-LobbyServers-Filter
 			Font: Bold
 		Button@RELOAD_BUTTON:
 			X: 159

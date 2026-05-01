@@ -56,10 +56,10 @@ namespace OpenRA.Mods.Common.Scripting.Global
 					}
 				}
 
-				return FluentProvider.GetMessage(key, argumentDictionary);
+				return Game.Translate(key, argumentDictionary);
 			}
 
-			return FluentProvider.GetMessage(key);
+			return Game.Translate(key);
 		}
 	}
 }

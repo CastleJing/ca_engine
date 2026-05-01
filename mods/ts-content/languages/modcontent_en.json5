@@ -1,0 +1,16 @@
+{
+	"modcontent-installprompt": "Tiberian Sun requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music or videos) from a mirror of the 2012 Tiberian Sun freeware release.\n\nAdvanced Install includes options for copying the music, videos, and other content from an original game disc or digital installation.",
+	"modcontent-header": "Game content may be extracted from the original game discs or an existing digital install. OpenRA can also download the base game files from an online mirror of the 2012 freeware release of TS.",
+	"modcontent-package-basefiles": "Base Game Files",
+	"modcontent-package-basemusic": "Base Game Music",
+	"modcontent-package-firestormfiles": "Firestorm Expansion Files",
+	"modcontent-package-firestormmusic": "Firestorm Expansion Music",
+	"Sys-ModContent-Source-tibsun": "Tiberian Sun (GDI or Nod Disc, English)",
+	"Sys-ModContent-Source-tfd": "C&C The First Decade (English)",
+	"Sys-ModContent-Source-steam": "C&C The Ultimate Collection (Steam version, English)",
+	"Sys-ModContent-Source-origin": "C&C The Ultimate Collection (Origin version, English)",
+	"Sys-ModContent-Source-fstorm": "Firestorm Expansion Disc (English)",
+	"Sys-ModContent-Source-basefiles": "Base Freeware Content",
+	"Sys-ModContent-Source-fstorm-zip": "Expansion Freeware Content",
+	"Sys-ModContent-Source-quickinstall": "Quick Install Package"
+}

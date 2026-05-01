@@ -9,7 +9,7 @@ Container@MISSION_OBJECTIVES:
 			Width: 80
 			Height: 20
 			Font: MediumBold
-			Text: label-mission-objectives
+			Text: Chrome-InGameInfoObjectives-Mission
 		Label@MISSION_STATUS:
 			X: 95
 			Y: 17

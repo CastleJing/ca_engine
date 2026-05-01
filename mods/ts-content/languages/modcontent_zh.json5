@@ -1,0 +1,16 @@
+{
+	"modcontent-installprompt": "泰伯利亚之日需要来自原始游戏的美术和音频资源。\n\n快速安装将从 2012 年泰伯利亚之日免费软件版本的镜像\n自动下载此内容（不含音乐或视频）。\n\n高级安装可以选择从原始游戏光盘或数字安装中\n复制音乐、视频或其他内容。",
+	"modcontent-header": "游戏内容可以从原始游戏光盘或现有的数字安装中提取。\n\nOpenRA 还可以从 2012 年泰伯利亚之日免费软件\n版本的在线镜像下载基本游戏文件。",
+	"modcontent-package-basefiles": "基础游戏文件",
+	"modcontent-package-basemusic": "基础游戏音乐",
+	"modcontent-package-firestormfiles": "火线风暴扩展文件",
+	"modcontent-package-firestormmusic": "火线风暴扩展音乐",
+	"Sys-ModContent-Source-tibsun": "泰伯利亚之日(GDI或Nod光盘, 英文)",
+	"Sys-ModContent-Source-tfd": "C&C 十周年纪念版(英文)",
+	"Sys-ModContent-Source-steam": "C&C 终极合集(Steam版, 英文)",
+	"Sys-ModContent-Source-origin": "C&C 终极合集(Origin版, 英文)",
+	"Sys-ModContent-Source-fstorm": "火线风暴扩展光盘(英文)",
+	"Sys-ModContent-Source-basefiles": "基础免费内容",
+	"Sys-ModContent-Source-fstorm-zip": "扩展免费内容",
+	"Sys-ModContent-Source-quickinstall": "快速安装包"
+}

@@ -11,9 +11,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using OpenRA.FileFormats;
+using OpenRA.FileSystem;
 using OpenRA.Graphics;
 using OpenRA.Primitives;
 using OpenRA.Support;
@@ -73,6 +76,11 @@ namespace OpenRA
 		SheetBuilder fontSheetBuilder;
 		readonly IPlatform platform;
 
+		/// <summary>When <see cref="Manifest.LanguageFontPaths"/> is used, cached font sets per language.</summary>
+		Dictionary<string, LanguageFontSet> languageFontCache;
+
+		bool dpiScaleHookAssigned;
+
 		float depthMargin;
 
 		Size lastBufferSize = new(-1, -1);
@@ -127,12 +135,32 @@ namespace OpenRA
 
 		public void InitializeFonts(ModData modData)
 		{
-			if (Fonts != null)
-				foreach (var font in Fonts.Values)
-					font.Dispose();
+			DisposeAllFontResources();
+
+			var manifest = modData.Manifest;
+			if (manifest.LanguageFontPaths != null && manifest.LanguageFontPaths.Count > 0)
+			{
+				languageFontCache = new Dictionary<string, LanguageFontSet>(StringComparer.OrdinalIgnoreCase);
+				var preload = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "en" };
+				var cur = string.IsNullOrEmpty(Game.Settings.Player.Language) ? "en" : Game.Settings.Player.Language;
+				preload.Add(cur);
+
+				foreach (var lang in preload)
+					PreloadLanguageFontSet(modData, lang);
+
+				var active = languageFontCache.ContainsKey(cur) ? cur : "en";
+				if (!languageFontCache.TryGetValue(active, out _))
+					throw new InvalidOperationException(
+						"No font set could be built for the active or English language. Check `LanguageFonts` paths.");
+
+				ActivateLanguageFontSet(active);
+
+				EnsureDpiScaleHook();
+				return;
+			}
+
 			using (new PerfTimer("SpriteFonts"))
 			{
-				fontSheetBuilder?.Dispose();
 				fontSheetBuilder = new SheetBuilder(SheetType.BGRA, modData.Manifest.FontSheetSize);
 				Fonts = modData.Manifest.Get<Fonts>().FontList.ToDictionary(x => x.Key,
 					x => new SpriteFont(
@@ -140,19 +168,184 @@ namespace OpenRA
 						x.Value.Size, x.Value.Ascender, Window.EffectiveWindowScale, fontSheetBuilder));
 			}
 
-			Window.OnWindowScaleChanged += (oldNative, oldEffective, newNative, newEffective) =>
+			EnsureDpiScaleHook();
+		}
+
+		void EnsureDpiScaleHook()
+		{
+			if (dpiScaleHookAssigned)
+				return;
+
+			dpiScaleHookAssigned = true;
+			Window.OnWindowScaleChanged += OnWindowDpiChanged;
+		}
+
+		void OnWindowDpiChanged(float oldNative, float oldEffective, float newNative, float newEffective)
+		{
+			Game.RunAfterTick(() =>
 			{
-				Game.RunAfterTick(() =>
+				SetMaximumViewportSize(lastMaximumViewportSize);
+				ChromeProvider.SetDPIScale(newEffective);
+				if (Fonts != null)
+					foreach (var f in Fonts.Values)
+						f.SetScale(newEffective);
+				if (Game.ModData != null)
 				{
-					// Recalculate downscaling factor for the new window scale
-					SetMaximumViewportSize(lastMaximumViewportSize);
+					if (languageFontCache != null)
+						PrecacheGlyphsForMergedLanguages(Game.ModData, Game.Settings.Player.Language, "en");
+					else
+						PrecacheGlyphsForLanguage(Game.ModData, Game.Settings.Player.Language);
+				}
+			});
+		}
 
-					ChromeProvider.SetDPIScale(newEffective);
+		void DisposeAllFontResources()
+		{
+			if (languageFontCache != null)
+			{
+				foreach (var b in languageFontCache.Values)
+					b.Dispose();
+				languageFontCache = null;
+			}
 
-					foreach (var f in Fonts)
-						f.Value.SetScale(newEffective);
-				});
-			};
+			if (Fonts != null)
+			{
+				foreach (var font in Fonts.Values)
+					font.Dispose();
+				Fonts = null;
+			}
+
+			fontSheetBuilder?.Dispose();
+			fontSheetBuilder = null;
+		}
+
+		/// <summary>Build (if needed) the font bundle for a language from <see cref="Manifest.LanguageFontPaths"/>.</summary>
+		public void PreloadLanguageFontSet(ModData modData, string language)
+		{
+			if (languageFontCache == null)
+				return;
+
+			language = string.IsNullOrEmpty(language) ? "en" : language;
+
+			if (languageFontCache.ContainsKey(language))
+				return;
+
+			if (!modData.Manifest.TryResolveLanguageFontPath(language, out var path))
+				throw new InvalidDataException($"No `LanguageFonts` entry for `{language}` and no `en` fallback.");
+
+			if (!modData.DefaultFileSystem.TryOpen(path, out var stream))
+				throw new FileNotFoundException($"Language font file not found: {path}");
+
+			Dictionary<string, FontData> fontList;
+			using (stream)
+			{
+				var dict = new MiniYaml(null, MiniYaml.FromStream(stream, path)).ToDictionary();
+				if (!dict.TryGetValue("Fonts", out var fontsRoot))
+					throw new InvalidDataException($"`Fonts` section missing in `{path}`.");
+
+				fontList = OpenRA.Fonts.ParseFontDefinitions(fontsRoot);
+			}
+
+			if (fontList.Count == 0)
+				throw new InvalidDataException($"No fonts defined in `{path}`.");
+
+			var bundle = new LanguageFontSet(platform, modData.DefaultFileSystem, fontList, Window.EffectiveWindowScale, modData.Manifest.FontSheetSize);
+			languageFontCache[language] = bundle;
+		}
+
+		/// <summary>Point <see cref="Fonts"/> at a preloaded language bundle.</summary>
+		public void ActivateLanguageFontSet(string language)
+		{
+			if (languageFontCache == null)
+				return;
+
+			language = string.IsNullOrEmpty(language) ? "en" : language;
+			if (!languageFontCache.TryGetValue(language, out var bundle))
+				return;
+
+			Fonts = bundle.Fonts;
+		}
+
+		/// <summary>Precache glyph sheets using merged text from several languages (e.g. UI + English fallback strings).</summary>
+		public void PrecacheGlyphsForMergedLanguages(ModData modData, params string[] languages)
+		{
+			if (Fonts == null || Fonts.Count == 0)
+				return;
+
+			var gp = modData.Manifest.GlyphPrecache;
+			if (gp == null || gp.Count == 0)
+				return;
+
+			var merged = new HashSet<char>();
+			foreach (var language in languages)
+			{
+				var lang = string.IsNullOrEmpty(language) ? "en" : language;
+				if (!gp.TryGetValue(lang, out var raw))
+					if (!gp.TryGetValue("en", out raw))
+						continue;
+
+				var text = ResolveGlyphPrecacheText(raw, modData.DefaultFileSystem);
+				if (string.IsNullOrEmpty(text))
+					continue;
+
+				foreach (var c in text)
+				{
+					if (c != '\r' && c != '\n')
+						merged.Add(c);
+				}
+			}
+
+			if (merged.Count == 0)
+				return;
+
+			var sb = new StringBuilder(merged.Count);
+			foreach (var c in merged)
+				sb.Append(c);
+
+			using (new PerfTimer("Glyph precache (merged)"))
+				foreach (var f in Fonts.Values)
+					f.PrecacheChars(sb.ToString());
+		}
+
+		/// <summary>
+		/// Rasterizes manifest <see cref="Manifest.GlyphPrecache"/> for the active language into every UI font (including large Title fonts).
+		/// Values may be literal text or a <c>package|path</c> file opened via the mod filesystem.
+		/// </summary>
+		public void PrecacheGlyphsForLanguage(ModData modData, string language)
+		{
+			if (Fonts == null || Fonts.Count == 0)
+				return;
+
+			var gp = modData.Manifest.GlyphPrecache;
+			if (gp == null || gp.Count == 0)
+				return;
+
+			language = string.IsNullOrEmpty(language) ? "en" : language;
+			if (!gp.TryGetValue(language, out var raw))
+				if (!gp.TryGetValue("en", out raw))
+					return;
+
+			var text = ResolveGlyphPrecacheText(raw, modData.DefaultFileSystem);
+			if (string.IsNullOrEmpty(text))
+				return;
+
+			using (new PerfTimer($"Glyph precache ({language})"))
+				foreach (var f in Fonts.Values)
+					f.PrecacheChars(text);
+		}
+
+		static string ResolveGlyphPrecacheText(string raw, IReadOnlyFileSystem fs)
+		{
+			if (string.IsNullOrEmpty(raw))
+				return "";
+
+			if (fs.TryOpen(raw, out var s))
+			{
+				using (s)
+					return Encoding.UTF8.GetString(s.ReadAllBytes());
+			}
+
+			return raw;
 		}
 
 		public void InitializeDepthBuffer(MapGrid mapGrid)
@@ -542,15 +735,12 @@ namespace OpenRA
 
 		public void Dispose()
 		{
+			DisposeAllFontResources();
 			worldBuffer?.Dispose();
 			screenBuffer.Dispose();
 			worldBufferSnapshot.Dispose();
 			tempVertexBuffer.Dispose();
 			quadIndexBuffer.Dispose();
-			fontSheetBuilder?.Dispose();
-			if (Fonts != null)
-				foreach (var font in Fonts.Values)
-					font.Dispose();
 			Window.Dispose();
 		}
 

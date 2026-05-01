@@ -12,7 +12,7 @@ Container@ENCYCLOPEDIA_PANEL:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-encyclopedia-title
+			Text: Chrome-Cnc-EncyclopediaTitle
 		Background@ENCYCLOPEDIA_CONTENT:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -138,6 +138,6 @@ Container@ENCYCLOPEDIA_PANEL:
 			Y: PARENT_HEIGHT - 1
 			Width: 140
 			Height: 35
-			Text: button-back
+			Text: Chrome-MainMenu-Back
 			Key: escape
 		TooltipContainer@TOOLTIP_CONTAINER:

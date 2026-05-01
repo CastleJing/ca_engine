@@ -21,8 +21,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class LobbyOptionsLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string NotAvailable = "label-not-available";
+		
+		const string NotAvailable = "Game-MissionBrowserLogic-NotAvailable";
 
 		readonly ScrollPanelWidget panel;
 		readonly Widget optionsContainer;
@@ -146,7 +146,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var getOptionLabel = new CachedTransform<string, string>(id =>
 				{
 					if (id == null || !option.Values.TryGetValue(id, out var value))
-						return FluentProvider.GetMessage(NotAvailable);
+						return Game.Translate(NotAvailable);
 
 					return value;
 				});

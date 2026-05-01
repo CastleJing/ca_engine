@@ -91,8 +91,6 @@ namespace OpenRA
 			public MiniYaml SequenceDefinitions;
 			public MiniYaml ModelSequenceDefinitions;
 			public MiniYaml FluentMessageDefinitions;
-
-			public FluentBundle FluentBundle { get; private set; }
 			public ActorInfo WorldActorInfo { get; private set; }
 			public ActorInfo PlayerActorInfo { get; private set; }
 
@@ -126,28 +124,6 @@ namespace OpenRA
 
 				try
 				{
-					if (FluentMessageDefinitions != null)
-					{
-						var files = Array.Empty<string>();
-						if (FluentMessageDefinitions.Value != null)
-							files = FieldLoader.GetValue<string[]>("value", FluentMessageDefinitions.Value);
-
-						string text = null;
-						if (FluentMessageDefinitions.Nodes.Length > 0)
-						{
-							var builder = new StringBuilder();
-							foreach (var node in FluentMessageDefinitions.Nodes)
-								if (node.Key == "base64")
-									builder.Append(Encoding.UTF8.GetString(Convert.FromBase64String(node.Value.Value)));
-
-							text = builder.ToString();
-						}
-
-						FluentBundle = new FluentBundle(modData.Manifest.FluentCulture, files, fileSystem, text);
-					}
-					else
-						FluentBundle = null;
-
 					// PERF: Implement a minimal custom loader for custom world and player actors to minimize loading time
 					// This assumes/enforces that these actor types can only inherit abstract definitions (starting with ^)
 					if (RuleDefinitions != null)
@@ -215,6 +191,10 @@ namespace OpenRA
 
 		IReadOnlyPackage parentPackage;
 
+		internal Translation Translation;
+		string translationLanguage;
+		string[] mapTranslationPaths;
+
 		volatile InnerData innerData;
 
 		public int MapFormat => innerData.MapFormat;
@@ -244,8 +224,7 @@ namespace OpenRA
 		public int DownloadPercentage { get; private set; }
 
 		/// <summary>
-		/// Functionality mirrors <see cref="FluentProvider.GetMessage"/>, except instead of using
-		/// loaded <see cref="Map"/>'s fluent bundle as backup, we use this <see cref="MapPreview"/>'s.
+		/// Functionality mirrors <see cref="Game.Translate"/> and map-local translation fallback behavior.
 		/// </summary>
 		public string GetMessage(string key, object[] args = null)
 		{
@@ -256,19 +235,90 @@ namespace OpenRA
 		}
 
 		/// <summary>
-		/// Functionality mirrors <see cref="FluentProvider.TryGetMessage"/>, except instead of using
-		/// loaded <see cref="Map"/>'s fluent bundle as backup, we use this <see cref="MapPreview"/>'s.
+		/// Resolve a key against map-local translation files first, then fallback to global translation tables.
 		/// </summary>
 		public bool TryGetMessage(string key, out string message, object[] args = null)
 		{
-			// PERF: instead of loading mod level strings per each MapPreview, reuse the already loaded one in FluentProvider.
-			if (FluentProvider.TryGetModMessage(key, out message, args))
-				return true;
-
-			if (innerData.FluentBundle == null)
+			var dict = ArgsToDictionary(args);
+			var resolved = Translate(key, dict);
+			if (resolved == key)
+			{
+				message = null;
 				return false;
+			}
 
-			return innerData.FluentBundle.TryGetMessage(key, out message, args);
+			message = resolved;
+			return true;
+		}
+
+		static IDictionary<string, object> ArgsToDictionary(object[] args)
+		{
+			if (args == null || args.Length == 0)
+				return null;
+
+			var dict = new Dictionary<string, object>(args.Length / 2);
+			for (var i = 0; i + 1 < args.Length; i += 2)
+			{
+				if (args[i] is string key && !string.IsNullOrEmpty(key))
+					dict[key] = args[i + 1];
+			}
+
+			return dict;
+		}
+
+		/// <summary>
+		/// Resolves map-local JSON5/<c>.to</c> strings, then falls back to <see cref="Game.Translate"/> (mod tables).
+		/// Used for raw map.yaml fields (title, categories, author) that may be translation keys.
+		/// </summary>
+		public string Translate(string key, IDictionary<string, object> args = null)
+		{
+			if (string.IsNullOrEmpty(key))
+				return "";
+
+			EnsureTranslationForCurrentLanguage();
+			if (Translation == null)
+				return Game.Translate(key, args);
+
+			var result = Translation.GetFormattedMessage(key, args);
+			if (result == key)
+				return Game.Translate(key, args);
+
+			return result;
+		}
+
+		void EnsureTranslationForCurrentLanguage()
+		{
+			if (package == null)
+				return;
+
+			var language = Game.Settings?.Player?.Language;
+			if (string.IsNullOrEmpty(language))
+				language = "en";
+
+			if (Translation != null && translationLanguage == language)
+				return;
+
+			RebuildTranslation(package, language);
+		}
+
+		void RebuildTranslation(IReadOnlyPackage p, string language)
+		{
+			string[] paths;
+			if (mapTranslationPaths != null && mapTranslationPaths.Length > 0)
+				paths = mapTranslationPaths;
+			else
+			{
+				paths = new string[2];
+				paths[0] = p.Contains("metadata_" + language + ".to")
+					? "metadata_" + language + ".to"
+					: "metadata_" + language + ".json5";
+				paths[1] = p.Contains("metadata_en.to")
+					? "metadata_en.to"
+					: "metadata_en.json5";
+			}
+
+			Translation = new Translation(language, paths, p);
+			translationLanguage = language;
 		}
 
 		Sprite minimap;
@@ -378,6 +428,13 @@ namespace OpenRA
 				{ "Sequences", map.SequenceDefinitions },
 				{ "ModelSequences", map.ModelSequenceDefinitions }
 			}, null);
+
+			package = map.Package;
+			mapTranslationPaths = map.Translations;
+			var lang = Game.Settings?.Player?.Language;
+			if (string.IsNullOrEmpty(lang))
+				lang = "en";
+			RebuildTranslation(map.Package, lang);
 		}
 
 		public void UpdateFromMap(IReadOnlyPackage p, IReadOnlyPackage parent, MapClassification classification,
@@ -394,6 +451,12 @@ namespace OpenRA
 
 			PackageName = p.Name;
 			parentPackage = parent;
+			package = p;
+
+			if (yaml.TryGetValue("Translations", out var translationsYaml) && translationsYaml.Nodes.Length > 0)
+				mapTranslationPaths = translationsYaml.Nodes.Select(n => n.Key).ToArray();
+			else
+				mapTranslationPaths = null;
 
 			var newData = innerData.Clone();
 			newData.GridType = gridType;
@@ -481,6 +544,11 @@ namespace OpenRA
 
 			// Assign the new data atomically
 			innerData = newData;
+
+			var lang = Game.Settings?.Player?.Language;
+			if (string.IsNullOrEmpty(lang))
+				lang = "en";
+			RebuildTranslation(p, lang);
 		}
 
 		public void UpdateRemoteSearch(MapStatus status, MiniYaml yaml, string[] mapCompatibility, Action<MapPreview> parseMetadata = null)

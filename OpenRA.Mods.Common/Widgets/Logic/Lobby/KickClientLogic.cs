@@ -16,13 +16,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	sealed class KickClientLogic : ChromeLogic
 	{
-		[FluentReference("player")]
 		const string KickClient = "dialog-kick-client.prompt";
 
 		[ObjectCreator.UseCtor]
 		public KickClientLogic(Widget widget, string clientName, Action<bool> okPressed, Action cancelPressed)
 		{
-			var kickMessage = FluentProvider.GetMessage(KickClient, "player", clientName);
+			var kickMessage = Game.Translate(KickClient, "player", clientName);
 			widget.Get<LabelWidget>("TITLE").GetText = () => kickMessage;
 
 			var tempBan = false;

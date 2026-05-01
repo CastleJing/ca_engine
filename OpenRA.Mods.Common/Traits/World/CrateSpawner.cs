@@ -21,13 +21,13 @@ namespace OpenRA.Mods.Common.Traits
 	[TraitLocation(SystemActors.World)]
 	public class CrateSpawnerInfo : TraitInfo, ILobbyOptions
 	{
-		[FluentReference]
+		
 		[Desc("Descriptive label for the crates checkbox in the lobby.")]
-		public readonly string CheckboxLabel = "checkbox-crates.label";
+		public readonly string CheckboxLabel = "Game-Trait-CratesCheckboxLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the crates checkbox in the lobby.")]
-		public readonly string CheckboxDescription = "checkbox-crates.description";
+		public readonly string CheckboxDescription = "Game-Trait-CratesCheckboxDesc";
 
 		[Desc("Default value of the crates checkbox in the lobby.")]
 		public readonly bool CheckboxEnabled = true;

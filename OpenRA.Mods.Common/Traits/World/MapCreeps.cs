@@ -18,11 +18,11 @@ namespace OpenRA.Mods.Common.Traits
 	[TraitLocation(SystemActors.World)]
 	public class MapCreepsInfo : TraitInfo, ILobbyOptions
 	{
-		[FluentReference]
+		
 		[Desc("Descriptive label for the creeps checkbox in the lobby.")]
 		public readonly string CheckboxLabel = "dropdown-map-creeps.label";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the creeps checkbox in the lobby.")]
 		public readonly string CheckboxDescription = "dropdown-map-creeps.description";
 

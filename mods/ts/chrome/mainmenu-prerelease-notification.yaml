@@ -11,35 +11,35 @@ Background@MAINMENU_PRERELEASE_NOTIFICATION:
 			Height: 25
 			Font: Bold
 			Align: Center
-			Text: label-mainmenu-prerelease-notification-prompt-title
+			Text: Chrome-TS-Prerelease-Title
 		Label@PROMPT_TEXT_A:
 			X: 15
 			Y: 50
 			Width: PARENT_WIDTH - 30
 			Height: 16
 			Align: Center
-			Text: label-mainmenu-prerelease-notification-prompt-text-a
+			Text: Chrome-TS-Prerelease-TextA
 		Label@PROMPT_TEXT_B:
 			X: 15
 			Y: 68
 			Width: PARENT_WIDTH - 30
 			Height: 16
 			Align: Center
-			Text: label-mainmenu-prerelease-notification-prompt-text-b
+			Text: Chrome-TS-Prerelease-TextB
 		Label@PROMPT_TEXT_C:
 			X: 15
 			Y: 104
 			Width: PARENT_WIDTH - 30
 			Height: 16
 			Align: Center
-			Text: label-mainmenu-prerelease-notification-prompt-text-c
+			Text: Chrome-TS-Prerelease-TextC
 		Label@PROMPT_TEXT_D:
 			X: 15
 			Y: 122
 			Width: PARENT_WIDTH - 30
 			Height: 16
 			Align: Center
-			Text: label-mainmenu-prerelease-notification-prompt-text-d
+			Text: Chrome-TS-Prerelease-TextD
 		Label@PROMPT_TEXT_E:
 			X: 15
 			Y: 140
@@ -51,5 +51,5 @@ Background@MAINMENU_PRERELEASE_NOTIFICATION:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-mainmenu-prerelease-notification-continue
+			Text: Chrome-TS-Prerelease-ContinueButton
 			Font: Bold

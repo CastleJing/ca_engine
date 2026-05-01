@@ -23,50 +23,51 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class DisplaySettingsLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string Close = "options-camera.close";
+		
+		const string Close = "Game-SettingLogic-WorldViewport-Close";
 
-		[FluentReference]
-		const string Medium = "options-camera.medium";
+		
+		const string Medium = "Game-SettingLogic-WorldViewport-Medium";
 
-		[FluentReference]
-		const string Far = "options-camera.far";
+		
+		const string Far = "Game-SettingLogic-WorldViewport-Far";
 
-		[FluentReference]
-		const string Furthest = "options-camera.furthest";
+		
+		const string Furthest = "Game-SettingLogic-WorldViewport-Native";
 
-		[FluentReference]
-		const string Windowed = "options-display-mode.windowed";
+		
+		const string Windowed = "Game-SettingLogic-WindowMode-Windowed";
 
-		[FluentReference]
-		const string LegacyFullscreen = "options-display-mode.legacy-fullscreen";
+		
+		const string LegacyFullscreen = "Game-SettingLogic-WindowMode-Fullscreen";
 
-		[FluentReference]
-		const string Fullscreen = "options-display-mode.fullscreen";
+		
+		const string Fullscreen = "Game-SettingLogic-WindowMode-PseudoFullscreen";
 
-		[FluentReference("number")]
-		const string Display = "label-video-display-index";
+		const string Display = "Game-SettingLogic-Display";
 
-		[FluentReference]
-		const string Standard = "options-status-bars.standard";
+		
+		const string Standard = "Game-SettingLogic-StatusBar-Standard";
 
-		[FluentReference]
-		const string ShowOnDamage = "options-status-bars.show-on-damage";
+		
+		const string ShowOnDamage = "Game-SettingLogic-StatusBar-DamageShow";
 
-		[FluentReference]
-		const string AlwaysShow = "options-status-bars.always-show";
+		
+		const string AlwaysShow = "Game-SettingLogic-StatusBar-AlwaysShow";
 
-		[FluentReference]
-		const string Automatic = "options-target-lines.automatic";
+		
+		const string Automatic = "Game-SettingLogic-TargetLine-Auto";
 
-		[FluentReference]
-		const string Manual = "options-target-lines.manual";
+		
+		const string Manual = "Game-SettingLogic-TargetLine-Man";
 
-		[FluentReference]
-		const string Disabled = "options-target-lines.disabled";
+		
+		const string Disabled = "Game-SettingLogic-TargetLine-Disable";
 
-		[FluentReference("fps")]
-		const string FrameLimiter = "checkbox-frame-limiter";
+		const string FrameLimiter = "Game-SettingLogic-FrameLimiterCheckbox";
+
+		
+		const string OptionsDisplayLanguage = "Chrome-Setting-Player-Language";
 		static readonly int OriginalVideoDisplay;
 		static readonly WindowMode OriginalGraphicsMode;
 		static readonly int2 OriginalGraphicsWindowedSize;
@@ -106,17 +107,17 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			this.modData = modData;
 			viewportSizes = modData.Manifest.Get<WorldViewportSizes>();
 
-			legacyFullscreen = FluentProvider.GetMessage(LegacyFullscreen);
-			fullscreen = FluentProvider.GetMessage(Fullscreen);
+			legacyFullscreen = Game.Translate(LegacyFullscreen);
+			fullscreen = Game.Translate(Fullscreen);
 
 			registerPanel(panelID, label, InitPanel, ResetPanel);
 
-			showOnDamage = FluentProvider.GetMessage(ShowOnDamage);
-			alwaysShow = FluentProvider.GetMessage(AlwaysShow);
+			showOnDamage = Game.Translate(ShowOnDamage);
+			alwaysShow = Game.Translate(AlwaysShow);
 
-			automatic = FluentProvider.GetMessage(Automatic);
-			manual = FluentProvider.GetMessage(Manual);
-			disabled = FluentProvider.GetMessage(Disabled);
+			automatic = Game.Translate(Automatic);
+			manual = Game.Translate(Manual);
+			disabled = Game.Translate(Disabled);
 		}
 
 		public static string GetViewportSizeName(ModData modData, WorldViewport worldViewport)
@@ -124,13 +125,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			switch (worldViewport)
 			{
 				case WorldViewport.Close:
-					return FluentProvider.GetMessage(Close);
+					return Game.Translate(Close);
 				case WorldViewport.Medium:
-					return FluentProvider.GetMessage(Medium);
+					return Game.Translate(Medium);
 				case WorldViewport.Far:
-					return FluentProvider.GetMessage(Far);
+					return Game.Translate(Far);
 				case WorldViewport.Native:
-					return FluentProvider.GetMessage(Furthest);
+					return Game.Translate(Furthest);
 				default:
 					return "";
 			}
@@ -142,6 +143,30 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var gs = Game.Settings.Game;
 			var world = worldRenderer.World;
 			var scrollPanel = panel.Get<ScrollPanelWidget>("SETTINGS_SCROLLPANEL");
+
+			var languageRow = panel.GetOrNull<Widget>("LANGUAGE_ROW");
+			if (languageRow != null)
+				languageRow.IsVisible = () => modData.Manifest.SupportLanguages.Length > 1;
+
+			var languageDropdown = panel.GetOrNull<DropDownButtonWidget>("LANGUAGE_DROPDOWN");
+			if (languageDropdown != null && modData.Manifest.SupportLanguages.Length > 0)
+			{
+				var playerSettings = Game.Settings.Player;
+				var langLabel = panel.GetOrNull<LabelWidget>("LANGUAGE_LABEL");
+				if (langLabel != null)
+					langLabel.GetText = () => Game.Translate(OptionsDisplayLanguage);
+
+				var languageText = new CachedTransform<string, string>(code =>
+				{
+					var key = "Setting-Language-" + code.Replace('.', '-');
+					var msg = Game.Translate(key);
+					if (msg == key)
+						return code;
+					return msg;
+				});
+				languageDropdown.GetText = () => languageText.Update(playerSettings.Language);
+				languageDropdown.OnMouseDown = _ => ShowLanguageDropdown(languageDropdown, playerSettings);
+			}
 
 			// added for CA
 			SettingsUtils.BindCheckboxPref(panel, "SELECTIONTOOLTIP_CHECKBOX", gs, "SelectionTooltip");
@@ -169,12 +194,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var windowModeDropdown = panel.Get<DropDownButtonWidget>("MODE_DROPDOWN");
 			windowModeDropdown.OnMouseDown = _ => ShowWindowModeDropdown(windowModeDropdown, ds, scrollPanel);
 			windowModeDropdown.GetText = () => ds.Mode == WindowMode.Windowed
-				? FluentProvider.GetMessage(Windowed)
+				? Game.Translate(Windowed)
 				: ds.Mode == WindowMode.Fullscreen ? legacyFullscreen : fullscreen;
 
 			var displaySelectionDropDown = panel.Get<DropDownButtonWidget>("DISPLAY_SELECTION_DROPDOWN");
 			displaySelectionDropDown.OnMouseDown = _ => ShowDisplaySelectionDropdown(displaySelectionDropDown, ds);
-			var displaySelectionLabel = new CachedTransform<int, string>(i => FluentProvider.GetMessage(Display, "number", i + 1));
+			var displaySelectionLabel = new CachedTransform<int, string>(i => Game.Translate(Display, "0", i + 1));
 			displaySelectionDropDown.GetText = () => displaySelectionLabel.Update(ds.VideoDisplay);
 			displaySelectionDropDown.IsDisabled = () => Game.Renderer.DisplayCount < 2;
 
@@ -188,7 +213,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var statusBarsDropDown = panel.Get<DropDownButtonWidget>("STATUS_BAR_DROPDOWN");
 			statusBarsDropDown.OnMouseDown = _ => ShowStatusBarsDropdown(statusBarsDropDown, gs);
 			statusBarsDropDown.GetText = () => gs.StatusBars == StatusBarsType.Standard
-				? FluentProvider.GetMessage(Standard)
+				? Game.Translate(Standard)
 				: gs.StatusBars == StatusBarsType.DamageShow
 					? showOnDamage
 					: alwaysShow;
@@ -245,7 +270,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			var frameLimitGamespeedCheckbox = panel.Get<CheckboxWidget>("FRAME_LIMIT_GAMESPEED_CHECKBOX");
 			var frameLimitCheckbox = panel.Get<CheckboxWidget>("FRAME_LIMIT_CHECKBOX");
-			var frameLimitLabel = new CachedTransform<int, string>(fps => FluentProvider.GetMessage(FrameLimiter, "fps", fps));
+			var frameLimitLabel = new CachedTransform<int, string>(fps => Game.Translate(FrameLimiter, "fps", fps));
 			frameLimitCheckbox.GetText = () => frameLimitLabel.Update(ds.MaxFramerate);
 			frameLimitCheckbox.IsDisabled = () => ds.CapFramerateToGameFps;
 
@@ -353,9 +378,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			var options = new Dictionary<string, WindowMode>()
 			{
-				{ FluentProvider.GetMessage(Fullscreen), WindowMode.PseudoFullscreen },
-				{ FluentProvider.GetMessage(LegacyFullscreen), WindowMode.Fullscreen },
-				{ FluentProvider.GetMessage(Windowed), WindowMode.Windowed },
+				{ Game.Translate(Fullscreen), WindowMode.PseudoFullscreen },
+				{ Game.Translate(LegacyFullscreen), WindowMode.Fullscreen },
+				{ Game.Translate(Windowed), WindowMode.Windowed },
 			};
 
 			ScrollItemWidget SetupItem(string o, ScrollItemWidget itemTemplate)
@@ -402,9 +427,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			var options = new Dictionary<string, StatusBarsType>()
 			{
-				{ FluentProvider.GetMessage(Standard), StatusBarsType.Standard },
-				{ FluentProvider.GetMessage(ShowOnDamage), StatusBarsType.DamageShow },
-				{ FluentProvider.GetMessage(AlwaysShow), StatusBarsType.AlwaysShow },
+				{ Game.Translate(Standard), StatusBarsType.Standard },
+				{ Game.Translate(ShowOnDamage), StatusBarsType.DamageShow },
+				{ Game.Translate(AlwaysShow), StatusBarsType.AlwaysShow },
 			};
 
 			ScrollItemWidget SetupItem(string o, ScrollItemWidget itemTemplate)
@@ -436,6 +461,36 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			dropdown.ShowDropDown("LABEL_DROPDOWN_TEMPLATE", 500, Enumerable.Range(0, Game.Renderer.DisplayCount), SetupItem);
 		}
 
+		static void ShowLanguageDropdown(DropDownButtonWidget dropdown, PlayerSettings ps)
+		{
+			var langs = Game.ModData.Manifest.SupportLanguages;
+			if (langs.Length == 0)
+				return;
+
+			ScrollItemWidget SetupItem(string code, ScrollItemWidget itemTemplate)
+			{
+				var item = ScrollItemWidget.Setup(itemTemplate,
+					() => ps.Language == code,
+					() =>
+					{
+						Game.SwitchLanguage(code);
+						Game.Settings.Save();
+					});
+
+				var key = "Setting-Language-" + code.Replace('.', '-');
+				item.Get<LabelWidget>("LABEL").GetText = () =>
+				{
+					var msg = Game.Translate(key);
+					if (msg == key)
+						return code;
+					return msg;
+				};
+				return item;
+			}
+
+			dropdown.ShowDropDown("LABEL_DROPDOWN_TEMPLATE", 500, langs, SetupItem);
+		}
+
 		static void ShowGLProfileDropdown(DropDownButtonWidget dropdown, GraphicSettings s)
 		{
 			ScrollItemWidget SetupItem(GLProfile o, ScrollItemWidget itemTemplate)
@@ -457,9 +512,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			var options = new Dictionary<string, TargetLinesType>()
 			{
-				{ FluentProvider.GetMessage(Automatic), TargetLinesType.Automatic },
-				{ FluentProvider.GetMessage(Manual), TargetLinesType.Manual },
-				{ FluentProvider.GetMessage(Disabled), TargetLinesType.Disabled },
+				{ Game.Translate(Automatic), TargetLinesType.Automatic },
+				{ Game.Translate(Manual), TargetLinesType.Manual },
+				{ Game.Translate(Disabled), TargetLinesType.Disabled },
 			};
 
 			ScrollItemWidget SetupItem(string o, ScrollItemWidget itemTemplate)

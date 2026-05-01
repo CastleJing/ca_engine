@@ -16,7 +16,7 @@ namespace OpenRA.Mods.Common.Traits
 	public abstract class TooltipInfoBase : ConditionalTraitInfo, Requires<IMouseBoundsInfo>
 	{
 		[FieldLoader.Require]
-		[FluentReference]
+		
 		public readonly string Name;
 	}
 
@@ -31,23 +31,19 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		[Desc("An optional generic name (i.e. \"Soldier\" or \"Structure\")" +
 			"to be shown to chosen players.")]
-		[FluentReference(optional: true)]
 		public readonly string GenericName;
 
 		[Desc("Prefix generic tooltip name with 'Ally/Neutral/EnemyPrefix'.")]
 		public readonly bool GenericStancePrefix = true;
 
 		[Desc("Prefix to display in the tooltip for allied units.")]
-		[FluentReference(optional: true)]
-		public readonly string AllyPrefix = "label-tooltip-prefix.ally";
+		public readonly string AllyPrefix = "Game-Trait-Tooltip-AllyPrefix";
 
 		[Desc("Prefix to display in the tooltip for neutral units.")]
-		[FluentReference(optional: true)]
 		public readonly string NeutralPrefix;
 
 		[Desc("Prefix to display in the tooltip for enemy units.")]
-		[FluentReference(optional: true)]
-		public readonly string EnemyPrefix = "label-tooltip-prefix.enemy";
+		public readonly string EnemyPrefix = "Game-Trait-Tooltip-EnemyPrefix";
 
 		[Desc("Player stances that the generic name should be shown to.")]
 		public readonly PlayerRelationship GenericVisibility = PlayerRelationship.None;
@@ -60,19 +56,19 @@ namespace OpenRA.Mods.Common.Traits
 		public string TooltipForPlayerStance(PlayerRelationship relationship)
 		{
 			if (relationship == PlayerRelationship.None || !GenericVisibility.HasRelationship(relationship))
-				return FluentProvider.GetMessage(Name);
+				return Game.Translate(Name);
 
-			var genericName = string.IsNullOrEmpty(GenericName) ? "" : FluentProvider.GetMessage(GenericName);
+			var genericName = string.IsNullOrEmpty(GenericName) ? "" : Game.Translate(GenericName);
 			if (GenericStancePrefix)
 			{
 				if (!string.IsNullOrEmpty(AllyPrefix) && relationship == PlayerRelationship.Ally)
-					return FluentProvider.GetMessage(AllyPrefix) + " " + genericName;
+					return Game.Translate(AllyPrefix) + " " + genericName;
 
 				if (!string.IsNullOrEmpty(NeutralPrefix) && relationship == PlayerRelationship.Neutral)
-					return FluentProvider.GetMessage(NeutralPrefix) + " " + genericName;
+					return Game.Translate(NeutralPrefix) + " " + genericName;
 
 				if (!string.IsNullOrEmpty(EnemyPrefix) && relationship == PlayerRelationship.Enemy)
-					return FluentProvider.GetMessage(EnemyPrefix) + " " + genericName;
+					return Game.Translate(EnemyPrefix) + " " + genericName;
 			}
 
 			return genericName;

@@ -76,7 +76,7 @@ Container@MAP_PREVIEW:
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-incompatible-status-a
+					Text: Chrome-LobbyMapPreview-MapNotAvailableLine1
 					IgnoreMouseOver: true
 				Label@MAP_STATUS_B:
 					Y: 201
@@ -84,7 +84,7 @@ Container@MAP_PREVIEW:
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-incompatible-status-b
+					Text: Chrome-LobbyMapPreview-MapNotAvailableLine2
 		Container@MAP_VALIDATING:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -95,7 +95,7 @@ Container@MAP_PREVIEW:
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-validating-status
+					Text: Chrome-LobbyMapPreview-Validating
 					IgnoreMouseOver: true
 				ProgressBar@MAP_VALIDATING_BAR:
 					Y: 194
@@ -124,13 +124,13 @@ Container@MAP_PREVIEW:
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Bold
-					Text: button-map-download-available-install
+					Text: Chrome-LobbyMapPreview-InstallMap
 		Button@MAP_UPDATE:
 			Y: 195
 			Width: PARENT_WIDTH
 			Height: 25
 			Font: Bold
-			Text: button-map-preview-update
+			Text: Chrome-LobbyMapPreview-UpdateMap
 		Container@MAP_UPDATE_DOWNLOAD_AVAILABLE:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -140,14 +140,14 @@ Container@MAP_PREVIEW:
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Bold
-					Text: button-map-update-download-available-install
+					Text: Chrome-LobbyMapPreview-InstallMap
 		Label@MAP_SEARCHING:
 			Y: 158
 			Width: PARENT_WIDTH
 			Height: 25
 			Font: Tiny
 			Align: Center
-			Text: label-map-preview-searching
+			Text: Chrome-LobbyMapPreview-Searching
 			IgnoreMouseOver: true
 		Container@MAP_UNAVAILABLE:
 			Width: PARENT_WIDTH
@@ -158,21 +158,21 @@ Container@MAP_PREVIEW:
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-unavailable-a
+					Text: Chrome-LobbyMapPreview-NotFoundLine1
 				Label@b:
 					Y: 171
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-unavailable-b
+					Text: Chrome-LobbyMapPreview-NotFoundLine2
 		Label@MAP_ERROR:
 			Y: 158
 			Width: PARENT_WIDTH
 			Height: 25
 			Font: Tiny
 			Align: Center
-			Text: label-map-preview-error
+			Text: Chrome-LobbyMapPreview-Error
 		Container@MAP_DOWNLOADING:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -202,11 +202,11 @@ Container@MAP_PREVIEW:
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-update-available-a
+					Text: Chrome-LobbyMapPreview-UpdateAvailableLine1
 				Label@b:
 					Y: 171
 					Width: PARENT_WIDTH
 					Height: 25
 					Font: Tiny
 					Align: Center
-					Text: label-map-update-available-b
+					Text: Chrome-LobbyMapPreview-UpdateAvailableLine2

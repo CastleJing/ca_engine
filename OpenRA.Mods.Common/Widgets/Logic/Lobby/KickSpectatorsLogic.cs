@@ -16,13 +16,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	sealed class KickSpectatorsLogic : ChromeLogic
 	{
-		[FluentReference("count")]
 		const string KickSpectators = "dialog-kick-spectators.prompt";
 
 		[ObjectCreator.UseCtor]
 		public KickSpectatorsLogic(Widget widget, int clientCount, Action okPressed, Action cancelPressed)
 		{
-			var kickMessage = FluentProvider.GetMessage(KickSpectators, "count", clientCount);
+			var kickMessage = Game.Translate(KickSpectators, "count", clientCount);
 			widget.Get<LabelWidget>("TEXT").GetText = () => kickMessage;
 
 			widget.Get<ButtonWidget>("OK_BUTTON").OnClick = () =>

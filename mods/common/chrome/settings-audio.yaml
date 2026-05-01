@@ -22,7 +22,7 @@ Container@AUDIO_PANEL:
 							Height: PARENT_HEIGHT
 							Font: TinyBold
 							Align: Center
-							Text: label-audio-section-header
+							Text: Chrome-Setting-Audio
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 20
@@ -35,7 +35,7 @@ Container@AUDIO_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Align: Center
-									Text: label-no-audio-device-container
+									Text: Chrome-Setting-Audio-DeviceNotFound
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -48,7 +48,7 @@ Container@AUDIO_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-cash-ticks-container
+									Text: Chrome-Setting-Audio-CashTicks
 						Container@MUTE_SOUND_CONTAINER:
 							X: 10
 							Y: 30
@@ -58,7 +58,7 @@ Container@AUDIO_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-mute-sound-container
+									Text: Chrome-Setting-Audio-MuteSound
 						Container@SOUND_VOLUME_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
 							Width: PARENT_WIDTH / 2 - 20
@@ -66,7 +66,7 @@ Container@AUDIO_PANEL:
 								Label@SOUND_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-sound-volume-container
+									Text: Chrome-Setting-Audio-SoundVolume
 								ExponentialSlider@SOUND_VOLUME:
 									Y: 30
 									Width: PARENT_WIDTH
@@ -84,8 +84,8 @@ Container@AUDIO_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-mute-background-music-container.label
-									TooltipText: checkbox-mute-background-music-container.tooltip
+									Text: Chrome-Setting-Audio-MuteBackgroundMusic
+									TooltipText: Chrome-Setting-Audio-MuteBackgroundMusic-Tooltip
 									TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 						Container@MUSIC_VOLUME_CONTAINER:
 							X: PARENT_WIDTH / 2 + 10
@@ -94,7 +94,7 @@ Container@AUDIO_PANEL:
 								Label@MUSIC_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-music-title-volume-container
+									Text: Chrome-Setting-Audio-MusicVolume
 								ExponentialSlider@MUSIC_VOLUME:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -111,7 +111,7 @@ Container@AUDIO_PANEL:
 								Label@AUDIO_DEVICE_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-audio-device-container
+									Text: Chrome-Setting-Audio-Device
 								DropDownButton@AUDIO_DEVICE:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -123,7 +123,7 @@ Container@AUDIO_PANEL:
 								Label@VIDEO_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-video-volume-container
+									Text: Chrome-Setting-Audio-VideoVolume
 								ExponentialSlider@VIDEO_VOLUME:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -142,4 +142,4 @@ Container@AUDIO_PANEL:
 									Height: 20
 									Font: Tiny
 									Align: Center
-									Text: label-restart-required-container-audio-desc
+									Text: Chrome-Setting-Audio-Restart-Text

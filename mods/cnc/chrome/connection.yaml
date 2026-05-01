@@ -12,7 +12,7 @@ Container@CONNECTING_PANEL:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-connecting-panel-title
+			Text: Game-MapPreviewLogic-Connecting-panel-title
 		Background@bg:
 			Width: 370
 			Height: 90
@@ -22,7 +22,7 @@ Container@CONNECTING_PANEL:
 					Y: (PARENT_HEIGHT - HEIGHT) / 2
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: label-bg-connecting-desc
+					Text: Game-MapPreviewLogic-Connecting
 					Font: Bold
 					Align: Center
 		Button@ABORT_BUTTON:
@@ -30,7 +30,7 @@ Container@CONNECTING_PANEL:
 			Y: 89
 			Width: 140
 			Height: 35
-			Text: button-connecting-panel-abort
+			Text: Chrome-Connection-AbortButton
 
 Container@CONNECTIONFAILED_PANEL:
 	Logic: ConnectionFailedLogic
@@ -56,7 +56,7 @@ Container@CONNECTIONFAILED_PANEL:
 					Y: 16
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: label-connection-background-connecting-desc
+					Text: Chrome-Connection-FailedConnect
 					Font: Bold
 					Align: Center
 				Label@CONNECTION_ERROR:
@@ -71,7 +71,7 @@ Container@CONNECTIONFAILED_PANEL:
 					Width: 95
 					Height: 25
 					Align: Right
-					Text: label-connection-background-password
+					Text: Chrome-Connection-Password
 					Font: Bold
 				PasswordField@PASSWORD:
 					X: 140
@@ -84,20 +84,20 @@ Container@CONNECTIONFAILED_PANEL:
 			Y: 84
 			Width: 140
 			Height: 35
-			Text: button-connectionfailed-panel-abort
+			Text: Chrome-Connection-AbortButton
 		Button@QUIT_BUTTON:
 			Key: escape
 			Y: 84
 			Width: 140
 			Height: 35
-			Text: button-quit
+			Text: Chrome-MainMenu-Quit
 		Button@RETRY_BUTTON:
 			Key: return
 			X: 230
 			Y: 84
 			Width: 140
 			Height: 35
-			Text: button-retry
+			Text: Chrome-Connection-RetryButton
 
 Container@CONNECTION_SWITCHMOD_PANEL:
 	Logic: ConnectionSwitchModLogic
@@ -113,7 +113,7 @@ Container@CONNECTION_SWITCHMOD_PANEL:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-connection-switchmod-panel-title
+			Text: Chrome-Connection-SwitchModPanel-Title
 		Background@CONNECTION_BACKGROUND:
 			Width: 370
 			Height: 120
@@ -123,7 +123,7 @@ Container@CONNECTION_SWITCHMOD_PANEL:
 					Y: 16
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: label-connection-background-desc
+					Text: Chrome-Connection-SwitchModPanel-Desc
 					Font: Bold
 					Align: Center
 				Container@MOD_CONTAINER:
@@ -153,7 +153,7 @@ Container@CONNECTION_SWITCHMOD_PANEL:
 					Y: 81
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: label-connection-background-desc2
+					Text: Chrome-Connection-SwitchModPanel-Desc2
 					Font: Bold
 					Align: Center
 		Button@ABORT_BUTTON:
@@ -161,11 +161,11 @@ Container@CONNECTION_SWITCHMOD_PANEL:
 			Y: 119
 			Width: 140
 			Height: 35
-			Text: button-connection-switchmod-panel-abort
+			Text: Chrome-Connection-AbortButton
 		Button@SWITCH_BUTTON:
 			Key: return
 			X: 230
 			Y: 119
 			Width: 140
 			Height: 35
-			Text: button-connection-switchmod-panel-switch
+			Text: Chrome-Connection-SwitchModPanel-SwitchButton

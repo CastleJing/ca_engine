@@ -9,7 +9,7 @@ Background@REPLAYBROWSER_PANEL:
 			Y: 16
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-replaybrowser-panel-title
+			Text: Chrome-ReplayBrowser-Filter-Title
 			Align: Center
 			Font: Bold
 		Container@FILTER_AND_MANAGE_CONTAINER:
@@ -29,104 +29,104 @@ Background@REPLAYBROWSER_PANEL:
 							Height: 25
 							Font: Bold
 							Align: Center
-							Text: label-filters-title
+							Text: Chrome-ReplayBrowser-Filter-Type
 						Label@FLT_GAMETYPE_DESC:
 							X: 0
 							Y: 30
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-gametype-desc
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 							Align: Right
 						DropDownButton@FLT_GAMETYPE_DROPDOWNBUTTON:
 							X: 85
 							Y: 30
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-any
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 						Label@FLT_DATE_DESC:
 							X: 0
 							Y: 60
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-date-desc
+							Text: Chrome-ReplayBrowser-Filter-Date
 							Align: Right
 						DropDownButton@FLT_DATE_DROPDOWNBUTTON:
 							X: 85
 							Y: 60
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-any
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 						Label@FLT_DURATION_DESC:
 							X: 0
 							Y: 90
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-duration-desc
+							Text: Chrome-ReplayBrowser-Filter-Date-Dropdown
 							Align: Right
 						DropDownButton@FLT_DURATION_DROPDOWNBUTTON:
 							X: 85
 							Y: 90
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-any
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 						Label@FLT_MAPNAME_DESC:
 							X: 0
 							Y: 120
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-mapname-desc
+							Text: Chrome-ReplayBrowser-Filter-Duration
 							Align: Right
 						DropDownButton@FLT_MAPNAME_DROPDOWNBUTTON:
 							X: 85
 							Y: 120
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-any
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 						Label@FLT_PLAYER_DESC:
 							X: 0
 							Y: 150
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-player-desc
+							Text: Chrome-ReplayBrowser-Filter-Duration-Dropdown
 							Align: Right
 						DropDownButton@FLT_PLAYER_DROPDOWNBUTTON:
 							X: 85
 							Y: 150
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-flt-player
+							Text: Chrome-ReplayBrowser-Filter-Player-Dropdown
 						Label@FLT_OUTCOME_DESC:
 							X: 0
 							Y: 180
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-outcome-desc
+							Text: Chrome-ReplayBrowser-Filter-Map
 							Align: Right
 						DropDownButton@FLT_OUTCOME_DROPDOWNBUTTON:
 							X: 85
 							Y: 180
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-any
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 						Label@FLT_FACTION_DESC:
 							X: 0
 							Y: 210
 							Width: 80
 							Height: 25
-							Text: label-filters-flt-faction-desc
+							Text: Chrome-ReplayBrowser-Filter-Map-Dropdown
 							Align: Right
 						DropDownButton@FLT_FACTION_DROPDOWNBUTTON:
 							X: 85
 							Y: 210
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: dropdownbutton-filters-any
+							Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
 						Button@FLT_RESET_BUTTON:
 							X: 85
 							Y: 250
 							Width: PARENT_WIDTH - 85
 							Height: 25
-							Text: button-filters-flt-reset
+							Text: Chrome-ReplayBrowser-Filter-ResetButton
 							Font: Bold
 				Container@MANAGEMENT:
 					X: 85
@@ -139,26 +139,26 @@ Background@REPLAYBROWSER_PANEL:
 							Height: 25
 							Font: Bold
 							Align: Center
-							Text: label-management-manage-title
+							Text: Chrome-ReplayBrowser-Filter-Player
 						Button@MNG_RENSEL_BUTTON:
 							Y: 30
 							Width: PARENT_WIDTH
 							Height: 25
-							Text: button-management-mng-rensel
+							Text: Chrome-ReplayBrowser-Manage-Rename
 							Font: Bold
 							Key: F2
 						Button@MNG_DELSEL_BUTTON:
 							Y: 60
 							Width: PARENT_WIDTH
 							Height: 25
-							Text: button-management-mng-delsel
+							Text: Chrome-ReplayBrowser-Manage-Delete
 							Font: Bold
 							Key: Delete
 						Button@MNG_DELALL_BUTTON:
 							Y: 90
 							Width: PARENT_WIDTH
 							Height: 25
-							Text: button-management-mng-delall
+							Text: Chrome-ReplayBrowser-Manage-DeleteAll
 							Font: Bold
 		Container@REPLAY_LIST_CONTAINER:
 			X: 311
@@ -170,7 +170,7 @@ Background@REPLAYBROWSER_PANEL:
 					Y: 6
 					Width: PARENT_WIDTH
 					Height: 25
-					Text: label-replay-list-container-replaybrowser-title
+					Text: Chrome-ReplayBrowser-Filter-Player-Dropdown
 					Align: Center
 					Font: Bold
 				ScrollPanel@REPLAY_LIST:
@@ -255,7 +255,7 @@ Background@REPLAYBROWSER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-replaybrowser-panel-watch
+			Text: Chrome-ReplayBrowser-OkButton
 			Font: Bold
 			Key: return
 		Button@CANCEL_BUTTON:
@@ -263,7 +263,7 @@ Background@REPLAYBROWSER_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-back
+			Text: Chrome-ReplayBrowser-BackButton
 			Font: Bold
 			Key: escape
 		TooltipContainer@TOOLTIP_CONTAINER:

@@ -125,8 +125,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class AddResourcesEditorAction : IEditorAction
 	{
-		[FluentReference("amount", "type")]
-		const string AddedResource = "notification-added-resource";
+		const string AddedResource = "Game-EditorResourceBrush-AddedResource";
 
 		public string Text { get; private set; }
 
@@ -168,7 +167,7 @@ namespace OpenRA.Mods.Common.Widgets
 			resourceLayer.ClearResources(resourceCell.Cell);
 			resourceLayer.AddResource(resourceCell.NewResourceType, resourceCell.Cell, resourceLayer.GetMaxDensity(resourceCell.NewResourceType));
 			cellResources.Add(resourceCell);
-			Text = FluentProvider.GetMessage(AddedResource, "amount", cellResources.Count, "type", resourceType);
+			Text = Game.Translate(AddedResource, "amount", cellResources.Count, "type", resourceType);
 		}
 	}
 }

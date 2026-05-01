@@ -64,10 +64,9 @@ namespace OpenRA
 
 	public static class ModifiersExts
 	{
-		[FluentReference]
+		
 		public const string Cmd = "keycode-modifier.cmd";
 
-		[FluentReference(Traits.LintDictionaryReference.Values)]
 		public static readonly IReadOnlyDictionary<Modifiers, string> ModifierFluentKeys = new Dictionary<Modifiers, string>()
 		{
 			{ Modifiers.None, "keycode-modifier.none" },
@@ -80,12 +79,12 @@ namespace OpenRA
 		public static string DisplayString(Modifiers m)
 		{
 			if (m == Modifiers.Meta && Platform.CurrentPlatform == PlatformType.OSX)
-				return FluentProvider.GetMessage(Cmd);
+				return Game.Translate(Cmd);
 
 			if (!ModifierFluentKeys.TryGetValue(m, out var fluentKey))
 				return m.ToString();
 
-			return FluentProvider.GetMessage(fluentKey);
+			return Game.Translate(fluentKey);
 		}
 	}
 

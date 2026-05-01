@@ -26,83 +26,78 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ReplayBrowserLogic : ChromeLogic
 	{
-		[FluentReference("time")]
-		const string Duration = "label-duration";
+		const string Duration = "Game-ReplayBrowserLogic-Duration";
 
-		[FluentReference]
-		const string Singleplayer = "options-replay-type.singleplayer";
+		
+		const string Singleplayer = "Game-ReplayBrowserLogic-GameType-Singleplayer";
 
-		[FluentReference]
-		const string Multiplayer = "options-replay-type.multiplayer";
+		
+		const string Multiplayer = "Game-ReplayBrowserLogic-GameType-Multiplayer";
 
-		[FluentReference]
-		const string Today = "options-replay-date.today";
+		
+		const string Today = "Game-ReplayBrowserLogic-DateType-Today";
 
-		[FluentReference]
-		const string LastWeek = "options-replay-date.last-week";
+		
+		const string LastWeek = "Game-ReplayBrowserLogic-DateType-7d";
 
-		[FluentReference]
-		const string LastFortnight = "options-replay-date.last-fortnight";
+		
+		const string LastFortnight = "Game-ReplayBrowserLogic-DateType-14d";
 
-		[FluentReference]
-		const string LastMonth = "options-replay-date.last-month";
+		
+		const string LastMonth = "Game-ReplayBrowserLogic-DateType-1m";
 
-		[FluentReference]
-		const string ReplayDurationVeryShort = "options-replay-duration.very-short";
+		
+		const string ReplayDurationVeryShort = "Game-ReplayBrowserLogic-DurationType-5min";
 
-		[FluentReference]
-		const string ReplayDurationShort = "options-replay-duration.short";
+		
+		const string ReplayDurationShort = "Game-ReplayBrowserLogic-DurationType-10min";
 
-		[FluentReference]
-		const string ReplayDurationMedium = "options-replay-duration.medium";
+		
+		const string ReplayDurationMedium = "Game-ReplayBrowserLogic-DurationType-30min";
 
-		[FluentReference]
-		const string ReplayDurationLong = "options-replay-duration.long";
+		
+		const string ReplayDurationLong = "Game-ReplayBrowserLogic-DurationType-More";
 
-		[FluentReference]
+		
 		const string RenameReplayTitle = "dialog-rename-replay.title";
 
-		[FluentReference]
+		
 		const string RenameReplayPrompt = "dialog-rename-replay.prompt";
 
-		[FluentReference]
+		
 		const string RenameReplayAccept = "dialog-rename-replay.confirm";
 
-		[FluentReference]
+		
 		const string DeleteReplayTitle = "dialog-delete-replay.title";
 
-		[FluentReference("replay")]
 		const string DeleteReplayPrompt = "dialog-delete-replay.prompt";
 
-		[FluentReference]
+		
 		const string DeleteReplayAccept = "dialog-delete-replay.confirm";
 
-		[FluentReference]
+		
 		const string DeleteAllReplaysTitle = "dialog-delete-all-replays.title";
 
-		[FluentReference("count")]
 		const string DeleteAllReplaysPrompt = "dialog-delete-all-replays.prompt";
 
-		[FluentReference]
+		
 		const string DeleteAllReplaysAccept = "dialog-delete-all-replays.confirm";
 
-		[FluentReference("file")]
-		const string ReplayDeletionFailed = "notification-replay-deletion-failed";
+		const string ReplayDeletionFailed = "Game-ReplayBrowserLogic-ReplayDeletionFailed";
 
-		[FluentReference]
-		const string Players = "label-players";
+		
+		const string Players = "Game-ObserverShroudSelectorLogic-Players";
 
-		[FluentReference("team")]
-		const string TeamNumber = "label-team-name";
+		const string TeamNumber = "Game-ObserverShroudSelectorLogic-Team";
 
-		[FluentReference]
-		const string NoTeam = "label-no-team";
+		
+		const string NoTeam = "Game-ObserverShroudSelectorLogic-NoTeam";
 
-		[FluentReference]
-		const string Victory = "options-winstate.victory";
+		
+		const string Victory = "Game-ReplayBrowserLogic-WinState-Won";
 
-		[FluentReference]
-		const string Defeat = "options-winstate.defeat";
+		
+		const string Defeat = "Game-ReplayBrowserLogic-WinState-Lost";
 
 		static Filter filter = new();
 
@@ -117,6 +112,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 		MapPreview map;
 		ReplayMetadata selectedReplay;
+
+		/// <summary>Localized map titles for filter dropdown and visibility (see <see cref="MapPreview.Translate"/>).</summary>
+		readonly Cache<ReplayMetadata, string> mapTitleCache = new(r => r.GameInfo.MapPreview.Translate(r.GameInfo.MapTitle));
 
 		volatile bool cancelLoadingReplays;
 
@@ -182,7 +180,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			});
 
 			var replayDuration = new CachedTransform<ReplayMetadata, string>(r =>
-				FluentProvider.GetMessage(Duration, "time", WidgetUtils.FormatTimeSeconds((int)selectedReplay.GameInfo.Duration.TotalSeconds)));
+				Game.Translate(Duration, "time", WidgetUtils.FormatTimeSeconds((int)r.GameInfo.Duration.TotalSeconds)));
 			panel.Get<LabelWidget>("DURATION").GetText = () => replayDuration.Update(selectedReplay);
 
 			SetupFilters();
@@ -234,8 +232,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					var options = new List<(GameType GameType, string Text)>
 					{
 						(GameType.Any, ddb.GetText()),
-						(GameType.Singleplayer, FluentProvider.GetMessage(Singleplayer)),
-						(GameType.Multiplayer, FluentProvider.GetMessage(Multiplayer))
+						(GameType.Singleplayer, Game.Translate(Singleplayer)),
+						(GameType.Multiplayer, Game.Translate(Multiplayer))
 					};
 
 					var lookup = options.ToDictionary(kvp => kvp.GameType, kvp => kvp.Text);
@@ -267,10 +265,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					var options = new List<(DateType DateType, string Text)>
 					{
 						(DateType.Any, ddb.GetText()),
-						(DateType.Today, FluentProvider.GetMessage(Today)),
-						(DateType.LastWeek, FluentProvider.GetMessage(LastWeek)),
-						(DateType.LastFortnight, FluentProvider.GetMessage(LastFortnight)),
-						(DateType.LastMonth, FluentProvider.GetMessage(LastMonth))
+						(DateType.Today, Game.Translate(Today)),
+						(DateType.LastWeek, Game.Translate(LastWeek)),
+						(DateType.LastFortnight, Game.Translate(LastFortnight)),
+						(DateType.LastMonth, Game.Translate(LastMonth))
 					};
 
 					var lookup = options.ToDictionary(kvp => kvp.DateType, kvp => kvp.Text);
@@ -303,10 +301,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					var options = new List<(DurationType DurationType, string Text)>
 					{
 						(DurationType.Any, ddb.GetText()),
-						(DurationType.VeryShort, FluentProvider.GetMessage(ReplayDurationVeryShort)),
-						(DurationType.Short, FluentProvider.GetMessage(ReplayDurationShort)),
-						(DurationType.Medium, FluentProvider.GetMessage(ReplayDurationMedium)),
-						(DurationType.Long, FluentProvider.GetMessage(ReplayDurationLong))
+						(DurationType.VeryShort, Game.Translate(ReplayDurationVeryShort)),
+						(DurationType.Short, Game.Translate(ReplayDurationShort)),
+						(DurationType.Medium, Game.Translate(ReplayDurationMedium)),
+						(DurationType.Long, Game.Translate(ReplayDurationLong))
 					};
 
 					var lookup = options.ToDictionary(kvp => kvp.DurationType, kvp => kvp.Text);
@@ -340,8 +338,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					var options = new List<(WinState WinState, string Text)>
 					{
 						(WinState.Undefined, ddb.GetText()),
-						(WinState.Lost, FluentProvider.GetMessage(Defeat)),
-						(WinState.Won, FluentProvider.GetMessage(Victory))
+						(WinState.Lost, Game.Translate(Defeat)),
+						(WinState.Won, Game.Translate(Victory))
 					};
 
 					var lookup = options.ToDictionary(kvp => kvp.WinState, kvp => kvp.Text);
@@ -379,7 +377,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var ddb = panel.GetOrNull<DropDownButtonWidget>("FLT_MAPNAME_DROPDOWNBUTTON");
 				if (ddb != null)
 				{
-					var options = replays.Select(r => r.GameInfo.MapTitle).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+					var options = replays.Select(r => mapTitleCache[r]).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
 					options.Sort(StringComparer.OrdinalIgnoreCase);
 					options.Insert(0, null); // no filter
 
@@ -446,7 +444,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					options.Insert(0, null); // no filter
 
 					var anyText = ddb.GetText();
-					ddb.GetText = () => string.IsNullOrEmpty(filter.Faction) ? anyText : FluentProvider.GetMessage(filter.Faction);
+					ddb.GetText = () => string.IsNullOrEmpty(filter.Faction) ? anyText : Game.Translate(filter.Faction);
 					ddb.OnMouseDown = _ =>
 					{
 						ScrollItemWidget SetupItem(string option, ScrollItemWidget tpl)
@@ -455,7 +453,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 								tpl,
 								() => string.Equals(filter.Faction, option, StringComparison.CurrentCultureIgnoreCase),
 								() => { filter.Faction = option; ApplyFilter(); });
-							item.Get<LabelWidget>("LABEL").GetText = () => option != null ? FluentProvider.GetMessage(option) : anyText;
+							item.Get<LabelWidget>("LABEL").GetText = () => option != null ? Game.Translate(option) : anyText;
 							return item;
 						}
 
@@ -584,7 +582,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 			catch (Exception ex)
 			{
-				TextNotificationsManager.Debug(FluentProvider.GetMessage(ReplayDeletionFailed, "file", replay.FilePath));
+				TextNotificationsManager.Debug(Game.Translate(ReplayDeletionFailed, "file", replay.FilePath));
 				Log.Write("debug", ex.ToString());
 				return;
 			}
@@ -597,7 +595,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			replayState.Remove(replay);
 		}
 
-		static bool EvaluateReplayVisibility(ReplayMetadata replay)
+		bool EvaluateReplayVisibility(ReplayMetadata replay)
 		{
 			// Game type
 			if ((filter.Type == GameType.Multiplayer && replay.GameInfo.IsSinglePlayer) || (filter.Type == GameType.Singleplayer && !replay.GameInfo.IsSinglePlayer))
@@ -659,9 +657,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				}
 			}
 
-			// Map
+			// Map (compare localized titles so filters stay valid when map.yaml titles are translation keys)
 			if (!string.IsNullOrEmpty(filter.MapName) &&
-				!string.Equals(filter.MapName, replay.GameInfo.MapTitle, StringComparison.CurrentCultureIgnoreCase))
+				string.Compare(filter.MapName, mapTitleCache[replay], StringComparison.OrdinalIgnoreCase) != 0)
 				return false;
 
 			// Player
@@ -724,9 +722,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var noTeams = players.Count == 1;
 				foreach (var p in players)
 				{
-					var label = noTeams ? FluentProvider.GetMessage(Players) : p.Key > 0
-						? FluentProvider.GetMessage(TeamNumber, "team", p.Key)
-						: FluentProvider.GetMessage(NoTeam);
+					var label = noTeams ? Game.Translate(Players) : p.Key > 0
+						? Game.Translate(TeamNumber, "0", p.Key)
+						: Game.Translate(NoTeam);
 
 					teams.Add(label, p);
 				}

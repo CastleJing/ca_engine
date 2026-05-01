@@ -39,7 +39,7 @@ namespace OpenRA.Mods.Common.Traits
 
 			[FieldLoader.Require]
 			[Desc("Resource name used by tooltips.")]
-			[FluentReference]
+			
 			public readonly string Name = null;
 
 			public ResourceTypeInfo(MiniYaml yaml)
@@ -273,7 +273,7 @@ namespace OpenRA.Mods.Common.Traits
 			if (info == null)
 				return null;
 
-			return FluentProvider.GetMessage(info.Name);
+			return Game.Translate(info.Name);
 		}
 
 		IEnumerable<string> IResourceRenderer.ResourceTypes => Info.ResourceTypes.Keys;

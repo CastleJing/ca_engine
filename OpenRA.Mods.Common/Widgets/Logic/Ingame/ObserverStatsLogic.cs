@@ -35,38 +35,37 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		"StatisticsArmyGraphKey")]
 	public class ObserverStatsLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string InformationNone = "options-observer-stats.none";
+		
+		const string InformationNone = "Game-ObserverStatsLogic-StatsDropdown-Title";
 
-		[FluentReference]
-		const string Basic = "options-observer-stats.basic";
+		
+		const string Basic = "Game-ObserverStatsLogic-StatsOption-Basic";
 
-		[FluentReference]
-		const string Economy = "options-observer-stats.economy";
+		
+		const string Economy = "Game-ObserverStatsLogic-StatsOption-Economy";
 
-		[FluentReference]
-		const string Production = "options-observer-stats.production";
+		
+		const string Production = "Game-ObserverStatsLogic-StatsOption-Production";
 
-		[FluentReference]
-		const string SupportPowers = "options-observer-stats.support-powers";
+		
+		const string SupportPowers = "Game-ObserverStatsLogic-StatsOption-SupportPowers";
 
-		[FluentReference]
-		const string Combat = "options-observer-stats.combat";
+		
+		const string Combat = "Game-ObserverStatsLogic-StatsOption-Combat";
 
-		[FluentReference]
-		const string Army = "options-observer-stats.army";
+		
+		const string Army = "Game-ObserverStatsLogic-StatsOption-Army";
 
-		[FluentReference]
-		const string EarningsGraph = "options-observer-stats.earnings-graph";
+		
+		const string EarningsGraph = "Game-ObserverStatsLogic-StatsOption-EarningsGraph";
 
-		[FluentReference]
-		const string ArmyGraph = "options-observer-stats.army-graph";
+		
+		const string ArmyGraph = "Game-ObserverStatsLogic-StatsOption-ArmyGraph";
 
-		[FluentReference("team")]
-		const string TeamNumber = "label-team-name";
+		const string TeamNumber = "Game-ObserverShroudSelectorLogic-Team";
 
-		[FluentReference]
-		const string NoTeam = "label-no-team";
+		
+		const string NoTeam = "Game-ObserverShroudSelectorLogic-NoTeam";
 
 		readonly ContainerWidget basicStatsHeaders;
 		readonly ContainerWidget economyStatsHeaders;
@@ -155,10 +154,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var statsDropDown = widget.Get<DropDownButtonWidget>("STATS_DROPDOWN");
 			StatsDropDownOption CreateStatsOption(string title, ObserverStatsPanel panel, ScrollItemWidget template, Action a)
 			{
-				title = FluentProvider.GetMessage(title);
+				title = Game.Translate(title);
 				return new StatsDropDownOption
 				{
-					Title = FluentProvider.GetMessage(title),
+					Title = Game.Translate(title),
 					IsSelected = () => activePanel == panel,
 					OnClick = () =>
 					{
@@ -179,11 +178,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				new()
 				{
-					Title = FluentProvider.GetMessage(InformationNone),
+					Title = Game.Translate(InformationNone),
 					IsSelected = () => activePanel == ObserverStatsPanel.None,
 					OnClick = () =>
 					{
-						var informationNone = FluentProvider.GetMessage(InformationNone);
+						var informationNone = Game.Translate(InformationNone);
 						statsDropDown.GetText = () => informationNone;
 						playerStatsPanel.Visible = false;
 						ClearStats();
@@ -286,8 +285,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					tt.IgnoreMouseOver = true;
 
 					var teamLabel = tt.Get<LabelWidget>("TEAM");
-					var teamText = team.Key > 0 ? FluentProvider.GetMessage(TeamNumber, "team", team.Key)
-						: FluentProvider.GetMessage(NoTeam);
+					var teamText = team.Key > 0 ? Game.Translate(TeamNumber, "0", team.Key)
+						: Game.Translate(NoTeam);
 					teamLabel.GetText = () => teamText;
 					tt.Bounds.Width = teamLabel.Bounds.Width = Game.Renderer.Fonts[tt.Font].Measure(teamText).X;
 

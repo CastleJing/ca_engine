@@ -26,7 +26,7 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		const string CommandName = "terrain-geometry";
 
-		[FluentReference]
+		
 		const string CommandDescription = "description-terrain-geometry-overlay";
 
 		public bool Enabled;

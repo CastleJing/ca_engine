@@ -19,7 +19,7 @@ namespace OpenRA.Mods.Cnc
 {
 	public sealed class CncLoadScreen : SheetLoadScreen
 	{
-		[FluentReference]
+		
 		const string Loading = "loadscreen-loading";
 
 		int loadTick;
@@ -42,7 +42,7 @@ namespace OpenRA.Mods.Cnc
 
 			versionText = modData.Manifest.Metadata.Version;
 
-			message = FluentProvider.GetMessage(Loading);
+			message = Game.Translate(Loading);
 		}
 
 		public override void DisplayInner(Renderer r, Sheet s, int density)

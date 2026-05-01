@@ -37,7 +37,7 @@ Container@INGAME_MENU:
 					Y: 20
 					Width: 200
 					Height: 30
-					Text: label-menu-buttons-title
+					Text: Chrome-InGameMenu-Title
 					Align: Center
 					Font: Bold
 				Button@BUTTON_TEMPLATE:

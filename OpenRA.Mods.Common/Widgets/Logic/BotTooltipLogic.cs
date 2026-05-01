@@ -16,8 +16,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class BotTooltipLogic : ChromeLogic
 	{
-		[FluentReference("name")]
-		const string BotManagedBy = "label-bot-managed-by-tooltip";
+		const string BotManagedBy = "Game-BotTooltipLogic-ManagedBy";
 
 		[ObjectCreator.UseCtor]
 		public BotTooltipLogic(OrderManager orderManager, Widget widget, Session.Client client)
@@ -26,7 +25,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var nameFont = Game.Renderer.Fonts[nameLabel.Font];
 			var controller = orderManager.LobbyInfo.Clients.FirstOrDefault(c => c.Index == client.BotControllerClientIndex);
 			if (controller != null)
-				nameLabel.GetText = () => FluentProvider.GetMessage(BotManagedBy, "name", controller.Name);
+				nameLabel.GetText = () => Game.Translate(BotManagedBy, "name", controller.Name);
 
 			widget.Bounds.Width = nameFont.Measure(nameLabel.GetText()).X + 2 * nameLabel.Bounds.Left;
 		}

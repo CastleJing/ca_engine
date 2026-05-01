@@ -55,7 +55,7 @@ Container@MENU_BACKGROUND:
 							Y: 0 - 28
 							Width: PARENT_WIDTH
 							Height: 20
-							Text: label-main-menu-mainmenu-title
+							Text: Chrome-MainMenu-Title
 							Align: Center
 							Font: Bold
 							Contrast: True
@@ -64,37 +64,37 @@ Container@MENU_BACKGROUND:
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-singleplayer-title
+							Text: Chrome-MainMenu-Singleplayer
 						Button@MULTIPLAYER_BUTTON:
 							X: 150
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-multiplayer-title
+							Text: Chrome-MainMenu-Multiplayer
 						Button@SETTINGS_BUTTON:
 							X: 300
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-settings-title
+							Text: Chrome-Setting-Title
 						Button@EXTRAS_BUTTON:
 							X: 450
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-extras-title
+							Text: Chrome-ExtraMenu-Title
 						Button@CONTENT_BUTTON:
 							X: 600
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-main-menu-content
+							Text: Chrome-MainMenu-ManageContent
 						Button@QUIT_BUTTON:
 							X: 750
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-quit
+							Text: Chrome-MainMenu-Quit
 				Container@SINGLEPLAYER_MENU:
 					Width: PARENT_WIDTH
 					Visible: False
@@ -104,7 +104,7 @@ Container@MENU_BACKGROUND:
 							Y: 0 - 28
 							Width: PARENT_WIDTH
 							Height: 20
-							Text: label-singleplayer-title
+							Text: Chrome-MainMenu-Singleplayer
 							Align: Center
 							Font: Bold
 							Contrast: True
@@ -113,32 +113,32 @@ Container@MENU_BACKGROUND:
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-singleplayer-menu-skirmish
+							Text: Chrome-SingleplayerMenu-Skirmish
 						Button@MISSIONS_BUTTON:
 							X: 150
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-missions-title
+							Text: Chrome-MissionBrowser-Title
 						Button@LOAD_BUTTON:
 							X: 300
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-singleplayer-menu-load
+							Text: Chrome-SingleplayerMenu-Load
 						Button@ENCYCLOPEDIA_BUTTON:
 							X: 450
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-encyclopedia-title
+							Text: Chrome-Cnc-EncyclopediaTitle
 						Button@BACK_BUTTON:
 							Key: escape
 							X: 600
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-back
+							Text: Chrome-MainMenu-Back
 				Container@EXTRAS_MENU:
 					Width: PARENT_WIDTH
 					Visible: False
@@ -148,7 +148,7 @@ Container@MENU_BACKGROUND:
 							Y: 0 - 28
 							Width: PARENT_WIDTH
 							Height: 20
-							Text: button-extras-title
+							Text: Chrome-ExtraMenu-Title
 							Align: Center
 							Font: Bold
 							Contrast: True
@@ -157,39 +157,39 @@ Container@MENU_BACKGROUND:
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-extras-menu-replays
+							Text: Chrome-ExtraMenu-Replay
 						Button@MUSIC_BUTTON:
 							X: 150
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-music-title
+							Text: Chrome-Lobby-Music
 						Button@MAP_EDITOR_BUTTON:
 							X: 300
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-map-editor-title
+							Text: Chrome-ExtraMenu-MapEditor
 							Font: Bold
 						Button@ASSETBROWSER_BUTTON:
 							X: 450
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-extras-menu-assetbrowser
+							Text: Chrome-ExtraMenu-AssetBrowser
 						Button@CREDITS_BUTTON:
 							X: 600
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: label-credits-title
+							Text: Chrome-MainMenu-Back
 						Button@BACK_BUTTON:
 							Key: escape
 							X: 750
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-back
+							Text: Chrome-MainMenu-Back
 				Container@MAP_EDITOR_MENU:
 					Width: PARENT_WIDTH
 					Visible: False
@@ -199,7 +199,7 @@ Container@MENU_BACKGROUND:
 							Y: 0 - 28
 							Width: PARENT_WIDTH
 							Height: 20
-							Text: label-map-editor-title
+							Text: Chrome-ExtraMenu-MapEditor
 							Align: Center
 							Font: Bold
 							Contrast: True
@@ -208,21 +208,21 @@ Container@MENU_BACKGROUND:
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-map-editor-new-map
+							Text: Chrome-MapEditorMenu-NewMap
 							Font: Bold
 						Button@LOAD_MAP_BUTTON:
 							X: 150
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-map-editor-load-map
+							Text: Chrome-MapEditorMenu-LoadMap
 							Font: Bold
 						Button@BACK_BUTTON:
 							X: 300
 							Y: 0
 							Width: 140
 							Height: 35
-							Text: button-back
+							Text: Chrome-MainMenu-Back
 							Font: Bold
 							Key: escape
 		Container@NEWS_BG:
@@ -232,7 +232,7 @@ Container@MENU_BACKGROUND:
 					Y: 50
 					Width: 400
 					Height: 25
-					Text: dropdownbutton-news-bg-button
+					Text: Chrome-MainMenu-NewButton
 					Font: Bold
 		Container@UPDATE_NOTICE:
 			X: (WINDOW_WIDTH - WIDTH) / 2
@@ -244,14 +244,14 @@ Container@MENU_BACKGROUND:
 					Height: 25
 					Align: Center
 					Shadow: true
-					Text: label-update-notice-a
+					Text: Chrome-MainMenu-UpdateNoticeLine1
 				Label@B:
 					Y: 20
 					Width: PARENT_WIDTH
 					Height: 25
 					Align: Center
 					Shadow: true
-					Text: label-update-notice-b
+					Text: Chrome-MainMenu-UpdateNoticeLine2
 		Container@PERFORMANCE_INFO:
 			Logic: PerfDebugLogic
 			Children:

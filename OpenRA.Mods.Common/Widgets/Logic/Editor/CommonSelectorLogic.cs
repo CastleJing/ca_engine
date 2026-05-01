@@ -19,17 +19,17 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public abstract class CommonSelectorLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string None = "options-common-selector.none";
+		
+		const string None = "Game-CommonSelectorLogic-None";
 
-		[FluentReference]
-		const string SearchResults = "options-common-selector.search-results";
+		
+		const string SearchResults = "Game-CommonSelectorLogic-Result";
 
-		[FluentReference]
-		const string All = "options-common-selector.all";
+		
+		const string All = "Game-CommonSelectorLogic-All";
 
-		[FluentReference]
-		const string Multiple = "options-common-selector.multiple";
+		
+		const string Multiple = "Game-CommonSelectorLogic-Multiple";
 
 		protected readonly Widget Widget;
 		protected readonly ModData ModData;
@@ -73,10 +73,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			Editor.DefaultBrush.SelectionChanged += HandleSelectionChanged;
 
-			var none = FluentProvider.GetMessage(None);
-			var searchResults = FluentProvider.GetMessage(SearchResults);
-			var all = FluentProvider.GetMessage(All);
-			var multiple = FluentProvider.GetMessage(Multiple);
+			var none = Game.Translate(None);
+			var searchResults = Game.Translate(SearchResults);
+			var all = Game.Translate(All);
+			var multiple = Game.Translate(Multiple);
 
 			var categorySelector = widget.Get<DropDownButtonWidget>("CATEGORIES_DROPDOWN");
 			categorySelector.GetText = () =>

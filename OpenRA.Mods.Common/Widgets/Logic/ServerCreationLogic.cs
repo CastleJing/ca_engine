@@ -19,37 +19,35 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ServerCreationLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string InternetServerNatA = "label-internet-server-nat-A";
+		
+		const string InternetServerNatA = "Game-ServerCreationLogic-InternetServerNatA";
 
-		[FluentReference]
-		const string InternetServerNatBenabled = "label-internet-server-nat-B-enabled";
+		
+		const string InternetServerNatBenabled = "Game-ServerCreationLogic-InternetServerNatBEnabled";
 
-		[FluentReference]
-		const string InternetServerNatBnotSupported = "label-internet-server-nat-B-not-supported";
+		
+		const string InternetServerNatBnotSupported = "Game-ServerCreationLogic-InternetServerNatBNotSupported";
 
-		[FluentReference]
-		const string InternetServerNatBdisabled = "label-internet-server-nat-B-disabled";
+		
+		const string InternetServerNatBdisabled = "Game-ServerCreationLogic-InternetServerNatBDisabled";
 
-		[FluentReference]
-		const string InternetServerNatC = "label-internet-server-nat-C";
+		
+		const string InternetServerNatC = "Game-ServerCreationLogic-InternetServerNatC";
 
-		[FluentReference]
-		const string LocalServer = "label-local-server";
+		
+		const string LocalServer = "Game-ServerCreationLogic-LocalServer";
 
-		[FluentReference("port")]
 		const string ServerCreationFailedPrompt = "dialog-server-creation-failed.prompt";
 
-		[FluentReference]
+		
 		const string ServerCreationFailedPortUsed = "dialog-server-creation-failed.prompt-port-used";
 
-		[FluentReference("message", "code")]
 		const string ServerCreationFailedError = "dialog-server-creation-failed.prompt-error";
 
-		[FluentReference]
+		
 		const string ServerCreationFailedTitle = "dialog-server-creation-failed.title";
 
-		[FluentReference]
+		
 		const string ServerCreationFailedCancel = "dialog-server-creation-failed.cancel";
 
 		readonly Widget panel;
@@ -170,15 +168,15 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			if (advertiseOnline)
 			{
-				var noticesLabelAText = FluentProvider.GetMessage(InternetServerNatA) + " ";
+				var noticesLabelAText = Game.Translate(InternetServerNatA) + " ";
 				noticesLabelA.GetText = () => noticesLabelAText;
 				var aWidth = Game.Renderer.Fonts[noticesLabelA.Font].Measure(noticesLabelAText).X;
 				noticesLabelA.Bounds.Width = aWidth;
 
 				var noticesLabelBText =
-					Nat.Status == NatStatus.Enabled ? FluentProvider.GetMessage(InternetServerNatBenabled) :
-					Nat.Status == NatStatus.NotSupported ? FluentProvider.GetMessage(InternetServerNatBnotSupported) :
-					FluentProvider.GetMessage(InternetServerNatBdisabled);
+					Nat.Status == NatStatus.Enabled ? Game.Translate(InternetServerNatBenabled) :
+					Nat.Status == NatStatus.NotSupported ? Game.Translate(InternetServerNatBnotSupported) :
+					Game.Translate(InternetServerNatBdisabled);
 				noticesLabelB.GetText = () => noticesLabelBText;
 
 				noticesLabelB.TextColor =
@@ -191,14 +189,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				noticesLabelB.Bounds.Width = bWidth;
 				noticesLabelB.Visible = true;
 
-				var noticesLabelCText = FluentProvider.GetMessage(InternetServerNatC);
+				var noticesLabelCText = Game.Translate(InternetServerNatC);
 				noticesLabelC.GetText = () => noticesLabelCText;
 				noticesLabelC.Bounds.X = noticesLabelB.Bounds.Right;
 				noticesLabelC.Visible = true;
 			}
 			else
 			{
-				var noticesLabelAText = FluentProvider.GetMessage(LocalServer);
+				var noticesLabelAText = Game.Translate(LocalServer);
 				noticesLabelA.GetText = () => noticesLabelAText;
 				noticesLabelB.Visible = false;
 				noticesLabelC.Visible = false;
@@ -239,13 +237,13 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 			catch (System.Net.Sockets.SocketException e)
 			{
-				var message = FluentProvider.GetMessage(ServerCreationFailedPrompt, "port", Game.Settings.Server.ListenPort);
+				var message = Game.Translate(ServerCreationFailedPrompt, "port", Game.Settings.Server.ListenPort);
 
 				// AddressAlreadyInUse (WSAEADDRINUSE)
 				if (e.ErrorCode == 10048)
-					message += "\n" + FluentProvider.GetMessage(ServerCreationFailedPortUsed);
+					message += "\n" + Game.Translate(ServerCreationFailedPortUsed);
 				else
-					message += "\n" + FluentProvider.GetMessage(ServerCreationFailedError, "message", e.Message, "code", e.ErrorCode);
+					message += "\n" + Game.Translate(ServerCreationFailedError, "message", e.Message, "code", e.ErrorCode);
 
 				ConfirmationDialogs.ButtonPrompt(modData, ServerCreationFailedTitle, message,
 					onCancel: () => { }, cancelText: ServerCreationFailedCancel);

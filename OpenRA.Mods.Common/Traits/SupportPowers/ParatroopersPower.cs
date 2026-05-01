@@ -36,7 +36,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification to play when entering the drop zone.")]
 		public readonly string ReinforcementsArrivedSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display when entering the drop zone.")]
 		public readonly string ReinforcementsArrivedTextNotification = null;
 

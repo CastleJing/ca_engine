@@ -31,7 +31,7 @@ Background@CONNECTIONFAILED_PANEL:
 			Y: 111
 			Width: 95
 			Height: 25
-			Text: label-connectionfailed-panel-password
+			Text: Chrome-Connection-Password
 			Font: Bold
 		PasswordField@PASSWORD:
 			X: PARENT_WIDTH - 285
@@ -44,7 +44,7 @@ Background@CONNECTIONFAILED_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-retry
+			Text: Chrome-Connection-RetryButton
 			Font: Bold
 			Key: return
 		Button@ABORT_BUTTON:
@@ -52,7 +52,7 @@ Background@CONNECTIONFAILED_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-connectionfailed-panel-abort
+			Text: Chrome-Connection-AbortButton
 			Font: Bold
 			Key: escape
 		Button@QUIT_BUTTON:
@@ -60,7 +60,7 @@ Background@CONNECTIONFAILED_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-quit
+			Text: Chrome-MainMenu-Quit
 			Font: Bold
 			Key: escape
 
@@ -76,7 +76,7 @@ Background@CONNECTING_PANEL:
 			Y: 21
 			Width: 450
 			Height: 25
-			Text: label-connecting-panel-title
+			Text: Chrome-Connection-Error
 			Align: Center
 			Font: Bold
 		Label@CONNECTING_DESC:
@@ -90,7 +90,7 @@ Background@CONNECTING_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-connecting-panel-abort
+			Text: Chrome-Connection-AbortButton
 			Font: Bold
 			Key: escape
 
@@ -108,12 +108,12 @@ Background@CONNECTION_SWITCHMOD_PANEL:
 			Height: 25
 			Align: Center
 			Font: Bold
-			Text: label-connection-switchmod-panel-title
+			Text: Chrome-Connection-SwitchModPanel-Title
 		Label@DESC:
 			Y: 46
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-connection-switchmod-panel-desc
+			Text: Chrome-Connection-SwitchModPanel-Desc
 			Font: Bold
 			Align: Center
 		Container@MOD_CONTAINER:
@@ -143,7 +143,7 @@ Background@CONNECTION_SWITCHMOD_PANEL:
 			Y: 111
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-connection-switchmod-panel-desc2
+			Text: Chrome-Connection-SwitchModPanel-Desc2
 			Font: Bold
 			Align: Center
 		Button@SWITCH_BUTTON:
@@ -151,7 +151,7 @@ Background@CONNECTION_SWITCHMOD_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-connection-switchmod-panel-switch
+			Text: Chrome-Connection-SwitchModPanel-SwitchButton
 			Font: Bold
 			Key: return
 		Button@ABORT_BUTTON:
@@ -159,6 +159,6 @@ Background@CONNECTION_SWITCHMOD_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 160
 			Height: 25
-			Text: button-connection-switchmod-panel-abort
+			Text: Chrome-Connection-AbortButton
 			Font: Bold
 			Key: escape

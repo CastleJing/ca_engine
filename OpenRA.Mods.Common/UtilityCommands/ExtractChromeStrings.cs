@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using OpenRA.FileSystem;
 using OpenRA.Mods.Common.UpdateRules;
 using OpenRA.Widgets;
@@ -40,7 +41,7 @@ namespace OpenRA.Mods.Common.UtilityCommands
 				.Where(t => t.Name.EndsWith("Widget", StringComparison.InvariantCulture) && t.IsSubclassOf(typeof(Widget)))
 				.ToDictionary(
 					t => t.Name[..^6],
-					t => Utility.GetFields(t).Where(Utility.HasAttribute<FluentReferenceAttribute>).Select(f => f.Name).ToArray())
+					t => Utility.GetFields(t).Where(ChromeYamlStringField).Select(f => f.Name).ToArray())
 				.Where(t => t.Value.Length > 0)
 				.ToDictionary(t => t.Key, t => t.Value);
 
@@ -216,6 +217,20 @@ namespace OpenRA.Mods.Common.UtilityCommands
 				Value = value;
 				Nodes = new List<MiniYamlNodeBuilder>() { node };
 			}
+		}
+
+		static bool ChromeYamlStringField(FieldInfo f)
+		{
+			if (f.FieldType != typeof(string) || f.IsStatic || !f.IsPublic)
+				return false;
+
+			return f.Name switch
+			{
+				"Font" or "Background" or "Cursor" or "ImageName" or "Video" or "Palette" or
+				"ClickSound" or "ClickDisabledSound" or "TooltipContainer" or "TooltipTemplate" or
+				"Music" or "TickSound" or "HoverSound" or "OverlayFont" => false,
+				_ => true,
+			};
 		}
 
 		static string ClearContainersAndToLower(string node)

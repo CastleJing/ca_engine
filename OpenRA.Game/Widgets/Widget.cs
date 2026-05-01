@@ -160,6 +160,13 @@ namespace OpenRA.Widgets
 				Viewport.LastMousePos, int2.Zero, Modifiers.None, 0));
 		}
 
+		/// <summary>Walk the widget tree after language / translation tables change (see <see cref="Game.SwitchLanguage"/>).</summary>
+		public static void OnLanguageChanged()
+		{
+			Root.OnLanguageChanged();
+			ResetTooltips();
+		}
+
 		public static void Subscribe<T>(T instance)
 		{
 			Mediator.Subscribe(instance);
@@ -179,6 +186,10 @@ namespace OpenRA.Widgets
 		public virtual void Tick() { }
 		public virtual void BecameHidden() { }
 		public virtual void BecameVisible() { }
+
+		/// <summary>Called on the UI tree after <see cref="Game.SwitchLanguage"/> reloads translations.</summary>
+		public virtual void LanguageChanged() { }
+
 		protected virtual void Dispose(bool disposing) { }
 	}
 
@@ -483,6 +494,16 @@ namespace OpenRA.Widgets
 		}
 
 		public virtual void PrepareRenderables() { }
+
+		/// <summary>Depth-first notification after language change; override <see cref="ChromeLogic.LanguageChanged"/> for logic.</summary>
+		public virtual void OnLanguageChanged()
+		{
+			foreach (var child in Children)
+				child.OnLanguageChanged();
+			if (LogicObjects != null)
+				foreach (var l in LogicObjects)
+					l.LanguageChanged();
+		}
 
 		public virtual void PrepareRenderablesOuter()
 		{

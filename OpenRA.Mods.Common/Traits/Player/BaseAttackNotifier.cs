@@ -31,7 +31,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification type to play.")]
 		public readonly string Notification = "BaseAttack";
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display.")]
 		public readonly string TextNotification = null;
 
@@ -40,7 +39,6 @@ namespace OpenRA.Mods.Common.Traits
 			"Won't play a notification to allies if this is null.")]
 		public readonly string AllyNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display to allies when under attack.")]
 		public readonly string AllyTextNotification = null;
 

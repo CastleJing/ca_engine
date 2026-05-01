@@ -24,14 +24,14 @@ namespace OpenRA.Mods.Common.Traits
 	[Desc("Configuration options for the lobby player color picker. Attach this to the world actor.")]
 	public class ColorPickerManagerInfo : TraitInfo<ColorPickerManager>, IColorPickerManagerInfo
 	{
-		[FluentReference]
-		const string PlayerColorTerrain = "notification-player-color-terrain";
+		
+		const string PlayerColorTerrain = "Game-ColorPickerManager-PlayerColorTerrain";
 
-		[FluentReference]
-		const string PlayerColorPlayer = "notification-player-color-player";
+		
+		const string PlayerColorPlayer = "Game-ColorPickerManager-PlayerColorPlayer";
 
-		[FluentReference]
-		const string InvalidPlayerColor = "notification-invalid-player-color";
+		
+		const string InvalidPlayerColor = "Game-ColorPickerManager-InvalidPlayerColor";
 
 		[Desc("Minimum and maximum saturation levels that are valid for use.")]
 		public readonly float[] HsvSaturationRange = { 0.3f, 0.95f };

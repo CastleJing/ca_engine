@@ -28,7 +28,7 @@ namespace OpenRA.Mods.Common.Widgets
 		public Func<string> GetImageCollection;
 		public Func<Sprite> GetSprite;
 
-		[FluentReference]
+		
 		public string TooltipText;
 
 		readonly Lazy<TooltipContainerWidget> tooltipContainer;
@@ -41,7 +41,7 @@ namespace OpenRA.Mods.Common.Widgets
 		{
 			GetImageName = () => ImageName;
 			GetImageCollection = () => ImageCollection;
-			var tooltipCache = new CachedTransform<string, string>(s => !string.IsNullOrEmpty(s) ? FluentProvider.GetMessage(s) : "");
+			var tooltipCache = new CachedTransform<string, string>(s => !string.IsNullOrEmpty(s) ? Game.Translate(s) : "");
 			GetTooltipText = () => tooltipCache.Update(TooltipText);
 			tooltipContainer = Exts.Lazy(() =>
 				Ui.Root.Get<TooltipContainerWidget>(TooltipContainer));

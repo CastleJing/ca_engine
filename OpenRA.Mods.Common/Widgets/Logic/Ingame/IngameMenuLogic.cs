@@ -21,122 +21,127 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class IngameMenuLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string Leave = "menu-ingame.leave";
+		
+		const string Leave = "Game-IngameMenuLogic-Leave";
 
-		[FluentReference]
-		const string AbortMission = "menu-ingame.abort";
+		
+		const string AbortMission = "Game-IngameMenuLogic-Abort";
 
-		[FluentReference]
-		const string LeaveMissionTitle = "dialog-leave-mission.title";
+		
+		const string LeaveMissionTitle = "Game-IngameMenuLogic-LeaveDialog-Title";
 
-		[FluentReference]
-		const string LeaveMissionPrompt = "dialog-leave-mission.prompt";
+		
+		const string LeaveMissionPrompt = "Game-IngameMenuLogic-LeaveDialog-Text";
 
-		[FluentReference]
-		const string LeaveMissionAccept = "dialog-leave-mission.confirm";
+		
+		const string LeaveMissionAccept = "Game-IngameMenuLogic-LeaveDialog-OkButton";
 
-		[FluentReference]
-		const string LeaveMissionCancel = "dialog-leave-mission.cancel";
+		
+		const string LeaveMissionCancel = "Game-IngameMenuLogic-LeaveDialog-CancelButton";
 
-		[FluentReference]
-		const string RestartButton = "menu-ingame.restart";
+		
+		const string RestartButton = "Game-IngameMenuLogic-Restart";
 
-		[FluentReference]
-		const string RestartMissionTitle = "dialog-restart-mission.title";
+		
+		const string RestartMissionTitle = "Game-IngameMenuLogic-RestartDialog-Title";
 
-		[FluentReference]
-		const string RestartMissionPrompt = "dialog-restart-mission.prompt";
+		
+		const string RestartMissionPrompt = "Game-IngameMenuLogic-RestartDialog-Text";
 
-		[FluentReference]
-		const string RestartMissionAccept = "dialog-restart-mission.confirm";
+		
+		const string RestartMissionAccept = "Game-IngameMenuLogic-RestartDialog-OkButton";
 
-		[FluentReference]
-		const string RestartMissionCancel = "dialog-restart-mission.cancel";
+		
+		const string RestartMissionCancel = "Game-IngameMenuLogic-RestartDialog-CancelButton";
 
-		[FluentReference]
-		const string SurrenderButton = "menu-ingame.surrender";
+		
+		const string SurrenderButton = "Game-IngameMenuLogic-Surrender";
 
-		[FluentReference]
-		const string SurrenderTitle = "dialog-surrender.title";
+		
+		const string SurrenderTitle = "Game-IngameMenuLogic-SurrenderDialog-Title";
 
-		[FluentReference]
-		const string SurrenderPrompt = "dialog-surrender.prompt";
+		
+		const string SurrenderPrompt = "Game-IngameMenuLogic-SurrenderDialog-Text";
 
-		[FluentReference]
-		const string SurrenderAccept = "dialog-surrender.confirm";
+		
+		const string SurrenderAccept = "Game-IngameMenuLogic-SurrenderDialog-OkButton";
 
-		[FluentReference]
-		const string SurrenderCancel = "dialog-surrender.cancel";
+		
+		const string SurrenderCancel = "Game-IngameMenuLogic-SurrenderDialog-CancelButton";
 
-		[FluentReference]
-		const string LoadGameButton = "menu-ingame.load-game";
+		
+		const string LoadGameButton = "Game-IngameMenuLogic-LoadGame";
 
-		[FluentReference]
-		const string SaveGameButton = "menu-ingame.save-game";
+		
+		const string SaveGameButton = "Game-IngameMenuLogic-SaveGame";
 
-		[FluentReference]
-		const string MusicButton = "menu-ingame.music";
+		
+		const string MusicButton = "Game-IngameMenuLogic-Music";
 
-		[FluentReference]
-		const string SettingsButton = "menu-ingame.settings";
+		
+		const string SettingsButton = "Game-IngameMenuLogic-Settings";
 
-		[FluentReference]
-		const string ReturnToMap = "menu-ingame.return-to-map";
+		
+		const string ReturnToMap = "Game-IngameMenuLogic-ReturnMap";
 
-		[FluentReference]
-		const string Resume = "menu-ingame.resume";
+		
+		const string Resume = "Game-IngameMenuLogic-Resume";
 
-		[FluentReference]
-		const string SaveMapButton = "menu-ingame.save-map";
+		
+		const string SaveMapButton = "Game-IngameMenuLogic-SaveMap";
 
-		[FluentReference]
-		const string ErrorMaxPlayerTitle = "dialog-error-max-player.title";
+		
+		const string ErrorMaxPlayerTitle = "Game-IngameMenuLogic-ErrorMaxPlayer-Title";
 
-		[FluentReference("players", "max")]
-		const string ErrorMaxPlayerPrompt = "dialog-error-max-player.prompt";
+		const string ErrorMaxPlayerPrompt = "Game-IngameMenuLogic-ErrorMaxPlayer-Text";
 
-		[FluentReference]
-		const string ErrorMaxPlayerAccept = "dialog-error-max-player.confirm";
+		
+		const string ErrorMaxPlayerAccept = "Game-IngameMenuLogic-ErrorMaxPlayer-OkButton";
 
-		[FluentReference]
-		const string ExitMapButton = "menu-ingame.exit-map";
+		
+		const string ExitMapButton = "Game-IngameMenuLogic-ExitEditor";
 
-		[FluentReference]
-		const string ExitMapEditorTitle = "dialog-exit-map-editor.title";
+		
+		const string ExitMapEditorTitle = "Game-IngameMenuLogic-ExitEditorDialog-Title";
 
-		[FluentReference]
-		const string ExitMapEditorPromptUnsaved = "dialog-exit-map-editor.prompt-unsaved";
+		
+		const string ExitMapEditorPromptUnsaved = "Game-IngameMenuLogic-ExitEditorDialog-Text";
 
-		[FluentReference]
-		const string ExitMapEditorPromptDeleted = "dialog-exit-map-editor.prompt-deleted";
+		
+		const string ExitMapEditorPromptDeleted = "Game-IngameMenuLogic-ExitEditorDialog-TextDeleted";
 
-		[FluentReference]
-		const string ExitMapEditorAnywayConfirm = "dialog-exit-map-editor.confirm-anyway";
+		
+		const string ExitMapEditorAnywayConfirm = "Game-IngameMenuLogic-ExitEditorDialog-ConfirmAnyway";
 
-		[FluentReference]
-		const string ExitMapEditorConfirm = "dialog-exit-map-editor.confirm";
+		
+		const string ExitMapEditorConfirm = "Game-IngameMenuLogic-ExitEditorDialog-OkButton";
 
-		[FluentReference]
-		const string PlayMapWarningTitle = "dialog-play-map-warning.title";
+		
+		const string PlayMapWarningTitle = "Game-IngameMenuLogic-PlayMapWarning-Title";
 
-		[FluentReference]
-		const string PlayMapWarningPrompt = "dialog-play-map-warning.prompt";
+		
+		const string PlayMapWarningPrompt = "Game-IngameMenuLogic-PlayMapWarning-Text";
 
-		[FluentReference]
-		const string PlayMapWarningCancel = "dialog-play-map-warning.cancel";
+		
+		const string PlayMapWarningCancel = "Game-IngameMenuLogic-PlayMapWarning-CancelButton";
 
-		[FluentReference]
-		const string ExitToMapEditorTitle = "dialog-exit-to-map-editor.title";
+		
+		const string ExitToMapEditorTitle = "Game-IngameMenuLogic-ExitToEditorDialog-Title";
 
-		[FluentReference]
-		const string ExitToMapEditorPrompt = "dialog-exit-to-map-editor.prompt";
+		
+		const string ExitToMapEditorPrompt = "Game-IngameMenuLogic-ExitToEditorDialog-Text";
 
-		[FluentReference]
-		const string ExitToMapEditorConfirm = "dialog-exit-to-map-editor.confirm";
+		
+		const string ExitToMapEditorConfirm = "Game-IngameMenuLogic-ExitToEditorDialog-ConfirmButton";
 
-		[FluentReference]
-		const string ExitToMapEditorCancel = "dialog-exit-to-map-editor.cancel";
+		
+		const string ExitToMapEditorCancel = "Game-IngameMenuLogic-ExitToEditorDialog-CancelButton";
+
+		
+		const string PlayMapButton = "Game-IngameMenuLogic-PlayMap";
+
+		
+		const string BackToEditorButton = "Game-IngameMenuLogic-BackToEditor";
 
 		readonly Widget menu;
 		readonly Widget buttonContainer;
@@ -305,7 +310,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			button.Id = id;
 			button.IsDisabled = () => leaving;
-			var text = FluentProvider.GetMessage(label);
+			var text = Game.Translate(label);
 			button.GetText = () => text;
 			buttonContainer.AddChild(button);
 			buttons.Add(button);
@@ -319,8 +324,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				return;
 
 			var button = AddButton("ABORT_MISSION", world.IsGameOver
-				? FluentProvider.GetMessage(Leave)
-				: FluentProvider.GetMessage(AbortMission));
+				? Game.Translate(Leave)
+				: Game.Translate(AbortMission));
 
 			button.OnClick = () =>
 			{
@@ -519,7 +524,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				return;
 
 			var actionManager = world.WorldActor.Trait<EditorActionManager>();
-			AddButton("PLAY_MAP", "Play Map")
+			AddButton("PLAY_MAP", PlayMapButton)
 				.OnClick = () =>
 				{
 					hideMenu = true;
@@ -579,7 +584,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			if (world.Type != WorldType.Regular || !lastGameEditor)
 				return;
 
-			AddButton("BACK_TO_EDITOR", "Back To Editor")
+			AddButton("BACK_TO_EDITOR", BackToEditorButton)
 				.OnClick = () =>
 				{
 					hideMenu = true;

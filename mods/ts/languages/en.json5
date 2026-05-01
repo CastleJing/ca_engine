@@ -1,0 +1,8 @@
+{
+	"Sys-GameSpeed-Slowest": "Slowest",
+	"Sys-GameSpeed-Slower": "Slower",
+	"Sys-GameSpeed-Normal": "Normal",
+	"Sys-GameSpeed-Fast": "Fast",
+	"Sys-GameSpeed-Faster": "Faster",
+	"Sys-GameSpeed-Fastest": "Fastest"
+}

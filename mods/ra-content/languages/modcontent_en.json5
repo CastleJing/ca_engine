@@ -1,0 +1,25 @@
+{
+	// ModContent
+	"Sys-ModContent-InstallPromptMessage": "Red Alert requires artwork and audio from the original game.\n\nQuick Install will automatically download this content (without music\nor videos) from a mirror of the 2008 Red Alert freeware release.\n\nAdvanced Install includes options for copying the music, videos, and\nother content from an original game disc or digital installation.",
+	"Sys-ModContent-HeaderMessage": "Game content may be extracted from the original game discs or an\nexisting digital install. OpenRA can also download the base game\nfiles from an online mirror of the 2008 freeware release of RA.",
+	"Sys-ModContent-Packages-base": "Base Game Files",
+	"Sys-ModContent-Packages-aftermathbase": "Aftermath Expansion Files",
+	"Sys-ModContent-Packages-cncdesert": "C&C Desert Tileset",
+	"Sys-ModContent-Packages-music": "Base Game Music",
+	"Sys-ModContent-Packages-movies-allied": "Allied Campaign Briefings",
+	"Sys-ModContent-Packages-movies-soviet": "Soviet Campaign Briefings",
+	"Sys-ModContent-Packages-music-counterstrike": "Counterstrike Music",
+	"Sys-ModContent-Packages-music-aftermath": "Aftermath Music",
+	"Sys-ModContent-Source-aftermath": "Aftermath Expansion Disc (English)",
+	"Sys-ModContent-Source-allied": "Red Alert 95 (Allied Disc, English)",
+	"Sys-ModContent-Source-cnc95": "C&C Gold (GDI or Nod Disc, English)",
+	"Sys-ModContent-Source-counterstrike": "Counterstrike Expansion Disc (English)",
+	"Sys-ModContent-Source-quickinstall": "Quick Install Package",
+	"Sys-ModContent-Source-basefiles": "Base Freeware Content",
+	"Sys-ModContent-Source-aftermathbase": "Aftermath Expansion Files",
+	"Sys-ModContent-Source-cncdesert": "C&C Desert Tileset",
+	"Sys-ModContent-Source-tfd": "C&C The First Decade (English)",
+	"Sys-ModContent-Source-ra-origin": "C&C The Ultimate Collection (Origin version, English)",
+	"Sys-ModContent-Source-cnc-origin": "Command & Conquer (Origin version, English)",
+	"Sys-ModContent-Source-soviet": "Red Alert 95 (Soviet Disc, English)"
+}

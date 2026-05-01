@@ -22,62 +22,57 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class InstallFromSourceLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string DetectingSources = "label-detecting-sources";
+		
+		const string DetectingSources = "Game-InstallFromSourceLogic-DetectingSources";
 
-		[FluentReference]
-		const string CheckingSources = "label-checking-sources";
+		
+		const string CheckingSources = "Game-InstallFromSourceLogic-CheckingSources";
 
-		[FluentReference("title")]
-		const string SearchingSourceFor = "label-searching-source-for";
+		const string SearchingSourceFor = "Game-InstallFromSourceLogic-SearchingSourceFor";
 
-		[FluentReference]
-		const string ContentPackageInstallation = "label-content-package-installation";
+		
+		const string ContentPackageInstallation = "Game-InstallFromSourceLogic-ContentPackageInstallation";
 
-		[FluentReference]
-		const string GameSources = "label-game-sources";
+		
+		const string GameSources = "Game-InstallFromSourceLogic-GameSources";
 
-		[FluentReference]
-		const string DigitalInstalls = "label-digital-installs";
+		
+		const string DigitalInstalls = "Game-InstallFromSourceLogic-DigitalInstalls";
 
-		[FluentReference]
-		const string GameContentNotFound = "label-game-content-not-found";
+		
+		const string GameContentNotFound = "Game-InstallFromSourceLogic-GameContentNotFound";
 
-		[FluentReference]
-		const string AlternativeContentSources = "label-alternative-content-sources";
+		
+		const string AlternativeContentSources = "Game-InstallFromSourceLogic-AlternativeContentSources";
 
-		[FluentReference]
-		const string InstallingContent = "label-installing-content";
+		
+		const string InstallingContent = "Game-InstallFromSourceLogic-InstallingContent";
 
-		[FluentReference("filename")]
-		public const string CopyingFilename = "label-copying-filename";
+		public const string CopyingFilename = "Game-InstallFromSourceLogic-CopyingFilename";
 
-		[FluentReference("filename", "progress")]
-		public const string CopyingFilenameProgress = "label-copying-filename-progress";
+		public const string CopyingFilenameProgress = "Game-InstallFromSourceLogic-CopyingFilenameProgress";
 
-		[FluentReference]
-		const string InstallationFailed = "label-installation-failed";
+		
+		const string InstallationFailed = "Game-InstallFromSourceLogic-InstallationFailed";
 
-		[FluentReference]
-		const string CheckInstallLog = "label-check-install-log";
+		
+		const string CheckInstallLog = "Game-InstallFromSourceLogic-CheckInstallLog";
 
-		[FluentReference("filename")]
-		public const string Extracting = "label-extracting-filename";
+		public const string Extracting = "Game-InstallFromSourceLogic-ExtractingFilename";
 
-		[FluentReference("filename", "progress")]
-		public const string ExtractingProgress = "label-extracting-filename-progress";
+		public const string ExtractingProgress = "Game-InstallFromSourceLogic-ExtractingFilenameProgress";
 
-		[FluentReference]
-		public const string Continue = "button-continue";
+		
+		public const string Continue = "Game-InstallFromSourceLogic-ContinueButton";
 
-		[FluentReference]
-		const string Cancel = "button-cancel";
+		
+		const string Cancel = "Game-InstallFromSourceLogic-CancelButton";
 
-		[FluentReference]
-		const string Retry = "button-retry";
+		
+		const string Retry = "Game-InstallFromSourceLogic-RetryButton";
 
-		[FluentReference]
-		const string Back = "button-back";
+		
+		const string Back = "Game-InstallFromSourceLogic-BackButton";
 
 		// Hide percentage indicators for files smaller than 25 MB
 		public const int ShowPercentageThreshold = 26214400;
@@ -161,15 +156,15 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 		void DetectContentSources()
 		{
-			var message = FluentProvider.GetMessage(DetectingSources);
-			ShowProgressbar(FluentProvider.GetMessage(CheckingSources), () => message);
+			var message = Game.Translate(DetectingSources);
+			ShowProgressbar(Game.Translate(CheckingSources), () => message);
 			ShowBackRetry(DetectContentSources);
 
 			new Task(() =>
 			{
 				foreach (var kv in sources)
 				{
-					message = FluentProvider.GetMessage(SearchingSourceFor, "title", kv.Value.Title);
+					message = Game.Translate(SearchingSourceFor, "title", kv.Value.Title);
 
 					var sourceResolver = modData.ObjectCreator.CreateObject<ISourceResolver>($"{kv.Value.Type.Value}SourceResolver");
 
@@ -189,7 +184,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 						{
 							Game.RunAfterTick(() =>
 							{
-								ShowList(kv.Value, FluentProvider.GetMessage(ContentPackageInstallation));
+								ShowList(kv.Value, Game.Translate(ContentPackageInstallation));
 								ShowContinueCancel(() => InstallFromSource(path, kv.Value));
 							});
 
@@ -221,14 +216,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var options = new Dictionary<string, IEnumerable<string>>();
 
 				if (gameSources.Count != 0)
-					options.Add(FluentProvider.GetMessage(GameSources), gameSources);
+					options.Add(Game.Translate(GameSources), gameSources);
 
 				if (digitalInstalls.Count != 0)
-					options.Add(FluentProvider.GetMessage(DigitalInstalls), digitalInstalls);
+					options.Add(Game.Translate(DigitalInstalls), digitalInstalls);
 
 				Game.RunAfterTick(() =>
 				{
-					ShowList(FluentProvider.GetMessage(GameContentNotFound), FluentProvider.GetMessage(AlternativeContentSources), options);
+					ShowList(Game.Translate(GameContentNotFound), Game.Translate(AlternativeContentSources), options);
 					ShowBackRetry(DetectContentSources);
 				});
 			}).Start();
@@ -237,7 +232,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		void InstallFromSource(string path, ModContent.ModSource modSource)
 		{
 			var message = "";
-			ShowProgressbar(FluentProvider.GetMessage(InstallingContent), () => message);
+			ShowProgressbar(Game.Translate(InstallingContent), () => message);
 			ShowDisabledCancel();
 
 			new Task(() =>
@@ -293,7 +288,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 					Game.RunAfterTick(() =>
 					{
-						ShowMessage(FluentProvider.GetMessage(InstallationFailed), FluentProvider.GetMessage(CheckInstallLog));
+						ShowMessage(Game.Translate(InstallationFailed), Game.Translate(CheckInstallLog));
 						ShowBackRetry(() => InstallFromSource(path, modSource));
 					});
 				}
@@ -340,7 +335,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				var containerWidget = (ContainerWidget)checkboxListTemplate.Clone();
 				var checkboxWidget = containerWidget.Get<CheckboxWidget>("PACKAGE_CHECKBOX");
-				var title = FluentProvider.GetMessage(package.Title);
+				var title = Game.Translate(package.Title);
 				checkboxWidget.GetText = () => title;
 				checkboxWidget.IsDisabled = () => package.Required;
 				checkboxWidget.IsChecked = () => selectedPackages[package.Identifier];
@@ -400,12 +395,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		void ShowContinueCancel(Action continueAction)
 		{
 			primaryButton.OnClick = continueAction;
-			var primaryButtonText = FluentProvider.GetMessage(Continue);
+			var primaryButtonText = Game.Translate(Continue);
 			primaryButton.GetText = () => primaryButtonText;
 			primaryButton.Visible = true;
 
 			secondaryButton.OnClick = Ui.CloseWindow;
-			var secondaryButtonText = FluentProvider.GetMessage(Cancel);
+			var secondaryButtonText = Game.Translate(Cancel);
 			secondaryButton.GetText = () => secondaryButtonText;
 			secondaryButton.Visible = true;
 			secondaryButton.Disabled = false;
@@ -415,12 +410,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		void ShowBackRetry(Action retryAction)
 		{
 			primaryButton.OnClick = retryAction;
-			var primaryButtonText = FluentProvider.GetMessage(Retry);
+			var primaryButtonText = Game.Translate(Retry);
 			primaryButton.GetText = () => primaryButtonText;
 			primaryButton.Visible = true;
 
 			secondaryButton.OnClick = Ui.CloseWindow;
-			var secondaryButtonText = FluentProvider.GetMessage(Back);
+			var secondaryButtonText = Game.Translate(Back);
 			secondaryButton.GetText = () => secondaryButtonText;
 			secondaryButton.Visible = true;
 			secondaryButton.Disabled = false;

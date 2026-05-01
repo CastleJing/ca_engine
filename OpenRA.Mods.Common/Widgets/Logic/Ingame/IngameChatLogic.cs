@@ -23,17 +23,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 	[ChromeLogicArgsHotkeys("OpenTeamChat", "OpenGeneralChat")]
 	public class IngameChatLogic : ChromeLogic, INotificationHandler<TextNotification>
 	{
-		[FluentReference]
-		const string TeamChat = "button-team-chat";
+		
+		const string TeamChat = "Chrome-Lobby-Chat-Team";
 
-		[FluentReference]
-		const string GeneralChat = "button-general-chat";
+		
+		const string GeneralChat = "Chrome-Lobby-Chat-All";
 
-		[FluentReference("seconds")]
-		const string ChatAvailability = "label-chat-availability";
+		const string ChatAvailability = "Game-IngameChatLogic-ChatAvailabilityCountdown";
 
-		[FluentReference]
-		const string ChatDisabled = "label-chat-disabled";
+		
+		const string ChatDisabled = "Game-IngameChatLogic-ChatDisabled";
 
 		readonly Ruleset modRules;
 		readonly World world;
@@ -70,10 +69,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			var disableTeamChat = alwaysDisabled || (world.LocalPlayer != null && !players.Any(p => p.IsAlliedWith(world.LocalPlayer)));
 			var teamChat = !disableTeamChat;
 
-			var teamMessage = FluentProvider.GetMessage(TeamChat);
-			var allMessage = FluentProvider.GetMessage(GeneralChat);
+			var teamMessage = Game.Translate(TeamChat);
+			var allMessage = Game.Translate(GeneralChat);
 
-			chatDisabled = FluentProvider.GetMessage(ChatDisabled);
+			chatDisabled = Game.Translate(ChatDisabled);
 
 			// Only execute this once, the first time this widget is loaded
 			if (TextNotificationsManager.MutedPlayers.Count == 0)
@@ -194,7 +193,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				return true;
 			};
 
-			chatAvailableIn = new CachedTransform<int, string>(x => FluentProvider.GetMessage(ChatAvailability, "seconds", x));
+			chatAvailableIn = new CachedTransform<int, string>(x => Game.Translate(ChatAvailability, "seconds", x));
 
 			if (!isMenuChat)
 			{

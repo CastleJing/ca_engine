@@ -12,7 +12,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-mainmenu-introduction-prompt-title
+			Text: Chrome-MainMenu-Prompts-PromptTitle
 		Background@bg:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -24,14 +24,14 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 					Height: 16
 					Font: Regular
 					Align: Center
-					Text: label-bg-desc-a
+					Text: Chrome-MainMenu-Prompts-DescLine1
 				Label@DESC_B:
 					Width: PARENT_WIDTH
 					Y: 33
 					Height: 16
 					Font: Regular
 					Align: Center
-					Text: label-bg-desc-b
+					Text: Chrome-MainMenu-Prompts-DescLine2
 				ScrollPanel@SETTINGS_SCROLLPANEL:
 					X: 15
 					Y: 60
@@ -54,7 +54,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 									Height: PARENT_HEIGHT
 									Font: TinyBold
 									Align: Center
-									Text: label-profile-section-header
+									Text: Chrome-MainMenu-Prompts-ProfileTitle
 						Container@ROW:
 							Width: PARENT_WIDTH
 							Height: 50
@@ -66,7 +66,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 										Label@PLAYER:
 											Width: PARENT_WIDTH
 											Height: 20
-											Text: label-player-container
+											Text: Chrome-Setting-Player-PlayerName
 										TextField@PLAYERNAME:
 											Y: 25
 											Width: PARENT_WIDTH
@@ -80,7 +80,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 										Label@COLOR:
 											Width: PARENT_WIDTH
 											Height: 20
-											Text: label-playercolor-container-color
+											Text: Chrome-Setting-Player-Color
 										DropDownButton@PLAYERCOLOR:
 											Y: 25
 											Width: 75
@@ -106,7 +106,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 									Height: PARENT_HEIGHT
 									Font: TinyBold
 									Align: Center
-									Text: label-input-section-header
+									Text: Chrome-Setting-Input
 						Container@ROW:
 							Width: PARENT_WIDTH
 							Height: 50
@@ -119,7 +119,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 											Width: PARENT_WIDTH
 											Height: 20
 											Font: Regular
-											Text: label-mouse-control-container
+											Text: Chrome-Setting-Input-ControlSchema
 										DropDownButton@MOUSE_CONTROL_DROPDOWN:
 											Y: 25
 											Width: PARENT_WIDTH
@@ -133,56 +133,56 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-selection
+											Text: Chrome-Setting-Input-ClassicDesc-Selection
 										LabelWithHighlight@DESC_COMMANDS:
 											Y: 17
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-commands
+											Text: Chrome-Setting-Input-ClassicDesc-Commands
 										LabelWithHighlight@DESC_BUILDINGS:
 											Y: 34
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-buildings
+											Text: Chrome-Setting-Input-ClassicDesc-Buildings
 										LabelWithHighlight@DESC_SUPPORT:
 											Y: 51
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-support
+											Text: Chrome-Setting-Input-ClassicDesc-Support
 										LabelWithHighlight@DESC_ZOOM:
 											Y: 68
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-zoom
+											Text: Chrome-Setting-Input-ClassicDesc-Zoom
 										LabelWithHighlight@DESC_ZOOM_MODIFIER:
 											Y: 68
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-zoom-modifier
+											Text: Chrome-Setting-Input-ClassicDesc-Zoom-modifier
 										LabelWithHighlight@DESC_SCROLL_RIGHT:
 											Y: 85
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-scroll-right
+											Text: Chrome-Setting-Input-ClassicDesc-ScrollRight
 										LabelWithHighlight@DESC_SCROLL_MIDDLE:
 											Y: 85
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-scroll-middle
+											Text: Chrome-Setting-Input-ClassicDesc-ScrollMiddle
 										Label@DESC_EDGESCROLL:
 											X: 9
 											Y: 102
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-classic-edgescroll
+											Text: Chrome-Setting-Input-ClassicDesc-EdgeScroll
 								Container@MOUSE_CONTROL_DESC_MODERN:
 									X: PARENT_WIDTH / 2 + 10
 									Width: PARENT_WIDTH / 2 - 20
@@ -191,56 +191,56 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-selection
+											Text: Chrome-Setting-Input-ModernDesc-Selection
 										LabelWithHighlight@DESC_COMMANDS:
 											Y: 17
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-commands
+											Text: Chrome-Setting-Input-ModernDesc-Commands
 										LabelWithHighlight@DESC_BUILDINGS:
 											Y: 34
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-buildings
+											Text: Chrome-Setting-Input-ModernDesc-Buildings
 										LabelWithHighlight@DESC_SUPPORT:
 											Y: 51
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-support
+											Text: Chrome-Setting-Input-ModernDesc-Support
 										LabelWithHighlight@DESC_ZOOM:
 											Y: 68
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-zoom
+											Text: Chrome-Setting-Input-ModernDesc-Zoom
 										LabelWithHighlight@DESC_ZOOM_MODIFIER:
 											Y: 68
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-zoom-modifier
+											Text: Chrome-Setting-Input-ModernDesc-Zoom-modifier
 										LabelWithHighlight@DESC_SCROLL_RIGHT:
 											Y: 85
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-scroll-right
+											Text: Chrome-Setting-Input-ModernDesc-ScrollRight
 										LabelWithHighlight@DESC_SCROLL_MIDDLE:
 											Y: 85
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-scroll-middle
+											Text: Chrome-Setting-Input-ModernDesc-ScrollMiddle
 										Label@DESC_EDGESCROLL:
 											X: 9
 											Y: 102
 											Width: PARENT_WIDTH
 											Height: 16
 											Font: Small
-											Text: label-mouse-control-desc-modern-edgescroll
+											Text: Chrome-Setting-Input-ModernDesc-EdgeScroll
 						Container@ROW:
 							Width: PARENT_WIDTH
 							Height: 20
@@ -253,7 +253,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 											Width: PARENT_WIDTH
 											Height: 20
 											Font: Regular
-											Text: checkbox-edgescroll-container
+											Text: Chrome-Setting-Input-EdgePanning
 						Container@SPACER:
 							Height: 30
 						Background@DISPLAY_SECTION_HEADER:
@@ -268,7 +268,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 									Height: PARENT_HEIGHT
 									Font: TinyBold
 									Align: Center
-									Text: label-display-section-header
+									Text: Chrome-Setting-Display
 						Container@ROW:
 							Width: PARENT_WIDTH
 							Height: 50
@@ -280,7 +280,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 										Label@BATTLEFIELD_CAMERA:
 											Width: PARENT_WIDTH
 											Height: 20
-											Text: label-battlefield-camera-dropdown
+											Text: Chrome-Setting-Player-Camera
 										DropDownButton@BATTLEFIELD_CAMERA_DROPDOWN:
 											Y: 25
 											Width: PARENT_WIDTH
@@ -293,7 +293,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 										Label@UI_SCALE:
 											Width: PARENT_WIDTH
 											Height: 20
-											Text: label-ui-scale-dropdown
+											Text: Chrome-Setting-Player-UiScale
 										DropDownButton@UI_SCALE_DROPDOWN:
 											Y: 25
 											Width: PARENT_WIDTH
@@ -311,7 +311,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 											Width: PARENT_WIDTH
 											Height: 20
 											Font: Regular
-											Text: checkbox-cursordouble-container
+											Text: Chrome-Setting-Player-DoubleMouse
 		Button@CONTINUE_BUTTON:
 			X: PARENT_WIDTH - WIDTH
 			Y: PARENT_HEIGHT - 1
@@ -335,7 +335,7 @@ Container@MAINMENU_SYSTEM_INFO_PROMPT:
 			Font: BigBold
 			Contrast: true
 			Align: Center
-			Text: label-mainmenu-system-info-prompt-title
+			Text: Chrome-MainMenu-Prompts-PromptTitle
 		Background@bg:
 			Width: PARENT_WIDTH
 			Height: PARENT_HEIGHT
@@ -347,14 +347,14 @@ Container@MAINMENU_SYSTEM_INFO_PROMPT:
 					Width: PARENT_WIDTH - 30
 					Height: 16
 					Align: Center
-					Text: label-bg-prompt-text-a
+					Text: Chrome-MainMenu-Prompts-PromptTextLine1
 				Label@PROMPT_TEXT_B:
 					X: 15
 					Y: 33
 					Width: PARENT_WIDTH - 30
 					Height: 16
 					Align: Center
-					Text: label-bg-prompt-text-b
+					Text: Chrome-MainMenu-Prompts-PromptTextLine2
 				ScrollPanel@SYSINFO_DATA:
 					X: 15
 					Y: 63
@@ -374,7 +374,7 @@ Container@MAINMENU_SYSTEM_INFO_PROMPT:
 					Width: 190
 					Height: 20
 					Font: Regular
-					Text: checkbox-bg-sysinfo
+					Text: Chrome-MainMenu-Prompts-SendSysInfo
 		Button@CONTINUE_BUTTON:
 			X: PARENT_WIDTH - WIDTH
 			Y: PARENT_HEIGHT - 1

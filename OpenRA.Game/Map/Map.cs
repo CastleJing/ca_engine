@@ -168,6 +168,7 @@ namespace OpenRA
 			new("Bounds"),
 			new("Visibility"),
 			new("Categories"),
+			new("Translations", required: false),
 			new("LockPreview", required: false, ignoreIfValue: "False"),
 			new("Players", nameof(PlayerDefinitions)),
 			new("Actors", nameof(ActorDefinitions)),
@@ -194,6 +195,7 @@ namespace OpenRA
 		public Rectangle Bounds;
 		public MapVisibility Visibility = MapVisibility.Lobby;
 		public string[] Categories = { "Conquest" };
+		public string[] Translations;
 
 		public int2 MapSize { get; private set; }
 
@@ -256,6 +258,8 @@ namespace OpenRA
 		CellLayer<List<MPos>> inverseCellProjection;
 		CellLayer<byte> projectedHeight;
 		Rectangle projectionSafeBounds;
+
+		internal Translation Translation;
 
 		public static string ComputeUID(IReadOnlyPackage package)
 		{
@@ -453,6 +457,8 @@ namespace OpenRA
 			}
 
 			Sequences = new SequenceSet(this, modData, Tileset, SequenceDefinitions);
+
+			Translation = new Translation(Game.Settings.Player.Language, Translations ?? Array.Empty<string>(), this);
 
 			var tl = new MPos(0, 0).ToCPos(this);
 			var br = new MPos(MapSize.X - 1, MapSize.Y - 1).ToCPos(this);
@@ -1434,6 +1440,14 @@ namespace OpenRA
 				return modData.DefaultFileSystem.IsExternalFile(filename);
 
 			return false;
+		}
+
+		public string Translate(string key, IDictionary<string, object> args = null)
+		{
+			if (Translation.GetFormattedMessage(key, args) == key)
+				return Game.Translate(key, args);
+
+			return Translation.GetFormattedMessage(key, args);
 		}
 
 		public void Dispose()

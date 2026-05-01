@@ -287,14 +287,12 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class ChangeSelectionAction : IEditorAction
 	{
-		[FluentReference("x", "y", "width", "height")]
-		const string SelectedArea = "notification-selected-area";
+		const string SelectedArea = "Game-EditorDefaultBrush-SelectedArea";
 
-		[FluentReference("id")]
-		const string SelectedActor = "notification-selected-actor";
+		const string SelectedActor = "Game-EditorDefaultBrush-SelectedActor";
 
-		[FluentReference]
-		const string ClearedSelection = "notification-cleared-selection";
+		
+		const string ClearedSelection = "Game-EditorDefaultBrush-ClearedSelection";
 
 		public string Text { get; }
 
@@ -316,15 +314,15 @@ namespace OpenRA.Mods.Common.Widgets
 			};
 
 			if (selection.Area != null)
-				Text = FluentProvider.GetMessage(SelectedArea,
+				Text = Game.Translate(SelectedArea,
 					"x", selection.Area.TopLeft.X,
 					"y", selection.Area.TopLeft.Y,
 					"width", selection.Area.BottomRight.X - selection.Area.TopLeft.X,
 					"height", selection.Area.BottomRight.Y - selection.Area.TopLeft.Y);
 			else if (selection.Actor != null)
-				Text = FluentProvider.GetMessage(SelectedActor, "id", selection.Actor.ID);
+				Text = Game.Translate(SelectedActor, "id", selection.Actor.ID);
 			else
-				Text = FluentProvider.GetMessage(ClearedSelection);
+				Text = Game.Translate(ClearedSelection);
 		}
 
 		public void Execute()
@@ -345,8 +343,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class DeleteAreaAction : IEditorAction
 	{
-		[FluentReference("x", "y", "width", "height")]
-		const string RemovedArea = "notification-removed-area";
+		const string RemovedArea = "Game-EditorDefaultBrush-RemovedArea";
 
 		public string Text { get; }
 
@@ -367,7 +364,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 			editorBlitSource = EditorBlit.CopyRegionContents(map, editorActorLayer, resourceLayer, area, blitFilters);
 
-			Text = FluentProvider.GetMessage(RemovedArea,
+			Text = Game.Translate(RemovedArea,
 				"x", area.TopLeft.X,
 				"y", area.TopLeft.Y,
 				"width", area.BottomRight.X - area.TopLeft.X,
@@ -453,8 +450,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class RemoveSelectedActorAction : IEditorAction
 	{
-		[FluentReference("name", "id")]
-		const string RemovedActor = "notification-removed-actor";
+		const string RemovedActor = "Game-EditorDefaultBrush-RemovedActor";
 
 		public string Text { get; }
 
@@ -476,7 +472,7 @@ namespace OpenRA.Mods.Common.Widgets
 				Actor = defaultBrush.Selection.Actor
 			};
 
-			Text = FluentProvider.GetMessage(RemovedActor, "name", actor.Info.Name, "id", actor.ID);
+			Text = Game.Translate(RemovedActor, "name", actor.Info.Name, "id", actor.ID);
 		}
 
 		public void Execute()
@@ -499,8 +495,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class RemoveActorAction : IEditorAction
 	{
-		[FluentReference("name", "id")]
-		const string RemovedActor = "notification-removed-actor";
+		const string RemovedActor = "Game-EditorDefaultBrush-RemovedActor";
 
 		public string Text { get; }
 
@@ -512,7 +507,7 @@ namespace OpenRA.Mods.Common.Widgets
 			this.editorActorLayer = editorActorLayer;
 			this.actor = actor;
 
-			Text = FluentProvider.GetMessage(RemovedActor, "name", actor.Info.Name, "id", actor.ID);
+			Text = Game.Translate(RemovedActor, "name", actor.Info.Name, "id", actor.ID);
 		}
 
 		public void Execute()
@@ -533,8 +528,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 	sealed class MoveActorAction : IEditorAction
 	{
-		[FluentReference("id", "x1", "y1", "x2", "y2")]
-		const string MovedActor = "notification-moved-actor";
+		const string MovedActor = "Game-EditorDefaultBrush-MovedActor";
 
 		public string Text { get; private set; }
 
@@ -580,14 +574,13 @@ namespace OpenRA.Mods.Common.Widgets
 			to = worldRenderer.Viewport.ViewToWorld(pixelTo + pixelOffset) + cellOffset;
 			layer.MoveActor(actor, to);
 
-			Text = FluentProvider.GetMessage(MovedActor, "id", actor.ID, "x1", from.X, "y1", from.Y, "x2", to.X, "y2", to.Y);
+			Text = Game.Translate(MovedActor, "id", actor.ID, "x1", from.X, "y1", from.Y, "x2", to.X, "y2", to.Y);
 		}
 	}
 
 	sealed class RemoveResourceAction : IEditorAction
 	{
-		[FluentReference("type")]
-		const string RemovedResource = "notification-removed-resource";
+		const string RemovedResource = "Game-EditorDefaultBrush-RemovedResource";
 
 		public string Text { get; }
 
@@ -601,7 +594,7 @@ namespace OpenRA.Mods.Common.Widgets
 			this.resourceLayer = resourceLayer;
 			this.cell = cell;
 
-			Text = FluentProvider.GetMessage(RemovedResource, "type", resourceType);
+			Text = Game.Translate(RemovedResource, "type", resourceType);
 		}
 
 		public void Execute()

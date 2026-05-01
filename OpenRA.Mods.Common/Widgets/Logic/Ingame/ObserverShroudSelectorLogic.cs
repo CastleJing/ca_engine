@@ -23,23 +23,22 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 	[ChromeLogicArgsHotkeys("CombinedViewKey", "WorldViewKey")]
 	public class ObserverShroudSelectorLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string CameraOptionAllPlayers = "options-shroud-selector.all-players";
+		
+		const string CameraOptionAllPlayers = "Game-ObserverShroudSelectorLogic-AllPlayer";
 
-		[FluentReference]
-		const string CameraOptionDisableShroud = "options-shroud-selector.disable-shroud";
+		
+		const string CameraOptionDisableShroud = "Game-ObserverShroudSelectorLogic-DisableShroud";
 
-		[FluentReference]
-		const string CameraOptionOther = "options-shroud-selector.other";
+		
+		const string CameraOptionOther = "Game-ObserverShroudSelectorLogic-Other";
 
-		[FluentReference]
-		const string Players = "label-players";
+		
+		const string Players = "Game-ObserverShroudSelectorLogic-Players";
 
-		[FluentReference("team")]
-		const string TeamNumber = "label-team-name";
+		const string TeamNumber = "Game-ObserverShroudSelectorLogic-Team";
 
-		[FluentReference]
-		const string NoTeam = "label-no-team";
+		
+		const string NoTeam = "Game-ObserverShroudSelectorLogic-NoTeam";
 
 		readonly CameraOption combined, disableShroud;
 		readonly IGrouping<int, CameraOption>[] teams;
@@ -104,10 +103,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			var groups = new Dictionary<string, IEnumerable<CameraOption>>();
 
-			combined = new CameraOption(this, world, FluentProvider.GetMessage(CameraOptionAllPlayers), world.Players.First(p => p.InternalName == "Everyone"));
-			disableShroud = new CameraOption(this, world, FluentProvider.GetMessage(CameraOptionDisableShroud), null);
+			combined = new CameraOption(this, world, Game.Translate(CameraOptionAllPlayers), world.Players.First(p => p.InternalName == "Everyone"));
+			disableShroud = new CameraOption(this, world, Game.Translate(CameraOptionDisableShroud), null);
 			if (!limitViews)
-				groups.Add(FluentProvider.GetMessage(CameraOptionOther), new List<CameraOption>() { combined, disableShroud });
+				groups.Add(Game.Translate(CameraOptionOther), new List<CameraOption>() { combined, disableShroud });
 
 			teams = world.Players.Where(p => !p.NonCombatant && p.Playable)
 				.Select(p => new CameraOption(this, p))
@@ -120,9 +119,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			foreach (var t in teams)
 			{
 				totalPlayers += t.Count();
-				var label = noTeams ? FluentProvider.GetMessage(Players) : t.Key > 0
-					? FluentProvider.GetMessage(TeamNumber, "team", t.Key)
-					: FluentProvider.GetMessage(NoTeam);
+				var label = noTeams ? Game.Translate(Players) : t.Key > 0
+					? Game.Translate(TeamNumber, "0", t.Key)
+					: Game.Translate(NoTeam);
 
 				groups.Add(label, t);
 			}

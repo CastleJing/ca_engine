@@ -5,6 +5,14 @@ button-back = Back
 button-continue = Continue
 button-quit = Quit
 
+## In-game chat name prefixes (UnitOrders)
+chat-suffix-dead = (Dead)
+chat-suffix-spectator = (Spectator)
+chat-suffix-ally = (Ally)
+chat-prefix-spectators = [Spectators]
+chat-prefix-team = [Team]
+chat-prefix-team-replay = [Team { $team }]
+
 ## Server Orders
 notification-custom-rules = This map contains custom rules. Game experience may change.
 notification-map-bots-disabled = Bots have been disabled on this map.

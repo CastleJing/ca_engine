@@ -21,14 +21,14 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class ActorEditLogic : ChromeLogic
 	{
-		[FluentReference]
-		const string DuplicateActorId = "label-duplicate-actor-id";
+		
+		const string DuplicateActorId = "Game-ActorEditLogic-DupActorText";
 
-		[FluentReference]
-		const string EnterActorId = "label-actor-id";
+		
+		const string EnterActorId = "Game-ActorEditLogic-EnterActorText";
 
-		[FluentReference]
-		const string Owner = "label-actor-owner";
+		
+		const string Owner = "Game-ActorEditLogic-Owner";
 
 		// Error states define overlapping bits to simplify panel reflow logic
 		[Flags]
@@ -96,8 +96,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			actorIDErrorLabel.IsVisible = () => actorIDStatus != ActorIDStatus.Normal;
 			actorIDErrorLabel.GetText = () =>
 				actorIDStatus == ActorIDStatus.Duplicate || nextActorIDStatus == ActorIDStatus.Duplicate
-					? FluentProvider.GetMessage(DuplicateActorId)
-					: FluentProvider.GetMessage(EnterActorId);
+					? Game.Translate(DuplicateActorId)
+					: Game.Translate(EnterActorId);
 
 			okButton.IsDisabled = () => !IsValid() || editActorPreview == null || !editActorPreview.IsDirty;
 			okButton.OnClick = Save;
@@ -169,7 +169,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				initialActorID = actorIDField.Text = SelectedActor.ID;
 
 				var font = Game.Renderer.Fonts[typeLabel.Font];
-				var truncatedType = WidgetUtils.TruncateText(FluentProvider.GetMessage(SelectedActor.DescriptiveName), typeLabel.Bounds.Width, font);
+				var truncatedType = WidgetUtils.TruncateText(Game.Translate(SelectedActor.DescriptiveName), typeLabel.Bounds.Width, font);
 				typeLabel.GetText = () => truncatedType;
 
 				actorIDField.CursorPosition = SelectedActor.ID.Length;
@@ -182,7 +182,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 				// Add owner dropdown
 				var ownerContainer = dropdownOptionTemplate.Clone();
-				var owner = FluentProvider.GetMessage(Owner);
+				var owner = Game.Translate(Owner);
 				ownerContainer.Get<LabelWidget>("LABEL").GetText = () => owner;
 				var ownerDropdown = ownerContainer.Get<DropDownButtonWidget>("OPTION");
 				var selectedOwner = SelectedActor.Owner;
@@ -466,11 +466,9 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 	sealed class EditActorEditorAction : IEditorAction
 	{
-		[FluentReference("name", "id")]
-		const string EditedActor = "notification-edited-actor";
+		const string EditedActor = "Game-ActorEditLogic-EditedActor";
 
-		[FluentReference("name", "old-id", "new-id")]
-		const string EditedActorId = "notification-edited-actor-id";
+		const string EditedActorId = "Game-ActorEditLogic-EditedActorId";
 
 		public string Text { get; private set; }
 		public EditorActorPreview Actor;
@@ -481,7 +479,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		{
 			Actor = actor;
 			this.handles = handles;
-			Text = FluentProvider.GetMessage(EditedActor, "name", actor.Info.Name, "id", actor.ID);
+			Text = Game.Translate(EditedActor, "name", actor.Info.Name, "id", actor.ID);
 		}
 
 		public void Execute()
@@ -493,7 +491,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			var after = Actor;
 			if (before != after)
-				Text = FluentProvider.GetMessage(EditedActorId, "name", after.Info.Name, "old-id", before.ID, "new-id", after.ID);
+				Text = Game.Translate(EditedActorId, "name", after.Info.Name, "old-id", before.ID, "new-id", after.ID);
 		}
 
 		public void Do()

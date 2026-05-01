@@ -27,26 +27,26 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		enum PlayingVideo { None, Info, Briefing, GameStart }
 		enum PanelType { MissionInfo, Options }
 
-		[FluentReference]
+		
 		const string NoVideoTitle = "dialog-no-video.title";
 
-		[FluentReference]
+		
 		const string NoVideoPrompt = "dialog-no-video.prompt";
 
-		[FluentReference]
+		
 		const string NoVideoCancel = "dialog-no-video.cancel";
 
-		[FluentReference]
+		
 		const string CantPlayTitle = "dialog-cant-play-video.title";
 
-		[FluentReference]
+		
 		const string CantPlayPrompt = "dialog-cant-play-video.prompt";
 
-		[FluentReference]
+		
 		const string CantPlayCancel = "dialog-cant-play-video.cancel";
 
-		[FluentReference]
-		const string NotAvailable = "label-not-available";
+		
+		const string NotAvailable = "Game-MissionBrowserLogic-NotAvailable";
 
 		readonly ModData modData;
 		readonly Action onStart;
@@ -143,8 +143,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				miniOptions.IsVisible = () => minifiedOptions;
 				difficultyButton = miniOptions.GetOrNull<DropDownButtonWidget>("DIFFICULTY");
 				gameSpeedButton = miniOptions.GetOrNull<DropDownButtonWidget>("GAMESPEED");
-				unsetDifficulty = FluentProvider.GetMessage(difficultyButton.Text);
-				defaultTooltop = FluentProvider.GetMessage(difficultyButton.TooltipText);
+				unsetDifficulty = Game.Translate(difficultyButton.Text);
+				defaultTooltop = Game.Translate(difficultyButton.TooltipText);
 			}
 
 			var allPreviews = new List<MapPreview>();
@@ -272,7 +272,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					() => StartMissionClicked(onExit));
 
 				var label = item.Get<LabelWithTooltipWidget>("TITLE");
-				WidgetUtils.TruncateLabelToTooltip(label, preview.Title);
+				WidgetUtils.TruncateLabelToTooltip(label, preview.Translate(preview.Title));
 
 				missionList.AddChild(item);
 			}
@@ -482,7 +482,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				else
 				{
 					gameSpeedButton.IsDisabled = () => true;
-					gameSpeedButton.GetText = () => FluentProvider.GetMessage(NotAvailable);
+					gameSpeedButton.GetText = () => Game.Translate(NotAvailable);
 				}
 			}
 		}
@@ -494,7 +494,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				if (option.Values.TryGetValue(missionOptions[option.Id], out var value))
 					return value;
 
-				return FluentProvider.GetMessage(NotAvailable);
+				return Game.Translate(NotAvailable);
 			};
 
 			if (option.Description != null)

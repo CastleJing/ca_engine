@@ -61,7 +61,7 @@ namespace OpenRA.Mods.Common.FileSystem
 		bool IFileSystemExternalContent.InstallContentIfRequired(ModData modData)
 		{
 			if (!isContentAvailable)
-				Game.InitializeMod(ContentInstallerMod, new Arguments());
+				Game.InitializeMod(ContentInstallerMod, new Arguments(new[] { "Content.Mod=" + modData.Manifest.Id }));
 
 			return !isContentAvailable;
 		}

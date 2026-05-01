@@ -1,0 +1,49 @@
+LocalizationPackage:
+	en:
+		common|languages/en
+	zh:
+		common|languages/zh
+
+GlyphPrecache:
+	en: common|languages/en/glyph-precache.txt
+	zh: common|languages/zh/glyph-precache.txt
+
+Translations: en, zh
+	d2k|languages/en.json5:
+	d2k|languages/zh.json5:
+	common|languages/en.json5:
+	common|languages/zh.json5:
+
+Fonts:
+	Tiny:
+		Font: common|SourceHanSansCN-Regular.otf
+		Size: 10
+		Ascender: 8
+	TinyBold:
+		Font: common|SourceHanSansCN-Bold.otf
+		Size: 10
+		Ascender: 8
+	Small:
+		Font: common|SourceHanSansCN-Regular.otf
+		Size: 12
+		Ascender: 9
+	Regular:
+		Font: common|SourceHanSansCN-Regular.otf
+		Size: 14
+		Ascender: 11
+	Bold:
+		Font: common|SourceHanSansCN-Bold.otf
+		Size: 14
+		Ascender: 11
+	MediumBold:
+		Font: common|SourceHanSansCN-Bold.otf
+		Size: 18
+		Ascender: 14
+	BigBold:
+		Font: common|SourceHanSansCN-Bold.otf
+		Size: 24
+		Ascender: 18
+	Title:
+		Font: d2k|Dune2k.ttf
+		Size: 32
+		Ascender: 23

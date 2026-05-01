@@ -20,14 +20,14 @@ namespace OpenRA.Mods.Common.Widgets
 {
 	public static class WidgetUtils
 	{
-		[FluentReference]
-		const string Gone = "label-client-state-disconnected";
+		
+		const string Gone = "Game-GameInfoStatsLogic-Gone";
 
-		[FluentReference]
-		const string Won = "label-win-state-won";
+		
+		const string Won = "Game-ReplayBrowserLogic-WinState-Won";
 
-		[FluentReference]
-		const string Lost = "label-win-state-lost";
+		
+		const string Lost = "Game-ReplayBrowserLogic-WinState-Lost";
 
 		public static string GetStatefulImageName(
 			string baseName, bool disabled = false, bool pressed = false, bool hover = false, bool focused = false)
@@ -339,12 +339,12 @@ namespace OpenRA.Mods.Common.Widgets
 
 				var suffix = "";
 				if (c.WinState == WinState.Won)
-					suffix = $" ({FluentProvider.GetMessage(Won)})";
+					suffix = $" ({Game.Translate(Won)})";
 				else if (c.WinState == WinState.Lost)
-					suffix = $" ({FluentProvider.GetMessage(Lost)})";
+					suffix = $" ({Game.Translate(Lost)})";
 
 				if (client.State == Session.ClientState.Disconnected)
-					suffix = $" ({FluentProvider.GetMessage(Gone)})";
+					suffix = $" ({Game.Translate(Gone)})";
 
 				text += suffix;
 

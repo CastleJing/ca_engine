@@ -96,6 +96,9 @@ ModContent:
 			Identifier: movies
 			TestFiles: ^SupportDir|Content/d2k/v3/Movies/A_BR01_E.VQA
 			Sources: d2k
+	Translations:
+		d2k-content|languages/modcontent_en.json5:
+		d2k-content|languages/modcontent_zh.json5:
 	Downloads:
 		d2kcontent|installer/downloads.yaml
 	Sources:

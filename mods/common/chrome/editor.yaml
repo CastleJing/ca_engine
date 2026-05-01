@@ -10,7 +10,7 @@ Background@NEW_MAP_BG:
 			Y: 21
 			Width: 300
 			Height: 25
-			Text: label-new-map-bg-title
+			Text: Chrome-Editor-NewMap-Title
 			Align: Center
 			Font: Bold
 		Label@TILESET_LABEL:
@@ -19,7 +19,7 @@ Background@NEW_MAP_BG:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-new-map-bg-tileset
+			Text: Chrome-Editor-NewMap-Tileset
 		DropDownButton@TILESET:
 			X: 120
 			Y: 60
@@ -31,7 +31,7 @@ Background@NEW_MAP_BG:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-new-map-bg-width
+			Text: Chrome-Editor-NewMap-Width
 		TextField@WIDTH:
 			X: 120
 			Y: 95
@@ -46,7 +46,7 @@ Background@NEW_MAP_BG:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-new-map-bg-height
+			Text: Chrome-Editor-NewMap-Height
 		TextField@HEIGHT:
 			X: 230
 			Y: 95
@@ -60,7 +60,7 @@ Background@NEW_MAP_BG:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-new-map-bg-create
+			Text: Chrome-Editor-NewMap-Create
 			Font: Bold
 			Key: return
 		Button@CANCEL_BUTTON:
@@ -68,7 +68,7 @@ Background@NEW_MAP_BG:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-Editor-NewMap-Cancel
 			Font: Bold
 			Key: escape
 
@@ -84,7 +84,7 @@ Background@SAVE_MAP_PANEL:
 			Y: 21
 			Width: 250
 			Height: 25
-			Text: label-save-map-panel-heading
+			Text: Chrome-Editor-SaveMap-Title
 			Align: Center
 			Font: Bold
 		Label@TITLE_LABEL:
@@ -93,7 +93,7 @@ Background@SAVE_MAP_PANEL:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-save-map-panel-title
+			Text: Chrome-Editor-SaveMap-Name
 		TextField@TITLE:
 			X: 110
 			Y: 60
@@ -106,7 +106,7 @@ Background@SAVE_MAP_PANEL:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-save-map-panel-author
+			Text: Chrome-Editor-SaveMap-Author
 		TextField@AUTHOR:
 			X: 110
 			Y: 95
@@ -119,20 +119,20 @@ Background@SAVE_MAP_PANEL:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-save-map-panel-visibility
+			Text: Chrome-Editor-SaveMap-Visibility
 		DropDownButton@VISIBILITY_DROPDOWN:
 			X: 110
 			Y: 130
 			Width: 220
 			Height: 25
-			Text: dropdownbutton-save-map-panel-visibility-dropdown
+			Text: Chrome-Editor-SaveMap-Visibility-Dropdown
 		Label@DIRECTORY_LABEL:
 			X: 10
 			Y: 165
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-save-map-panel-directory
+			Text: Chrome-Editor-SaveMap-Directory
 		DropDownButton@DIRECTORY_DROPDOWN:
 			X: 110
 			Y: 165
@@ -144,7 +144,7 @@ Background@SAVE_MAP_PANEL:
 			Width: 95
 			Height: 25
 			Align: Right
-			Text: label-save-map-panel-filename
+			Text: Chrome-Editor-SaveMap-Filename
 		TextField@FILENAME:
 			X: 110
 			Y: 200
@@ -161,14 +161,14 @@ Background@SAVE_MAP_PANEL:
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-save-map-panel
+			Text: Chrome-Editor-SaveMap-Save
 			Font: Bold
 		Button@BACK_BUTTON:
 			X: 210
 			Y: PARENT_HEIGHT - 45
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-Editor-CancelButton
 			Font: Bold
 			Key: escape
 
@@ -260,7 +260,7 @@ Container@EDITOR_WORLD_ROOT:
 					Y: 12
 					Width: 55
 					Height: 25
-					Text: label-tiles-bg-search
+					Text: Chrome-Editor-SaveMap-Visibility-Dropdown
 					Align: Right
 					Font: TinyBold
 				TextField@SEARCH_TEXTFIELD:
@@ -272,7 +272,7 @@ Container@EDITOR_WORLD_ROOT:
 					Y: 36
 					Width: 55
 					Height: 25
-					Text: label-bg-filter
+					Text: Chrome-Editor-SaveMap-Directory
 					Align: Right
 					Font: TinyBold
 				DropDownButton@CATEGORIES_DROPDOWN:
@@ -334,7 +334,7 @@ Container@EDITOR_WORLD_ROOT:
 					Y: 12
 					Width: 55
 					Height: 25
-					Text: label-actors-bg-search
+					Text: Chrome-Editor-SaveMap-Filename
 					Align: Right
 					Font: TinyBold
 				TextField@SEARCH_TEXTFIELD:
@@ -346,7 +346,7 @@ Container@EDITOR_WORLD_ROOT:
 					Y: 36
 					Width: 55
 					Height: 25
-					Text: label-bg-filter
+					Text: Chrome-Editor-SaveMap-Save
 					Align: Right
 					Font: TinyBold
 				DropDownButton@CATEGORIES_DROPDOWN:
@@ -359,7 +359,7 @@ Container@EDITOR_WORLD_ROOT:
 					Y: 60
 					Width: 55
 					Height: 25
-					Text: label-actor-bg-owner
+					Text: Chrome-Editor-SaveMap-Cancel
 					Align: Right
 					Font: TinyBold
 				DropDownButton@OWNERS_DROPDOWN:
@@ -399,7 +399,7 @@ Container@EDITOR_WORLD_ROOT:
 					Y: 12
 					Width: 55
 					Height: 25
-					Text: label-tool-bg-category
+					Text: Chrome-Editor-ActorId
 					Align: Right
 					Font: TinyBold
 				DropDownButton@TOOLS_DROPDOWN:
@@ -456,14 +456,14 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 42
 							Width: 100
 							Height: 25
-							Text: button-marker-tiles-clear-current
+							Text: Chrome-Editor-MarkerClearCurrent
 							Font: Bold
 						Button@CLEAR_ALL_BUTTON:
 							X: 111
 							Y: 42
 							Width: 75
 							Height: 25
-							Text: button-marker-tiles-clear-all
+							Text: Chrome-Editor-MarkerClearAll
 							Font: Bold
 						Label@ALPHA_LABEL:
 							X: 6
@@ -471,7 +471,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 265
 							Height: 25
 							Align: Left
-							Text: label-marker-alpha
+							Text: Chrome-Editor-DeleteButton
 						Slider@ALPHA_SLIDER:
 							X: 130
 							Y: 72
@@ -489,7 +489,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 260
 							Height: 25
 							Align: Left
-							Text: label-marker-mirror-mode
+							Text: Chrome-Editor-CancelButton
 						DropDownButton@MODE_DROPDOWN:
 							X: 129
 							Y: 102
@@ -501,7 +501,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 256
 							Height: 25
 							Align: Left
-							Text: label-marker-layer-num-sides
+							Text: Chrome-Editor-OkButton
 						Slider@ROTATE_NUM_SIDES_SLIDER:
 							X: 130
 							Y: 132
@@ -526,7 +526,7 @@ Container@EDITOR_WORLD_ROOT:
 							Width: 256
 							Height: 25
 							Align: Left
-							Text: label-marker-axis-angle
+							Text: Chrome-Editor-Search
 							Visible: false
 						Slider@AXIS_ANGLE_SLIDER:
 							X: 130
@@ -592,7 +592,7 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 24
 							Align: Center
 							Font: Bold
-							Text: label-area-selection
+							Text: Chrome-Editor-Filter
 						Label@AREA_FILTERS_LABEL:
 							X: 5
 							Y: 45
@@ -600,32 +600,32 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 25
 							Font: Bold
 							Align: Left
-							Text: label-selection-filters
+							Text: Chrome-Editor-Search
 						Checkbox@COPY_FILTER_TERRAIN_CHECKBOX:
 							X: 5
 							Y: 70
 							Width: PARENT_WIDTH - 29
 							Height: 20
-							Text: label-filter-terrain
+							Text: Chrome-Editor-Filter
 						Checkbox@COPY_FILTER_RESOURCES_CHECKBOX:
 							X: 5
 							Y: 95
 							Width: PARENT_WIDTH - 29
 							Height: 20
-							Text: label-filter-resources
+							Text: Chrome-Editor-Owner
 						Checkbox@COPY_FILTER_ACTORS_CHECKBOX:
 							X: 5
 							Y: 120
 							Width: PARENT_WIDTH - 29
 							Height: 20
-							Text: label-filter-actors
+							Text: Chrome-Editor-TilesTab
 						Label@AREA_INFO_TITLE:
 							Y: 139
 							Width: PARENT_WIDTH
 							Height: 24
 							Align: Center
 							Font: Bold
-							Text: label-area-info
+							Text: Chrome-Editor-OverlaysTab
 						Label@DIAGONAL_LABEL:
 							X: 5
 							Y: 171
@@ -633,7 +633,7 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 20
 							Font: Bold
 							Align: Left
-							Text: label-selected-area-diagonal
+							Text: Chrome-Editor-ActorsTab
 						Label@RESOURCE_LABEL:
 							X: 5
 							Y: 193
@@ -641,7 +641,7 @@ Container@EDITOR_WORLD_ROOT:
 							Height: 25
 							Font: Bold
 							Align: Left
-							Text: label-selected-area-resources
+							Text: Chrome-Editor-HistoryTab
 						Label@DIAGONAL_COUNTER_LABEL:
 							X: 140
 							Y: 170
@@ -659,18 +659,18 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 222
 							Width: 75
 							Height: 25
-							Text: button-delete-area.label
+							Text: Chrome-Editor-DeleteButton
 							Font: Bold
 							Key: EditorDeleteSelection
 							TooltipTemplate: BUTTON_TOOLTIP
-							TooltipText: button-delete-area.tooltip
+							TooltipText: Chrome-Editor-DeleteArea-Tooltip
 							TooltipContainer: TOOLTIP_CONTAINER
 						Button@SELECTION_CANCEL_BUTTON:
 							X: 208
 							Y: 222
 							Width: 75
 							Height: 25
-							Text: button-cancel
+							Text: Chrome-Editor-CancelButton
 							Font: Bold
 				Background@ACTOR_EDIT_PANEL:
 					X: 10
@@ -689,7 +689,7 @@ Container@EDITOR_WORLD_ROOT:
 							Y: 45
 							Width: 55
 							Height: 25
-							Text: label-actor-edit-panel-id
+							Text: Chrome-Editor-MenuButton
 							Align: Right
 						TextField@ACTOR_ID:
 							X: 69
@@ -772,23 +772,23 @@ Container@EDITOR_WORLD_ROOT:
 									X: 5
 									Width: 75
 									Height: 25
-									Text: button-delete-actor.label
+									Text: Chrome-Editor-DeleteButton
 									Font: Bold
 									Key: EditorDeleteSelection
 									TooltipTemplate: BUTTON_TOOLTIP
-									TooltipText: button-delete-actor.tooltip
+									TooltipText: Chrome-Editor-DeleteActor-Tooltip
 									TooltipContainer: TOOLTIP_CONTAINER
 								Button@CANCEL_BUTTON:
 									X: 127
 									Width: 75
 									Height: 25
-									Text: button-cancel
+									Text: Chrome-Editor-CancelButton
 									Font: Bold
 								Button@OK_BUTTON:
 									X: 208
 									Width: 75
 									Height: 25
-									Text: button-container-ok
+									Text: Chrome-Editor-OkButton
 									Font: Bold
 		Container@MAP_EDITOR_TAB_CONTAINER:
 			Logic: MapEditorTabsLogic
@@ -803,7 +803,7 @@ Container@EDITOR_WORLD_ROOT:
 					Height: 25
 					Key: EditorSelectTab
 					TooltipTemplate: BUTTON_TOOLTIP
-					TooltipText: button-map-editor-tab-container-select-tooltip
+					TooltipText: Chrome-Editor-TabContainer-SelectionTooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					Children:
 						Image@ICON:
@@ -817,7 +817,7 @@ Container@EDITOR_WORLD_ROOT:
 					Height: 25
 					Key: EditorTilesTab
 					TooltipTemplate: BUTTON_TOOLTIP
-					TooltipText: button-map-editor-tab-container-tiles-tooltip
+					TooltipText: Chrome-Editor-TabContainer-TilesTooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					Children:
 						Image@ICON:
@@ -831,7 +831,7 @@ Container@EDITOR_WORLD_ROOT:
 					Height: 25
 					Key: EditorOverlaysTab
 					TooltipTemplate: BUTTON_TOOLTIP
-					TooltipText: button-map-editor-tab-container-overlays-tooltip
+					TooltipText: Chrome-Editor-TabContainer-OverlaysTooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					Children:
 						Image@ICON:
@@ -845,7 +845,7 @@ Container@EDITOR_WORLD_ROOT:
 					Height: 25
 					Key: EditorActorsTab
 					TooltipTemplate: BUTTON_TOOLTIP
-					TooltipText: button-map-editor-tab-container-actors-tooltip
+					TooltipText: Chrome-Editor-TabContainer-ActorsTooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					Children:
 						Image@ICON:
@@ -859,7 +859,7 @@ Container@EDITOR_WORLD_ROOT:
 					Height: 25
 					Key: EditorToolsTab
 					TooltipTemplate: BUTTON_TOOLTIP
-					TooltipText: button-map-editor-tab-container-tools-tooltip
+					TooltipText: Chrome-Editor-TabContainer-ToolsTooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					Children:
 						Image@ICON:
@@ -873,7 +873,7 @@ Container@EDITOR_WORLD_ROOT:
 					Height: 25
 					Key: EditorHistoryTab
 					TooltipTemplate: BUTTON_TOOLTIP
-					TooltipText: button-map-editor-tab-container-history-tooltip
+					TooltipText: Chrome-Editor-TabContainer-HistoryTooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					Children:
 						Image@ICON:
@@ -888,8 +888,8 @@ Container@EDITOR_WORLD_ROOT:
 			Pause: true
 			Width: 60
 			Height: 25
-			Text: button-editor-world-root-options.label
-			TooltipText: button-editor-world-root-options.tooltip
+			Text: Chrome-Editor-MenuButton
+			TooltipText: Chrome-Editor-MenuButton-Tooltip
 			TooltipContainer: TOOLTIP_CONTAINER
 			Font: Bold
 			Key: escape
@@ -897,47 +897,47 @@ Container@EDITOR_WORLD_ROOT:
 			X: 70
 			Height: 25
 			Width: 70
-			Text: button-editor-world-root-undo.label
+			Text: Chrome-Editor-UndoButton
 			Font: Bold
 			Key: EditorUndo
 			TooltipTemplate: BUTTON_TOOLTIP
-			TooltipText: button-editor-world-root-undo.tooltip
+			TooltipText: Chrome-Editor-UndoButton-Tooltip
 			TooltipContainer: TOOLTIP_CONTAINER
 		Button@REDO_BUTTON:
 			X: 150
 			Height: 25
 			Width: 70
-			Text: button-editor-world-root-redo.label
+			Text: Chrome-Editor-RedoButton
 			Font: Bold
 			Key: EditorRedo
 			TooltipTemplate: BUTTON_TOOLTIP
-			TooltipText: button-editor-world-root-redo.tooltip
+			TooltipText: Chrome-Editor-RedoButton-Tooltip
 			TooltipContainer: TOOLTIP_CONTAINER
 		Button@COPY_BUTTON:
 			X: 230
 			Height: 25
-			Text: button-editor-world-root-copy.label
+			Text: Chrome-Editor-WorldRoot-CopyLabel
 			Width: 70
 			Font: Bold
 			Key: EditorCopy
 			TooltipTemplate: BUTTON_TOOLTIP
-			TooltipText: button-editor-world-root-copy.tooltip
+			TooltipText: Chrome-Editor-WorldRoot-CopyTooltip
 			TooltipContainer: TOOLTIP_CONTAINER
 		Button@PASTE_BUTTON:
 			X: 310
 			Width: 70
 			Height: 25
-			Text: button-editor-world-root-paste.label
+			Text: Chrome-Editor-WorldRoot-PasteLabel
 			Font: Bold
 			Key: EditorPaste
 			TooltipTemplate: BUTTON_TOOLTIP
-			TooltipText: button-editor-world-root-paste.tooltip
+			TooltipText: Chrome-Editor-WorldRoot-PasteTooltip
 			TooltipContainer: TOOLTIP_CONTAINER
 		DropDownButton@OVERLAY_BUTTON:
 			X: 390
 			Width: 140
 			Height: 25
-			Text: dropdownbutton-editor-world-root-overlay-button
+			Text: Chrome-Editor-WorldRoot-OverlayDropdown
 			Font: Bold
 		Label@COORDINATE_LABEL:
 			X: 540
@@ -968,14 +968,14 @@ ScrollPanel@CATEGORY_FILTER_PANEL:
 					Y: 0 - 5
 					Width: 93
 					Height: 25
-					Text: button-select-categories-buttons-all
+					Text: Chrome-Editor-Filter-All
 					Font: Bold
 				Button@SELECT_NONE:
 					X: 10 + 93 + 10
 					Y: 0 - 5
 					Width: 93
 					Height: 25
-					Text: button-select-categories-buttons-none
+					Text: Chrome-Editor-Filter-None
 					Font: Bold
 		Checkbox@CATEGORY_TEMPLATE:
 			X: 5

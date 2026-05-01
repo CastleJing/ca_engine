@@ -22,7 +22,7 @@ Container@INPUT_PANEL:
 							Height: PARENT_HEIGHT
 							Font: TinyBold
 							Align: Center
-							Text: label-input-section-header
+							Text: Chrome-Setting-Input
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 50
@@ -35,7 +35,7 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: label-mouse-control-container
+									Text: Chrome-Setting-Input-ControlSchema
 								DropDownButton@MOUSE_CONTROL_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -49,7 +49,7 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: label-zoom-modifier-container
+									Text: Chrome-Setting-Input-ZoomModifier
 								DropDownButton@ZOOM_MODIFIER:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -64,56 +64,56 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-selection
+									Text: Chrome-Setting-Input-ClassicDesc-Selection
 								LabelWithHighlight@DESC_COMMANDS:
 									Y: 17
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-commands
+									Text: Chrome-Setting-Input-ClassicDesc-Commands
 								LabelWithHighlight@DESC_BUILDINGS:
 									Y: 34
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-buildings
+									Text: Chrome-Setting-Input-ClassicDesc-Buildings
 								LabelWithHighlight@DESC_SUPPORT:
 									Y: 51
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-support
+									Text: Chrome-Setting-Input-ClassicDesc-Support
 								LabelWithHighlight@DESC_ZOOM:
 									Y: 68
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-zoom
+									Text: Chrome-Setting-Input-ClassicDesc-Zoom
 								LabelWithHighlight@DESC_ZOOM_MODIFIER:
 									Y: 68
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-zoom-modifier
+									Text: Chrome-Setting-Input-ClassicDesc-Zoom-modifier
 								LabelWithHighlight@DESC_SCROLL_RIGHT:
 									Y: 85
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-scroll-right
+									Text: Chrome-Setting-Input-ClassicDesc-ScrollRight
 								LabelWithHighlight@DESC_SCROLL_MIDDLE:
 									Y: 85
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-scroll-middle
+									Text: Chrome-Setting-Input-ClassicDesc-ScrollMiddle
 								Label@DESC_EDGESCROLL:
 									X: 9
 									Y: 102
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-classic-edgescroll
+									Text: Chrome-Setting-Input-ClassicDesc-EdgeScroll
 						Container@MOUSE_CONTROL_DESC_MODERN:
 							X: 10
 							Y: 55
@@ -123,56 +123,56 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-selection
+									Text: Chrome-Setting-Input-ModernDesc-Selection
 								LabelWithHighlight@DESC_COMMANDS:
 									Y: 17
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-commands
+									Text: Chrome-Setting-Input-ModernDesc-Commands
 								LabelWithHighlight@DESC_BUILDINGS:
 									Y: 34
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-buildings
+									Text: Chrome-Setting-Input-ModernDesc-Buildings
 								LabelWithHighlight@DESC_SUPPORT:
 									Y: 51
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-support
+									Text: Chrome-Setting-Input-ModernDesc-Support
 								LabelWithHighlight@DESC_ZOOM:
 									Y: 68
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-zoom
+									Text: Chrome-Setting-Input-ModernDesc-Zoom
 								LabelWithHighlight@DESC_ZOOM_MODIFIER:
 									Y: 68
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-zoom-modifier
+									Text: Chrome-Setting-Input-ModernDesc-Zoom-modifier
 								LabelWithHighlight@DESC_SCROLL_RIGHT:
 									Y: 85
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-scroll-right
+									Text: Chrome-Setting-Input-ModernDesc-ScrollRight
 								LabelWithHighlight@DESC_SCROLL_MIDDLE:
 									Y: 85
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-scroll-middle
+									Text: Chrome-Setting-Input-ModernDesc-ScrollMiddle
 								Label@DESC_EDGESCROLL:
 									X: 9
 									Y: 102
 									Width: PARENT_WIDTH
 									Height: 16
 									Font: Small
-									Text: label-mouse-control-desc-modern-edgescroll
+									Text: Chrome-Setting-Input-ModernDesc-EdgeScroll
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 20
@@ -185,7 +185,7 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-edgescroll-container
+									Text: Chrome-Setting-Input-EdgePanning
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 20
@@ -198,7 +198,7 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-alternate-scroll-container
+									Text: Chrome-Setting-Input-MousePanning
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
 					Height: 20
@@ -211,7 +211,7 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: checkbox-lockmouse-container
+									Text: Chrome-Setting-Input-LockMouse
 				Container@SPACER:
 					Height: 30
 				Container@ROW:
@@ -226,7 +226,7 @@ Container@INPUT_PANEL:
 									Width: PARENT_WIDTH
 									Height: 20
 									Font: Regular
-									Text: label-mouse-scroll-type-container
+									Text: Chrome-Setting-Input-PanBehaviour
 								DropDownButton@MOUSE_SCROLL_TYPE_DROPDOWN:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -239,7 +239,7 @@ Container@INPUT_PANEL:
 								Label@SCROLL_SPEED_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-scrollspeed-slider-container-scroll-speed
+									Text: Chrome-Setting-Input-PaningSpeed
 								Slider@SCROLLSPEED_SLIDER:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -258,7 +258,7 @@ Container@INPUT_PANEL:
 								Label@ZOOM_SPEED_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-zoomspeed-slider-container-zoom-speed
+									Text: Chrome-Setting-Input-ZoomSpeed
 								ExponentialSlider@ZOOMSPEED_SLIDER:
 									Y: 25
 									Width: PARENT_WIDTH
@@ -277,7 +277,7 @@ Container@INPUT_PANEL:
 								Label@UI_SCROLL_SPEED_LABEL:
 									Width: PARENT_WIDTH
 									Height: 20
-									Text: label-ui-scrollspeed-slider-container-scroll-speed
+									Text: Chrome-Setting-Input-UiScrollSpeed
 								Slider@UI_SCROLLSPEED_SLIDER:
 									Y: 25
 									Width: PARENT_WIDTH

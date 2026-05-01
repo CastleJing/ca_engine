@@ -27,10 +27,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic.Ingame
 
 		public readonly string ClickSound = ChromeMetrics.Get<string>("ClickSound");
 
-		[FluentReference("units")]
 		const string SelectedUnitsAcrossScreen = "selected-units-across-screen";
 
-		[FluentReference("units")]
 		const string SelectedUnitsAcrossMap = "selected-units-across-map";
 
 		[ObjectCreator.UseCtor]

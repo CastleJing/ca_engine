@@ -249,6 +249,9 @@ namespace OpenRA
 		public Color Color = Color.FromArgb(200, 32, 32);
 		public string LastServer = "localhost:1234";
 		public Color[] CustomColors = Array.Empty<Color>();
+
+		[Desc("BCP-47 language tag for UI strings (Fluent overlays).")]
+		public string Language = "en";
 	}
 
 	public class GameSettings
@@ -320,9 +323,13 @@ namespace OpenRA
 		// allowing us to persist any unknown configuration keys
 		readonly List<MiniYamlNode> yamlCache = new();
 
+		/// <summary>True if <c>settings.yaml</c> already existed when settings were loaded (false on first run).</summary>
+		public bool SettingsFileExisted { get; }
+
 		public Settings(string file, Arguments args)
 		{
 			settingsFile = file;
+			SettingsFileExisted = File.Exists(file);
 			Sections = new Dictionary<string, object>()
 			{
 				{ "Player", Player },

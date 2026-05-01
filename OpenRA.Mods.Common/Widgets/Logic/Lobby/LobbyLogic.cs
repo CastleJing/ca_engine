@@ -23,41 +23,39 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class LobbyLogic : ChromeLogic, INotificationHandler<TextNotification>
 	{
-		[FluentReference]
-		const string Add = "options-slot-admin.add-bots";
+		
+		const string Add = "Game-LobbyLogic-SlotManage-Add";
 
-		[FluentReference]
-		const string Remove = "options-slot-admin.remove-bots";
+		
+		const string Remove = "Game-LobbyLogic-SlotManage-Remove";
 
-		[FluentReference]
-		const string ConfigureBots = "options-slot-admin.configure-bots";
+		
+		const string ConfigureBots = "Game-LobbyLogic-SlotManage-ConfigureBots";
 
-		[FluentReference("count")]
-		const string NumberTeams = "options-slot-admin.teams-count";
+		const string NumberTeams = "Game-LobbyLogic-SlotManage-Team";
 
-		[FluentReference]
-		const string HumanVsBots = "options-slot-admin.humans-vs-bots";
+		
+		const string HumanVsBots = "Game-LobbyLogic-SlotManage-PVE";
 
-		[FluentReference]
-		const string FreeForAll = "options-slot-admin.free-for-all";
+		
+		const string FreeForAll = "Game-LobbyLogic-SlotManage-Free";
 
-		[FluentReference]
-		const string ConfigureTeams = "options-slot-admin.configure-teams";
+		
+		const string ConfigureTeams = "Game-LobbyLogic-SlotManage-ConfigureTeams";
 
-		[FluentReference]
-		const string Back = "button-back";
+		
+		const string Back = "Chrome-Lobby-Back";
 
-		[FluentReference]
-		const string TeamChat = "button-team-chat";
+		
+		const string TeamChat = "Chrome-Lobby-Chat-Team";
 
-		[FluentReference]
-		const string GeneralChat = "button-general-chat";
+		
+		const string GeneralChat = "Chrome-Lobby-Chat-All";
 
-		[FluentReference("seconds")]
-		const string ChatAvailability = "label-chat-availability";
+		const string ChatAvailability = "Game-IngameChatLogic-ChatAvailabilityCountdown";
 
-		[FluentReference]
-		const string ChatDisabled = "label-chat-disabled";
+		
+		const string ChatDisabled = "Game-IngameChatLogic-ChatDisabled";
 
 		static readonly Action DoNothing = () => { };
 
@@ -282,7 +280,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 						{
 							new()
 							{
-								Title = FluentProvider.GetMessage(Add),
+								Title = Game.Translate(Add),
 								IsSelected = () => false,
 								OnClick = () =>
 								{
@@ -301,7 +299,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 						{
 							botOptions.Add(new DropDownOption()
 							{
-								Title = FluentProvider.GetMessage(Remove),
+								Title = Game.Translate(Remove),
 								IsSelected = () => false,
 								OnClick = () =>
 								{
@@ -315,7 +313,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 							});
 						}
 
-						options.Add(FluentProvider.GetMessage(ConfigureBots), botOptions);
+						options.Add(Game.Translate(ConfigureBots), botOptions);
 					}
 
 					var teamCount = (orderManager.LobbyInfo.Slots.Count(s => !s.Value.LockTeam && orderManager.LobbyInfo.ClientInSlot(s.Key) != null) + 1) / 2;
@@ -323,7 +321,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					{
 						var teamOptions = Enumerable.Range(2, teamCount - 1).Reverse().Select(d => new DropDownOption
 						{
-							Title = FluentProvider.GetMessage(NumberTeams, "count", d),
+							Title = Game.Translate(NumberTeams, "0", d),
 							IsSelected = () => false,
 							OnClick = () => orderManager.IssueOrder(Order.Command($"assignteams {d}"))
 						}).ToList();
@@ -332,7 +330,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 						{
 							teamOptions.Add(new DropDownOption
 							{
-								Title = FluentProvider.GetMessage(HumanVsBots),
+								Title = Game.Translate(HumanVsBots),
 								IsSelected = () => false,
 								OnClick = () => orderManager.IssueOrder(Order.Command("assignteams 1"))
 							});
@@ -340,12 +338,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 						teamOptions.Add(new DropDownOption
 						{
-							Title = FluentProvider.GetMessage(FreeForAll),
+							Title = Game.Translate(FreeForAll),
 							IsSelected = () => false,
 							OnClick = () => orderManager.IssueOrder(Order.Command("assignteams 0"))
 						});
 
-						options.Add(FluentProvider.GetMessage(ConfigureTeams), teamOptions);
+						options.Add(Game.Translate(ConfigureTeams), teamOptions);
 					}
 
 					ScrollItemWidget SetupItem(DropDownOption option, ScrollItemWidget template)
@@ -483,7 +481,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			if (skirmishMode)
 			{
-				var disconnectButtonText = FluentProvider.GetMessage(Back);
+				var disconnectButtonText = Game.Translate(Back);
 				disconnectButton.GetText = () => disconnectButtonText;
 			}
 
@@ -497,8 +495,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 
 			var chatMode = lobby.Get<ButtonWidget>("CHAT_MODE");
-			var team = FluentProvider.GetMessage(TeamChat);
-			var all = FluentProvider.GetMessage(GeneralChat);
+			var team = Game.Translate(TeamChat);
+			var all = Game.Translate(GeneralChat);
 			chatMode.GetText = () => teamChat ? team : all;
 			chatMode.OnClick = () => teamChat ^= true;
 			chatMode.IsDisabled = () => disableTeamChat || !chatEnabled;
@@ -539,8 +537,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			chatTextField.OnEscKey = _ => chatTextField.YieldKeyboardFocus();
 
-			chatAvailableIn = new CachedTransform<int, string>(x => FluentProvider.GetMessage(ChatAvailability, "seconds", x));
-			chatDisabled = FluentProvider.GetMessage(ChatDisabled);
+			chatAvailableIn = new CachedTransform<int, string>(x => Game.Translate(ChatAvailability, "seconds", x));
+			chatDisabled = Game.Translate(ChatDisabled);
 
 			lobbyChatPanel = lobby.Get<ScrollPanelWidget>("CHAT_DISPLAY");
 			lobbyChatPanel.RemoveChildren();
@@ -880,7 +878,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			if (numberOfPlayers == slots && orderManager.LobbyInfo.GlobalSettings.AllowSpectators)
 				slots = numberOfPlayers + 1;
 
-			var details = map.Title + " - " + orderManager.LobbyInfo.GlobalSettings.ServerName;
+			var details = map.Translate(map.Title) + " - " + orderManager.LobbyInfo.GlobalSettings.ServerName;
 			if (updateDiscordStatus)
 			{
 				string secret = null;
@@ -932,7 +930,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			Ui.CloseWindow();
 
 			var state = skirmishMode ? DiscordState.PlayingSkirmish : DiscordState.PlayingMultiplayer;
-			var details = map.Title + " - " + orderManager.LobbyInfo.GlobalSettings.ServerName;
+			var details = map.Translate(map.Title) + " - " + orderManager.LobbyInfo.GlobalSettings.ServerName;
 			DiscordService.UpdateStatus(state, details);
 
 			onStart();

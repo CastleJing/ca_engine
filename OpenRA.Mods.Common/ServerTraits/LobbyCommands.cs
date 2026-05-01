@@ -27,140 +27,127 @@ namespace OpenRA.Mods.Common.Server
 {
 	public class LobbyCommands : ServerTrait, IInterpretCommand, INotifyServerStart, INotifyServerEmpty, IClientJoined, OpenRA.Server.ITick
 	{
-		[FluentReference]
-		const string CustomRules = "notification-custom-rules";
+		
+		const string CustomRules = "Game-Server-CustomRules";
 
-		[FluentReference]
-		const string OnlyHostStartGame = "notification-admin-start-game";
+		
+		const string OnlyHostStartGame = "Game-Common-Server-HostOnlyStart";
 
-		[FluentReference]
-		const string NoStartUntilRequiredSlotsFull = "notification-no-start-until-required-slots-full";
+		
+		const string NoStartUntilRequiredSlotsFull = "Game-Common-Server-MorePlayerNeeded";
 
-		[FluentReference]
-		const string NoStartWithoutPlayers = "notification-no-start-without-players";
+		
+		const string NoStartWithoutPlayers = "Game-Common-Server-NoPlayersToStart";
 
-		[FluentReference]
-		const string TwoHumansRequired = "notification-two-humans-required";
+		
+		const string TwoHumansRequired = "Game-Server-TwoMenReq";
 
-		[FluentReference]
-		const string InsufficientEnabledSpawnPoints = "notification-insufficient-enabled-spawn-points";
+		
+		const string InsufficientEnabledSpawnPoints = "Game-Common-Server-MoreSlotNeeded";
 
-		[FluentReference("command")]
-		const string MalformedCommand = "notification-malformed-command";
+		const string MalformedCommand = "Game-Common-Server-MalformedCommand";
 
-		[FluentReference]
-		const string KickNone = "notification-kick-none";
+		
+		const string KickNone = "Game-Common-Server-KickNoPlayerHere";
 
-		[FluentReference]
-		const string NoKickSelf = "notification-kick-self";
+		
+		const string NoKickSelf = "Game-Common-Server-HostCannotKickSelf";
 
-		[FluentReference]
-		const string NoKickGameStarted = "notification-no-kick-game-started";
+		
+		const string NoKickGameStarted = "Game-Common-Server-KickAfterStartRestricted";
 
-		[FluentReference("admin", "player")]
-		const string AdminKicked = "notification-admin-kicked";
+		const string AdminKicked = "Game-Common-Server-KickPlayer";
 
-		[FluentReference("player")]
-		const string Kicked = "notification-kicked";
+		const string Kicked = "Game-Common-Server-KickedAnnouncement";
 
-		[FluentReference("admin", "player")]
-		const string TempBan = "notification-temp-ban";
+		const string TempBan = "Game-Common-Server-BanPlayer";
 
-		[FluentReference]
-		const string NoTransferAdmin = "notification-admin-transfer-admin";
+		
+		const string NoTransferAdmin = "Game-Common-Server-HostOnlyMakeHost";
 
-		[FluentReference]
-		const string EmptySlot = "notification-empty-slot";
+		
+		const string EmptySlot = "Game-Common-Server-KickNoPlayerHere";
 
-		[FluentReference("admin", "player")]
-		const string MoveSpectators = "notification-move-spectators";
+		const string MoveSpectators = "Game-Common-Server-MoveToSpectators";
 
-		[FluentReference("player", "name")]
-		const string Nick = "notification-nick-changed";
+		const string Nick = "Game-Common-Server-Rename";
 
-		[FluentReference]
-		const string StateUnchangedReady = "notification-state-unchanged-ready";
+		
+		const string StateUnchangedReady = "Game-Common-Server-CannotChangedMarkedReady";
 
-		[FluentReference("command")]
-		const string StateUnchangedGameStarted = "notification-state-unchanged-game-started";
+		const string StateUnchangedGameStarted = "Game-Common-Server-CannotChangedStarted";
 
-		[FluentReference("faction")]
-		const string InvalidFactionSelected = "notification-invalid-faction-selected";
+		const string InvalidFactionSelected = "Game-Common-Server-InvalidFaction";
 
-		[FluentReference]
-		const string RequiresHost = "notification-requires-host";
+		
+		const string RequiresHost = "Game-Common-Server-HostOnly";
 
-		[FluentReference]
-		const string InvalidBotSlot = "notification-invalid-bot-slot";
+		
+		const string InvalidBotSlot = "Game-Common-Server-CannotAddBotToPlayerSolt";
 
-		[FluentReference]
-		const string InvalidBotType = "notification-invalid-bot-type";
+		
+		const string InvalidBotType = "Game-Common-Server-InvalidBot";
 
-		[FluentReference]
-		const string HostChangeMap = "notification-admin-change-map";
+		
+		const string HostChangeMap = "Game-Common-Server-HostOnlyMap";
 
-		[FluentReference]
-		const string UnknownMap = "notification-unknown-map";
+		
+		const string UnknownMap = "Game-Common-Server-MapNotOnServer";
 
-		[FluentReference]
-		const string SearchingMap = "notification-searching-map";
+		
+		const string SearchingMap = "Game-Common-Server-SearchingMap";
 
-		[FluentReference]
-		const string NotAdmin = "notification-admin-change-configuration";
+		
+		const string NotAdmin = "Game-Common-Server-HostOnlyConfig";
 
-		[FluentReference]
-		const string InvalidConfigurationCommand = "notification-invalid-configuration-command";
+		
+		const string InvalidConfigurationCommand = "Game-Common-Server-InvalidConfigCommand";
 
-		[FluentReference("option")]
-		const string OptionLocked = "notification-option-locked";
+		const string OptionLocked = "Game-Common-Server-ConfigCannotChange";
 
-		[FluentReference("player", "map")]
-		const string ChangedMap = "notification-changed-map";
+		const string ChangedMap = "Game-Common-Server-MapChanged";
 
-		[FluentReference]
-		const string MapBotsDisabled = "notification-map-bots-disabled";
+		
+		const string MapBotsDisabled = "Game-Server-BotDisable";
 
-		[FluentReference("player", "name", "value")]
-		const string ValueChanged = "notification-option-changed";
+		const string ValueChanged = "Game-Trait-LobbyOption-Message";
 
-		[FluentReference]
-		const string NoMoveSpectators = "notification-admin-move-spectators";
+		
+		const string NoMoveSpectators = "Game-Common-Server-HostOnlyMoveToSpectators";
 
-		[FluentReference]
-		const string AdminOption = "notification-admin-option";
+		
+		const string AdminOption = "Game-Common-Server-HostOnlyOption";
 
-		[FluentReference("raw")]
-		const string NumberTeams = "notification-error-number-teams";
+		const string NumberTeams = "Game-Common-Server-CannotParseTeamNumber";
 
-		[FluentReference]
-		const string AdminClearSpawn = "notification-admin-clear-spawn";
+		
+		const string AdminClearSpawn = "Game-Common-Server-HostOnlyCleanSpawn";
 
-		[FluentReference]
-		const string SpawnOccupied = "notification-spawn-occupied";
+		
+		const string SpawnOccupied = "Game-Common-Server-SpawnPlayerHere";
 
-		[FluentReference]
-		const string SpawnLocked = "notification-spawn-locked";
+		
+		const string SpawnLocked = "Game-Common-Server-SpawnLocked";
 
-		[FluentReference]
-		const string AdminLobbyInfo = "notification-admin-lobby-info";
+		
+		const string AdminLobbyInfo = "Game-Common-Server-HostOnlyLobbyInfo";
 
-		[FluentReference]
-		const string InvalidLobbyInfo = "notification-invalid-lobby-info";
+		
+		const string InvalidLobbyInfo = "Game-Common-Server-InvalidLobbyInfo";
 
-		[FluentReference]
-		const string AdminKick = "notification-admin-kick";
+		
+		const string AdminKick = "Game-Common-Server-HostOnlyKick";
 
-		[FluentReference]
-		const string SlotClosed = "notification-slot-closed";
+		
+		const string SlotClosed = "Game-Common-Server-SlotClosedByHost";
 
-		[FluentReference("player")]
-		const string NewAdmin = "notification-new-admin";
+		const string NewAdmin = "Game-Server-ChangeAdmin";
 
-		[FluentReference]
-		const string YouWereKicked = "notification-you-were-kicked";
+		
+		const string YouWereKicked = "Game-Server-YouWereKicked";
 
-		[FluentReference]
-		const string VoteKickDisabled = "notification-vote-kick-disabled";
+		
+		const string VoteKickDisabled = "Game-Common-Server-VoteKickDisabled";
 
 		readonly IDictionary<string, Func<S, Connection, Session.Client, string, bool>> commandHandlers =
 			new Dictionary<string, Func<S, Connection, Session.Client, string, bool>>
@@ -221,7 +208,7 @@ namespace OpenRA.Mods.Common.Server
 
 				if (server.State == ServerState.GameStarted)
 				{
-					server.SendFluentMessageTo(conn, StateUnchangedGameStarted, new object[] { "command", command });
+					server.SendFluentMessageTo(conn, StateUnchangedGameStarted, new object[] { "0", command });
 					return false;
 				}
 				else if (client.State == Session.ClientState.Ready && !(command.StartsWith("state", StringComparison.Ordinal) || command == "startgame"))
@@ -300,7 +287,7 @@ namespace OpenRA.Mods.Common.Server
 			{
 				if (!Enum<Session.ClientState>.TryParse(s, false, out var state))
 				{
-					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "command", "state" });
+					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "0", "state" });
 
 					return true;
 				}
@@ -396,7 +383,7 @@ namespace OpenRA.Mods.Common.Server
 					return true;
 				}
 
-				server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "command", "allow_spectate" });
+				server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "0", "allow_spectate" });
 
 				return true;
 			}
@@ -485,7 +472,7 @@ namespace OpenRA.Mods.Common.Server
 				var parts = s.Split(' ');
 				if (parts.Length < 3)
 				{
-					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "command", "slot_bot" });
+					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "0", "slot_bot" });
 					return true;
 				}
 
@@ -648,7 +635,7 @@ namespace OpenRA.Mods.Common.Server
 
 						server.SyncLobbyInfo();
 
-						server.SendFluentMessage(ChangedMap, "player", client.Name, "map", server.Map.Title);
+						server.SendFluentMessage(ChangedMap, "playerName", client.Name);
 
 						if ((server.LobbyInfo.GlobalSettings.MapStatus & Session.MapStatus.UnsafeCustomRules) != 0)
 							server.SendFluentMessage(CustomRules);
@@ -718,7 +705,7 @@ namespace OpenRA.Mods.Common.Server
 
 				if (option.IsLocked)
 				{
-					server.SendFluentMessageTo(conn, OptionLocked, new object[] { "option", option.Name });
+					server.SendFluentMessageTo(conn, OptionLocked, new object[] { "0", option.Name });
 					return true;
 				}
 
@@ -735,7 +722,7 @@ namespace OpenRA.Mods.Common.Server
 				oo.Value = oo.PreferredValue = split[1];
 
 				server.SyncLobbyGlobalSettings();
-				server.SendFluentMessage(ValueChanged, "player", client.Name, "name", option.Name, "value", option.Label(split[1]));
+				server.SendFluentMessage(ValueChanged, "playerName", client.Name, "name", option.Name, "option", option.Label(split[1]));
 
 				foreach (var c in server.LobbyInfo.Clients)
 					c.State = Session.ClientState.NotReady;
@@ -765,9 +752,9 @@ namespace OpenRA.Mods.Common.Server
 				{
 					if (o.DefaultValue != server.LobbyInfo.GlobalSettings.LobbyOptions[o.Id].Value)
 						server.SendFluentMessage(ValueChanged,
-							"player", client.Name,
+							"playerName", client.Name,
 							"name", o.Name,
-							"value", o.Label(o.DefaultValue));
+							"option", o.Label(o.DefaultValue));
 
 					options[o.Id] = new Session.LobbyOptionState
 					{
@@ -801,7 +788,7 @@ namespace OpenRA.Mods.Common.Server
 
 				if (!Exts.TryParseInt32Invariant(raw, out var teamCount))
 				{
-					server.SendFluentMessageTo(conn, NumberTeams, new object[] { "raw", raw });
+					server.SendFluentMessageTo(conn, NumberTeams, new object[] { "0", raw });
 					return true;
 				}
 
@@ -846,7 +833,7 @@ namespace OpenRA.Mods.Common.Server
 				var split = s.Split(' ');
 				if (split.Length < 2)
 				{
-					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "command", "kick" });
+					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "0", "kick" });
 					return true;
 				}
 
@@ -873,14 +860,14 @@ namespace OpenRA.Mods.Common.Server
 				}
 
 				Log.Write("server", $"Kicking client {kickClientID}.");
-				server.SendFluentMessage(AdminKicked, "admin", client.Name, "player", kickClient.Name);
+				server.SendFluentMessage(AdminKicked, "player", client.Name, "kickedPlayer", kickClient.Name);
 				server.SendOrderTo(kickConn, "ServerError", YouWereKicked);
 				server.DropClient(kickConn);
 
 				if (bool.TryParse(split[1], out var tempBan) && tempBan)
 				{
 					Log.Write("server", $"Temporarily banning client {kickClientID} ({kickClient.IPAddress}).");
-					server.SendFluentMessage(TempBan, "admin", client.Name, "player", kickClient.Name);
+					server.SendFluentMessage(TempBan, "player", client.Name, "bannedPlayer", kickClient.Name);
 					server.TempBans.Add(kickClient.IPAddress);
 				}
 
@@ -898,7 +885,7 @@ namespace OpenRA.Mods.Common.Server
 				var split = s.Split(' ');
 				if (split.Length != 2)
 				{
-					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "command", "vote_kick" });
+					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "0", "vote_kick" });
 					return true;
 				}
 
@@ -926,14 +913,14 @@ namespace OpenRA.Mods.Common.Server
 
 				if (!bool.TryParse(split[1], out var vote))
 				{
-					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "command", "vote_kick" });
+					server.SendFluentMessageTo(conn, MalformedCommand, new object[] { "0", "vote_kick" });
 					return true;
 				}
 
 				if (server.VoteKickTracker.VoteKick(conn, client, kickConn, kickClient, kickClientID, vote))
 				{
 					Log.Write("server", $"Kicking client {kickClientID}.");
-					server.SendFluentMessage(Kicked, "player", kickClient.Name);
+					server.SendFluentMessage(Kicked, "playerName", kickClient.Name);
 					server.SendOrderTo(kickConn, "ServerError", YouWereKicked);
 					server.DropClient(kickConn);
 
@@ -976,7 +963,7 @@ namespace OpenRA.Mods.Common.Server
 				foreach (var b in bots)
 					b.BotControllerClientIndex = newAdminId;
 
-				server.SendFluentMessage(NewAdmin, "player", newAdminClient.Name);
+				server.SendFluentMessage(NewAdmin, "playerName", newAdminClient.Name);
 				Log.Write("server", $"{newAdminClient.Name} is now the admin.");
 				server.SyncLobbyClients();
 
@@ -1010,7 +997,7 @@ namespace OpenRA.Mods.Common.Server
 				targetClient.Handicap = 0;
 				targetClient.Color = Color.White;
 				targetClient.State = Session.ClientState.NotReady;
-				server.SendFluentMessage(MoveSpectators, "admin", client.Name, "player", targetClient.Name);
+				server.SendFluentMessage(MoveSpectators, "player", client.Name, "movedPlayer", targetClient.Name);
 				Log.Write("server", $"{client.Name} moved {targetClient.Name} to spectators.");
 				server.SyncLobbyClients();
 				CheckAutoStart(server);
@@ -1028,7 +1015,7 @@ namespace OpenRA.Mods.Common.Server
 					return true;
 
 				Log.Write("server", $"Player@{conn.EndPoint} is now known as {sanitizedName}.");
-				server.SendFluentMessage(Nick, "player", client.Name, "name", sanitizedName);
+				server.SendFluentMessage(Nick, "oldName", client.Name, "newName", sanitizedName);
 				client.Name = sanitizedName;
 				server.SyncLobbyClients();
 
@@ -1057,7 +1044,7 @@ namespace OpenRA.Mods.Common.Server
 
 				if (!isValidFaction)
 				{
-					server.SendFluentMessageTo(conn, InvalidFactionSelected, new object[] { "faction", faction });
+					server.SendFluentMessageTo(conn, InvalidFactionSelected, new object[] { "0", faction });
 					return true;
 				}
 

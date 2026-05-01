@@ -75,10 +75,10 @@ namespace OpenRA.Mods.Common.Widgets
 
 		public readonly bool DrawTime = true;
 
-		[FluentReference]
+		
 		public string ReadyText = "";
 
-		[FluentReference]
+		
 		public string HoldText = "";
 
 		public readonly string InfiniteSymbol = "\u221E";
@@ -178,9 +178,9 @@ namespace OpenRA.Mods.Common.Widgets
 			Game.Renderer.Fonts.TryGetValue(SymbolsFont, out symbolFont);
 
 			iconOffset = 0.5f * IconSize.ToFloat2() + IconSpriteOffset;
-			HoldText = FluentProvider.GetMessage(HoldText);
+			HoldText = Game.Translate(HoldText);
 			holdOffset = iconOffset - overlayFont.Measure(HoldText) / 2;
-			ReadyText = FluentProvider.GetMessage(ReadyText);
+			ReadyText = Game.Translate(ReadyText);
 			readyOffset = iconOffset - overlayFont.Measure(ReadyText) / 2;
 
 			if (ChromeMetrics.TryGet("InfiniteOffset", out infiniteOffset))

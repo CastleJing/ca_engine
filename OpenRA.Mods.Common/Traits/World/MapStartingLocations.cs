@@ -25,13 +25,13 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		public readonly WDist InitialExploreRange = WDist.FromCells(5);
 
-		[FluentReference]
+		
 		[Desc("Descriptive label for the spawn positions checkbox in the lobby.")]
-		public readonly string SeparateTeamSpawnsCheckboxLabel = "checkbox-separate-team-spawns.label";
+		public readonly string SeparateTeamSpawnsCheckboxLabel = "Game-Trait-SeparateTeamSpawnsCheckboxLabel";
 
-		[FluentReference]
+		
 		[Desc("Tooltip description for the spawn positions checkbox in the lobby.")]
-		public readonly string SeparateTeamSpawnsCheckboxDescription = "checkbox-separate-team-spawns.description";
+		public readonly string SeparateTeamSpawnsCheckboxDescription = "Game-Trait-SeparateTeamSpawnsCheckboxDesc";
 
 		[Desc("Default value of the spawn positions checkbox in the lobby.")]
 		public readonly bool SeparateTeamSpawnsCheckboxEnabled = true;

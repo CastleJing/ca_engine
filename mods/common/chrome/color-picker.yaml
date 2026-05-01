@@ -13,14 +13,14 @@ Background@COLOR_CHOOSER:
 			Y: 95
 			Width: 76
 			Height: 25
-			Text: button-color-chooser-random
+			Text: Chrome-ColorPicker-RandomButton
 			Font: Bold
 		Button@STORE_BUTTON:
 			X: 245
 			Y: 124
 			Width: 76
 			Height: 25
-			Text: button-color-chooser-store
+			Text: Chrome-ColorPicker-StoreButton
 			Font: Bold
 		ActorPreview@PREVIEW:
 			X: 245
@@ -32,14 +32,14 @@ Background@COLOR_CHOOSER:
 			Y: PARENT_HEIGHT - 30
 			Height: 25
 			Width: 80
-			Text: button-color-chooser-mixer-tab
+			Text: Chrome-ColorPicker-MixerTabButton
 			Font: Bold
 		Button@PALETTE_TAB_BUTTON:
 			X: 85
 			Y: PARENT_HEIGHT - 30
 			Height: 25
 			Width: 80
-			Text: button-color-chooser-palette-tab
+			Text: Chrome-ColorPicker-PaletteTabButton
 			Font: Bold
 		Container@MIXER_TAB:
 			X: 5
@@ -98,7 +98,7 @@ Background@COLOR_CHOOSER:
 									Width: PARENT_WIDTH
 									Height: 13
 									Align: Center
-									Text: label-preset-header
+									Text: Chrome-ColorPicker-RandomButton
 						Container@PRESET_AREA:
 							Width: PARENT_WIDTH - 4
 							Height: 58
@@ -124,7 +124,7 @@ Background@COLOR_CHOOSER:
 									Width: PARENT_WIDTH
 									Height: 13
 									Align: Center
-									Text: label-custom-header
+									Text: Chrome-ColorPicker-StoreButton
 						Container@CUSTOM_AREA:
 							Width: PARENT_WIDTH - 4
 							Height: 31

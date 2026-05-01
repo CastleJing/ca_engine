@@ -24,8 +24,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class EncyclopediaLogic : ChromeLogic
 	{
-		[FluentReference("prerequisites")]
-		const string Requires = "label-requires";
+		const string Requires = "Game-ProductionTooltipLogic-Requires";
 
 		readonly World world;
 		readonly ModData modData;
@@ -147,7 +146,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var label = item.Get<LabelWithTooltipWidget>("TITLE");
 				var name = actor.TraitInfos<TooltipInfo>().FirstOrDefault(info => info.EnabledByDefault)?.Name;
 				if (!string.IsNullOrEmpty(name))
-					WidgetUtils.TruncateLabelToTooltip(label, FluentProvider.GetMessage(name));
+					WidgetUtils.TruncateLabelToTooltip(label, Game.Translate(name));
 
 				if (firstItem == null)
 				{
@@ -244,11 +243,11 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					.ToList();
 
 				if (prereqs.Count != 0)
-					text += FluentProvider.GetMessage(Requires, "prerequisites", prereqs.JoinWith(", ")) + "\n\n";
+					text += Game.Translate(Requires, "prerequisites", prereqs.JoinWith(", ")) + "\n\n";
 			}
 
 			if (selectedInfo != null && !string.IsNullOrEmpty(selectedInfo.Description))
-				text += WidgetUtils.WrapText(FluentProvider.GetMessage(selectedInfo.Description), descriptionLabel.Bounds.Width, descriptionFont);
+				text += WidgetUtils.WrapText(Game.Translate(selectedInfo.Description), descriptionLabel.Bounds.Width, descriptionFont);
 
 			var height = descriptionFont.Measure(text).Y;
 			descriptionLabel.GetText = () => text;
@@ -264,7 +263,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				var actorTooltip = actor.TraitInfos<TooltipInfo>().FirstOrDefault(info => info.EnabledByDefault);
 				if (actorTooltip != null)
-					return FluentProvider.GetMessage(actorTooltip.Name);
+					return Game.Translate(actorTooltip.Name);
 			}
 
 			return name;

@@ -47,74 +47,67 @@ namespace OpenRA.Server
 
 	public sealed class Server
 	{
-		[FluentReference]
-		const string CustomRules = "notification-custom-rules";
+		
+		const string CustomRules = "Game-Server-CustomRules";
 
-		[FluentReference]
-		const string BotsDisabled = "notification-map-bots-disabled";
+		
+		const string BotsDisabled = "Game-Server-BotDisable";
 
-		[FluentReference]
-		const string TwoHumansRequired = "notification-two-humans-required";
+		
+		const string TwoHumansRequired = "Game-Server-TwoMenReq";
 
-		[FluentReference]
-		const string ErrorGameStarted = "notification-error-game-started";
+		
+		const string ErrorGameStarted = "Game-Server-Handshake-GameAlreadyStarted";
 
-		[FluentReference]
-		const string RequiresPassword = "notification-requires-password";
+		
+		const string RequiresPassword = "Game-Server-Handshake-RequiresPassword";
 
-		[FluentReference]
-		const string IncorrectPassword = "notification-incorrect-password";
+		
+		const string IncorrectPassword = "Game-Server-Handshake-IncorrectPassword";
 
-		[FluentReference]
-		const string IncompatibleMod = "notification-incompatible-mod";
+		
+		const string IncompatibleMod = "Game-Server-Handshake-IncompatibleMod";
 
-		[FluentReference]
-		const string IncompatibleVersion = "notification-incompatible-version";
+		
+		const string IncompatibleVersion = "Game-Server-Handshake-IncompatibleVersion";
 
-		[FluentReference]
-		const string IncompatibleProtocol = "notification-incompatible-protocol";
+		
+		const string IncompatibleProtocol = "Game-Server-Handshake-IncompatibleProtocol";
 
-		[FluentReference]
-		const string Banned = "notification-you-were-banned";
+		
+		const string Banned = "Game-Server-Handshake-Banned";
 
-		[FluentReference]
-		const string TempBanned = "notification-you-were-temp-banned";
+		
+		const string TempBanned = "Game-Server-Handshake-TempBanned";
 
-		[FluentReference]
-		const string Full = "notification-game-full";
+		
+		const string Full = "Game-Server-Handshake-GameFull";
 
-		[FluentReference("player")]
-		const string Joined = "notification-joined";
+		const string Joined = "Game-Server-JoninGame";
 
-		[FluentReference]
-		const string RequiresAuthentication = "notification-requires-authentication";
+		
+		const string RequiresAuthentication = "Game-Server-Handshake-RequiresAuthentication";
 
-		[FluentReference]
-		const string NoPermission = "notification-no-permission-to-join";
+		
+		const string NoPermission = "Game-Server-Handshake-NoPermission";
 
-		[FluentReference("command")]
-		const string UnknownServerCommand = "notification-unknown-server-command";
+		const string UnknownServerCommand = "Game-Server-UnknownCommand";
 
-		[FluentReference("player")]
-		const string LobbyDisconnected = "notification-lobby-disconnected";
+		const string LobbyDisconnected = "Game-Server-LeftLobby";
 
-		[FluentReference("player")]
-		const string PlayerDisconnected = "notification-player-disconnected";
+		const string PlayerDisconnected = "Game-Server-PlayerDisconnected";
 
-		[FluentReference("player", "team")]
-		const string PlayerTeamDisconnected = "notification-team-player-disconnected";
+		const string PlayerTeamDisconnected = "Game-Server-PlayerTeamDisconnected";
 
-		[FluentReference("player")]
-		const string ObserverDisconnected = "notification-observer-disconnected";
+		const string ObserverDisconnected = "Game-Server-ObserverDisconnected";
 
-		[FluentReference("player")]
-		const string NewAdmin = "notification-new-admin";
+		const string NewAdmin = "Game-Server-ChangeAdmin";
 
-		[FluentReference]
-		const string YouWereKicked = "notification-you-were-kicked";
+		
+		const string YouWereKicked = "Game-Server-YouWereKicked";
 
-		[FluentReference]
-		const string GameStarted = "notification-game-started";
+		
+		const string GameStarted = "Game-Server-GameStartedAnnouncement";
 
 		public readonly MersenneTwister Random = new();
 		public readonly ServerType Type;
@@ -580,7 +573,7 @@ namespace OpenRA.Server
 
 						Log.Write("server", $"{client.Name} ({newConn.EndPoint}) has joined the game.");
 
-						SendFluentMessage(Joined, "player", client.Name);
+						SendFluentMessage(Joined, "playerName", client.Name);
 
 						if (Type == ServerType.Dedicated)
 						{
@@ -958,7 +951,7 @@ namespace OpenRA.Server
 			DispatchServerOrdersToClients(Order.FromTargetString("FluentMessage", text, true));
 
 			if (Type == ServerType.Dedicated)
-				WriteLineWithTimeStamp(FluentProvider.GetMessage(key, args));
+				WriteLineWithTimeStamp(Game.Translate(key, args));
 		}
 
 		public void SendFluentMessageTo(Connection conn, string key, object[] args = null)
@@ -998,7 +991,7 @@ namespace OpenRA.Server
 						if (!InterpretCommand(o.TargetString, conn))
 						{
 							Log.Write("server", $"Unknown server command: {o.TargetString}");
-							SendFluentMessageTo(conn, UnknownServerCommand, new object[] { "command", o.TargetString });
+							SendFluentMessageTo(conn, UnknownServerCommand, new object[] { "0", o.TargetString });
 						}
 
 						break;
@@ -1180,14 +1173,14 @@ namespace OpenRA.Server
 				if (State == ServerState.GameStarted)
 				{
 					if (dropClient.IsObserver)
-						SendFluentMessage(ObserverDisconnected, "player", dropClient.Name);
+						SendFluentMessage(ObserverDisconnected, "playerName", dropClient.Name);
 					else if (dropClient.Team > 0)
-						SendFluentMessage(PlayerTeamDisconnected, "player", dropClient.Name, "team", dropClient.Team);
+						SendFluentMessage(PlayerTeamDisconnected, "playerName", dropClient.Name, "teamNumber", dropClient.Team);
 					else
-						SendFluentMessage(PlayerDisconnected, "player", dropClient.Name);
+						SendFluentMessage(PlayerDisconnected, "playerName", dropClient.Name);
 				}
 				else
-					SendFluentMessage(LobbyDisconnected, "player", dropClient.Name);
+					SendFluentMessage(LobbyDisconnected, "playerName", dropClient.Name);
 
 				LobbyInfo.Clients.RemoveAll(c => c.Index == toDrop.PlayerIndex);
 
@@ -1204,7 +1197,7 @@ namespace OpenRA.Server
 					if (nextAdmin != null)
 					{
 						nextAdmin.IsAdmin = true;
-						SendFluentMessage(NewAdmin, "player", nextAdmin.Name);
+						SendFluentMessage(NewAdmin, "playerName", nextAdmin.Name);
 					}
 				}
 
@@ -1302,7 +1295,7 @@ namespace OpenRA.Server
 		{
 			lock (LobbyInfo)
 			{
-				WriteLineWithTimeStamp(FluentProvider.GetMessage(GameStarted));
+				WriteLineWithTimeStamp(Game.Translate(GameStarted));
 
 				// Drop any players who are not ready
 				foreach (var c in Conns.Where(c => !c.Validated || GetClient(c).IsInvalid).ToArray())

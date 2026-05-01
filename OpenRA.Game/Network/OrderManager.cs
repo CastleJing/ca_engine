@@ -22,8 +22,7 @@ namespace OpenRA.Network
 	{
 		const OrderPacket ClientDisconnected = null;
 
-		[FluentReference("frame")]
-		const string DesyncCompareLogs = "notification-desync-compare-logs";
+		const string DesyncCompareLogs = "Game-OrderManager-DesyncCompareLogs";
 
 		readonly SyncReport syncReport;
 		readonly Dictionary<int, Queue<(int Frame, OrderPacket Orders)>> pendingOrders = new();

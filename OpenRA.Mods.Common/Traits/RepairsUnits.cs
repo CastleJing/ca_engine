@@ -31,7 +31,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification played when starting to repair a unit.")]
 		public readonly string StartRepairingNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification displayed when starting to repair a unit.")]
 		public readonly string StartRepairingTextNotification = null;
 
@@ -39,7 +38,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification played when repairing a unit is done.")]
 		public readonly string FinishRepairingNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification displayed when repairing a unit is done.")]
 		public readonly string FinishRepairingTextNotification = null;
 

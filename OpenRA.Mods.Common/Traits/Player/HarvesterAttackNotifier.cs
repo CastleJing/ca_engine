@@ -34,7 +34,6 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Speech notification type to play.")]
 		public readonly string Notification = "HarvesterAttack";
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display.")]
 		public readonly string TextNotification = null;
 

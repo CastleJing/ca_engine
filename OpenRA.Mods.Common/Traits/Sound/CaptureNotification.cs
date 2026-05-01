@@ -20,7 +20,6 @@ namespace OpenRA.Mods.Common.Traits.Sound
 		[Desc("Speech notification to play to the new owner.")]
 		public readonly string Notification = "BuildingCaptured";
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display to the new owner.")]
 		public readonly string TextNotification = null;
 
@@ -31,7 +30,6 @@ namespace OpenRA.Mods.Common.Traits.Sound
 		[Desc("Speech notification to play to the old owner.")]
 		public readonly string LoseNotification = null;
 
-		[FluentReference(optional: true)]
 		[Desc("Text notification to display to the old owner.")]
 		public readonly string LoseTextNotification = null;
 

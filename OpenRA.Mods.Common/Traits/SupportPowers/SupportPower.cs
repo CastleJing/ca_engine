@@ -30,10 +30,8 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Palette used for the icon.")]
 		public readonly string IconPalette = "chrome";
 
-		[FluentReference(optional: true)]
 		public readonly string Name = null;
 
-		[FluentReference(optional: true)]
 		public readonly string Description = null;
 
 		[Desc("Allow multiple instances of the same support power.")]
@@ -64,7 +62,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string DetectedSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string DetectedTextNotification = null;
 
 		public readonly string BeginChargeSound = null;
@@ -72,7 +69,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string BeginChargeSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string BeginChargeTextNotification = null;
 
 		public readonly string EndChargeSound = null;
@@ -80,7 +76,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string EndChargeSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string EndChargeTextNotification = null;
 
 		public readonly string SelectTargetSound = null;
@@ -88,7 +83,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string SelectTargetSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string SelectTargetTextNotification = null;
 
 		public readonly string InsufficientPowerSound = null;
@@ -96,7 +90,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string InsufficientPowerSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string InsufficientPowerTextNotification = null;
 
 		public readonly string LaunchSound = null;
@@ -104,7 +97,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string LaunchSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string LaunchTextNotification = null;
 
 		public readonly string IncomingSound = null;
@@ -112,7 +104,6 @@ namespace OpenRA.Mods.Common.Traits
 		[NotificationReference("Speech")]
 		public readonly string IncomingSpeechNotification = null;
 
-		[FluentReference(optional: true)]
 		public readonly string IncomingTextNotification = null;
 
 		[Desc("Defines to which players the timer is shown.")]

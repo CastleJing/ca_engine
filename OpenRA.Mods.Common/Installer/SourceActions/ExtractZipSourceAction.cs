@@ -49,7 +49,7 @@ namespace OpenRA.Mods.Common.Installer
 					using (var targetStream = File.OpenWrite(targetPath))
 						sourceStream.CopyTo(targetStream);
 
-					updateMessage(FluentProvider.GetMessage(InstallFromSourceLogic.ExtractingProgress,
+					updateMessage(Game.Translate(InstallFromSourceLogic.ExtractingProgress,
 						"filename", displayFilename,
 						"progress", 100));
 

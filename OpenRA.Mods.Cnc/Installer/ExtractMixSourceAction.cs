@@ -51,9 +51,9 @@ namespace OpenRA.Mods.Cnc.Installer
 
 						Action<long> onProgress = null;
 						if (stream.Length < InstallFromSourceLogic.ShowPercentageThreshold)
-							updateMessage(FluentProvider.GetMessage(InstallFromSourceLogic.Extracting, "filename", displayFilename));
+							updateMessage(Game.Translate(InstallFromSourceLogic.Extracting, "filename", displayFilename));
 						else
-							onProgress = b => updateMessage(FluentProvider.GetMessage(InstallFromSourceLogic.ExtractingProgress,
+							onProgress = b => updateMessage(Game.Translate(InstallFromSourceLogic.ExtractingProgress,
 								"filename", displayFilename,
 								"progress", 100 * b / stream.Length));
 

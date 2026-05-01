@@ -9,6 +9,7 @@
  */
 #endregion
 
+using System;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common.Widgets;
 using OpenRA.Primitives;
@@ -45,7 +46,23 @@ namespace OpenRA.Mods.Common.LoadScreens
 
 		public override void StartGame(Arguments args)
 		{
-			Ui.LoadWidget("MODCONTENT_BACKGROUND", Ui.Root, new WidgetArgs());
+			var content = Game.ModData.Manifest.Get<ModContent>();
+			var modId = args.GetValue("Content.Mod", null);
+			if (modId != null && modId != content.Mod)
+				throw new InvalidOperationException(
+					$"`Content.Mod` ({modId}) does not match ModContent.Mod ({content.Mod}).");
+
+			var contentTranslation = new Translation(
+				Game.Settings.Player.Language,
+				content.Translations,
+				Game.ModData.DefaultFileSystem);
+
+			Func<string, string> translate = key => contentTranslation.GetFormattedMessage(key);
+
+			Ui.LoadWidget("MODCONTENT_BACKGROUND", Ui.Root, new WidgetArgs
+			{
+				{ "translation", translate }
+			});
 		}
 
 		public override bool BeforeLoad()

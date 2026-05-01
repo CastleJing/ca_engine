@@ -1,4 +1,4 @@
-steam: C&C The Ultimate Collection (Steam version, English)
+steam: Sys-ModContent-Source-steam
 	Type: Steam
 		AppId: 2229880
 	IDFiles:

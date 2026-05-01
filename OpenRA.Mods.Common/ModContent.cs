@@ -21,7 +21,7 @@ namespace OpenRA.Mods.Common
 	{
 		public class ModPackage
 		{
-			[FluentReference]
+			
 			public readonly string Title;
 			public readonly string Identifier;
 			public readonly string[] TestFiles = Array.Empty<string>();
@@ -131,6 +131,15 @@ namespace OpenRA.Mods.Common
 		{
 			var sourceNode = yaml.NodeWithKeyOrDefault("Sources");
 			return sourceNode != null ? sourceNode.Value.Nodes.Select(n => n.Key).ToArray() : Array.Empty<string>();
+		}
+
+		[FieldLoader.LoadUsing(nameof(LoadTranslations))]
+		public readonly string[] Translations = Array.Empty<string>();
+
+		static object LoadTranslations(MiniYaml yaml)
+		{
+			var transNode = yaml.NodeWithKeyOrDefault("Translations");
+			return transNode != null ? transNode.Value.Nodes.Select(n => n.Key).ToArray() : Array.Empty<string>();
 		}
 	}
 }
