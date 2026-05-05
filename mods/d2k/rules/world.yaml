@@ -77,36 +77,36 @@
 			SpiceSand: 100
 			Spice: 100
 	Faction@Random:
-		Name: faction-random.name
+		Name: Game-Faction-Random-Name
 		InternalName: Random
 		RandomFactionMembers: atreides, harkonnen, ordos
-		Description: faction-random.description
+		Description: Game-Faction-Random-Desc
 	Faction@Atreides:
-		Name: faction-atreides.name
+		Name: Game-Faction-Atreides-Name
 		InternalName: atreides
-		Description: faction-atreides.description
+		Description: Game-Faction-Atreides-Desc
 	Faction@Harkonnen:
-		Name: faction-harkonnen.name
+		Name: Game-Faction-Harkonnen-Name
 		InternalName: harkonnen
-		Description: faction-harkonnen.description
+		Description: Game-Faction-Harkonnen-Desc
 	Faction@Ordos:
-		Name: faction-ordos.name
+		Name: Game-Faction-Ordos-Name
 		InternalName: ordos
-		Description: faction-ordos.description
+		Description: Game-Faction-Ordos-Desc
 	Faction@Corrino:
-		Name: faction-corrino.name
+		Name: Game-Faction-Corrino-Name
 		InternalName: corrino
 		Selectable: false
 	Faction@Mercenaries:
-		Name: faction-mercenaries.name
+		Name: Game-Faction-Mercenaries-Name
 		InternalName: mercenary
 		Selectable: false
 	Faction@Smugglers:
-		Name: faction-smugglers.name
+		Name: Game-Faction-Smugglers-Name
 		InternalName: smuggler
 		Selectable: false
 	Faction@Fremen:
-		Name: faction-fremen.name
+		Name: Game-Faction-Fremen-Name
 		InternalName: fremen
 		Selectable: false
 	D2kResourceRenderer:
@@ -159,8 +159,8 @@ World:
 		Type: SandCrater
 		Sequence: sandcraters
 	MapCreeps:
-		CheckboxLabel: dropdown-map-worms.label
-		CheckboxDescription: dropdown-map-worms.description
+		CheckboxLabel: Game-LobbyOption-MapWorms-Label
+		CheckboxDescription: Game-LobbyOption-MapWorms-Desc
 		CheckboxDisplayOrder: 5
 	SpawnMapActors:
 	MapBuildRadius:

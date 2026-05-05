@@ -1,15 +1,15 @@
 Player:
 	ModularBot@RushAI:
-		Name: bot-rush-ai.name
+		Name: Game-Bot-RushAi-Name
 		Type: rush
 	ModularBot@NormalAI:
-		Name: bot-normal-ai.name
+		Name: Game-Bot-NormalAi-Name
 		Type: normal
 	ModularBot@TurtleAI:
-		Name: bot-turtle-ai.name
+		Name: Game-Bot-TurtleAi-Name
 		Type: turtle
 	ModularBot@NavalAI:
-		Name: bot-naval-ai.name
+		Name: Game-Bot-NavalAi-Name
 		Type: naval
 	GrantConditionOnBotOwner@rush:
 		Condition: enable-rush-ai

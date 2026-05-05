@@ -50,7 +50,17 @@ namespace OpenRA.Mods.Common.UtilityCommands
 			foreach (var layout in chromeLayouts)
 			{
 				var fluentFolder = layout.Key + "|fluent";
-				var fluentPackage = modData.ModFiles.OpenPackage(fluentFolder);
+				IReadOnlyPackage fluentPackage;
+				try
+				{
+					fluentPackage = modData.ModFiles.OpenPackage(fluentFolder);
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine($"Skipping chrome string extraction for `{fluentFolder}`: {e.Message}");
+					continue;
+				}
+
 				var fluentPath = Path.Combine(fluentPackage.Name, "chrome.ftl");
 
 				var unsortedCandidates = new List<ExtractionCandidate>();

@@ -11,6 +11,7 @@
 
 using System;
 using System.Linq;
+using OpenRA;
 using OpenRA.Graphics;
 using OpenRA.Network;
 using OpenRA.Primitives;
@@ -387,7 +388,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 			if (hasPrefix)
 			{
-				var prefix = notification.Prefix + ":";
+				var prefix = Game.Translate(notification.Prefix) + ":";
 				var prefixSize = Game.Renderer.Fonts[prefixLabel.Font].Measure(prefix);
 				var prefixOffset = prefixSize.X + prefixLabel.Bounds.X;
 

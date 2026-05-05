@@ -141,16 +141,16 @@ Container@HOTKEYS_PANEL:
 							Y: 20
 							Width: 70
 							Height: 25
-							Text: button-hotkey-remap-dialog-override
+							Text: Chrome-Setting-Hotkey-OverrideButton
 							Font: Bold
 						Button@CLEAR_HOTKEY_BUTTON:
 							X: PARENT_WIDTH - 2 * WIDTH - 30
 							Y: 20
 							Width: 65
 							Height: 25
-							Text: button-hotkey-remap-dialog-clear.label
+							Text: Chrome-Setting-Hotkey-Clear
 							Font: Bold
-							TooltipText: button-hotkey-remap-dialog-clear.tooltip
+							TooltipText: Chrome-Setting-Hotkey-Clear-Tooltip
 							TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP
 						Button@RESET_HOTKEY_BUTTON:
@@ -158,8 +158,8 @@ Container@HOTKEYS_PANEL:
 							Y: 20
 							Width: 65
 							Height: 25
-							Text: button-hotkey-remap-dialog-reset.label
+							Text: Chrome-Setting-Hotkey-Reset
 							Font: Bold
-							TooltipText: button-hotkey-remap-dialog-reset.tooltip
+							TooltipText: Chrome-Setting-Hotkey-Reset-Tooltip
 							TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP

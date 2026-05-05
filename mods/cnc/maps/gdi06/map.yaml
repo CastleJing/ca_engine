@@ -1021,4 +1021,3 @@ Rules: cnc|rules/campaign-maprules.yaml, cnc|rules/campaign-tooltips.yaml, cnc|r
 
 Music: music.yaml
 
-FluentMessages: cnc|fluent/lua.ftl, cnc|fluent/campaign.ftl

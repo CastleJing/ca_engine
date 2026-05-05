@@ -317,7 +317,7 @@ Container@MAINMENU_INTRODUCTION_PROMPT:
 			Y: PARENT_HEIGHT - 1
 			Width: 140
 			Height: 35
-			Text: button-continue
+			Text: Chrome-MainMenu-Prompts-Contine
 			Font: Bold
 			Key: return
 
@@ -380,6 +380,6 @@ Container@MAINMENU_SYSTEM_INFO_PROMPT:
 			Y: PARENT_HEIGHT - 1
 			Width: 140
 			Height: 35
-			Text: button-continue
+			Text: Chrome-MainMenu-Prompts-Contine
 			Font: Bold
 			Key: return

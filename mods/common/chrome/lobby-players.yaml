@@ -209,7 +209,7 @@ Container@LOBBY_PLAYER_BIN:
 							X: 39
 							Width: 146
 							Height: 25
-							Text: Chrome-LobbyPlayer-HandicpDropDown-Tooltip
+							Text: Chrome-LobbyPlayer-Name
 						DropDownButton@PLAYER_ACTION:
 							X: 15
 							Width: 165
@@ -359,7 +359,7 @@ Container@LOBBY_PLAYER_BIN:
 							X: 190
 							Width: 418
 							Height: 25
-							Text: Chrome-LobbyPlayer-HandicpDropDown-Tooltip
+							Text: Chrome-LobbyPlayer-Spectator
 							Align: Center
 							Font: Bold
 						Checkbox@STATUS_CHECKBOX:

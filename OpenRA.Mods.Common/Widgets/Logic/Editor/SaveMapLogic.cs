@@ -45,34 +45,34 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		}
 
 		
-		const string SaveMapFailedTitle = "dialog-save-map-failed.title";
+		const string SaveMapFailedTitle = "Chrome-Dialog-SaveMapFailed-Title";
 
 		
-		const string SaveMapFailedPrompt = "dialog-save-map-failed.prompt";
+		const string SaveMapFailedPrompt = "Chrome-Dialog-SaveMapFailed-Prompt";
 
 		
-		const string SaveMapFailedConfirm = "dialog-save-map-failed.confirm";
+		const string SaveMapFailedConfirm = "Chrome-Dialog-SaveMapFailed-Confirm";
 
 		
 		const string Unpacked = "Game-SaveMapLogic-UnpackedMap";
 
 		
-		const string OverwriteMapFailedTitle = "dialog-overwrite-map-failed.title";
+		const string OverwriteMapFailedTitle = "Chrome-Dialog-OverwriteMapFailed-Title";
 
 		
-		const string OverwriteMapFailedPrompt = "dialog-overwrite-map-failed.prompt";
+		const string OverwriteMapFailedPrompt = "Chrome-Dialog-OverwriteMapFailed-Prompt";
 
 		
-		const string OverwriteMapFailedConfirm = "dialog-overwrite-map-failed.confirm";
+		const string OverwriteMapFailedConfirm = "Chrome-Dialog-OverwriteMapFailed-Confirm";
 
 		
-		const string OverwriteMapOutsideEditTitle = "dialog-overwrite-map-outside-edit.title";
+		const string OverwriteMapOutsideEditTitle = "Chrome-Dialog-OverwriteMapOutsideEdit-Title";
 
 		
-		const string OverwriteMapOutsideEditPrompt = "dialog-overwrite-map-outside-edit.prompt";
+		const string OverwriteMapOutsideEditPrompt = "Chrome-Dialog-OverwriteMapOutsideEdit-Prompt";
 
 		
-		const string SaveMapMapOutsideConfirm = "dialog-overwrite-map-outside-edit.confirm";
+		const string SaveMapMapOutsideConfirm = "Chrome-Dialog-OverwriteMapOutsideEdit-Confirm";
 
 		
 		const string SaveCurrentMap = "Game-SaveMapLogic-SaveCurrentMap";

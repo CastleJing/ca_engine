@@ -9,8 +9,8 @@ World:
 		Briefing: The Allied forces have intercepted and destroyed a convoy that carried parts for our secret weapon. One truck remains, but they have captured that last truck and its cargo.\n\nThis is not acceptable! You are to destroy that truck before the Allies leave the area with it.
 	ScriptLobbyDropdown@difficulty:
 		ID: difficulty
-		Label: dropdown-difficulty.label
-		Description: dropdown-difficulty.description
+		Label: Game-LobbyOption-Difficulty-Label
+		Description: Game-LobbyOption-Difficulty-Desc
 		Values:
 			easy: options-difficulty.easy
 			normal: options-difficulty.normal

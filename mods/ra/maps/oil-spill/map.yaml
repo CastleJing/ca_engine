@@ -307,5 +307,5 @@ Actors:
 Rules: rules.yaml
 
 Sequences: sequences.yaml
+Translations: map-en.json5
 
-FluentMessages: map.ftl

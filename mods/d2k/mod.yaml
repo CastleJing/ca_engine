@@ -133,18 +133,6 @@ ChromeLayout:
 	common|chrome/text-notifications.yaml
 	d2k|chrome/encyclopedia.yaml
 
-FluentMessages:
-	common|fluent/common.ftl
-	common|fluent/chrome.ftl
-	common|fluent/hotkeys.ftl
-	common|fluent/rules.ftl
-	d2k|fluent/d2k.ftl
-	d2k|fluent/chrome.ftl
-	d2k|fluent/hotkeys.ftl
-	d2k|fluent/rules.ftl
-
-AllowUnusedFluentMessagesInExternalPackages: false
-
 Weapons:
 	d2k|weapons/debris.yaml
 	d2k|weapons/smallguns.yaml

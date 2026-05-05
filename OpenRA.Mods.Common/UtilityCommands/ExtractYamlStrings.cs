@@ -65,42 +65,17 @@ namespace OpenRA.Mods.Common.UtilityCommands
 				}
 			}
 
-			var fluentPackage = modData.ModFiles.OpenPackage(modData.Manifest.Id + "|fluent");
-			ExtractFromFile(Path.Combine(fluentPackage.Name, "rules.ftl"), modRules, traitInfos);
-			modRules.Save();
-
-			// Extract from maps.
-			foreach (var package in modData.MapCache.EnumerateMapPackagesWithoutCaching())
+			try
 			{
-				using (var mapStream = package.GetStream("map.yaml"))
-				{
-					if (mapStream == null)
-						continue;
-
-					var yaml = new MiniYamlBuilder(null, MiniYaml.FromStream(mapStream, $"{package.Name}:map.yaml", false));
-					var mapRules = new YamlFileSet() { (package, "map.yaml", yaml.Nodes) };
-
-					var mapRulesNode = yaml.NodeWithKeyOrDefault("Rules");
-					if (mapRulesNode != null)
-						mapRules.AddRange(UpdateUtils.LoadInternalMapYaml(modData, package, mapRulesNode.Value, new HashSet<string>()));
-
-					const string Mapftl = "map.ftl";
-					ExtractFromFile(Path.Combine(package.Name, Mapftl), mapRules, traitInfos, () =>
-					{
-						var node = yaml.NodeWithKeyOrDefault("FluentMessages");
-						if (node != null)
-						{
-							var value = node.NodeValue<string[]>();
-							if (!value.Contains(Mapftl))
-								node.Value.Value = string.Join(", ", value.Concat(new string[] { Mapftl }).ToArray());
-						}
-						else
-							yaml.Nodes.Add(new MiniYamlNodeBuilder("FluentMessages", Mapftl));
-					});
-
-					mapRules.Save();
-				}
+				var fluentPackage = modData.ModFiles.OpenPackage(modData.Manifest.Id + "|fluent");
+				ExtractFromFile(Path.Combine(fluentPackage.Name, "rules.ftl"), modRules, traitInfos);
 			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Skipping rules string extraction (no mod `fluent` package / legacy .ftl): {e.Message}");
+			}
+
+			modRules.Save();
 		}
 
 		static bool TraitFieldMightHoldFluentKey(FieldInfo f)

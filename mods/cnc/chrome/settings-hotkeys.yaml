@@ -148,7 +148,7 @@ Container@HOTKEYS_PANEL:
 							Height: 25
 							Text: Chrome-Setting-Hotkey-Clear
 							Font: Bold
-							TooltipText: button-hotkey-remap-dialog-clear.tooltip
+							TooltipText: Chrome-Setting-Hotkey-Clear-Tooltip
 							TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP
 						Button@RESET_HOTKEY_BUTTON:
@@ -158,6 +158,6 @@ Container@HOTKEYS_PANEL:
 							Height: 25
 							Text: Chrome-Setting-Hotkey-Reset
 							Font: Bold
-							TooltipText: button-hotkey-remap-dialog-reset.tooltip
+							TooltipText: Chrome-Setting-Hotkey-Reset-Tooltip
 							TooltipContainer: SETTINGS_TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP

@@ -76,7 +76,7 @@ Background@CONNECTING_PANEL:
 			Y: 21
 			Width: 450
 			Height: 25
-			Text: Chrome-Connection-Error
+			Text: Chrome-Connection-Connecting
 			Align: Center
 			Font: Bold
 		Label@CONNECTING_DESC:

@@ -1,0 +1,11 @@
+{
+	"actor-minvv.description": "Bomb which explodes after 8 seconds",
+	"actor-minvv.name": "Bomb ## rules.yaml",
+	"actor-mnlyr-name": "Bomber",
+	"actor-player.chronoshiftpower-description": "Teleport a group of vehicles across the map.",
+	"actor-player.chronoshiftpower-name": "Chronoshift",
+	"actor-player.grantexternalconditionpower-ironcurtain-description": "Makes a unit invulnerable for 3 seconds.",
+	"actor-player.grantexternalconditionpower-ironcurtain-name": "Invulnerability",
+	"notification-ironcurtain.charging": "Iron curtain charging.",
+	"notification-ironcurtain.ready": "Iron curtain ready."
+}

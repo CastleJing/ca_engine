@@ -1,0 +1,15 @@
+{
+	"actor-mig-bomber-name": "MiG Bomber",
+	"actor-mobiletent-name": "Mobile Tent",
+	"actor-powerproxy-parabombs-description": "A MiG bomber drops a load of parachuted bombs on your target.",
+	"actor-sniper.description": "Elite sniper infantry unit. Can detect cloaked units. Strong vs Infantry Weak vs Vehicles, Aircraft",
+	"actor-sniper.name": "Sniper",
+	"Game-LobbyOption-Difficulty-Desc": "The difficulty of the mission",
+	"Game-LobbyOption-Difficulty-Label": "Difficulty",
+	"options-difficulty.easy2p": "Easy (2P)",
+	"options-difficulty.endless": "Endless mode",
+	"options-difficulty.hard4p": "Hard (4P)",
+	"options-difficulty.normal3p": "Normal (3P)",
+	"options-difficulty.tough": "Real tough guy",
+	"options-difficulty.veryeasy1p": "Very Easy (1P)"
+}

@@ -668,5 +668,5 @@ Actors:
 		Facing: 368
 
 Rules: cnc|rules/campaign-maprules.yaml, cnc|rules/campaign-tooltips.yaml, cnc|rules/campaign-palettes.yaml, rules.yaml
+Translations: map-en.json5
 
-FluentMessages: cnc|fluent/lua.ftl, cnc|fluent/campaign.ftl, map.ftl

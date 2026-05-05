@@ -1,0 +1,8 @@
+{
+	"Game-LobbyOption-Difficulty-Desc": "The difficulty of the mission",
+	"Game-LobbyOption-Difficulty-Label": "Difficulty",
+	"options-difficulty.easy": "Easy",
+	"options-difficulty.hard": "Hard",
+	"options-difficulty.normal": "Normal",
+	"options-difficulty.tough": "Real tough guy"
+}

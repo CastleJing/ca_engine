@@ -17,25 +17,25 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 	public static class ReplayUtils
 	{
 		
-		const string IncompatibleReplayTitle = "dialog-incompatible-replay.title";
+		const string IncompatibleReplayTitle = "Chrome-Dialog-IncompatibleReplay-Title";
 
 		
-		const string IncompatibleReplayPrompt = "dialog-incompatible-replay.prompt";
+		const string IncompatibleReplayPrompt = "Chrome-Dialog-IncompatibleReplay-Prompt";
 
 		
-		const string IncompatibleReplayAccept = "dialog-incompatible-replay.confirm";
+		const string IncompatibleReplayAccept = "Chrome-Dialog-IncompatibleReplay-Confirm";
 
 		
-		const string UnknownVersion = "dialog-incompatible-replay.prompt-unknown-version";
+		const string UnknownVersion = "Chrome-Dialog-IncompatibleReplay-PromptUnknownVersion";
 
 		
-		const string UnknownMod = "dialog-incompatible-replay.prompt-unknown-mod";
+		const string UnknownMod = "Chrome-Dialog-IncompatibleReplay-PromptUnknownMod";
 
-		const string UnvailableMod = "dialog-incompatible-replay.prompt-unavailable-mod";
+		const string UnvailableMod = "Chrome-Dialog-IncompatibleReplay-PromptUnavailableMod";
 
-		const string IncompatibleVersion = "dialog-incompatible-replay.prompt-incompatible-version";
+		const string IncompatibleVersion = "Chrome-Dialog-IncompatibleReplay-PromptIncompatibleVersion";
 
-		const string UnvailableMap = "dialog-incompatible-replay.prompt-unavailable-map";
+		const string UnvailableMap = "Chrome-Dialog-IncompatibleReplay-PromptUnavailableMap";
 
 		static readonly Action DoNothing = () => { };
 

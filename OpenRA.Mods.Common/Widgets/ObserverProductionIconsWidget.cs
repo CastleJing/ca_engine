@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using OpenRA;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Mods.Common.Traits.Render;
@@ -226,10 +227,10 @@ namespace OpenRA.Mods.Common.Widgets
 		static string GetOverlayForItem(ProductionItem item, int timestep)
 		{
 			if (item.Paused)
-				return "ON HOLD";
+				return Game.Translate("Game-ObserverOverlay-OnHold");
 
 			if (item.Done)
-				return "READY";
+				return Game.Translate("Game-ObserverOverlay-Ready");
 
 			return WidgetUtils.FormatTime(item.Queue.RemainingTimeActual(item), timestep);
 		}

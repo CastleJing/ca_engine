@@ -111,7 +111,7 @@ Background@MULTIPLAYER_PANEL:
 							ImageCollection: lobby-bits
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP
-							TooltipText: image-multiplayer-panel-password-protected-tooltip
+							TooltipText: Chrome-MPBrowser-NeedPasswd
 						Image@REQUIRES_AUTHENTICATION:
 							X: 364
 							Y: 6
@@ -120,7 +120,7 @@ Background@MULTIPLAYER_PANEL:
 							ImageCollection: lobby-bits
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP
-							TooltipText: image-multiplayer-panel-requires-authentication-tooltip
+							TooltipText: Chrome-MPBrowser-NeedAccount
 						LabelWithTooltip@PLAYERS:
 							X: 382
 							Width: 85

@@ -36,12 +36,6 @@ ChromeMetrics:
 	common|metrics.yaml
 	content|metrics.yaml
 
-FluentMessages:
-	common|fluent/common.ftl
-	content|fluent/content.ftl
-	content|fluent/chrome.ftl
-	tscontent|fluent/chrome.ftl
-
 Fonts:
 	Tiny:
 		Font: common|FreeSans.ttf

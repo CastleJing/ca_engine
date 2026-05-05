@@ -1276,4 +1276,3 @@ Weapons: weapons.yaml
 
 Notifications: notifications.yaml
 
-FluentMessages: ra|fluent/lua.ftl, ra|fluent/campaign.ftl

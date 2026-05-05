@@ -184,5 +184,5 @@ Rules: rules.yaml
 Sequences: sequences.yaml
 
 Weapons: weapons.yaml
+Translations: map-en.json5
 
-FluentMessages: map.ftl

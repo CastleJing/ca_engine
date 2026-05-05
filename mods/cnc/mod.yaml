@@ -145,17 +145,6 @@ ChromeLayout:
 	cnc|chrome/editor.yaml
 	common|chrome/text-notifications.yaml
 
-FluentMessages:
-	common|fluent/common.ftl
-	common|fluent/hotkeys.ftl
-	common|fluent/rules.ftl
-	cnc|fluent/cnc.ftl
-	cnc|fluent/chrome.ftl
-	cnc|fluent/hotkeys.ftl
-	cnc|fluent/rules.ftl
-
-AllowUnusedFluentMessagesInExternalPackages: false
-
 Voices:
 	cnc|audio/voices.yaml
 

@@ -126,8 +126,8 @@ Player:
 		FogCheckboxDisplayOrder: 3
 	LobbyPrerequisiteCheckbox@AUTOCONCRETE:
 		ID: autoconcrete
-		Label: checkbox-automatic-concrete.label
-		Description: checkbox-automatic-concrete.description
+		Label: Game-LobbyOption-AutomaticConcrete-Label
+		Description: Game-LobbyOption-AutomaticConcrete-Desc
 		Enabled: False
 		DisplayOrder: 7
 		Prerequisites: global-auto-concrete

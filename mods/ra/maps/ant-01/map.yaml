@@ -597,4 +597,3 @@ Actors:
 
 Rules: ra|rules/campaign-rules.yaml, ra|rules/campaign-tooltips.yaml, rules.yaml, ra|rules/campaign-palettes.yaml
 
-FluentMessages: ra|fluent/lua.ftl, ra|fluent/campaign.ftl

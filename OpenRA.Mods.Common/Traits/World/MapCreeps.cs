@@ -20,11 +20,11 @@ namespace OpenRA.Mods.Common.Traits
 	{
 		
 		[Desc("Descriptive label for the creeps checkbox in the lobby.")]
-		public readonly string CheckboxLabel = "dropdown-map-creeps.label";
+		public readonly string CheckboxLabel = "Game-LobbyOption-MapCreeps-Label";
 
 		
 		[Desc("Tooltip description for the creeps checkbox in the lobby.")]
-		public readonly string CheckboxDescription = "dropdown-map-creeps.description";
+		public readonly string CheckboxDescription = "Game-LobbyOption-MapCreeps-Desc";
 
 		[Desc("Default value of the creeps checkbox in the lobby.")]
 		public readonly bool CheckboxEnabled = true;

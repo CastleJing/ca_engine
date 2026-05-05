@@ -9,8 +9,8 @@ World:
 		Briefing: LANDCOM 66 HQS.\nTOP SECRET.\nTO: FIELD COMMANDER A34\n\nSOVIETS HAVE LAUNCHED HEAVY ATTACKS ON OUR POSITION.\n SURVIVE AND HOLD THE BASE UNTIL OUR FRENCH ALLIES ARRIVE.\n\nCONFIRMATION CODE 5593.\n\nTRANSMISSION ENDS.
 	ScriptLobbyDropdown@difficulty:
 		ID: difficulty
-		Label: dropdown-difficulty.label
-		Description: dropdown-difficulty.description
+		Label: Game-LobbyOption-Difficulty-Label
+		Description: Game-LobbyOption-Difficulty-Desc
 		Values:
 			easy: options-difficulty.easy
 			normal: options-difficulty.normal

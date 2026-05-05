@@ -468,5 +468,5 @@ Weapons: weapons.yaml
 Sequences: sequences.yaml
 
 Music: music.yaml
+Translations: map-en.json5
 
-FluentMessages: ra|fluent/lua.ftl, map.ftl

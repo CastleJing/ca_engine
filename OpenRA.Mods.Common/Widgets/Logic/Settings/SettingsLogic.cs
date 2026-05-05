@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenRA;
 using OpenRA.Graphics;
 using OpenRA.Widgets;
 
@@ -19,37 +20,17 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class SettingsLogic : ChromeLogic
 	{
-		
-		const string SettingsSaveTitle = "dialog-settings-save.title";
-
-		
-		const string SettingsSavePrompt = "dialog-settings-save.prompt";
-
-		
-		const string SettingsSaveCancel = "dialog-settings-save.cancel";
-
-		
-		const string RestartTitle = "dialog-settings-restart.title";
-
-		
-		const string RestartPrompt = "dialog-settings-restart.prompt";
-
-		
-		const string RestartAccept = "dialog-settings-restart.confirm";
-
-		
-		const string RestartCancel = "dialog-settings-restart.cancel";
-
-		const string ResetTitle = "dialog-settings-reset.title";
-
-		
-		const string ResetPrompt = "dialog-settings-reset.prompt";
-
-		
-		const string ResetAccept = "dialog-settings-reset.confirm";
-
-		
-		const string ResetCancel = "dialog-settings-reset.cancel";
+		const string SettingsSaveTitle = "Chrome-Dialog-SettingsSave-Title";
+		const string SettingsSavePrompt = "Chrome-Dialog-SettingsSave-Prompt";
+		const string SettingsSaveCancel = "Chrome-Dialog-SettingsSave-Cancel";
+		const string RestartTitle = "Chrome-Dialog-SettingsRestart-Title";
+		const string RestartPrompt = "Chrome-Dialog-SettingsRestart-Prompt";
+		const string RestartAccept = "Chrome-Dialog-SettingsRestart-Confirm";
+		const string RestartCancel = "Chrome-Dialog-SettingsRestart-Cancel";
+		const string ResetTitle = "Chrome-Dialog-SettingsReset-Title";
+		const string ResetPrompt = "Chrome-Dialog-SettingsReset-Prompt";
+		const string ResetAccept = "Chrome-Dialog-SettingsReset-Confirm";
+		const string ResetCancel = "Chrome-Dialog-SettingsReset-Cancel";
 
 		readonly Dictionary<string, Func<bool>> leavePanelActions = new();
 		readonly Dictionary<string, Action> resetPanelActions = new();
@@ -142,7 +123,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				ConfirmationDialogs.ButtonPrompt(modData,
 					title: ResetTitle,
 					text: ResetPrompt,
-					titleArguments: new object[] { "panel", panels[activePanel] },
+					titleArguments: new object[] { "panel", Game.Translate(panels[activePanel]) },
 					onConfirm: Reset,
 					confirmText: ResetAccept,
 					onCancel: () => { },
@@ -175,7 +156,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			}
 
 			tab.Id = id;
-			tab.GetText = () => label;
+			tab.GetText = () => Game.Translate(label);
 			tab.IsHighlighted = () => activePanel == id;
 			tab.OnClick = () =>
 			{

@@ -48,21 +48,21 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		const string MapDeletionFailed = "Game-MapChooserLogic-MapDeletionFailed";
 
 		
-		const string DeleteMapTitle = "dialog-delete-map.title";
+		const string DeleteMapTitle = "Chrome-Dialog-DeleteMap-Title";
 
-		const string DeleteMapPrompt = "dialog-delete-map.prompt";
-
-		
-		const string DeleteMapAccept = "dialog-delete-map.confirm";
+		const string DeleteMapPrompt = "Chrome-Dialog-DeleteMap-Prompt";
 
 		
-		const string DeleteAllMapsTitle = "dialog-delete-all-maps.title";
+		const string DeleteMapAccept = "Chrome-Dialog-DeleteMap-Confirm";
 
 		
-		const string DeleteAllMapsPrompt = "dialog-delete-all-maps.prompt";
+		const string DeleteAllMapsTitle = "Chrome-Dialog-DeleteAllMaps-Title";
 
 		
-		const string DeleteAllMapsAccept = "dialog-delete-all-maps.confirm";
+		const string DeleteAllMapsPrompt = "Chrome-Dialog-DeleteAllMaps-Prompt";
+
+		
+		const string DeleteAllMapsAccept = "Chrome-Dialog-DeleteAllMaps-Confirm";
 
 		
 		const string OrderMapsByPlayers = "Game-MapChooserLogic-OrderMaps-PlayerCount";

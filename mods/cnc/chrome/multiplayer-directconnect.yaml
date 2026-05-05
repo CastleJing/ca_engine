@@ -49,11 +49,11 @@ Container@DIRECTCONNECT_PANEL:
 			Y: 89
 			Width: 140
 			Height: 35
-			Text: button-cancel
+			Text: Chrome-MPDriectConnect-BackButton
 		Button@JOIN_BUTTON:
 			Key: return
 			X: 230
 			Y: 89
 			Width: 140
 			Height: 35
-			Text: button-directconnect-panel-join
+			Text: Chrome-MPDriectConnect-OkButton

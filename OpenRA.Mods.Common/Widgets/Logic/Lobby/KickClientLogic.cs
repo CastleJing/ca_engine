@@ -16,7 +16,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	sealed class KickClientLogic : ChromeLogic
 	{
-		const string KickClient = "dialog-kick-client.prompt";
+		const string KickClient = "Chrome-Dialog-KickClient-Prompt";
 
 		[ObjectCreator.UseCtor]
 		public KickClientLogic(Widget widget, string clientName, Action<bool> okPressed, Action cancelPressed)

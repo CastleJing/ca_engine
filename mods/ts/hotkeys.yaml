@@ -1,54 +1,54 @@
 ProductionTypeBuilding: E
-	Description: hotkey-description-productiontypebuilding
+	Description: HotkeyDescription-ProductionTypeBuilding
 	Types: Production
 	Contexts: player
 
 ProductionTypeDefense: R
-	Description: hotkey-description-productiontypesupport
+	Description: HotkeyDescription-Productiontypesupport
 	Types: Production
 	Contexts: player
 
 ProductionTypeInfantry: T
-	Description: hotkey-description-productiontypeinfantry
+	Description: HotkeyDescription-ProductionTypeInfantry
 	Types: Production
 	Contexts: player
 
 ProductionTypeVehicle: Y
-	Description: hotkey-description-productiontypevehicle
+	Description: HotkeyDescription-ProductionTypeVehicle
 	Types: Production
 	Contexts: player
 
 ProductionTypeAircraft: U
-	Description: hotkey-description-productiontypeaircraft
+	Description: HotkeyDescription-ProductionTypeAircraft
 	Types: Production
 	Contexts: player
 
 PowerDown: X
-	Description: hotkey-description-powerdown
+	Description: HotkeyDescription-PowerDown
 	Types: OrderGenerator
 	Contexts: player
 
 DecreaseDepthPreviewContrast: LEFTBRACKET SHIFT
-	Description: hotkey-description-decreasedepthpreviewcontrast
+	Description: HotkeyDescription-Decreasedepthpreviewcontrast
 	Types: DepthDebug
 	Contexts: player
 
 IncreaseDepthPreviewContrast: RIGHTBRACKET SHIFT
-	Description: hotkey-description-increasedepthpreviewcontrast
+	Description: HotkeyDescription-Increasedepthpreviewcontrast
 	Types: DepthDebug
 	Contexts: player
 
 DecreaseDepthPreviewOffset: SEMICOLON SHIFT
-	Description: hotkey-description-decreasedepthpreviewoffset
+	Description: HotkeyDescription-Decreasedepthpreviewoffset
 	Types: DepthDebug
 	Contexts: player
 
 IncreaseDepthPreviewOffset: QUOTE SHIFT
-	Description: hotkey-description-increasedepthpreviewoffset
+	Description: HotkeyDescription-Increasedepthpreviewoffset
 	Types: DepthDebug
 	Contexts: player
 
 ToggleDepthPreview: BACKSLASH SHIFT
-	Description: hotkey-description-toggledepthpreview
+	Description: HotkeyDescription-Toggledepthpreview
 	Types: DepthDebug
 	Contexts: player

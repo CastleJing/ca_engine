@@ -186,7 +186,7 @@ Container@OBSERVER_WIDGETS:
 					Width: 26
 					Height: 26
 					Key: Pause
-					TooltipText: button-replay-player-pause-tooltip
+					TooltipText: Chrome-InGameObserver-PauseButton-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					IgnoreChildMouseOver: true
 					Children:
@@ -203,7 +203,7 @@ Container@OBSERVER_WIDGETS:
 					Width: 26
 					Height: 26
 					Key: Pause
-					TooltipText: button-replay-player-play-tooltip
+					TooltipText: Chrome-InGameObserver-PlayButton-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					IgnoreChildMouseOver: true
 					Children:
@@ -220,10 +220,10 @@ Container@OBSERVER_WIDGETS:
 					Width: 36
 					Height: 20
 					Key: ReplaySpeedSlow
-					TooltipText: button-replay-player-slow.tooltip
+					TooltipText: Chrome-InGameObserver-50Button-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-replay-player-slow.label
+					Text: Chrome-InGameObserver-50Button-Label
 					Font: TinyBold
 				Button@BUTTON_REGULAR:
 					X: 57 + 48
@@ -231,10 +231,10 @@ Container@OBSERVER_WIDGETS:
 					Width: 38
 					Height: 20
 					Key: ReplaySpeedRegular
-					TooltipText: button-replay-player-regular.tooltip
+					TooltipText: Chrome-InGameObserver-100Button-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-replay-player-regular.label
+					Text: Chrome-InGameObserver-100Button-Label
 					Font: TinyBold
 				Button@BUTTON_FAST:
 					X: 57 + 48 * 2
@@ -242,10 +242,10 @@ Container@OBSERVER_WIDGETS:
 					Width: 38
 					Height: 20
 					Key: ReplaySpeedFast
-					TooltipText: button-replay-player-fast.tooltip
+					TooltipText: Chrome-InGameObserver-200Button-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-replay-player-fast.label
+					Text: Chrome-InGameObserver-200Button-Label
 					Font: TinyBold
 				Button@BUTTON_MAXIMUM:
 					X: 57 + 48 * 3
@@ -253,10 +253,10 @@ Container@OBSERVER_WIDGETS:
 					Width: 38
 					Height: 20
 					Key: ReplaySpeedMax
-					TooltipText: button-replay-player-maximum.tooltip
+					TooltipText: Chrome-InGameObserver-MaxButton-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-replay-player-maximum.label
+					Text: Chrome-InGameObserver-MaxButton
 					Font: TinyBold
 		DropDownButton@SHROUD_SELECTOR:
 			Logic: ObserverShroudSelectorLogic
@@ -1246,8 +1246,8 @@ Container@PLAYER_WIDGETS:
 					Background: chrome-button-background
 					Key: AttackMove
 					DisableKeySound: true
-					TooltipText: button-command-bar-attack-move.tooltip
-					TooltipDesc: button-command-bar-attack-move.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-AttackMove-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-AttackMove-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1270,8 +1270,8 @@ Container@PLAYER_WIDGETS:
 					Height: 26
 					Background: chrome-button-background
 					DisableKeySound: true
-					TooltipText: button-command-bar-force-move.tooltip
-					TooltipDesc: button-command-bar-force-move.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-ForceMove-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-ForceMove-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1294,8 +1294,8 @@ Container@PLAYER_WIDGETS:
 					Height: 26
 					Background: chrome-button-background
 					DisableKeySound: true
-					TooltipText: button-command-bar-force-attack.tooltip
-					TooltipDesc: button-command-bar-force-attack.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-ForceAttack-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-ForceAttack-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1319,8 +1319,8 @@ Container@PLAYER_WIDGETS:
 					Background: chrome-button-background
 					Key: Guard
 					DisableKeySound: true
-					TooltipText: button-command-bar-guard.tooltip
-					TooltipDesc: button-command-bar-guard.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-Guard-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-Guard-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1345,8 +1345,8 @@ Container@PLAYER_WIDGETS:
 					Key: Deploy
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-command-bar-deploy.tooltip
-					TooltipDesc: button-command-bar-deploy.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-Deploy-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-Deploy-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1371,8 +1371,8 @@ Container@PLAYER_WIDGETS:
 					Key: Scatter
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-command-bar-scatter.tooltip
-					TooltipDesc: button-command-bar-scatter.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-Scatter-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-Scatter-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1397,8 +1397,8 @@ Container@PLAYER_WIDGETS:
 					Key: Stop
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-command-bar-stop.tooltip
-					TooltipDesc: button-command-bar-stop.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-Stop-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-Stop-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1421,8 +1421,8 @@ Container@PLAYER_WIDGETS:
 					Height: 26
 					Background: chrome-button-background
 					DisableKeySound: true
-					TooltipText: button-command-bar-queue-orders.tooltip
-					TooltipDesc: button-command-bar-queue-orders.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-CommandBar-QueueOrders-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-CommandBar-QueueOrders-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_WITH_DESC_HIGHLIGHT_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1448,8 +1448,8 @@ Container@PLAYER_WIDGETS:
 					Key: StanceAttackAnything
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-stance-bar-attackanything.tooltip
-					TooltipDesc: button-stance-bar-attackanything.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-StanceBar-AttackAnything-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-StanceBar-AttackAnything-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1474,8 +1474,8 @@ Container@PLAYER_WIDGETS:
 					Key: StanceDefend
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-stance-bar-defend.tooltip
-					TooltipDesc: button-stance-bar-defend.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-StanceBar-Defend-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-StanceBar-Defend-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1500,8 +1500,8 @@ Container@PLAYER_WIDGETS:
 					Key: StanceReturnFire
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-stance-bar-returnfire.tooltip
-					TooltipDesc: button-stance-bar-returnfire.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-StanceBar-ReturnFire-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-StanceBar-ReturnFire-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1526,8 +1526,8 @@ Container@PLAYER_WIDGETS:
 					Key: StanceHoldFire
 					DisableKeyRepeat: true
 					DisableKeySound: true
-					TooltipText: button-stance-bar-holdfire.tooltip
-					TooltipDesc: button-stance-bar-holdfire.tooltipdesc
+					TooltipText: Chrome-InGamePlayer-StanceBar-HoldFire-Tooltip
+					TooltipDesc: Chrome-InGamePlayer-StanceBar-HoldFire-Desc
 					TooltipContainer: TOOLTIP_CONTAINER
 					TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 					Children:
@@ -1577,7 +1577,7 @@ Container@PLAYER_WIDGETS:
 							Height: 26
 							Background: chrome-button-background
 							Key: Sell
-							TooltipText: button-top-buttons-sell-tooltip
+							TooltipText: Chrome-InGamePlayer-OrderSellTooltip
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							VisualHeight: 0
@@ -1599,7 +1599,7 @@ Container@PLAYER_WIDGETS:
 							Height: 26
 							Background: chrome-button-background
 							Key: Repair
-							TooltipText: button-top-buttons-repair-tooltip
+							TooltipText: Chrome-InGamePlayer-OrderRepairTooltip
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							VisualHeight: 0
@@ -1621,7 +1621,7 @@ Container@PLAYER_WIDGETS:
 							Height: 26
 							Background: chrome-button-background
 							Key: PlaceBeacon
-							TooltipText: button-top-buttons-beacon-tooltip
+							TooltipText: Chrome-InGamePlayer-OrderBeaconTooltip
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							VisualHeight: 0
@@ -1756,7 +1756,7 @@ Container@PLAYER_WIDGETS:
 							Width: 38
 							Height: 26
 							Background: chrome-button-background
-							TooltipText: button-production-types-building-tooltip
+							TooltipText: Chrome-InGamePlayer-ProductionType-Building
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							ProductionGroup: Building
@@ -1778,7 +1778,7 @@ Container@PLAYER_WIDGETS:
 							Width: 38
 							Height: 26
 							Background: chrome-button-background
-							TooltipText: button-production-types-support-tooltip
+							TooltipText: Chrome-InGamePlayer-ProductionType-Support
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							ProductionGroup: Support
@@ -1800,7 +1800,7 @@ Container@PLAYER_WIDGETS:
 							Width: 38
 							Height: 26
 							Background: chrome-button-background
-							TooltipText: button-production-types-infantry-tooltip
+							TooltipText: Chrome-InGamePlayer-ProductionType-Infantry
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							ProductionGroup: Infantry
@@ -1822,7 +1822,7 @@ Container@PLAYER_WIDGETS:
 							Width: 38
 							Height: 26
 							Background: chrome-button-background
-							TooltipText: button-production-types-vehicle-tooltip
+							TooltipText: Chrome-InGamePlayer-ProductionType-Vehicles
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							ProductionGroup: Vehicle
@@ -1844,7 +1844,7 @@ Container@PLAYER_WIDGETS:
 							Width: 38
 							Height: 26
 							Background: chrome-button-background
-							TooltipText: button-production-types-aircraft-tooltip
+							TooltipText: Chrome-InGamePlayer-ProductionType-Aircraft
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: BUTTON_TOOLTIP_FACTIONSUFFIX
 							ProductionGroup: Aircraft

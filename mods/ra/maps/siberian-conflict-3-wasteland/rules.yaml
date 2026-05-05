@@ -7,8 +7,8 @@ World:
 		Briefing: The last of the Soviet Siberian forces have ventured into the icy wastelands, where they have established a base. Destroy their stronghold so our Allied forces can advance unimpeded on their march to Moscow.\n\nThe mission is complete when all Soviet forces and structures are destroyed.
 	ScriptLobbyDropdown@difficulty:
 		ID: difficulty
-		Label: dropdown-difficulty.label
-		Description: dropdown-difficulty.description
+		Label: Game-LobbyOption-Difficulty-Label
+		Description: Game-LobbyOption-Difficulty-Desc
 		Values:
 			easy: options-difficulty.easy
 			normal: options-difficulty.normal

@@ -52,35 +52,35 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		
 		const string KickTooltip = "Game-GameInfoStatsLogic-KickPlayerTooltip";
 
-		const string KickTitle = "dialog-kick.title";
+		const string KickTitle = "Chrome-Dialog-Kick-Title";
 
 		
-		const string KickPrompt = "dialog-kick.prompt";
+		const string KickPrompt = "Chrome-Dialog-Kick-Prompt";
 
 		
-		const string KickAccept = "dialog-kick.confirm";
+		const string KickAccept = "Chrome-Dialog-Kick-Confirm";
 
 		
 		const string KickVoteTooltip = "Game-GameInfoStatsLogic-VoteKickPlayerTooltip";
 
-		const string VoteKickTitle = "dialog-vote-kick.title";
+		const string VoteKickTitle = "Chrome-Dialog-VoteKick-Title";
 
 		
-		const string VoteKickPrompt = "dialog-vote-kick.prompt";
+		const string VoteKickPrompt = "Chrome-Dialog-VoteKick-Prompt";
 
-		const string VoteKickPromptBreakBots = "dialog-vote-kick.prompt-break-bots";
-
-		
-		const string VoteKickVoteStart = "dialog-vote-kick.vote-start";
+		const string VoteKickPromptBreakBots = "Chrome-Dialog-VoteKick-PromptBreakBots";
 
 		
-		const string VoteKickVoteFor = "dialog-vote-kick.vote-for";
+		const string VoteKickVoteStart = "Chrome-Dialog-VoteKick-VoteStart";
 
 		
-		const string VoteKickVoteAgainst = "dialog-vote-kick.vote-against";
+		const string VoteKickVoteFor = "Chrome-Dialog-VoteKick-VoteFor";
 
 		
-		const string VoteKickVoteCancel = "dialog-vote-kick.vote-cancel";
+		const string VoteKickVoteAgainst = "Chrome-Dialog-VoteKick-VoteAgainst";
+
+		
+		const string VoteKickVoteCancel = "Chrome-Dialog-VoteKick-VoteCancel";
 
 		[ObjectCreator.UseCtor]
 		public GameInfoStatsLogic(Widget widget, ModData modData, World world,

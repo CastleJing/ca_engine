@@ -95,58 +95,58 @@
 		Index: 255, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 20, 40, 56, 65, 97, 130, 148, 194, 24, 33, 66, 132, 28, 41, 67, 134, 1, 2, 4, 8, 3, 6, 12, 9, 7, 14, 13, 11, 5, 10, 15, 255
 		UseExtendedIndex: true
 	Faction@allies:
-		Name: faction-allies.name
+		Name: Game-Faction-Allies-Name
 		InternalName: allies
 		Side: Allies
 		Selectable: False
 	Faction@england:
-		Name: faction-england.name
+		Name: Game-Faction-England-Name
 		InternalName: england
 		Side: Allies
-		Description: faction-england.description
+		Description: Game-Faction-England-Desc
 	Faction@france:
-		Name: faction-france.name
+		Name: Game-Faction-France-Name
 		InternalName: france
 		Side: Allies
-		Description: faction-france.description
+		Description: Game-Faction-France-Desc
 	Faction@germany:
-		Name: faction-germany.name
+		Name: Game-Faction-Germany-Name
 		InternalName: germany
 		Side: Allies
-		Description: faction-germany.description
+		Description: Game-Faction-Germany-Desc
 	Faction@soviet:
-		Name: faction-soviet.name
+		Name: Game-Faction-Soviet-Name
 		InternalName: soviet
 		Side: Soviet
 		Selectable: False
 	Faction@russia:
-		Name: faction-russia.name
+		Name: Game-Faction-Russia-Name
 		InternalName: russia
 		Side: Soviet
-		Description: faction-russia.description
+		Description: Game-Faction-Russia-Desc
 	Faction@ukraine:
-		Name: faction-ukraine.name
+		Name: Game-Faction-Ukraine-Name
 		InternalName: ukraine
 		Side: Soviet
-		Description: faction-ukraine.description
+		Description: Game-Faction-Ukraine-Desc
 	Faction@random:
-		Name: faction-random.name
+		Name: Game-Faction-Random-Name
 		InternalName: Random
 		RandomFactionMembers: RandomAllies, RandomSoviet
 		Side: Random
-		Description: faction-random.description
+		Description: Game-Faction-Random-Desc
 	Faction@randomallies:
-		Name: faction-randomallies.name
+		Name: Game-Faction-Randomallies-Name
 		InternalName: RandomAllies
 		RandomFactionMembers: england, france, germany
 		Side: Random
-		Description: faction-randomallies.description
+		Description: Game-Faction-Randomallies-Desc
 	Faction@randomsoviet:
-		Name: faction-randomsoviet.name
+		Name: Game-Faction-Randomsoviet-Name
 		InternalName: RandomSoviet
 		RandomFactionMembers: russia, ukraine
 		Side: Random
-		Description: faction-randomsoviet.description
+		Description: Game-Faction-Randomsoviet-Desc
 	ResourceRenderer:
 		ResourceTypes:
 			Ore:

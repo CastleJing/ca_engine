@@ -174,18 +174,6 @@ ChromeLayout:
 	common|chrome/editor.yaml
 	common|chrome/text-notifications.yaml
 
-FluentMessages:
-	common|fluent/common.ftl
-	common|fluent/chrome.ftl
-	common|fluent/hotkeys.ftl
-	common|fluent/rules.ftl
-	ts|fluent/ts.ftl
-	ts|fluent/chrome.ftl
-	ts|fluent/hotkeys.ftl
-	ts|fluent/rules.ftl
-
-AllowUnusedFluentMessagesInExternalPackages: false
-
 Voices:
 	ts|audio/voices.yaml
 

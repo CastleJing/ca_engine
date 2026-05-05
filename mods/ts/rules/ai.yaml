@@ -1,6 +1,6 @@
 Player:
 	ModularBot@bot-test-ai:
-		Name: bot-test-ai.name
+		Name: Game-Bot-TestAi-Name
 		Type: test
 	GrantConditionOnBotOwner@test:
 		Condition: enable-test-ai

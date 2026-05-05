@@ -960,7 +960,7 @@ namespace OpenRA
 		{
 			var settings = new ServerSettings()
 			{
-				Name = "Skirmish Game",
+				Name = Translate("Game-Game-Skirmish"),
 				Map = map,
 				AdvertiseOnline = false
 			};

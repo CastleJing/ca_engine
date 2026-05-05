@@ -59,29 +59,29 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		const string ReplayDurationLong = "Game-ReplayBrowserLogic-DurationType-More";
 
 		
-		const string RenameReplayTitle = "dialog-rename-replay.title";
+		const string RenameReplayTitle = "Chrome-Dialog-RenameReplay-Title";
 
 		
-		const string RenameReplayPrompt = "dialog-rename-replay.prompt";
+		const string RenameReplayPrompt = "Chrome-Dialog-RenameReplay-Prompt";
 
 		
-		const string RenameReplayAccept = "dialog-rename-replay.confirm";
+		const string RenameReplayAccept = "Chrome-Dialog-RenameReplay-Confirm";
 
 		
-		const string DeleteReplayTitle = "dialog-delete-replay.title";
+		const string DeleteReplayTitle = "Chrome-Dialog-DeleteReplay-Title";
 
-		const string DeleteReplayPrompt = "dialog-delete-replay.prompt";
-
-		
-		const string DeleteReplayAccept = "dialog-delete-replay.confirm";
+		const string DeleteReplayPrompt = "Chrome-Dialog-DeleteReplay-Prompt";
 
 		
-		const string DeleteAllReplaysTitle = "dialog-delete-all-replays.title";
-
-		const string DeleteAllReplaysPrompt = "dialog-delete-all-replays.prompt";
+		const string DeleteReplayAccept = "Chrome-Dialog-DeleteReplay-Confirm";
 
 		
-		const string DeleteAllReplaysAccept = "dialog-delete-all-replays.confirm";
+		const string DeleteAllReplaysTitle = "Chrome-Dialog-DeleteAllReplays-Title";
+
+		const string DeleteAllReplaysPrompt = "Chrome-Dialog-DeleteAllReplays-Prompt";
+
+		
+		const string DeleteAllReplaysAccept = "Chrome-Dialog-DeleteAllReplays-Confirm";
 
 		const string ReplayDeletionFailed = "Game-ReplayBrowserLogic-ReplayDeletionFailed";
 

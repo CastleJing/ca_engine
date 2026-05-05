@@ -37,18 +37,18 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		
 		const string LocalServer = "Game-ServerCreationLogic-LocalServer";
 
-		const string ServerCreationFailedPrompt = "dialog-server-creation-failed.prompt";
+		const string ServerCreationFailedPrompt = "Chrome-Dialog-ServerCreationFailed-Prompt";
 
 		
-		const string ServerCreationFailedPortUsed = "dialog-server-creation-failed.prompt-port-used";
+		const string ServerCreationFailedPortUsed = "Chrome-Dialog-ServerCreationFailed-PromptPortUsed";
 
-		const string ServerCreationFailedError = "dialog-server-creation-failed.prompt-error";
-
-		
-		const string ServerCreationFailedTitle = "dialog-server-creation-failed.title";
+		const string ServerCreationFailedError = "Chrome-Dialog-ServerCreationFailed-PromptError";
 
 		
-		const string ServerCreationFailedCancel = "dialog-server-creation-failed.cancel";
+		const string ServerCreationFailedTitle = "Chrome-Dialog-ServerCreationFailed-Title";
+
+		
+		const string ServerCreationFailedCancel = "Chrome-Dialog-ServerCreationFailed-Cancel";
 
 		readonly Widget panel;
 		readonly ModData modData;

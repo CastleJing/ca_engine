@@ -9,8 +9,8 @@ World:
 		Briefing: Rescue Tanya.\n\nOnce disguised, your spy can move past any enemy unit, except dogs, without being detected. Direct him into the weapons factory located at a nearby Soviet base where he can hijack a truck and free Tanya.\n\nWith Tanya's help, take out the air defenses on the island so a Chinook can arrive to rescue her.\n\nThen destroy all remaining Soviet buildings and units.
 	ScriptLobbyDropdown@difficulty:
 		ID: difficulty
-		Label: dropdown-difficulty.label
-		Description: dropdown-difficulty.description
+		Label: Game-LobbyOption-Difficulty-Label
+		Description: Game-LobbyOption-Difficulty-Desc
 		Values:
 			easy: options-difficulty.easy
 			normal: options-difficulty.normal

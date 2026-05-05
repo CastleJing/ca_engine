@@ -95,7 +95,7 @@ Container@LOBBY_SERVERS_BIN:
 							ImageCollection: lobby-bits
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP
-							TooltipText: image-lobby-servers-bin-password-protected-tooltip
+							TooltipText: Chrome-LobbyServers-NeedPasswd
 						Image@REQUIRES_AUTHENTICATION:
 							X: 364
 							Y: 6
@@ -104,7 +104,7 @@ Container@LOBBY_SERVERS_BIN:
 							ImageCollection: lobby-bits
 							TooltipContainer: TOOLTIP_CONTAINER
 							TooltipTemplate: SIMPLE_TOOLTIP
-							TooltipText: image-lobby-servers-bin-requires-authentication-tooltip
+							TooltipText: Chrome-LobbyServers-NeedAccount
 						LabelWithTooltip@PLAYERS:
 							X: 382
 							Width: 85

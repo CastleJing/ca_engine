@@ -42,15 +42,15 @@ Player:
 		FogCheckboxDisplayOrder: 3
 	LobbyPrerequisiteCheckbox@GLOBALFACTUNDEPLOY:
 		ID: factundeploy
-		Label: checkbox-redeployable-mcvs.label
-		Description: checkbox-redeployable-mcvs.description
+		Label: Game-LobbyOption-RedeployableMcvs-Label
+		Description: Game-LobbyOption-RedeployableMcvs-Desc
 		Enabled: True
 		DisplayOrder: 7
 		Prerequisites: global-factundeploy
 	LobbyPrerequisiteCheckbox@GLOBALC17STEALTH:
 		ID: C17-Stealth
-		Label: checkbox-stealth-deliveries.label
-		Description: checkbox-stealth-deliveries.description
+		Label: Game-LobbyOption-StealthDeliveries-Label
+		Description: Game-LobbyOption-StealthDeliveries-Desc
 		Enabled: False
 		DisplayOrder: 8
 		Prerequisites: global-C17-stealth

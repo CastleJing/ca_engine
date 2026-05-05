@@ -36,14 +36,14 @@ Background@KICK_CLIENT_DIALOG:
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-kick-client-dialog
+			Text: Chrome-LobbyKickDialogs-OkButton
 			Font: Bold
 		Button@CANCEL_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 - 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-LobbyKickDialogs-CancelButton
 			Font: Bold
 
 Background@KICK_SPECTATORS_DIALOG:
@@ -70,14 +70,14 @@ Background@KICK_SPECTATORS_DIALOG:
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-kick-spectators-dialog-ok
+			Text: Chrome-LobbyKickSpectatorsDialogs-OkButton
 			Font: Bold
 		Button@CANCEL_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 - 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-LobbyKickDialogs-CancelButton
 			Font: Bold
 
 Background@FORCE_START_DIALOG:
@@ -130,12 +130,12 @@ Background@FORCE_START_DIALOG:
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-force-start-dialog-start
+			Text: Chrome-LobbyForceStartDialogs-OkButton
 			Font: Bold
 		Button@CANCEL_BUTTON:
 			X: (PARENT_WIDTH - WIDTH) / 2 - 75
 			Y: 155
 			Width: 120
 			Height: 25
-			Text: button-cancel
+			Text: Chrome-LobbyKickDialogs-CancelButton
 			Font: Bold

@@ -165,18 +165,6 @@ ChromeLayout:
 	common|chrome/playerprofile.yaml
 	common|chrome/text-notifications.yaml
 
-FluentMessages:
-	common|fluent/common.ftl
-	common|fluent/chrome.ftl
-	common|fluent/hotkeys.ftl
-	common|fluent/rules.ftl
-	ra|fluent/ra.ftl
-	ra|fluent/chrome.ftl
-	ra|fluent/hotkeys.ftl
-	ra|fluent/rules.ftl
-
-AllowUnusedFluentMessagesInExternalPackages: false
-
 Weapons:
 	ra|weapons/explosions.yaml
 	ra|weapons/ballistics.yaml

@@ -33,7 +33,7 @@ namespace OpenRA.Mods.Common.Scripting.Global
 			luaLabel.GetColor = () => c;
 		}
 
-		[Desc("Formats a language string for a given string key defined in the language files (*.ftl). " +
+		[Desc("Formats a language string for a given key from the mod/map translation tables (*.json5). " +
 			"Args can be passed to be substituted into the resulting message.")]
 		public string GetFluentMessage(string key, [ScriptEmmyTypeOverride("{ string: any }")] LuaTable args = null)
 		{

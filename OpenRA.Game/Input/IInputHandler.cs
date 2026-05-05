@@ -65,15 +65,15 @@ namespace OpenRA
 	public static class ModifiersExts
 	{
 		
-		public const string Cmd = "keycode-modifier.cmd";
+		public const string Cmd = "Keycode-Modifier-Cmd";
 
 		public static readonly IReadOnlyDictionary<Modifiers, string> ModifierFluentKeys = new Dictionary<Modifiers, string>()
 		{
-			{ Modifiers.None, "keycode-modifier.none" },
-			{ Modifiers.Shift, "keycode-modifier.shift" },
-			{ Modifiers.Alt, "keycode-modifier.alt" },
-			{ Modifiers.Ctrl, "keycode-modifier.ctrl" },
-			{ Modifiers.Meta, "keycode-modifier.meta" },
+			{ Modifiers.None, "Keycode-Modifier-None" },
+			{ Modifiers.Shift, "Keycode-Modifier-Shift" },
+			{ Modifiers.Alt, "Keycode-Modifier-Alt" },
+			{ Modifiers.Ctrl, "Keycode-Modifier-Ctrl" },
+			{ Modifiers.Meta, "Keycode-Modifier-Meta" },
 		};
 
 		public static string DisplayString(Modifiers m)

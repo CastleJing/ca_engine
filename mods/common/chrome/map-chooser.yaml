@@ -116,7 +116,7 @@ Background@MAPCHOOSER_PANEL:
 					Height: 24
 					Font: Bold
 					Align: Right
-					Text: Chrome-MapChooser-SystemMap
+					Text: Chrome-MapChooser-Filter
 				TextField@MAPFILTER_INPUT:
 					X: 45
 					Width: 150
@@ -127,7 +127,7 @@ Background@MAPCHOOSER_PANEL:
 					Height: 24
 					Font: Bold
 					Align: Center
-					Text: Chrome-MapChooser-UserMap
+					Text: Chrome-MapChooser-InLabel
 				DropDownButton@GAMEMODE_FILTER:
 					X: 225
 					Width: 200

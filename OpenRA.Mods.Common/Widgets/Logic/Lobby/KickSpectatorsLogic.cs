@@ -16,7 +16,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	sealed class KickSpectatorsLogic : ChromeLogic
 	{
-		const string KickSpectators = "dialog-kick-spectators.prompt";
+		const string KickSpectators = "Chrome-Dialog-KickSpectators-Prompt";
 
 		[ObjectCreator.UseCtor]
 		public KickSpectatorsLogic(Widget widget, int clientCount, Action okPressed, Action cancelPressed)

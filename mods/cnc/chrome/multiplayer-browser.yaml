@@ -121,7 +121,7 @@ Container@MULTIPLAYER_PANEL:
 									ImageCollection: lobby-bits
 									TooltipContainer: TOOLTIP_CONTAINER
 									TooltipTemplate: SIMPLE_TOOLTIP
-									TooltipText: image-bg-password-protected-tooltip
+									TooltipText: Chrome-MPBrowser-NeedPasswd
 								Image@REQUIRES_AUTHENTICATION:
 									X: 372
 									Y: 6
@@ -130,7 +130,7 @@ Container@MULTIPLAYER_PANEL:
 									ImageCollection: lobby-bits
 									TooltipContainer: TOOLTIP_CONTAINER
 									TooltipTemplate: SIMPLE_TOOLTIP
-									TooltipText: image-bg-requires-authentication-tooltip
+									TooltipText: Chrome-MPBrowser-NeedAccount
 								LabelWithTooltip@PLAYERS:
 									X: 390
 									Width: 85

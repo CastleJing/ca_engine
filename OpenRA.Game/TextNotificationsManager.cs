@@ -29,7 +29,7 @@ namespace OpenRA
 		static TextNotificationsManager()
 		{
 			if (!ChromeMetrics.TryGet("SystemMessageLabel", out SystemMessageLabel))
-				SystemMessageLabel = "Battlefield Control";
+				SystemMessageLabel = "Game-Game-BfCtrl";
 		}
 
 		public static void AddTransientLine(Player player, string text)

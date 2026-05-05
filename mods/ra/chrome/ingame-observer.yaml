@@ -144,7 +144,7 @@ Container@OBSERVER_WIDGETS:
 					Height: 28
 					Background: sidebar-button-observer
 					Key: Pause
-					TooltipText: button-observer-widgets-pause-tooltip
+					TooltipText: Chrome-InGameObserver-PauseButton-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
 					Children:
@@ -160,7 +160,7 @@ Container@OBSERVER_WIDGETS:
 					Height: 28
 					Background: sidebar-button-observer
 					Key: Pause
-					TooltipText: button-observer-widgets-play-tooltip
+					TooltipText: Chrome-InGameObserver-PlayButton-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
 					Children:
@@ -176,10 +176,10 @@ Container@OBSERVER_WIDGETS:
 					Height: 22
 					Background: sidebar-button-observer
 					Key: ReplaySpeedSlow
-					TooltipText: button-observer-widgets-slow.tooltip
+					TooltipText: Chrome-InGameObserver-50Button-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-observer-widgets-slow.label
+					Text: Chrome-InGameObserver-50Button-Label
 					Font: TinyBold
 				Button@BUTTON_REGULAR:
 					X: 95
@@ -188,10 +188,10 @@ Container@OBSERVER_WIDGETS:
 					Height: 22
 					Background: sidebar-button-observer
 					Key: ReplaySpeedRegular
-					TooltipText: button-observer-widgets-regular.tooltip
+					TooltipText: Chrome-InGameObserver-100Button-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-observer-widgets-regular.label
+					Text: Chrome-InGameObserver-100Button-Label
 					Font: TinyBold
 				Button@BUTTON_FAST:
 					X: 141
@@ -200,10 +200,10 @@ Container@OBSERVER_WIDGETS:
 					Height: 22
 					Background: sidebar-button-observer
 					Key: ReplaySpeedFast
-					TooltipText: button-observer-widgets-fast.tooltip
+					TooltipText: Chrome-InGameObserver-200Button-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-observer-widgets-fast.label
+					Text: Chrome-InGameObserver-200Button-Label
 					Font: TinyBold
 				Button@BUTTON_MAXIMUM:
 					X: 187
@@ -212,10 +212,10 @@ Container@OBSERVER_WIDGETS:
 					Height: 22
 					Background: sidebar-button-observer
 					Key: ReplaySpeedMax
-					TooltipText: button-observer-widgets-maximum.tooltip
+					TooltipText: Chrome-InGameObserver-MaxButton-Tooltip
 					TooltipContainer: TOOLTIP_CONTAINER
 					VisualHeight: 0
-					Text: button-observer-widgets-maximum.label
+					Text: Chrome-InGameObserver-MaxButton
 					Font: TinyBold
 		Container@INGAME_OBSERVERSTATS_BG:
 			Logic: ObserverStatsLogic

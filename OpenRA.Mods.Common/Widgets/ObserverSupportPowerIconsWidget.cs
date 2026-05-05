@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenRA;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Primitives;
@@ -148,8 +149,10 @@ namespace OpenRA.Mods.Common.Widgets
 
 		static string GetOverlayForItem(SupportPowerInstance item, int timestep)
 		{
-			if (item.Disabled) return "ON HOLD";
-			if (item.Ready) return "READY";
+			if (item.Disabled)
+				return Game.Translate("Game-ObserverOverlay-OnHold");
+			if (item.Ready)
+				return Game.Translate("Game-ObserverOverlay-Ready");
 			return WidgetUtils.FormatTime(item.RemainingTicks, timestep);
 		}
 

@@ -28,22 +28,22 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		enum PanelType { MissionInfo, Options }
 
 		
-		const string NoVideoTitle = "dialog-no-video.title";
+		const string NoVideoTitle = "Chrome-Dialog-NoVideo-Title";
 
 		
-		const string NoVideoPrompt = "dialog-no-video.prompt";
+		const string NoVideoPrompt = "Chrome-Dialog-NoVideo-Prompt";
 
 		
-		const string NoVideoCancel = "dialog-no-video.cancel";
+		const string NoVideoCancel = "Chrome-Dialog-NoVideo-Cancel";
 
 		
-		const string CantPlayTitle = "dialog-cant-play-video.title";
+		const string CantPlayTitle = "Chrome-Dialog-CantPlayVideo-Title";
 
 		
-		const string CantPlayPrompt = "dialog-cant-play-video.prompt";
+		const string CantPlayPrompt = "Chrome-Dialog-CantPlayVideo-Prompt";
 
 		
-		const string CantPlayCancel = "dialog-cant-play-video.cancel";
+		const string CantPlayCancel = "Chrome-Dialog-CantPlayVideo-Cancel";
 
 		
 		const string NotAvailable = "Game-MissionBrowserLogic-NotAvailable";

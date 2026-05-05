@@ -125,22 +125,22 @@ Player:
 		FogCheckboxDisplayOrder: 3
 	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
 		ID: bounty
-		Label: checkbox-kill-bounties.label
-		Description: checkbox-kill-bounties.description
+		Label: Game-LobbyOption-KillBounties-Label
+		Description: Game-LobbyOption-KillBounties-Desc
 		Enabled: False
 		DisplayOrder: 8
 		Prerequisites: global-bounty
 	LobbyPrerequisiteCheckbox@GLOBALFACTUNDEPLOY:
 		ID: factundeploy
-		Label: checkbox-redeployable-mcvs.label
-		Description: checkbox-redeployable-mcvs.description
+		Label: Game-LobbyOption-RedeployableMcvs-Label
+		Description: Game-LobbyOption-RedeployableMcvs-Desc
 		Enabled: True
 		DisplayOrder: 7
 		Prerequisites: global-factundeploy
 	LobbyPrerequisiteCheckbox@REUSABLEENGINEERS:
 		ID: reusable-engineers
-		Label: checkbox-reusable-engineers.label
-		Description: checkbox-reusable-engineers.description
+		Label: Game-LobbyOption-ReusableEngineers-Label
+		Description: Game-LobbyOption-ReusableEngineers-Desc
 		Enabled: False
 		DisplayOrder: 9
 		Prerequisites: global-reusable-engineers

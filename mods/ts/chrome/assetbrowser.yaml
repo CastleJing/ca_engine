@@ -27,14 +27,14 @@ Background@ASSETBROWSER_PANEL:
 			Width: 195
 			Height: 25
 			Font: Bold
-			Text: dropdownbutton-assetbrowser-source-selector
+			Text: Chrome-AssetBrowser-SourceSelector
 		DropDownButton@ASSET_TYPES_DROPDOWN:
 			X: 20
 			Y: 90
 			Width: 195
 			Height: 25
 			Font: Bold
-			Text: dropdownbutton-assetbrowser-asset-types-dropdown
+			Text: Chrome-AssetBrowser-AssetTypesDropdown
 		Label@FILENAME_DESC:
 			X: 20
 			Y: 115

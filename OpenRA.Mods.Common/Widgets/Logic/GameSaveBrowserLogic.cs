@@ -22,39 +22,39 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 	public class GameSaveBrowserLogic : ChromeLogic
 	{
 		
-		const string RenameSaveTitle = "dialog-rename-save.title";
+		const string RenameSaveTitle = "Chrome-Dialog-RenameSave-Title";
 
 		
-		const string RenameSavePrompt = "dialog-rename-save.prompt";
+		const string RenameSavePrompt = "Chrome-Dialog-RenameSave-Prompt";
 
 		
-		const string RenameSaveAccept = "dialog-rename-save.confirm";
+		const string RenameSaveAccept = "Chrome-Dialog-RenameSave-Confirm";
 
 		
-		const string DeleteSaveTitle = "dialog-delete-save.title";
+		const string DeleteSaveTitle = "Chrome-Dialog-DeleteSave-Title";
 
-		const string DeleteSavePrompt = "dialog-delete-save.prompt";
-
-		
-		const string DeleteSaveAccept = "dialog-delete-save.confirm";
+		const string DeleteSavePrompt = "Chrome-Dialog-DeleteSave-Prompt";
 
 		
-		const string DeleteAllSavesTitle = "dialog-delete-all-saves.title";
-
-		const string DeleteAllSavesPrompt = "dialog-delete-all-saves.prompt";
+		const string DeleteSaveAccept = "Chrome-Dialog-DeleteSave-Confirm";
 
 		
-		const string DeleteAllSavesAccept = "dialog-delete-all-saves.confirm";
+		const string DeleteAllSavesTitle = "Chrome-Dialog-DeleteAllSaves-Title";
+
+		const string DeleteAllSavesPrompt = "Chrome-Dialog-DeleteAllSaves-Prompt";
+
+		
+		const string DeleteAllSavesAccept = "Chrome-Dialog-DeleteAllSaves-Confirm";
 
 		const string SaveDeletionFailed = "Game-GameSaveBrowserLogic-SaveDeletionFailed";
 
 		
-		const string OverwriteSaveTitle = "dialog-overwrite-save.title";
+		const string OverwriteSaveTitle = "Chrome-Dialog-OverwriteSave-Title";
 
-		const string OverwriteSavePrompt = "dialog-overwrite-save.prompt";
+		const string OverwriteSavePrompt = "Chrome-Dialog-OverwriteSave-Prompt";
 
 		
-		const string OverwriteSaveAccept = "dialog-overwrite-save.confirm";
+		const string OverwriteSaveAccept = "Chrome-Dialog-OverwriteSave-Confirm";
 
 		readonly Widget panel;
 		readonly ScrollPanelWidget gameList;

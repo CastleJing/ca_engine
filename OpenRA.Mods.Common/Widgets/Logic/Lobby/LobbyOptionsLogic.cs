@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenRA;
 using OpenRA.Network;
 using OpenRA.Primitives;
 using OpenRA.Traits;
@@ -106,12 +107,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var optionLocked = new CachedTransform<Session.Global, bool>(
 					gs => gs.LobbyOptions[option.Id].IsLocked);
 
-				checkbox.GetText = () => option.Name;
+				checkbox.GetText = () => Game.Translate(option.Name);
 				if (option.Description != null)
 				{
 					var (text, desc) = LobbyUtils.SplitOnFirstToken(option.Description);
-					checkbox.GetTooltipText = () => text;
-					checkbox.GetTooltipDesc = () => desc;
+					checkbox.GetTooltipText = () => Game.Translate(text);
+					checkbox.GetTooltipDesc = () => Game.Translate(desc);
 				}
 
 				checkbox.IsVisible = () => true;
@@ -155,8 +156,8 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				if (option.Description != null)
 				{
 					var (text, desc) = LobbyUtils.SplitOnFirstToken(option.Description);
-					dropdown.GetTooltipText = () => text;
-					dropdown.GetTooltipDesc = () => desc;
+					dropdown.GetTooltipText = () => Game.Translate(text);
+					dropdown.GetTooltipDesc = () => Game.Translate(desc);
 				}
 
 				dropdown.IsVisible = () => true;
@@ -181,7 +182,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				var label = row.GetOrNull<LabelWidget>(dropdown.Id + "_DESC");
 				if (label != null)
 				{
-					label.GetText = () => option.Name + ":";
+					label.GetText = () => Game.Translate(option.Name) + ":";
 					label.IsVisible = () => true;
 				}
 			}

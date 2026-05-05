@@ -189,18 +189,18 @@
 			Rail: 100
 		Crushes: wall, crate, infantry
 	Faction@Random:
-		Name: faction-random.name
+		Name: Game-Faction-Random-Name
 		InternalName: Random
 		RandomFactionMembers: gdi, nod
-		Description: faction-random.description
+		Description: Game-Faction-Random-Desc
 	Faction@gdi:
-		Name: faction-gdi.name
+		Name: Game-Faction-Gdi-Name
 		InternalName: gdi
-		Description: faction-gdi.description
+		Description: Game-Faction-Gdi-Desc
 	Faction@nod:
-		Name: faction-nod.name
+		Name: Game-Faction-Nod-Name
 		InternalName: nod
-		Description: faction-nod.description
+		Description: Game-Faction-Nod-Desc
 	TerrainGeometryOverlay:
 	DebugVisualizations:
 	CliffBackImpassabilityLayer:

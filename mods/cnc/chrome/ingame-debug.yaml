@@ -57,25 +57,25 @@ Container@DEBUG_PANEL:
 			Y: 145
 			Width: 140
 			Height: 35
-			Text: button-debug-panel-give-cash
+			Text: Chrome-InGameDebug-GameCash
 		Button@GROW_RESOURCES:
 			X: 271
 			Y: 145
 			Width: 140
 			Height: 35
-			Text: button-debug-panel-grow-resources
+			Text: Chrome-InGameDebug-GrowResources
 		Button@GIVE_EXPLORATION:
 			X: 90
 			Y: 195
 			Width: 140
 			Height: 35
-			Text: button-debug-panel-give-exploration
+			Text: Chrome-InGameDebug-GiveExploration
 		Button@RESET_EXPLORATION:
 			X: 271
 			Y: 195
 			Width: 140
 			Height: 35
-			Text: button-debug-panel-reset-exploration
+			Text: Chrome-InGameDebug-ResetExploration
 		Label@VISUALIZATIONS_TITLE:
 			Y: 246
 			Font: Bold

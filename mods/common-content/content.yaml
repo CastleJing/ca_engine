@@ -74,7 +74,7 @@ Background@CONTENT_PANEL:
 							Width: 100
 							Height: 23
 							Background: button-highlighted-thin
-							Text: button-package-template-download
+							Text: Chrome-ModContent-DownloadPackage
 						Label@INSTALLED:
 							X: 304
 							Width: 100
@@ -97,7 +97,7 @@ Background@CONTENT_PANEL:
 			Background: button-highlighted
 			Width: 200
 			Height: 32
-			Text: button-content-panel-check-source
+			Text: Chrome-ModContent-DetectSource
 			Font: Bold
 		Button@BACK_BUTTON:
 			X: PARENT_WIDTH - 140
@@ -186,7 +186,7 @@ Container@PACKAGE_DOWNLOAD_PANEL:
 			Width: 120
 			Height: 32
 			Visible: false
-			Text: button-retry
+			Text: Chrome-Connection-RetryButton
 			Font: Bold
 			Key: return
 		Button@CANCEL_BUTTON:
@@ -195,7 +195,7 @@ Container@PACKAGE_DOWNLOAD_PANEL:
 			Background: button-highlighted
 			Width: 110
 			Height: 32
-			Text: button-cancel
+			Text: Chrome-ConfirmationDialogs-CancelButton
 			Font: Bold
 			Key: escape
 
@@ -364,7 +364,7 @@ Background@CONTENT_PROMPT_PANEL:
 			Background: button-highlighted
 			Width: 140
 			Height: 32
-			Text: button-content-prompt-panel-advanced
+			Text: Chrome-ModContent-AdvancedInstall
 			Font: Bold
 		Button@QUICK_BUTTON:
 			X: 185
@@ -372,7 +372,7 @@ Background@CONTENT_PROMPT_PANEL:
 			Background: button-highlighted
 			Width: 110
 			Height: 32
-			Text: button-content-prompt-panel-quick
+			Text: Chrome-ModContent-QuickInstall
 			Font: Bold
 		Button@QUIT_BUTTON:
 			X: PARENT_WIDTH - WIDTH - 30
@@ -380,7 +380,7 @@ Background@CONTENT_PROMPT_PANEL:
 			Background: button-highlighted
 			Width: 110
 			Height: 32
-			Text: button-quit
+			Text: Chrome-MainMenu-Quit
 			Font: Bold
 			Key: escape
 
