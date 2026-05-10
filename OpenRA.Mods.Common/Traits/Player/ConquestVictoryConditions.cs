@@ -21,8 +21,8 @@ namespace OpenRA.Mods.Common.Traits
 		[Desc("Delay for the end game notification in milliseconds.")]
 		public readonly int NotificationDelay = 1500;
 
-		[Desc("Description of the objective.")]
-		public readonly string Objective = "Destroy all opposition!";
+		[Desc("Description of the objective (fluent key or literal text).")]
+		public readonly string Objective = "Game-Trait-ConquestVictoryConditions-Objective";
 
 		[Desc("Disable the win/loss messages and audio notifications?")]
 		public readonly bool SuppressNotifications = false;

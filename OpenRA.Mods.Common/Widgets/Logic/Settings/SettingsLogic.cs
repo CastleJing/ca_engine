@@ -20,17 +20,17 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 {
 	public class SettingsLogic : ChromeLogic
 	{
-		const string SettingsSaveTitle = "Chrome-Dialog-SettingsSave-Title";
-		const string SettingsSavePrompt = "Chrome-Dialog-SettingsSave-Prompt";
-		const string SettingsSaveCancel = "Chrome-Dialog-SettingsSave-Cancel";
-		const string RestartTitle = "Chrome-Dialog-SettingsRestart-Title";
-		const string RestartPrompt = "Chrome-Dialog-SettingsRestart-Prompt";
-		const string RestartAccept = "Chrome-Dialog-SettingsRestart-Confirm";
-		const string RestartCancel = "Chrome-Dialog-SettingsRestart-Cancel";
-		const string ResetTitle = "Chrome-Dialog-SettingsReset-Title";
-		const string ResetPrompt = "Chrome-Dialog-SettingsReset-Prompt";
-		const string ResetAccept = "Chrome-Dialog-SettingsReset-Confirm";
-		const string ResetCancel = "Chrome-Dialog-SettingsReset-Cancel";
+		const string SettingsSaveTitle = "Game-SettingsLogic-SaveExit-Title";
+		const string SettingsSavePrompt = "Game-SettingsLogic-SaveExit-Text";
+		const string SettingsSaveCancel = "Game-SettingsLogic-SaveExit-ContinueButton";
+		const string RestartTitle = "Game-SettingsLogic-Restart-Title";
+		const string RestartPrompt = "Game-SettingsLogic-Restart-Text";
+		const string RestartAccept = "Game-SettingsLogic-Restart-OkButton";
+		const string RestartCancel = "Game-SettingsLogic-Restart-CancelButton";
+		const string ResetTitle = "Game-SettingsLogic-Reset-Title";
+		const string ResetPrompt = "Game-SettingsLogic-Reset-Text";
+		const string ResetAccept = "Game-SettingsLogic-Reset-OkButton";
+		const string ResetCancel = "Game-SettingsLogic-Reset-CancelButton";
 
 		readonly Dictionary<string, Func<bool>> leavePanelActions = new();
 		readonly Dictionary<string, Action> resetPanelActions = new();

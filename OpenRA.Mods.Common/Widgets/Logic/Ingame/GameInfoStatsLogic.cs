@@ -101,7 +101,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 				if (player.HasObjectives)
 				{
 					var mo = player.PlayerActor.Trait<MissionObjectives>();
-					checkbox.GetText = () => mo.Objectives[0].Description;
+					checkbox.GetText = () => Game.Translate(mo.Objectives[0].Description);
 				}
 
 				var failed = Game.Translate(Failed);

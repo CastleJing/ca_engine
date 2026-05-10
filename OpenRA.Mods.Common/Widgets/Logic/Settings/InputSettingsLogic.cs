@@ -11,6 +11,7 @@
 
 using System;
 using System.Collections.Generic;
+using OpenRA;
 using OpenRA.Primitives;
 using OpenRA.Widgets;
 
@@ -68,7 +69,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			var mouseScrollDropdown = panel.Get<DropDownButtonWidget>("MOUSE_SCROLL_TYPE_DROPDOWN");
 			mouseScrollDropdown.OnMouseDown = _ => ShowMouseScrollDropdown(mouseScrollDropdown, gs);
-			mouseScrollDropdown.GetText = () => gs.MouseScroll.ToString();
+			mouseScrollDropdown.GetText = () => MouseScrollDisplayString(gs.MouseScroll);
 
 			var mouseControlDescClassic = panel.Get("MOUSE_CONTROL_DESC_CLASSIC");
 			mouseControlDescClassic.IsVisible = () => gs.UseClassicMouseStyle;
@@ -92,7 +93,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 				var zoomDescModifierTemplate = zoomDescModifier.GetText();
 				var zoomDescModifierLabel = new CachedTransform<Modifiers, string>(
-					mod => zoomDescModifierTemplate.Replace("MODIFIER", mod.ToString()));
+					mod => zoomDescModifierTemplate.Replace("MODIFIER", ModifiersExts.DisplayString(mod)));
 				zoomDescModifier.GetText = () => zoomDescModifierLabel.Update(gs.ZoomModifier);
 
 				var edgescrollDesc = container.Get<LabelWidget>("DESC_EDGESCROLL");
@@ -113,7 +114,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			var zoomModifierDropdown = panel.Get<DropDownButtonWidget>("ZOOM_MODIFIER");
 			zoomModifierDropdown.OnMouseDown = _ => ShowZoomModifierDropdown(zoomModifierDropdown, gs);
-			zoomModifierDropdown.GetText = () => gs.ZoomModifier.ToString();
+			zoomModifierDropdown.GetText = () => ModifiersExts.DisplayString(gs.ZoomModifier);
 
 			SettingsUtils.AdjustSettingsScrollPanelLayout(scrollPanel);
 
@@ -163,6 +164,15 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 
 			dropdown.ShowDropDown("LABEL_DROPDOWN_TEMPLATE", 500, options.Keys, SetupItem);
 		}
+
+		static string MouseScrollDisplayString(MouseScrollType t) => t switch
+		{
+			MouseScrollType.Disabled => Game.Translate(Disabled),
+			MouseScrollType.Standard => Game.Translate(Standard),
+			MouseScrollType.Inverted => Game.Translate(Inverted),
+			MouseScrollType.Joystick => Game.Translate(Joystick),
+			_ => t.ToString()
+		};
 
 		static void ShowMouseScrollDropdown(DropDownButtonWidget dropdown, GameSettings s)
 		{

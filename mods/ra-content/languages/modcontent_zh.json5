@@ -1,7 +1,7 @@
 {
 	// ModContent
-	"Sys-ModContent-InstallPromptMessage": "红色警戒需要来自原始游戏的美术和音频资源。\n\n快速安装将自动从 2008 年红色警戒免费软件版本的镜像\n下载此内容（不含音乐或视频）。\n\n高级安装可以选择从原始游戏光盘或数字安装中\n复制音乐、视频或其他内容。",
-	"Sys-ModContent-HeaderMessage": "游戏内容可以从原始游戏光盘或现有的数字安装中提取。\n\nOpenRA 还可以从 2008 年红色警戒免费软件\n版本的在线镜像下载基本游戏文件。",
+	"Game-ModContent-InstallPrompt": "红色警戒需要来自原始游戏的美术和音频资源。\n\n快速安装将自动从 2008 年红色警戒免费软件版本的镜像\n下载此内容（不含音乐或视频）。\n\n高级安装可以选择从原始游戏光盘或数字安装中\n复制音乐、视频或其他内容。",
+	"Game-ModContent-ManagePanel-Header": "游戏内容可以从原始游戏光盘或现有的数字安装中提取。\n\nOpenRA 还可以从 2008 年红色警戒免费软件\n版本的在线镜像下载基本游戏文件。",
     "Sys-ModContent-Packages-base": "基础游戏文件",
 	"Sys-ModContent-Packages-aftermathbase": "劫后余生扩展文件",
 	"Sys-ModContent-Packages-cncdesert": "C&C 沙漠地形",

@@ -23,7 +23,7 @@ Background@CONTENT_PANEL:
 			Y: 14
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-content-panel-title
+			Text: Chrome-ModContent-ContentPanelTitle
 			Align: Center
 			Font: MediumBold
 		Label@HEADER_LABEL:
@@ -31,7 +31,7 @@ Background@CONTENT_PANEL:
 			Y: 66
 			Width: PARENT_WIDTH - 60
 			Height: 16
-			Text: modcontent-header
+			Text: Game-ModContent-ManagePanel-Header
 			Align: Center
 			WordWrap: true
 		ScrollPanel@PACKAGES:
@@ -58,7 +58,7 @@ Background@CONTENT_PANEL:
 							Align: Center
 							Font: Bold
 							TextColor: CC0000
-							Text: label-package-template-required
+							Text: Chrome-ModContent-PackageRequired
 						Image@SOURCE:
 							X: 275
 							Y: 2
@@ -82,7 +82,7 @@ Background@CONTENT_PANEL:
 							Align: Center
 							Font: Bold
 							TextColor: 00CC00
-							Text: label-package-template-installed
+							Text: Chrome-ModContent-PackageInstalled
 						Label@REQUIRES_SOURCE:
 							X: 304
 							Width: 100
@@ -90,7 +90,7 @@ Background@CONTENT_PANEL:
 							Align: Center
 							Font: Bold
 							TextColor: DDDDDD
-							Text: label-package-template-requires-source
+							Text: Chrome-ModContent-PackageRequiresSource
 		Button@CHECK_SOURCE_BUTTON:
 			X: 30
 			Y: PARENT_HEIGHT - 52
@@ -119,7 +119,7 @@ Background@SOURCE_TOOLTIP:
 			X: 5
 			Height: 23
 			Font: Bold
-			Text: label-source-tooltip-description
+			Text: Chrome-ModContent-SourceTooltipDescription
 		Container@SOURCES:
 			Y: 15
 			Width: PARENT_WIDTH - 10
@@ -347,7 +347,7 @@ Background@CONTENT_PROMPT_PANEL:
 			Y: 12
 			Width: PARENT_WIDTH
 			Height: 25
-			Text: label-content-prompt-panel-title
+			Text: Chrome-ModContent-InstallContentPanelTitle
 			Align: Center
 			Font: MediumBold
 		Label@HEADER_LABEL:
@@ -355,7 +355,7 @@ Background@CONTENT_PROMPT_PANEL:
 			Y: 65
 			Width: PARENT_WIDTH - 60
 			Height: 16
-			Text: modcontent-installprompt
+			Text: Game-ModContent-InstallPrompt
 			Align: Center
 			WordWrap: true
 		Button@ADVANCED_BUTTON:

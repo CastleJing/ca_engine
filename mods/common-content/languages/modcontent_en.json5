@@ -1,0 +1,12 @@
+{
+	"Chrome-ModContent-AdvancedInstall": "Advanced Install",
+	"Chrome-ModContent-DetectSource": "Detect Disc or Installation",
+	"Chrome-ModContent-ContentPanelTitle": "Manage Content",
+	"Chrome-ModContent-DownloadPackage": "Download",
+	"Chrome-ModContent-InstallContentPanelTitle": "Install Content",
+	"Chrome-ModContent-PackageInstalled": "Installed",
+	"Chrome-ModContent-PackageRequired": "Required",
+	"Chrome-ModContent-PackageRequiresSource": "Requires Disc",
+	"Chrome-ModContent-QuickInstall": "Quick Install",
+	"Chrome-ModContent-SourceTooltipDescription": "Content available from:"
+}

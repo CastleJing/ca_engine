@@ -1,0 +1,17 @@
+LocalizationPackage:
+	en:
+		common|languages/en
+	zh:
+		common|languages/zh
+
+GlyphPrecache:
+	en: common|languages/en/glyph-precache.txt
+	zh: common|languages/zh/glyph-precache.txt
+
+Translations: en, zh
+	common|languages/en.json5:
+	common|languages/zh.json5:
+	content|languages/modcontent_en.json5:
+	content|languages/modcontent_zh.json5:
+	racontent|languages/modcontent_en.json5:
+	racontent|languages/modcontent_zh.json5:

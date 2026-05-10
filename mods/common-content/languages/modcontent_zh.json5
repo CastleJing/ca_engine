@@ -1,0 +1,12 @@
+{
+	"Chrome-ModContent-AdvancedInstall": "高级安装",
+	"Chrome-ModContent-DetectSource": "检测光盘或现有安装",
+	"Chrome-ModContent-ContentPanelTitle": "管理内容",
+	"Chrome-ModContent-DownloadPackage": "下载",
+	"Chrome-ModContent-InstallContentPanelTitle": "安装内容",
+	"Chrome-ModContent-PackageInstalled": "已安装",
+	"Chrome-ModContent-PackageRequired": "必需",
+	"Chrome-ModContent-PackageRequiresSource": "需要光盘",
+	"Chrome-ModContent-QuickInstall": "快速安装",
+	"Chrome-ModContent-SourceTooltipDescription": "内容来源："
+}

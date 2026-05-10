@@ -23,19 +23,19 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 	sealed class GameInfoLogic : ChromeLogic
 	{
 		
-		const string Objectives = "menu-game-info.objectives";
+		const string Objectives = "Game-GameInfoLogic-Objective";
 
 		
-		const string Briefing = "menu-game-info.briefing";
+		const string Briefing = "Game-GameInfoLogic-Briefing";
 
 		
-		const string Options = "menu-game-info.options";
+		const string Options = "Game-GameInfoLogic-Options";
 
 		
-		const string Debug = "menu-game-info.debug";
+		const string Debug = "Game-GameInfoLogic-Debug";
 
 		
-		const string Chat = "menu-game-info.chat";
+		const string Chat = "Game-GameInfoLogic-Chat";
 
 		readonly World world;
 		readonly ModData modData;

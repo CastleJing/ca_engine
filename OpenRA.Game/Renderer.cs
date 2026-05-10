@@ -20,6 +20,7 @@ using OpenRA.FileSystem;
 using OpenRA.Graphics;
 using OpenRA.Primitives;
 using OpenRA.Support;
+using OpenRA.Widgets;
 
 namespace OpenRA
 {
@@ -541,6 +542,14 @@ namespace OpenRA
 			Context.Present();
 
 			renderType = RenderType.None;
+		}
+
+		/// <summary>
+		/// Process window/input events without presenting a frame. Use during long synchronous loads so the OS does not treat the window as hung.
+		/// </summary>
+		public void PumpWindowEvents()
+		{
+			Window.PumpInput(new NullInputHandler());
 		}
 
 		public void DrawBatch<T>(IVertexBuffer<T> vertices, IShader shader,

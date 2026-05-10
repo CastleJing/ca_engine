@@ -126,10 +126,15 @@ namespace OpenRA
 
 			// PERF: Load the mod YAML once outside the loop, and reuse it when resolving each maps custom YAML.
 			var modDataRules = modData.GetRulesYaml();
+			var mapProgress = 0;
 			foreach (var kv in MapLocations)
 			{
 				foreach (var map in kv.Key.Contents)
+				{
 					LoadMapInternal(map, kv.Key, kv.Value, mapGrid, null, modDataRules);
+					if (++mapProgress % 16 == 0)
+						modData.HandleLoadingProgress();
+				}
 			}
 
 			// We only want to track maps in runtime, not at loadtime

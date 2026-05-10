@@ -10,6 +10,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using OpenRA;
 using OpenRA.Graphics;
@@ -240,46 +241,165 @@ namespace OpenRA.Mods.Common.Widgets
 			return $"{minutes:D}:{seconds % 60:D2}";
 		}
 
+		static readonly HashSet<string> CjkLanguages = new(StringComparer.OrdinalIgnoreCase)
+		{
+			"zh", "ja", "ko"
+		};
+
+		public static bool IsCurrentLanguageCjk()
+		{
+			var lang = Game.Settings?.Player?.Language ?? "en";
+			return CjkLanguages.Contains(lang);
+		}
+
+		/// <summary>Whether <paramref name="c"/> is a CJK / Hangul / Kana code unit (BMP). Used for line-breaking heuristics.</summary>
+		public static bool IsCjkCodepoint(char c)
+		{
+			// Hangul syllables
+			if (c >= '\uAC00' && c <= '\uD7A3')
+				return true;
+			// CJK Unified Ideographs
+			if (c >= '\u4E00' && c <= '\u9FFF')
+				return true;
+			// CJK Extension A
+			if (c >= '\u3400' && c <= '\u4DBF')
+				return true;
+			// Hiragana & Katakana
+			if (c >= '\u3040' && c <= '\u30FF')
+				return true;
+			// CJK Compatibility Ideographs
+			if (c >= '\uF900' && c <= '\uFAFF')
+				return true;
+			// Halfwidth Katakana
+			if (c >= '\uFF66' && c <= '\uFF9F')
+				return true;
+			return false;
+		}
+
+		/// <summary>
+		/// Exclusive end index for the first wrapped segment of <paramref name="line"/> under CJK locale rules:
+		/// break at the last character that still fits <paramref name="width"/>, preferring a space only when it is not
+		/// a weak boundary (e.g. list marker <c>* </c> before CJK text).
+		/// </summary>
+		public static int FindCjkAwareWrapExclusiveEnd(string line, int width, SpriteFont font)
+		{
+			var lineLen = line.Length;
+			var breakIndex = 0;
+			var lastSpace = -1;
+
+			for (var j = 1; j <= lineLen; j++)
+			{
+				var fragWidth = font.Measure(line[..j]).X;
+				if (fragWidth > width)
+					break;
+
+				if (line[j - 1] == ' ')
+					lastSpace = j - 1;
+
+				breakIndex = j;
+			}
+
+			if (breakIndex == 0)
+				breakIndex = 1;
+
+			if (lastSpace >= 0)
+			{
+				var afterIdx = lastSpace + 1;
+				var cAfter = afterIdx < lineLen ? line[afterIdx] : default;
+				var cBefore = lastSpace > 0 ? line[lastSpace - 1] : default;
+				// Do not treat "symbol/punct + space + CJK" as a word boundary (e.g. "* 文字示例").
+				var skipSpacePreference = IsCjkCodepoint(cAfter) && !char.IsLetterOrDigit(cBefore);
+				if (!skipSpacePreference)
+					breakIndex = lastSpace + 1;
+			}
+
+			return breakIndex;
+		}
+
+		/// <summary>First-line exclusive end and continuation start for Latin/Cyrillic-style wrapping (spaces and hyphens).</summary>
+		public static (int LineEndExclusive, int ContinuationStart) FindLatinWordWrapSplit(string line, int width, SpriteFont font)
+		{
+			var lineLen = line.Length;
+			var nextSearch = 0;
+			var lineEndExclusive = -1;
+			var continuationStart = 0;
+
+			while (nextSearch < lineLen)
+			{
+				var spaceIdx = line.IndexOf(' ', nextSearch);
+				var hyphenIdx = line.IndexOf('-', nextSearch);
+
+				int boundaryIdx;
+				var hyphenFirst = false;
+				if (spaceIdx >= 0 && hyphenIdx >= 0)
+				{
+					if (hyphenIdx < spaceIdx)
+					{
+						boundaryIdx = hyphenIdx;
+						hyphenFirst = true;
+					}
+					else
+						boundaryIdx = spaceIdx;
+				}
+				else if (hyphenIdx >= 0)
+				{
+					boundaryIdx = hyphenIdx;
+					hyphenFirst = true;
+				}
+				else if (spaceIdx >= 0)
+					boundaryIdx = spaceIdx;
+				else
+					break;
+
+				var endExclusive = hyphenFirst ? boundaryIdx + 1 : boundaryIdx;
+				if (font.Measure(line[..endExclusive]).X > width)
+					break;
+
+				lineEndExclusive = endExclusive;
+				continuationStart = boundaryIdx + 1;
+				nextSearch = boundaryIdx + 1;
+			}
+
+			return (lineEndExclusive, continuationStart);
+		}
+
 		public static string WrapText(string text, int width, SpriteFont font)
 		{
 			var textSize = font.Measure(text);
-			if (textSize.X > width)
+			if (textSize.X <= width)
+				return text;
+
+			var lines = text.Split('\n').ToList();
+			var isCjk = IsCurrentLanguageCjk();
+
+			for (var i = 0; i < lines.Count; i++)
 			{
-				var lines = text.Split('\n').ToList();
+				var line = lines[i];
+				if (font.Measure(line).X <= width)
+					continue;
 
-				for (var i = 0; i < lines.Count; i++)
+				// CJK (Chinese, Japanese, Korean) texts do not use spaces between words,
+				// so we must break at character boundaries instead of relying on spaces.
+				// We still use space-based break as a priority (preserving whole words where possible),
+				// except for leading CJK runs where there is no space to break on.
+				if (isCjk)
 				{
-					var line = lines[i];
-					if (font.Measure(line).X <= width)
-						continue;
-
-					// Scan forwards until we find the last word that fits
-					// This guarantees a small bound on the amount of string we need to search before a linebreak
-					var start = 0;
-					while (true)
+					var breakIndex = FindCjkAwareWrapExclusiveEnd(line, width, font);
+					lines[i] = line[..breakIndex].TrimEnd();
+					lines.Insert(i + 1, line[breakIndex..].TrimStart());
+				}
+				else
+				{
+					var (lineEndExclusive, continuationStart) = FindLatinWordWrapSplit(line, width, font);
+					if (lineEndExclusive > 0)
 					{
-						var spaceIndex = line.IndexOf(' ', start);
-						if (spaceIndex == -1)
-							break;
-
-						var fragmentWidth = font.Measure(line[..spaceIndex]).X;
-						if (fragmentWidth > width)
-							break;
-
-						start = spaceIndex + 1;
-					}
-
-					if (start > 0)
-					{
-						lines[i] = line[..(start - 1)];
-						lines.Insert(i + 1, line[start..]);
+						lines[i] = line[..lineEndExclusive];
+						lines.Insert(i + 1, line[continuationStart..]);
 					}
 				}
-
-				return string.Join("\n", lines);
 			}
 
-			return text;
+			return string.Join("\n", lines);
 		}
 
 		public static string TruncateText(string text, int width, SpriteFont font)

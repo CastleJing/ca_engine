@@ -93,9 +93,6 @@ ModContent:
 			Identifier: music-covertops
 			TestFiles: ^SupportDir|Content/cnc/scores-covertops.mix
 			Sources: covertops, tfd, tuc-steam, tuc-origin, cncr-steam, cncr-origin
-	Translations:
-		cnc-content|languages/modcontent_en.json5:
-		cnc-content|languages/modcontent_zh.json5:
 	Downloads:
 		cnccontent|installer/downloads.yaml
 	Sources:

@@ -38,7 +38,7 @@ namespace OpenRA
 
 	public class Player : IScriptBindable, IScriptNotifyBind, ILuaTableBinding, ILuaEqualityBinding, ILuaToStringBinding
 	{
-		const string EnumeratedBotName = "enumerated-bot-name";
+		const string EnumeratedBotName = "Game-Player-EnumeratedBotName";
 
 		public readonly Actor PlayerActor;
 		public readonly string PlayerName;

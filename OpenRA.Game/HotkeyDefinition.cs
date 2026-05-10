@@ -16,7 +16,28 @@ namespace OpenRA
 {
 	public sealed class HotkeyDefinition
 	{
-		public const string ContextFluentPrefix = "hotkey-context";
+		public const string ContextFluentPrefix = "Game-HotkeyContext";
+
+		public static string ContextSegmentToFluentId(string segment)
+		{
+			segment = segment.Trim();
+			if (segment.Length == 0)
+				return ContextFluentPrefix;
+
+			var suffix = "";
+			foreach (var p in segment.Split('-'))
+			{
+				var part = p.Trim();
+				if (part.Length == 0)
+					continue;
+
+				suffix += char.ToUpperInvariant(part[0]);
+				if (part.Length > 1)
+					suffix += part.Substring(1);
+			}
+
+			return ContextFluentPrefix + "-" + suffix;
+		}
 
 		public readonly string Name;
 		public readonly Hotkey Default = Hotkey.Invalid;
@@ -49,7 +70,7 @@ namespace OpenRA
 
 			if (nodeDict.TryGetValue("Contexts", out var contextYaml))
 				Contexts = FieldLoader.GetValue<HashSet<string>>("Contexts", contextYaml.Value)
-					.Select(c => ContextFluentPrefix + "." + c).ToHashSet();
+					.Select(ContextSegmentToFluentId).ToHashSet();
 
 			if (nodeDict.TryGetValue("Platform", out var platformYaml))
 			{

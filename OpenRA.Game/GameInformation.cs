@@ -19,7 +19,7 @@ namespace OpenRA
 {
 	public class GameInformation
 	{
-		const string EnumeratedBotName = "enumerated-bot-name";
+		const string EnumeratedBotName = "Game-Player-EnumeratedBotName";
 
 		public string Mod;
 		public string Version;

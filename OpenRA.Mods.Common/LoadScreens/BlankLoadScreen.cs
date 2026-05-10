@@ -33,7 +33,12 @@ namespace OpenRA.Mods.Common.LoadScreens
 
 		public virtual void Display()
 		{
-			if (Game.Renderer == null || initialized)
+			if (Game.Renderer == null)
+				return;
+
+			Game.Renderer.PumpWindowEvents();
+
+			if (initialized)
 				return;
 
 			// Draw a black screen

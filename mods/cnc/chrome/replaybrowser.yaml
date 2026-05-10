@@ -61,7 +61,7 @@ Container@REPLAYBROWSER_PANEL:
 									Y: 45
 									Width: PARENT_WIDTH - 85
 									Height: 25
-									Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
+									Text: Chrome-ReplayBrowser-Filter-Date-Dropdown
 								Label@FLT_DURATION_DESC:
 									X: 0
 									Y: 75
@@ -74,7 +74,7 @@ Container@REPLAYBROWSER_PANEL:
 									Y: 75
 									Width: PARENT_WIDTH - 85
 									Height: 25
-									Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
+									Text: Chrome-ReplayBrowser-Filter-Duration-Dropdown
 								Label@FLT_MAPNAME_DESC:
 									X: 0
 									Y: 105
@@ -87,7 +87,7 @@ Container@REPLAYBROWSER_PANEL:
 									Y: 105
 									Width: PARENT_WIDTH - 85
 									Height: 25
-									Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
+									Text: Chrome-ReplayBrowser-Filter-Map-Dropdown
 								Label@FLT_PLAYER_DESC:
 									X: 0
 									Y: 135
@@ -113,7 +113,7 @@ Container@REPLAYBROWSER_PANEL:
 									Y: 165
 									Width: PARENT_WIDTH - 85
 									Height: 25
-									Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
+									Text: Chrome-ReplayBrowser-Filter-Outcome-Dropdown
 								Label@FLT_FACTION_DESC:
 									X: 0
 									Y: 195
@@ -126,7 +126,7 @@ Container@REPLAYBROWSER_PANEL:
 									Y: 195
 									Width: PARENT_WIDTH - 85
 									Height: 25
-									Text: Chrome-ReplayBrowser-Filter-Type-Dropdown
+									Text: Chrome-ReplayBrowser-Filter-Faction-Dropdown
 								Button@FLT_RESET_BUTTON:
 									X: 85
 									Y: 235

@@ -24,7 +24,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		const string DuplicateNotice = "Chrome-Setting-Hotkey-Duplicate";
 
 		
-		const string AnyContext = HotkeyDefinition.ContextFluentPrefix + "-any";
+		const string AnyContext = HotkeyDefinition.ContextFluentPrefix + "-Any";
 
 		readonly ModData modData;
 		readonly Dictionary<string, MiniYaml> logicArgs;

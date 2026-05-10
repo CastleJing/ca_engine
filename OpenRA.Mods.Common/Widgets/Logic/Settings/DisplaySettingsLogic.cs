@@ -78,16 +78,6 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 		readonly WorldRenderer worldRenderer;
 		readonly WorldViewportSizes viewportSizes;
 
-		readonly string showOnDamage;
-		readonly string alwaysShow;
-
-		readonly string automatic;
-		readonly string manual;
-		readonly string disabled;
-
-		readonly string legacyFullscreen;
-		readonly string fullscreen;
-
 		static DisplaySettingsLogic()
 		{
 			var original = Game.Settings;
@@ -107,17 +97,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			this.modData = modData;
 			viewportSizes = modData.Manifest.Get<WorldViewportSizes>();
 
-			legacyFullscreen = Game.Translate(LegacyFullscreen);
-			fullscreen = Game.Translate(Fullscreen);
-
 			registerPanel(panelID, label, InitPanel, ResetPanel);
-
-			showOnDamage = Game.Translate(ShowOnDamage);
-			alwaysShow = Game.Translate(AlwaysShow);
-
-			automatic = Game.Translate(Automatic);
-			manual = Game.Translate(Manual);
-			disabled = Game.Translate(Disabled);
 		}
 
 		public static string GetViewportSizeName(ModData modData, WorldViewport worldViewport)
@@ -195,7 +175,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			windowModeDropdown.OnMouseDown = _ => ShowWindowModeDropdown(windowModeDropdown, ds, scrollPanel);
 			windowModeDropdown.GetText = () => ds.Mode == WindowMode.Windowed
 				? Game.Translate(Windowed)
-				: ds.Mode == WindowMode.Fullscreen ? legacyFullscreen : fullscreen;
+				: ds.Mode == WindowMode.Fullscreen ? Game.Translate(LegacyFullscreen) : Game.Translate(Fullscreen);
 
 			var displaySelectionDropDown = panel.Get<DropDownButtonWidget>("DISPLAY_SELECTION_DROPDOWN");
 			displaySelectionDropDown.OnMouseDown = _ => ShowDisplaySelectionDropdown(displaySelectionDropDown, ds);
@@ -215,16 +195,16 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			statusBarsDropDown.GetText = () => gs.StatusBars == StatusBarsType.Standard
 				? Game.Translate(Standard)
 				: gs.StatusBars == StatusBarsType.DamageShow
-					? showOnDamage
-					: alwaysShow;
+					? Game.Translate(ShowOnDamage)
+					: Game.Translate(AlwaysShow);
 
 			var targetLinesDropDown = panel.Get<DropDownButtonWidget>("TARGET_LINES_DROPDOWN");
 			targetLinesDropDown.OnMouseDown = _ => ShowTargetLinesDropdown(targetLinesDropDown, gs);
 			targetLinesDropDown.GetText = () => gs.TargetLines == TargetLinesType.Automatic
-				? automatic
+				? Game.Translate(Automatic)
 				: gs.TargetLines == TargetLinesType.Manual
-					? manual
-					: disabled;
+					? Game.Translate(Manual)
+					: Game.Translate(Disabled);
 
 			var battlefieldCameraDropDown = panel.Get<DropDownButtonWidget>("BATTLEFIELD_CAMERA_DROPDOWN");
 			var battlefieldCameraLabel = new CachedTransform<WorldViewport, string>(vs => GetViewportSizeName(modData, vs));

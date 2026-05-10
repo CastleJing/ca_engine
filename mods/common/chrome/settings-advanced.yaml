@@ -112,21 +112,17 @@ Container@ADVANCED_PANEL:
 							Text: Chrome-Setting-Advanced-Debug-Title
 				Container@ROW:
 					Width: PARENT_WIDTH - 24
-					Height: 40
+					Height: 52
 					Children:
 						Container@DEBUG_HIDDEN_CONTAINER:
 							X: 10
 							Width: PARENT_WIDTH - 10
 							Children:
-								Label@A:
+								Label@DEBUG_HIDDEN_INFO:
 									Width: PARENT_WIDTH
-									Height: 20
-									Text: Chrome-Setting-Advanced-Debug-HiddenInfo
-									Align: Center
-								Label@B:
-									Y: 20
-									Width: PARENT_WIDTH
-									Height: 20
+									Height: 50
+									Font: Tiny
+									WordWrap: True
 									Text: Chrome-Setting-Advanced-Debug-HiddenInfo
 									Align: Center
 				Container@ROW:

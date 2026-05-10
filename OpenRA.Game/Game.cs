@@ -490,6 +490,7 @@ namespace OpenRA
 			Sound.StopVideo();
 
 			ModData = new ModData(Mods[mod], Mods, true);
+			ModData.HandleLoadingProgress();
 
 			LocalPlayerProfile = new LocalPlayerProfile(Path.Combine(Platform.SupportDir, Settings.Game.AuthProfile), ModData.Manifest.Get<PlayerDatabase>());
 
@@ -497,21 +498,26 @@ namespace OpenRA
 				return;
 
 			ModData.InitializeLoaders(ModData.DefaultFileSystem);
+			ModData.HandleLoadingProgress();
 			ApplySystemLanguageOnFirstLaunch(ModData.Manifest);
 			Renderer.InitializeFonts(ModData);
+			ModData.HandleLoadingProgress();
 			if (ModData.Manifest.LanguageFontPaths != null && ModData.Manifest.LanguageFontPaths.Count > 0)
 				Renderer.PrecacheGlyphsForMergedLanguages(ModData, Settings.Player.Language, "en");
 			else
 				Renderer.PrecacheGlyphsForLanguage(ModData, Settings.Player.Language);
 
+			ModData.HandleLoadingProgress();
 			using (new PerfTimer("LoadMaps"))
 				ModData.MapCache.LoadMaps();
 
+			ModData.HandleLoadingProgress();
 			var grid = ModData.Manifest.Contains<MapGrid>() ? ModData.Manifest.Get<MapGrid>() : null;
 			Renderer.InitializeDepthBuffer(grid);
 
 			Cursor?.Dispose();
 			Cursor = new CursorManager(ModData.CursorProvider, ModData.Manifest.CursorSheetSize);
+			ModData.HandleLoadingProgress();
 
 			var metadata = ModData.Manifest.Metadata;
 			if (!string.IsNullOrEmpty(metadata.WindowTitleTranslated))

@@ -62,6 +62,7 @@ namespace OpenRA.Graphics
 				return;
 
 			var seen = new HashSet<char>();
+			var processed = 0;
 			foreach (var c in text)
 			{
 				if (c == '\r' || c == '\n')
@@ -70,6 +71,8 @@ namespace OpenRA.Graphics
 					continue;
 
 				glyphs[c].GetHashCode();
+				if (++processed % 48 == 0)
+					Game.Renderer?.PumpWindowEvents();
 			}
 		}
 

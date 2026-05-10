@@ -113,9 +113,6 @@ ModContent:
 			Identifier: music-aftermath
 			TestFiles: ^SupportDir|Content/ra/v2/expand/await.aud, ^SupportDir|Content/ra/v2/expand/bog.aud, ^SupportDir|Content/ra/v2/expand/float_v2.aud, ^SupportDir|Content/ra/v2/expand/gloom.aud, ^SupportDir|Content/ra/v2/expand/grndwire.aud, ^SupportDir|Content/ra/v2/expand/rpt.aud, ^SupportDir|Content/ra/v2/expand/search.aud, ^SupportDir|Content/ra/v2/expand/traction.aud, ^SupportDir|Content/ra/v2/expand/wastelnd.aud
 			Sources: aftermath, ra-steam, ra-origin, cncr-steam, cncr-origin
-	Translations:
-		ra-content|languages/modcontent_en.json5:
-		ra-content|languages/modcontent_zh.json5:
 	Downloads:
 		racontent|installer/downloads.yaml
 	Sources:

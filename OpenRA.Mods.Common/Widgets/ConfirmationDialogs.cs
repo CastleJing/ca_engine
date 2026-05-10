@@ -35,17 +35,21 @@ namespace OpenRA.Mods.Common.Widgets
 			var cancelButton = prompt.GetOrNull<ButtonWidget>("CANCEL_BUTTON");
 			var otherButton = prompt.GetOrNull<ButtonWidget>("OTHER_BUTTON");
 
-			var titleMessage = Game.Translate(title, titleArguments);
-			prompt.Get<LabelWidget>("PROMPT_TITLE").GetText = () => titleMessage;
+			prompt.Get<LabelWidget>("PROMPT_TITLE").GetText = () => Game.Translate(title, titleArguments);
 
 			var headerTemplate = prompt.Get<LabelWidget>("PROMPT_TEXT");
 			var textMessage = Game.Translate(text, textArguments);
 			var headerLines = textMessage.Split('\n');
 			var headerHeight = 0;
-			foreach (var l in headerLines)
+			for (var li = 0; li < headerLines.Length; li++)
 			{
+				var lineIndex = li;
 				var line = (LabelWidget)headerTemplate.Clone();
-				line.GetText = () => l;
+				line.GetText = () =>
+				{
+					var parts = Game.Translate(text, textArguments).Split('\n');
+					return lineIndex < parts.Length ? parts[lineIndex] : "";
+				};
 				line.Bounds.Y += headerHeight;
 				prompt.AddChild(line);
 
@@ -66,10 +70,7 @@ namespace OpenRA.Mods.Common.Widgets
 				};
 
 				if (!string.IsNullOrEmpty(confirmText))
-				{
-					var confirmTextMessage = Game.Translate(confirmText);
-					confirmButton.GetText = () => confirmTextMessage;
-				}
+					confirmButton.GetText = () => Game.Translate(confirmText);
 			}
 
 			if (onCancel != null && cancelButton != null)
@@ -83,10 +84,7 @@ namespace OpenRA.Mods.Common.Widgets
 				};
 
 				if (!string.IsNullOrEmpty(cancelText))
-				{
-					var cancelTextMessage = Game.Translate(cancelText);
-					cancelButton.GetText = () => cancelTextMessage;
-				}
+					cancelButton.GetText = () => Game.Translate(cancelText);
 			}
 
 			if (onOther != null && otherButton != null)
@@ -96,10 +94,7 @@ namespace OpenRA.Mods.Common.Widgets
 				otherButton.OnClick = onOther;
 
 				if (!string.IsNullOrEmpty(otherText))
-				{
-					var otherTextMessage = Game.Translate(otherText);
-					otherButton.GetText = () => otherTextMessage;
-				}
+					otherButton.GetText = () => Game.Translate(otherText);
 			}
 		}
 
@@ -113,11 +108,9 @@ namespace OpenRA.Mods.Common.Widgets
 			Func<bool> doValidate = null;
 			ButtonWidget acceptButton = null, cancelButton = null;
 
-			var titleMessage = Game.Translate(title);
-			panel.Get<LabelWidget>("PROMPT_TITLE").GetText = () => titleMessage;
+			panel.Get<LabelWidget>("PROMPT_TITLE").GetText = () => Game.Translate(title);
 
-			var promptMessage = Game.Translate(prompt);
-			panel.Get<LabelWidget>("PROMPT_TEXT").GetText = () => promptMessage;
+			panel.Get<LabelWidget>("PROMPT_TEXT").GetText = () => Game.Translate(prompt);
 
 			var input = panel.Get<TextFieldWidget>("INPUT_TEXT");
 			var isValid = false;
@@ -145,10 +138,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 			acceptButton = panel.Get<ButtonWidget>("ACCEPT_BUTTON");
 			if (!string.IsNullOrEmpty(acceptText))
-			{
-				var acceptTextMessage = Game.Translate(acceptText);
-				acceptButton.GetText = () => acceptTextMessage;
-			}
+				acceptButton.GetText = () => Game.Translate(acceptText);
 
 			acceptButton.OnClick = () =>
 			{
@@ -161,10 +151,7 @@ namespace OpenRA.Mods.Common.Widgets
 
 			cancelButton = panel.Get<ButtonWidget>("CANCEL_BUTTON");
 			if (!string.IsNullOrEmpty(cancelText))
-			{
-				var cancelTextMessage = Game.Translate(cancelText);
-				cancelButton.GetText = () => cancelTextMessage;
-			}
+				cancelButton.GetText = () => Game.Translate(cancelText);
 
 			cancelButton.OnClick = () =>
 			{

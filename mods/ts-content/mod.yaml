@@ -64,8 +64,6 @@ Fonts:
 
 ModContent:
 	Mod: ts
-	InstallPromptMessage: modcontent-installprompt
-	HeaderMessage: modcontent-header
 	QuickDownload: quickinstall
 	Packages:
 		ContentPackage@tibsun:
@@ -92,9 +90,6 @@ ModContent:
 			Identifier: fstorm-music
 			Sources: tfd, steam, origin, fstorm
 			TestFiles: ^SupportDir|Content/ts/firestorm/scores01.mix
-	Translations:
-		ts-content|languages/modcontent_en.json5:
-		ts-content|languages/modcontent_zh.json5:
 	Downloads:
 		tscontent|installer/downloads.yaml
 	Sources:

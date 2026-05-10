@@ -53,6 +53,8 @@ namespace OpenRA
 
 		public ModData(Manifest mod, InstalledMods mods, bool useLoadScreen = false)
 		{
+			initialThreadId = Environment.CurrentManagedThreadId;
+
 			// Take a local copy of the manifest
 			Manifest = new Manifest(mod.Id, mod.Package);
 			ObjectCreator = new ObjectCreator(Manifest, mods);
@@ -63,14 +65,17 @@ namespace OpenRA
 			FieldLoader.Load(FileSystemLoader, Manifest.FileSystem);
 			FileSystemLoader.Mount(ModFiles, ObjectCreator);
 			ModFiles.TrimExcess();
+			HandleLoadingProgress();
 
 			RemountLocalizationPackages();
 
 			Game.LoadTranslation(Manifest.Translations, ModFiles);
 			languages = Manifest.SupportLanguages;
+			HandleLoadingProgress();
 
 			Manifest.RegisterFontsFromLanguageFileIfMissing(ModFiles, ObjectCreator);
 			Manifest.LoadCustomData(ObjectCreator);
+			HandleLoadingProgress();
 
 			if (useLoadScreen)
 			{
@@ -80,11 +85,15 @@ namespace OpenRA
 			}
 
 			WidgetLoader = new WidgetLoader(this);
+			HandleLoadingProgress();
+
 			MapCache = new MapCache(this);
+			HandleLoadingProgress();
 
 			SoundLoaders = ObjectCreator.GetLoaders<ISoundLoader>(Manifest.SoundFormats, "sound");
 			SpriteLoaders = ObjectCreator.GetLoaders<ISpriteLoader>(Manifest.SpriteFormats, "sprite");
 			VideoLoaders = ObjectCreator.GetLoaders<IVideoLoader>(Manifest.VideoFormats, "video");
+			HandleLoadingProgress();
 
 			var terrainFormat = Manifest.Get<TerrainFormat>();
 			var terrainLoader = ObjectCreator.FindType(terrainFormat.Type + "Loader");
@@ -93,6 +102,7 @@ namespace OpenRA
 				throw new InvalidOperationException($"Unable to find a terrain loader for type '{terrainFormat.Type}'.");
 
 			TerrainLoader = (ITerrainLoader)terrainCtor.Invoke(new[] { this });
+			HandleLoadingProgress();
 
 			var sequenceFormat = Manifest.Get<SpriteSequenceFormat>();
 			var sequenceLoader = ObjectCreator.FindType(sequenceFormat.Type + "Loader");
@@ -101,6 +111,7 @@ namespace OpenRA
 				throw new InvalidOperationException($"Unable to find a sequence loader for type '{sequenceFormat.Type}'.");
 
 			SpriteSequenceLoader = (ISpriteSequenceLoader)sequenceCtor.Invoke(new[] { this });
+			HandleLoadingProgress();
 
 			Hotkeys = new HotkeyManager(ModFiles, Game.Settings.Keys, Manifest);
 
@@ -117,16 +128,19 @@ namespace OpenRA
 
 				return (IReadOnlyDictionary<string, ITerrainInfo>)new ReadOnlyDictionary<string, ITerrainInfo>(items);
 			});
-
-			initialThreadId = Environment.CurrentManagedThreadId;
 		}
 
 		// HACK: Only update the loading screen if we're in the main thread.
 		readonly int initialThreadId;
 		internal void HandleLoadingProgress()
 		{
-			if (LoadScreen != null && IsOnMainThread)
+			if (!IsOnMainThread)
+				return;
+
+			if (LoadScreen != null)
 				LoadScreen.Display();
+			else
+				Game.Renderer?.PumpWindowEvents();
 		}
 
 		internal bool IsOnMainThread => Environment.CurrentManagedThreadId == initialThreadId;

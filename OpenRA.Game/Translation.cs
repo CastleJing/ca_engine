@@ -164,7 +164,30 @@ namespace OpenRA
 		{
 			if (!dict.ContainsKey(s))
 				return s;
-			return dict[s];
+			return StripJsonTranslatorDeveloperSuffix(dict[s]);
+		}
+
+		/// <summary>Remove trailing <c> ## ClassName</c> markers copied from Fluent source annotations (not shown to players).</summary>
+		internal static string StripJsonTranslatorDeveloperSuffix(string value)
+		{
+			if (string.IsNullOrEmpty(value))
+				return value;
+
+			var t = value;
+			while (true)
+			{
+				var idx = t.LastIndexOf(" ## ", StringComparison.Ordinal);
+				if (idx < 0)
+					break;
+
+				var tail = t[(idx + 4)..];
+				if (tail.Length > 0 && tail.All(c => char.IsLetterOrDigit(c) || c == '.' || c == '_'))
+					t = t[..idx].TrimEnd();
+				else
+					break;
+			}
+
+			return t;
 		}
 
 		public bool Contain(string s)
