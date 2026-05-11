@@ -22,6 +22,13 @@
     <TargetFramework Condition="'$(MSBuildRuntimeType)'=='Mono'">netstandard2.1</TargetFramework>
   </PropertyGroup>
 
+  <!-- .NET 9 enables hardware-enforced stack protection (CET) on apphost by default; some Win10
+       builds or environments fail fast at process start (0xC0000602). Opt out at link time.
+       https://learn.microsoft.com/dotnet/core/compatibility/interop/9.0/cet-support -->
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)'!='Mono'">
+    <CETCompat>false</CETCompat>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetPlatform Condition="$([MSBuild]::IsOsPlatform('Windows'))">win-x64</TargetPlatform>
     <TargetPlatform Condition="$([MSBuild]::IsOsPlatform('Linux'))">linux-x64</TargetPlatform>
