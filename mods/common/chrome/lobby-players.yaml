@@ -440,7 +440,7 @@ Container@LOBBY_PLAYER_BIN:
 							X: 190
 							Width: 418
 							Height: 25
-							Text: Chrome-LobbyPlayer-Name
+							Text: Chrome-LobbyPlayer-Spectator
 							Align: Center
 							Font: Bold
 						Image@STATUS_IMAGE:
