@@ -182,7 +182,8 @@ namespace OpenRA
 		{
 			get
 			{
-				package ??= parentPackage.OpenPackage(PackageName, modData.ModFiles);
+				if (package == null && parentPackage != null)
+					package = parentPackage.OpenPackage(PackageName, modData.ModFiles);
 				return package;
 			}
 
@@ -193,7 +194,6 @@ namespace OpenRA
 
 		internal Translation Translation;
 		string translationLanguage;
-		string[] mapTranslationPaths;
 
 		volatile InnerData innerData;
 
@@ -288,7 +288,7 @@ namespace OpenRA
 
 		void EnsureTranslationForCurrentLanguage()
 		{
-			if (package == null)
+			if (Package == null)
 				return;
 
 			var language = Game.Settings?.Player?.Language;
@@ -298,26 +298,15 @@ namespace OpenRA
 			if (Translation != null && translationLanguage == language)
 				return;
 
-			RebuildTranslation(package, language);
-		}
+			var translations = new string[2];
+			translations[0] = Package.Contains("metadata_" + language + ".to")
+				? "metadata_" + language + ".to"
+				: "metadata_" + language + ".json5";
+			translations[1] = Package.Contains("metadata_en.to")
+				? "metadata_en.to"
+				: "metadata_en.json5";
 
-		void RebuildTranslation(IReadOnlyPackage p, string language)
-		{
-			string[] paths;
-			if (mapTranslationPaths != null && mapTranslationPaths.Length > 0)
-				paths = mapTranslationPaths;
-			else
-			{
-				paths = new string[2];
-				paths[0] = p.Contains("metadata_" + language + ".to")
-					? "metadata_" + language + ".to"
-					: "metadata_" + language + ".json5";
-				paths[1] = p.Contains("metadata_en.to")
-					? "metadata_en.to"
-					: "metadata_en.json5";
-			}
-
-			Translation = new Translation(language, paths, p);
+			Translation = new Translation(language, translations, Package);
 			translationLanguage = language;
 		}
 
@@ -430,11 +419,18 @@ namespace OpenRA
 			}, null);
 
 			package = map.Package;
-			mapTranslationPaths = map.Translations;
 			var lang = Game.Settings?.Player?.Language;
 			if (string.IsNullOrEmpty(lang))
 				lang = "en";
-			RebuildTranslation(map.Package, lang);
+			var translations = new string[2];
+			translations[0] = map.Package.Contains("metadata_" + lang + ".to")
+				? "metadata_" + lang + ".to"
+				: "metadata_" + lang + ".json5";
+			translations[1] = map.Package.Contains("metadata_en.to")
+				? "metadata_en.to"
+				: "metadata_en.json5";
+			Translation = new Translation(lang, translations, map.Package);
+			translationLanguage = lang;
 		}
 
 		public void UpdateFromMap(IReadOnlyPackage p, IReadOnlyPackage parent, MapClassification classification,
@@ -453,10 +449,15 @@ namespace OpenRA
 			parentPackage = parent;
 			package = p;
 
-			if (yaml.TryGetValue("Translations", out var translationsYaml) && translationsYaml.Nodes.Length > 0)
-				mapTranslationPaths = translationsYaml.Nodes.Select(n => n.Key).ToArray();
-			else
-				mapTranslationPaths = null;
+			var translations = new string[2];
+			translations[0] = p.Contains("metadata_" + Game.Settings.Player.Language + ".to")
+				? "metadata_" + Game.Settings.Player.Language + ".to"
+				: "metadata_" + Game.Settings.Player.Language + ".json5";
+			translations[1] = p.Contains("metadata_en.to")
+				? "metadata_en.to"
+				: "metadata_en.json5";
+			Translation = new Translation(Game.Settings.Player.Language, translations, p);
+			translationLanguage = Game.Settings.Player.Language;
 
 			var newData = innerData.Clone();
 			newData.GridType = gridType;
@@ -545,10 +546,6 @@ namespace OpenRA
 			// Assign the new data atomically
 			innerData = newData;
 
-			var lang = Game.Settings?.Player?.Language;
-			if (string.IsNullOrEmpty(lang))
-				lang = "en";
-			RebuildTranslation(p, lang);
 		}
 
 		public void UpdateRemoteSearch(MapStatus status, MiniYaml yaml, string[] mapCompatibility, Action<MapPreview> parseMetadata = null)

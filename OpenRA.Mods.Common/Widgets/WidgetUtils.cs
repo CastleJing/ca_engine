@@ -524,7 +524,7 @@ namespace OpenRA.Mods.Common.Widgets
 			textLabel.Bounds.Width = textWidth;
 
 			// Hack around our hacky wordwrap behavior: need to resize the widget to fit the text
-			var text = WrapText(notification.Text, textLabel.Bounds.Width, textFont);
+			var text = WrapText(Game.Translate(notification.Text), textLabel.Bounds.Width, textFont);
 			textLabel.GetText = () => text;
 			var dh = textFont.Measure(text).Y - textLabel.Bounds.Height;
 			if (dh > 0)

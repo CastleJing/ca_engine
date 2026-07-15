@@ -20,14 +20,32 @@ namespace OpenRA.Mods.Common.Scripting.Global
 	[ScriptGlobal("UserInterface")]
 	public class UserInterfaceGlobal : ScriptGlobal
 	{
+		CachedTransform<string, string> textTrans;
+		CachedTransform<(string, string[]), string> displayCache;
+
 		public UserInterfaceGlobal(ScriptContext context)
-			: base(context) { }
+			: base(context)
+		{
+			textTrans = new CachedTransform<string, string>(label => Game.Translate(label));
+			displayCache = new CachedTransform<(string, string[]), string>(
+				c => string.Format(textTrans.Update(c.Item1), c.Item2));
+		}
 
 		[Desc("Displays a text message at the top center of the screen.")]
 		public void SetMissionText(string text, Color? color = null)
 		{
 			var luaLabel = Ui.Root.Get("INGAME_ROOT").Get<LabelWidget>("MISSION_TEXT");
-			luaLabel.GetText = () => text;
+			luaLabel.GetText = () => textTrans.Update(text);
+
+			var c = color ?? Color.White;
+			luaLabel.GetColor = () => c;
+		}
+
+		[Desc("Displays a text message at the top center of the screen with format arguments.")]
+		public void SetMissionTextWithArgs(string text, string[] args, Color? color = null)
+		{
+			var luaLabel = Ui.Root.Get("INGAME_ROOT").Get<LabelWidget>("MISSION_TEXT");
+			luaLabel.GetText = () => displayCache.Update((text, args));
 
 			var c = color ?? Color.White;
 			luaLabel.GetColor = () => c;

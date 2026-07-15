@@ -17,6 +17,7 @@ using System.Threading;
 using OpenRA.Graphics;
 using OpenRA.Mods.Common.Traits;
 using OpenRA.Network;
+using OpenRA.Primitives;
 using OpenRA.Traits;
 using OpenRA.Widgets;
 
@@ -98,11 +99,12 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			template = widget.Get<ScrollItemWidget>("TEMPLATE");
 
 			var title = widget.GetOrNull<LabelWidget>("MISSIONBROWSER_TITLE");
+			var titleCache = new CachedTransform<bool, string>(flag =>
+				flag
+					? selectedMap.Translate(selectedMap.Title)
+					: Game.Translate(title.Text));
 			if (title != null)
-			{
-				var titleText = title.GetText();
-				title.GetText = () => playingVideo != PlayingVideo.None ? selectedMap.Title : titleText;
-			}
+				title.GetText = () => titleCache.Update(playingVideo != PlayingVideo.None);
 
 			widget.Get("MISSION_INFO").IsVisible = () => selectedMap != null;
 
@@ -299,7 +301,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					infoVideo = missionData.BackgroundVideo;
 					infoVideoVisible = infoVideo != null;
 
-					var briefing = WidgetUtils.WrapText(missionData.Briefing?.Replace("\\n", "\n"), description.Bounds.Width, descriptionFont);
+					var briefing = WidgetUtils.WrapText(selectedMap.Translate(missionData.Briefing)?.Replace("\\n", "\n"), description.Bounds.Width, descriptionFont);
 					var height = descriptionFont.Measure(briefing).Y;
 					Game.RunAfterTick(() =>
 					{

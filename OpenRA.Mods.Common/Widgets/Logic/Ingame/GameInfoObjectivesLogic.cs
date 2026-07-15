@@ -78,7 +78,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				var widget = template.Clone();
 				var label = widget.Get<LabelWidget>("OBJECTIVE_TYPE");
-				label.GetText = () => objective.Type;
+				label.GetText = () => Game.Translate(objective.Type);
 
 				var checkbox = widget.Get<CheckboxWidget>("OBJECTIVE_STATUS");
 				checkbox.IsChecked = () => objective.State != ObjectiveState.Incomplete;

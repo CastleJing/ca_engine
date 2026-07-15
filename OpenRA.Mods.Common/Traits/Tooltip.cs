@@ -62,13 +62,13 @@ namespace OpenRA.Mods.Common.Traits
 			if (GenericStancePrefix)
 			{
 				if (!string.IsNullOrEmpty(AllyPrefix) && relationship == PlayerRelationship.Ally)
-					return Game.Translate(AllyPrefix) + " " + genericName;
+					return Game.Translate(AllyPrefix, "name", genericName);
 
 				if (!string.IsNullOrEmpty(NeutralPrefix) && relationship == PlayerRelationship.Neutral)
-					return Game.Translate(NeutralPrefix) + " " + genericName;
+					return Game.Translate(NeutralPrefix, "name", genericName);
 
 				if (!string.IsNullOrEmpty(EnemyPrefix) && relationship == PlayerRelationship.Enemy)
-					return Game.Translate(EnemyPrefix) + " " + genericName;
+					return Game.Translate(EnemyPrefix, "name", genericName);
 			}
 
 			return genericName;
