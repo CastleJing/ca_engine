@@ -249,7 +249,7 @@ namespace OpenRA.Mods.Common.Widgets
 		public static bool IsCurrentLanguageCjk()
 		{
 			var lang = Game.Settings?.Player?.Language ?? "en";
-			return CjkLanguages.Contains(lang);
+			return CjkLanguages.Contains(lang) || lang.StartsWith("zh", StringComparison.OrdinalIgnoreCase);
 		}
 
 		/// <summary>Whether <paramref name="c"/> is a CJK / Hangul / Kana code unit (BMP). Used for line-breaking heuristics.</summary>
@@ -264,8 +264,16 @@ namespace OpenRA.Mods.Common.Widgets
 			// CJK Extension A
 			if (c >= '\u3400' && c <= '\u4DBF')
 				return true;
+			// CJK Extension B - F (supplementary planes, surrogate pairs)
+			// Surrogate pairs cannot be represented as single chars; handled via measurement.
 			// Hiragana & Katakana
 			if (c >= '\u3040' && c <= '\u30FF')
+				return true;
+			// CJK Symbols and Punctuation
+			if (c >= '\u3000' && c <= '\u303F')
+				return true;
+			// Fullwidth Forms (fullwidth Latin, punctuation, currency, etc.)
+			if (c >= '\uFF00' && c <= '\uFFEF')
 				return true;
 			// CJK Compatibility Ideographs
 			if (c >= '\uF900' && c <= '\uFAFF')
@@ -273,13 +281,20 @@ namespace OpenRA.Mods.Common.Widgets
 			// Halfwidth Katakana
 			if (c >= '\uFF66' && c <= '\uFF9F')
 				return true;
+			// Kangxi Radicals
+			if (c >= '\u2F00' && c <= '\u2FDF')
+				return true;
+			// CJK Radicals Supplement
+			if (c >= '\u2E80' && c <= '\u2EFF')
+				return true;
 			return false;
 		}
 
 		/// <summary>
 		/// Exclusive end index for the first wrapped segment of <paramref name="line"/> under CJK locale rules:
-		/// break at the last character that still fits <paramref name="width"/>, preferring a space only when it is not
-		/// a weak boundary (e.g. list marker <c>* </c> before CJK text).
+		/// break at the last character that still fits <paramref name="width"/>.
+		/// Spaces are only preferred as break points when they separate a Latin word from CJK text
+		/// AND lie near the character-based break point, preventing English-style word wrapping.
 		/// </summary>
 		public static int FindCjkAwareWrapExclusiveEnd(string line, int width, SpriteFont font)
 		{
@@ -304,12 +319,19 @@ namespace OpenRA.Mods.Common.Widgets
 
 			if (lastSpace >= 0)
 			{
-				var afterIdx = lastSpace + 1;
-				var cAfter = afterIdx < lineLen ? line[afterIdx] : default;
 				var cBefore = lastSpace > 0 ? line[lastSpace - 1] : default;
-				// Do not treat "symbol/punct + space + CJK" as a word boundary (e.g. "* 文字示例").
-				var skipSpacePreference = IsCjkCodepoint(cAfter) && !char.IsLetterOrDigit(cBefore);
-				if (!skipSpacePreference)
+
+				// For CJK text, we normally break at the character boundary that fills the line.
+				// Only prefer a space-based break when two conditions are both met:
+				//   1) The space separates a Latin word/digit from the following CJK text
+				//      (keeping the word intact is more natural).
+				//   2) The space is close to the character-based break point
+				//      (avoids wasting significant line space on short first lines).
+				// This prevents English-style word wrapping from forcing short lines
+				// when the Latin word is well before the natural break point.
+				var isLatinWordBoundary = char.IsLetterOrDigit(cBefore);
+				var spaceIsNearBreak = (breakIndex - lastSpace) <= 4;
+				if (isLatinWordBoundary && spaceIsNearBreak)
 					breakIndex = lastSpace + 1;
 			}
 
