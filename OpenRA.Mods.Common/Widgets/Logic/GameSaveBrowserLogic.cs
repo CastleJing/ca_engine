@@ -99,10 +99,10 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 			{
 				panel.Get("SAVE_TITLE").IsVisible = () => true;
 
-				defaultSaveFilename = world.Map.Title;
+				defaultSaveFilename = world.Map.Translate(world.Map.Title);
 				var filenameAttempt = 0;
 				while (File.Exists(Path.Combine(baseSavePath, defaultSaveFilename + ".orasav")))
-					defaultSaveFilename = world.Map.Title + $" ({++filenameAttempt})";
+					defaultSaveFilename = world.Map.Translate(world.Map.Title) + $" ({++filenameAttempt})";
 
 				var saveButton = panel.Get<ButtonWidget>("SAVE_BUTTON");
 				saveButton.IsDisabled = () => string.IsNullOrWhiteSpace(saveTextField.Text);

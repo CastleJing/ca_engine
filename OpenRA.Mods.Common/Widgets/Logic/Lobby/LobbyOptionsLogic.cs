@@ -149,7 +149,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 					if (id == null || !option.Values.TryGetValue(id, out var value))
 						return Game.Translate(NotAvailable);
 
-					return value;
+					return Game.Translate(value);
 				});
 
 				dropdown.GetText = () => getOptionLabel.Update(optionValue.Update(orderManager.LobbyInfo.GlobalSettings).Value);
@@ -172,7 +172,7 @@ namespace OpenRA.Mods.Common.Widgets.Logic
 						void OnClick() => orderManager.IssueOrder(Order.Command($"option {option.Id} {c.Key}"));
 
 						var item = ScrollItemWidget.Setup(template, IsSelected, OnClick);
-						item.Get<LabelWidget>("LABEL").GetText = () => c.Value;
+						item.Get<LabelWidget>("LABEL").GetText = () => Game.Translate(c.Value);
 						return item;
 					}
 
